@@ -1,0 +1,1414 @@
+{
+ "schema": "mm-truth-set-v2",
+ "name": "多模态真值集 v2（多项目 × 多镜头 × 边界类；运动素材=LIMITATION）",
+ "frozen_at": "2026-09-19",
+ "frozen_note": "v1 14 例原样并入（project p_f4b466a4a024）；新增 p_ab2b352e06b8 12 段多镜头旁白成片（7 域一致 + 5 域边界错配）与 p_8f054c227bd4 6 段纯色底 UNKNOWN fail-closed 用例。运动素材覆盖 = 0（全库 1592 项目 0 视频资产）——如实 LIMITATION，未虚构。",
+ "project_id": "p_f4b466a4a024",
+ "projects": [
+  "p_f4b466a4a024",
+  "p_ab2b352e06b8",
+  "p_8f054c227bd4"
+ ],
+ "label_axes": {
+  "content_label": "**画面内容 ↔ 旁白语义**的人工/历史结论（MATCH 一致 / MISMATCH 不一致 / UNCERTAIN 无法确定）——来自 4-B 真值钉定或 4-C/5-C 的人工决定记录，**不是**模型输出。",
+  "verifier_behavior": "在给定证据下，一个可靠验证器**应当**输出什么：allow = 可接受集合；must_not = 不可接受集合；require_code_any = 必须给出的 fail-closed 错误码。",
+  "evidence_class": "每条证据的等级：MODEL_EVIDENCE（模型原始数值）/ RULE_INFERENCE（规则推断）/ ENGINEERING_THRESHOLD（工程阈值）/ UNKNOWN（无法判定）。"
+ },
+ "cases": [
+  {
+   "id": "T01_S04_truth_artifact_mismatch",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_2ed5f41d6b58",
+    "scene_id": "S04",
+    "role": "冻结 4-B 真值产物（3-A 首版成片）"
+   },
+   "content_label": "MISMATCH",
+   "content_label_provenance": "4-B 真值钉定 `a_2ed5f41d6b58`（S04 = R3_DOMAIN_DISJOINT）+ 4-C 人工决定 d_a74b1d9f5ab6（把 S04 换成 Visitor 佩戴照）",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S04",
+    "content:MISMATCH",
+    "dim:rule_inference",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T02_S06_truth_artifact_mismatch",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_2ed5f41d6b58",
+    "scene_id": "S06",
+    "role": "冻结 4-B 真值产物"
+   },
+   "content_label": "MISMATCH",
+   "content_label_provenance": "4-B 真值钉定（S06 = R2_SENSE_CONFLICT）+ 4-C 人工决定 d_9a7600dfeebf（把 S06 换成 front View）",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S06",
+    "content:MISMATCH",
+    "dim:rule_inference",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T03_S01_v6_clear_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_fa4716cffb26",
+    "scene_id": "S01",
+    "role": "当前成片 v6"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "3-A 授权链路：S01 素材来自 Wikimedia 检索且抽帧 corr 0.459（appears_in_film=true），旁白为佩戴 XR 头显场景；4-B MATCH（R4_DOMAIN_SUPPORT）",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ],
+     "prefer": [
+      "MATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S01",
+    "content:MATCH",
+    "dim:threshold_boundary_far",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T04_S02_v6_clear_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_fa4716cffb26",
+    "scene_id": "S02",
+    "role": "当前成片 v6"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "S02 素材 = Meta Quest 3 front View（产品图），抽帧 corr 0.921（最高），旁白讲 XR 设备规格；4-B MATCH",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ],
+     "prefer": [
+      "MATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S02",
+    "content:MATCH",
+    "dim:threshold_boundary_far",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T05_S04_v6_human_fixed_match_boundary",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_fa4716cffb26",
+    "scene_id": "S04",
+    "role": "当前成片 v6（4-C 人工替换后）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "4-C 人工决定 d_a74b1d9f5ab6 选定的 Visitor 佩戴照（人工认定语义适配）；抽帧 corr 0.472",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S04",
+    "content:MATCH",
+    "dim:threshold_boundary_near",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T06_S05_v6_boundary_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_fa4716cffb26",
+    "scene_id": "S05",
+    "role": "当前成片 v6"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-C 人工决定 d_a683da3c5d3b 选定 side View（产品侧面）；旁白讲设备形态；4-B MATCH（R4_DOMAIN_SUPPORT）",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ],
+     "prefer": [
+      "UNKNOWN"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S05",
+    "content:MATCH",
+    "dim:threshold_boundary_near",
+    "dim:unknown_by_design",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T07_S06_front_v5_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_e369526c2f47",
+    "scene_id": "S06",
+    "role": "替换前成片 v5（S06 = front View）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "4-C 人工决定 d_9a7600dfeebf 选定的 front View（人工认定适配收尾交代）；5-C 前 5-A/5-D 均判 MATCH",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ],
+     "prefer": [
+      "MATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ],
+     "prefer": [
+      "MATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S06",
+    "content:MATCH",
+    "dim:viewpoint_front",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T08_S06_side_v6_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_fa4716cffb26",
+    "scene_id": "S06",
+    "role": "当前成片 v6（S06 = side View）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-C 人工决定 d_5ffb9971d5a3 选定 side View（人工认定语义适配）；画面确为 XR 设备侧面（抽帧 corr 0.354 为最高）——**内容正确但模型区分度不足**",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ],
+     "prefer": [
+      "UNKNOWN"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S06",
+    "content:MATCH",
+    "dim:viewpoint_side",
+    "dim:unknown_by_design",
+    "dim:threshold_boundary_near",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T09_viewpoint_pair_front_vs_side",
+   "kind": "pair",
+   "source": {
+    "pair": [
+     {
+      "artifact_id": "a_e369526c2f47",
+      "scene_id": "S06"
+     },
+     {
+      "artifact_id": "a_fa4716cffb26",
+      "scene_id": "S06"
+     }
+    ]
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "同一镜头在两版成片上都用了 XR 设备素材（front → side），内容标签不变；差异只在**证据强度**",
+   "expect": {
+    "pair": {
+     "same_content_label": true,
+     "must_not": [
+      "MISMATCH"
+     ],
+     "require": [
+      "5d_margin_front_gt_side",
+      "both_vote_unanimous_if_available"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S06",
+    "content:MATCH",
+    "dim:viewpoint_pair",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T10_temporal_split_fixture",
+   "kind": "fixture",
+   "source": {
+    "fixture": "two_image_cut",
+    "images": [
+     "r2_S30-B02_3.img.jpg",
+     "28160d959ed5…jpg（项目内 sharks 素材，只读输入）"
+    ],
+    "narration": "a mountain landscape"
+   },
+   "content_label": "MISMATCH",
+   "content_label_provenance": "夹具由两张视觉差异明显的图各 3 秒拼接（CLIP 余弦 0.409），旁白只描述其中一张 → 内容不一致；且镜头内存在切换",
+   "expect": {
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH"
+     ],
+     "require_code_any": [
+      "MMT_TEMPORAL_SPLIT"
+     ]
+    }
+   },
+   "covers": [
+    "dim:temporal_split",
+    "content:MISMATCH",
+    "dim:fail_closed",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T11_static_control_fixture",
+   "kind": "fixture",
+   "source": {
+    "fixture": "single_image_static",
+    "images": [
+     "r2_S30-B02_3.img.jpg"
+    ],
+    "narration": "a mountain landscape"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "单张合成测试图，其真实语义无法由人工确证 → 内容标签记 UNCERTAIN；本用例**只**检验时序层不误报视觉切换（不对语义判定作任何断言）",
+   "expect": {
+    "5d": {
+     "require_not_code_any": [
+      "MMT_TEMPORAL_SPLIT"
+     ],
+     "require_stability": "STABLE"
+    }
+   },
+   "covers": [
+    "content:UNCERTAIN",
+    "dim:temporal_control",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T12_unknown_domain_probe",
+   "kind": "probe",
+   "source": {
+    "artifact_id": "a_fa4716cffb26",
+    "scene_id": "S01",
+    "narration_override": "zzzq qqqq wwww（探针：不含任何词表形式）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "期望域无法由词表机械推导（旁白为纯无义词串）→ 任何层都不得给出 MATCH/MISMATCH",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ],
+     "require_code_any": [
+      "MM_UNKNOWN_DOMAIN"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ],
+     "require_code_any": [
+      "MMT_UNKNOWN_DOMAIN"
+     ]
+    }
+   },
+   "covers": [
+    "content:UNCERTAIN",
+    "dim:fail_closed",
+    "dim:unknown_domain",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T13_model_unavailable_probe",
+   "kind": "probe",
+   "source": {
+    "artifact_id": "a_fa4716cffb26",
+    "fault": "model_dir_missing"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "模型不可用属环境故障 → 必须 fail-closed",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ],
+     "require_code_any": [
+      "MM_MODEL_MISSING"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ],
+     "require_code_any": [
+      "MM_MODEL_MISSING"
+     ]
+    }
+   },
+   "covers": [
+    "content:UNCERTAIN",
+    "dim:fail_closed",
+    "dim:model_unavailable",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "T14_insufficient_frames_probe",
+   "kind": "probe",
+   "source": {
+    "artifact_id": "a_fa4716cffb26",
+    "scene_id": "S06",
+    "fault": "frames_below_min"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "帧数低于 min_frames 属样本不足 → 必须 fail-closed，不得用不足证据判定",
+   "expect": {
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ],
+     "require_code_any": [
+      "MMT_INSUFFICIENT_FRAMES"
+     ]
+    }
+   },
+   "covers": [
+    "content:UNCERTAIN",
+    "dim:fail_closed",
+    "dim:insufficient_samples",
+    "project:p_f4b466a4a024"
+   ]
+  },
+  {
+   "id": "G01_pab2b_S01_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S01",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar interior optics (NullSpace-like)；旁白域=vr_ar + bci_neuro intro；VR头显内部光学特写；旁白=VR/BCI形态总起。域内",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S01",
+    "content:MATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_match"
+   ],
+   "narration_excerpt": "把一台 VR 头显和一套脑机接口设备摆在一起，你几乎不用看第二眼就能分清哪个是哪个。但它们有一个共同的物理前提：都得固定在人的头上。区别在于，一个挡在眼睛前面，"
+  },
+  {
+   "id": "G01_pab2b_S02_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S02",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar (modern VR user at laptop)；旁白域=vr_ar (Cardboard 历史)；域内（具体设备代际不同——粒度备注）",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S02",
+    "content:MATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_match"
+   ],
+   "narration_excerpt": "VR 头显最早进入普通人视野的样子，其实非常朴素。Google 的 Cardboard，一块瓦楞纸板折成盒子，前面开两个洞放镜片，把手机插进去，用橡皮筋或者魔术"
+  },
+  {
+   "id": "G01_pab2b_S03_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S03",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar (mannequin AR headset)；旁白域=vr_ar (Quest 3 重量)；AR/VR头显在架",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S03",
+    "content:MATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_match"
+   ],
+   "narration_excerpt": "再看现在卖得最多的那一类。Meta Quest 3 的官方规格页给出的重量大概是 515 克，一体机，电池和计算都在头显里面，不需要连电脑。前面板是几颗摄像头和"
+  },
+  {
+   "id": "G01_pab2b_S04_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S04",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar interior optics；旁白域=vr_ar (Vision Pro 玻璃)；VR头显内部光学; 具体产品不同(粒度)",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S04",
+    "content:MATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_match"
+   ],
+   "narration_excerpt": "Apple Vision Pro 走的是另一条外观路线。正面是一整块弧形层压玻璃，外侧还有一块向外的显示屏，用来显示佩戴者的眼睛。它的重量，官方规格页给的是一个"
+  },
+  {
+   "id": "G01_pab2b_S05_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S05",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar interior optics；旁白域=vr_ar (Valve Index 外置基站)；同上; 具体设备不同(粒度)",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S05",
+    "content:MATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_match"
+   ],
+   "narration_excerpt": "如果把 Valve Index 和前面几台放到一起，你会立刻注意到一个不同：房间对角要架两个 Lighthouse 基站，各自接电，头显和手柄靠接收它们发射的红"
+  },
+  {
+   "id": "G01_pab2b_S06_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S06",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar interior optics；旁白域=vr_ar (Bigscreen Beyond 超轻)；同上",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S06",
+    "content:MATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_match"
+   ],
+   "narration_excerpt": "还有一个方向是往小里做。Bigscreen Beyond 的官方页面把'小'和'轻'放在最前面，但这次没有逐字摘录到具体数值，所以这里不给数字，只能说它的公开定"
+  },
+  {
+   "id": "G01_pab2b_S07_mismatch",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S07",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MISMATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar (VR user at laptop)；旁白域=bci_neuro (BCI 三分类总起)；旁白换到BCI; 画面仍是VR使用场景 → 域边界粒度错配(边界用例)",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN",
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MISMATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MISMATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S07",
+    "content:MISMATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_boundary"
+   ],
+   "narration_excerpt": "上面这些，全都是戴在眼睛上的东西。接下来换一类，它们不显示画面，目标是读取大脑的电信号。脑机接口设备目前通常被分成三类：侵入式、半侵入式、非侵入式。这个划分本身"
+  },
+  {
+   "id": "G01_pab2b_S08_mismatch",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S08",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MISMATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar interior optics；旁白域=bci_neuro (Neuralink 侵入式)；旁白=Neuralink植入; 画面=VR头显内部 → 错配(边界用例)",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN",
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MISMATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MISMATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S08",
+    "content:MISMATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_boundary"
+   ],
+   "narration_excerpt": "最有名的侵入式方案来自 Neuralink。Musk 在 2019 年发表在 Journal of Medical Internet Research 上的一篇"
+  },
+  {
+   "id": "G01_pab2b_S09_mismatch",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S09",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MISMATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar interior optics；旁白域=bci_neuro (OpenBCI Ultracortex)；旁白=OpenBCI骨架头架; 画面=VR头显内部 → 错配(边界)",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN",
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MISMATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MISMATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S09",
+    "content:MISMATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_boundary"
+   ],
+   "narration_excerpt": "非侵入式这一头，形态就丰富多了。OpenBCI 的 Ultracortex Mark IV 在官方文档里有描述：一个镂空的头架，像一顶被掏空的头盔，上面一排排孔"
+  },
+  {
+   "id": "G01_pab2b_S10_mismatch",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S10",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MISMATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar interior optics；旁白域=bci_neuro (Emotiv EPOC X)；旁白=EPOC X头环; 画面=VR头显内部 → 错配(边界)",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN",
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MISMATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MISMATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S10",
+    "content:MISMATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_boundary"
+   ],
+   "narration_excerpt": "Emotiv 的 EPOC X 是另一种样子。官方产品页把它描述成一个 14 通道的头环，用盐水电极。也就是说它不像帽子，更像一圈套在头上的环，前后有伸出去的部"
+  },
+  {
+   "id": "G01_pab2b_S11_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S11",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar (VR user at laptop)；旁白域=vr_ar+bci_neuro (三类对比)；对比段: VR使用场景在画面, 域内",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S11",
+    "content:MATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_match"
+   ],
+   "narration_excerpt": "把两类东西摆在一起，差异其实可以收拢到三个很朴素的问题上。第一，戴在哪儿。VR 头显在眼前，遮住整个视野；脑机接口的电极在头皮上、颅骨里，或者皮层表面。第二，体"
+  },
+  {
+   "id": "G01_pab2b_S12_match",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_25dbe50ce44a",
+    "scene_id": "S12",
+    "role": "真实链路成片（12 段旁白 438s；看图双轮标注）"
+   },
+   "content_label": "MATCH",
+   "content_label_provenance": "5-G 看图双轮标注（7 帧 contact sheet ×2 轮）：画面=vr_ar (VR user at laptop)；旁白域=meta/资料边界；收尾边界说明; 画面VR场景, 域内(弱)",
+   "expect": {
+    "4b": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5a": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "MATCH",
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S12",
+    "content:MATCH",
+    "project:p_ab2b352e06b8",
+    "dim:multi_shot",
+    "dim:domain_match"
+   ],
+   "narration_excerpt": "最后交代一下这期内容的资料边界。比较硬的一手来源有两类：厂商的官方规格页，和 Neuralink 那篇同行评审论文。其余的像百科条目、官方产品文档、拆解影像、发"
+  },
+  {
+   "id": "G02_p8f05_S1_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S1",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S1",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "你手上的手机，压着四条科学原理。有一条能算到微秒级，有一条到今天还在吵。60 秒，一条一条看。"
+  },
+  {
+   "id": "G02_p8f05_S2_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S2",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S2",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "先说电量。锂电池放电有一段电压平台，电量条因此不是均匀下降，低电量提示更像系统画的线。iOS 有低电量模式；Android 常见 15% 和 5%，但阈值随系统"
+  },
+  {
+   "id": "G02_p8f05_S3_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S3",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S3",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "信号也是取舍。2.4 GHz 传得远、更绕得开，5 GHz 更快、干扰更少，没有谁绝对更好。墙的衰减取决于材料和厚度，所以穿墙没有唯一数值，得看你家那堵墙。"
+  },
+  {
+   "id": "G02_p8f05_S4_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S4",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S4",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "地图上那个定位点，取决于卫星上的钟。相对论效应让卫星钟每天净偏约 38 微秒，不修正，误差会一天天累积成公里级。你每次导航，这套修正都在跑。"
+  },
+  {
+   "id": "G02_p8f05_S5_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S5",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S5",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "最后是大模型。“能力随规模突然涌现”，2022 年有论文这么主张，2023 年有人反驳说，那可能是评测指标造成的假象。目前仍是争议，没有结论。"
+  },
+  {
+   "id": "G02_p8f05_S6_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S6",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S6",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "放电不线性，频段看取舍，定位靠修正，涌现还在吵。"
+  }
+ ],
+ "coverage_requirements": {
+  "min_cases": 30,
+  "projects_min": 3,
+  "multi_shot_min": 10,
+  "content_labels": [
+   "MATCH",
+   "MISMATCH",
+   "UNCERTAIN"
+  ],
+  "dimensions": [
+   "multi_shot",
+   "domain_boundary",
+   "domain_match",
+   "fail_closed",
+   "solid_color_no_referent"
+  ],
+  "motion_footage": {
+   "covered": false,
+   "limitation": "全库 0 视频素材（如实 LIMITATION，见 EXP-SS1）"
+  },
+  "unknown_boundary_min": 6
+ },
+ "frozen_policy": {
+  "thresholds_frozen": true,
+  "signoff": {
+   "authorized_by": "user (project owner) — 5-G execution authorization",
+   "authorized_at": "2026-09-19",
+   "authorization_ref": "PHASE5G_PLAN.md A→G"
+  },
+  "note": "5-G 只做评估与解释：不修改评分/判定逻辑与阈值，不接生产判定链，不自动换材/选材/redo。v1 文件原样保留。"
+ }
+}

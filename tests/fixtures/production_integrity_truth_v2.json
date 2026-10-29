@@ -1,0 +1,1529 @@
+{
+ "schema": "production-integrity-truth-v2",
+ "stage": "6-A/M3",
+ "purpose": "Production Integrity（PI-1…PI-6）冻结真值集：覆盖 PASS/FAIL/UNKNOWN/NOT_ASSESSABLE 四态与阈值边界，并把 6-A/M2 接线的门禁语义（渲染前/渲染后是否阻断、旁路是否留痕、旁路后是否仍有纵深防线）固化为可长期回归的期望值。",
+ "frozen_policy": {
+  "min_narration_coverage": 0.9,
+  "max_shortfall_s": 30.0,
+  "max_shortfall_ratio": 0.1,
+  "max_silence_block_s": 8.0,
+  "max_silence_ratio": 0.1,
+  "max_tail_silence_s": 5.0,
+  "silence_noise_db": -45,
+  "silence_min_dur_s": 2.0,
+  "max_av_track_delta_s": 1.0,
+  "max_video_timeline_delta_s": 1.0,
+  "max_start_delta_s": 0.5,
+  "max_frame_count_delta": 1,
+  "max_orphan_share": 0.02,
+  "min_cue_over_narration": 0.6,
+  "max_cue_over_narration": 1.1,
+  "max_segment_drift_s": 5.0
+ },
+ "frozen_gate_flags": {
+  "gate_enabled": true,
+  "post_render_enabled": true,
+  "block_on_unknown": true,
+  "block_on_unknown_pi6": false
+ },
+ "references": {
+  "m1_truth_set": "tests/fixtures/production_integrity_truth_v1.json",
+  "m2_suite": "tests/integrity_gates_test.py",
+  "m2_report": "docs/regression_2x/PHASE6A_M2_REPORT.md",
+  "policy_source": "src/video_studio/core/integrity.py:DEFAULT_POLICY / DEFAULT_GATE_POLICY",
+  "v9_project_id": "p_96efdc03e1aa",
+  "v9_film_task": "t_d0a54bdf1810"
+ },
+ "state_reachability": {
+  "note": "按源码实测：某些 PI 在实现里**不存在**某状态的返回路径，属设计事实（不是未覆盖）；M3 不伪造这些状态。",
+  "PI-1": {
+   "PASS": true,
+   "FAIL": true,
+   "UNKNOWN": false,
+   "NOT_ASSESSABLE": true
+  },
+  "PI-2": {
+   "PASS": true,
+   "FAIL": true,
+   "UNKNOWN": false,
+   "NOT_ASSESSABLE": true
+  },
+  "PI-3": {
+   "PASS": true,
+   "FAIL": true,
+   "UNKNOWN": true,
+   "NOT_ASSESSABLE": true
+  },
+  "PI-4": {
+   "PASS": true,
+   "FAIL": true,
+   "UNKNOWN": true,
+   "NOT_ASSESSABLE": true
+  },
+  "PI-5": {
+   "PASS": true,
+   "FAIL": true,
+   "UNKNOWN": false,
+   "NOT_ASSESSABLE": true
+  },
+  "PI-6": {
+   "PASS": true,
+   "FAIL": true,
+   "UNKNOWN": true,
+   "NOT_ASSESSABLE": true
+  }
+ },
+ "gate_semantics": {
+  "note": "M2 接线后的权威语义：四道 hard gate（PI-1/PI-2/PI-3/PI-5）与 PI-4 在 FAIL 或不可证时 fail-closed 阻断；PI-6 明确违约阻断、不可评估仅记录（绝不记 PASS）。",
+  "pre_render_blocks_on": [
+   "PI-1:FAIL",
+   "PI-1:NOT_ASSESSABLE",
+   "PI-2:FAIL",
+   "PI-2:NOT_ASSESSABLE",
+   "PI-6:FAIL"
+  ],
+  "pre_render_records_only": [
+   "PI-6:UNKNOWN",
+   "PI-6:NOT_ASSESSABLE"
+  ],
+  "post_render_blocks_on": [
+   "PI-3:FAIL",
+   "PI-3:UNKNOWN",
+   "PI-3:NOT_ASSESSABLE",
+   "PI-4:FAIL",
+   "PI-4:UNKNOWN",
+   "PI-4:NOT_ASSESSABLE",
+   "PI-5:FAIL(orphan)",
+   "PI-5:NOT_ASSESSABLE(有旁白计划)"
+  ],
+  "post_render_records_only": [
+   "PI-5:coverage_fail",
+   "PI-5:NOT_ASSESSABLE(无旁白计划)"
+  ],
+  "defense_in_depth": "关闭渲染前硬门**不等于**可以交付短旁白成片：短旁白必然在成片留下 >10% 的尾静音，渲染后 PI-3 会把它拦下（见 M3-E2E-PRE-DISABLED-STILL-BLOCKED）。",
+  "unknown_never_pass": "PASS 只可能来自全部判定为 PASS 的集合；含 UNKNOWN/NOT_ASSESSABLE 的集合 overall 取 FAIL>UNKNOWN>NOT_ASSESSABLE（绝不为 PASS）。"
+ },
+ "cases": [
+  {
+   "id": "M3-PI1-B1-COVERAGE-EXACT-0.90",
+   "kind": "metric",
+   "metric": "narration_coverage",
+   "args": {
+    "narration_duration_s": 900.0,
+    "timeline_duration_s": 1000.0
+   },
+   "expect": {
+    "state": "PASS",
+    "coverage_ratio": 0.9
+   }
+  },
+  {
+   "id": "M3-PI1-B2-COVERAGE-0.8999",
+   "kind": "metric",
+   "metric": "narration_coverage",
+   "args": {
+    "narration_duration_s": 899.9,
+    "timeline_duration_s": 1000.0
+   },
+   "expect": {
+    "state": "FAIL",
+    "coverage_ratio": 0.8999
+   }
+  },
+  {
+   "id": "M3-PI1-MISSING-NARRATION",
+   "kind": "metric",
+   "metric": "narration_coverage",
+   "args": {
+    "narration_duration_s": null,
+    "timeline_duration_s": 1000.0
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M3-PI2-B1-SHORTFALL-EXACT-30s",
+   "kind": "metric",
+   "metric": "duration_contract_dual",
+   "args": {
+    "timeline_duration_s": 1000.0,
+    "narration_duration_s": 970.0
+   },
+   "expect": {
+    "state": "PASS",
+    "contract.shortfall_s": 30.0
+   }
+  },
+  {
+   "id": "M3-PI2-B2-SHORTFALL-31s",
+   "kind": "metric",
+   "metric": "duration_contract_dual",
+   "args": {
+    "timeline_duration_s": 1000.0,
+    "narration_duration_s": 969.0
+   },
+   "expect": {
+    "state": "FAIL",
+    "contract.shortfall_s": 31.0
+   }
+  },
+  {
+   "id": "M3-PI2-B3-SHORTFALL-RATIO-25pct",
+   "kind": "metric",
+   "metric": "duration_contract_dual",
+   "args": {
+    "timeline_duration_s": 80.0,
+    "narration_duration_s": 60.0
+   },
+   "expect": {
+    "state": "FAIL",
+    "contract.shortfall_s": 20.0,
+    "contract.delta_ratio": 0.25
+   }
+  },
+  {
+   "id": "M3-PI2-MISSING",
+   "kind": "metric",
+   "metric": "duration_contract_dual",
+   "args": {
+    "timeline_duration_s": null,
+    "narration_duration_s": null
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M3-PI3-B1-NO-SILENCE",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "clean",
+     "duration_s": 20.0,
+     "speech_s": 20.0
+    },
+    "timeline_s": 20.0,
+    "narration_end_s": 20.0,
+    "narration_expected": true,
+    "cues": {
+     "kind": "even",
+     "count": 4,
+     "dur": 5.0,
+     "step": 5.0
+    }
+   },
+   "expect": {
+    "states": {
+     "PI-3": "PASS",
+     "PI-4": "PASS",
+     "PI-5": "PASS"
+    },
+    "blocked": false
+   }
+  },
+  {
+   "id": "M3-PI3-B2-SHORT-GAP-PASS",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "gap",
+     "duration_s": 40.0,
+     "gap_start_s": 10.0,
+     "gap_len_s": 2.0
+    },
+    "timeline_s": 40.0,
+    "narration_end_s": 40.0,
+    "narration_expected": true,
+    "cues": {
+     "kind": "even",
+     "count": 8,
+     "dur": 5.0,
+     "step": 5.0
+    }
+   },
+   "expect": {
+    "states": {
+     "PI-3": "PASS"
+    },
+    "blocked": false,
+    "note": "2 s 静音块 < 8 s、占比 0.05 ≤ 0.10、尾部 0 ⇒ PASS（阈值下界侧）"
+   }
+  },
+  {
+   "id": "M3-PI3-B3-TAIL-SILENCE-FAIL",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "tail",
+     "duration_s": 20.0,
+     "speech_s": 12.0
+    },
+    "timeline_s": 20.0,
+    "narration_end_s": 12.0,
+    "narration_expected": true,
+    "cues": {
+     "kind": "even",
+     "count": 3,
+     "dur": 4.0,
+     "step": 4.0
+    }
+   },
+   "expect": {
+    "states": {
+     "PI-3": "FAIL",
+     "PI-4": "PASS",
+     "PI-5": "PASS"
+    },
+    "blocked": true,
+    "tail_silence_gt": 5.0
+   }
+  },
+  {
+   "id": "M3-PI3-B4-MID-SILENCE-FAIL",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "gap",
+     "duration_s": 40.0,
+     "gap_start_s": 14.0,
+     "gap_len_s": 12.0
+    },
+    "timeline_s": 40.0,
+    "narration_end_s": 40.0,
+    "narration_expected": true,
+    "cues": {
+     "kind": "even",
+     "count": 8,
+     "dur": 5.0,
+     "step": 5.0
+    }
+   },
+   "expect": {
+    "states": {
+     "PI-3": "FAIL"
+    },
+    "blocked": true,
+    "longest_silence_gt": 10.0,
+    "tail_silence_eq": 0.0,
+    "note": "片中长静音（尾部静音=0）⇒ 证明判据不是只看尾部"
+   }
+  },
+  {
+   "id": "M3-PI3-MISSING-FILM",
+   "kind": "metric",
+   "metric": "audio_silence_profile",
+   "args": {
+    "film": "__MISSING__",
+    "ffmpeg": "__CFG__",
+    "timeline_duration_s": 20.0
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M3-PI3-UNKNOWN-NO-FFMPEG",
+   "kind": "metric",
+   "metric": "audio_silence_profile",
+   "args": {
+    "film": "__CLEAN20__",
+    "ffmpeg": null,
+    "timeline_duration_s": 20.0
+   },
+   "expect": {
+    "state": "UNKNOWN"
+   }
+  },
+  {
+   "id": "M3-PI4-B1-TRACK-DELTA-EXACT-1.0",
+   "kind": "metric",
+   "metric": "av_track_consistency",
+   "args": {
+    "probe": {
+     "has_video": true,
+     "has_audio": true,
+     "video_s": 10.0,
+     "audio_s": 11.0,
+     "video_start": 0.0,
+     "audio_start": 0.0,
+     "frames": 330,
+     "fps": 33.0
+    },
+    "timeline_duration_s": 11.0
+   },
+   "expect": {
+    "state": "PASS",
+    "track_delta_s": 1.0
+   }
+  },
+  {
+   "id": "M3-PI4-B2-TRACK-DELTA-1.05",
+   "kind": "metric",
+   "metric": "av_track_consistency",
+   "args": {
+    "probe": {
+     "has_video": true,
+     "has_audio": true,
+     "video_s": 10.0,
+     "audio_s": 11.05,
+     "video_start": 0.0,
+     "audio_start": 0.0,
+     "frames": 330,
+     "fps": 33.0
+    },
+    "timeline_duration_s": 11.05
+   },
+   "expect": {
+    "state": "FAIL",
+    "track_delta_s": 1.05
+   }
+  },
+  {
+   "id": "M3-PI4-FRAME-COUNT-REPORT-ONLY",
+   "kind": "metric",
+   "metric": "av_track_consistency",
+   "args": {
+    "probe": {
+     "has_video": true,
+     "has_audio": true,
+     "video_s": 9.933333,
+     "audio_s": 10.0,
+     "video_start": 0.0,
+     "audio_start": 0.0,
+     "frames": 299,
+     "fps": 30.0
+    },
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "PASS",
+    "frame_count_is_blocking": false,
+    "frame_count_delta_gt": 0.9
+   }
+  },
+  {
+   "id": "M3-PI4-MISSING-AUDIO-STREAM",
+   "kind": "metric",
+   "metric": "av_track_consistency",
+   "args": {
+    "probe": {
+     "has_video": true,
+     "has_audio": false,
+     "video_s": 10.0,
+     "audio_s": null,
+     "video_start": 0.0,
+     "audio_start": null,
+     "frames": 300,
+     "fps": 30.0
+    },
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "FAIL"
+   }
+  },
+  {
+   "id": "M3-PI4-UNKNOWN-DURATION-UNREADABLE",
+   "kind": "metric",
+   "metric": "av_track_consistency",
+   "args": {
+    "probe": {
+     "has_video": true,
+     "has_audio": true,
+     "video_s": null,
+     "audio_s": 10.0,
+     "video_start": 0.0,
+     "audio_start": 0.0,
+     "frames": null,
+     "fps": 30.0
+    },
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "UNKNOWN"
+   }
+  },
+  {
+   "id": "M3-PI4-NOT-ASSESSABLE",
+   "kind": "metric",
+   "metric": "av_track_consistency",
+   "args": {
+    "probe": null,
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M3-PI4-AV-MISMATCH-GATE",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "track_mismatch",
+     "video_s": 8.0,
+     "audio_s": 20.0,
+     "speech_s": 20.0
+    },
+    "timeline_s": 20.0,
+    "narration_end_s": 20.0,
+    "narration_expected": true,
+    "cues": {
+     "kind": "even",
+     "count": 4,
+     "dur": 5.0,
+     "step": 5.0
+    }
+   },
+   "expect": {
+    "states": {
+     "PI-4": "FAIL"
+    },
+    "blocked": true,
+    "track_delta_gt": 10.0
+   }
+  },
+  {
+   "id": "M3-PI5-B1-ORPHAN-SHARE-EXACT-0.02",
+   "kind": "metric",
+   "metric": "subtitle_orphans",
+   "args": {
+    "cues": {
+     "kind": "even_plus_orphans",
+     "count": 100,
+     "dur": 0.1,
+     "step": 0.1,
+     "orphans": 2,
+     "orphan_start": 25.0,
+     "orphan_dur": 0.1
+    },
+    "narration_end_s": 10.0,
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "PASS",
+    "orphan_cues": 2,
+    "orphan_share": 0.02,
+    "orphan_fail": false,
+    "coverage_fail": false
+   }
+  },
+  {
+   "id": "M3-PI5-B2-ORPHAN-SHARE-0.03",
+   "kind": "metric",
+   "metric": "subtitle_orphans",
+   "args": {
+    "cues": {
+     "kind": "even_plus_orphans",
+     "count": 100,
+     "dur": 0.1,
+     "step": 0.1,
+     "orphans": 3,
+     "orphan_start": 25.0,
+     "orphan_dur": 0.1
+    },
+    "narration_end_s": 10.0,
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "FAIL",
+    "orphan_cues": 3,
+    "orphan_share": 0.03,
+    "orphan_fail": true
+   }
+  },
+  {
+   "id": "M3-PI5-B3-CUE-AT-EXACT-NARRATION-END",
+   "kind": "metric",
+   "metric": "subtitle_orphans",
+   "args": {
+    "cues": {
+     "kind": "explicit",
+     "cues": [
+      [
+       0.0,
+       4.9
+      ],
+      [
+       5.0,
+       9.9
+      ],
+      [
+       10.0,
+       10.05
+      ]
+     ]
+    },
+    "narration_end_s": 10.0,
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "PASS",
+    "orphan_cues": 0,
+    "note": "cue.start == 旁白结束不算 orphan（判据是 start > narration_end）"
+   }
+  },
+  {
+   "id": "M3-PI5-B4-COVERAGE-ONLY-NOT-BLOCKING",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "clean",
+     "duration_s": 20.0,
+     "speech_s": 20.0
+    },
+    "timeline_s": 20.0,
+    "narration_end_s": 20.0,
+    "narration_expected": true,
+    "cues": {
+     "kind": "explicit",
+     "cues": [
+      [
+       0.0,
+       3.4
+      ],
+      [
+       6.0,
+       9.4
+      ],
+      [
+       12.0,
+       15.4
+      ]
+     ]
+    }
+   },
+   "expect": {
+    "states": {
+     "PI-3": "PASS",
+     "PI-4": "PASS",
+     "PI-5": "FAIL"
+    },
+    "blocked": false,
+    "reasons_contain": [
+     "仅记录不阻断"
+    ],
+    "note": "显示覆盖比 10.2/20 = 0.51 < 0.60 ⇒ coverage_fail 记录、orphan_fail=false ⇒ 不阻断（授权判据是 orphan）"
+   }
+  },
+  {
+   "id": "M3-PI5-B5-DISPLAY-RATIO-HIGH",
+   "kind": "metric",
+   "metric": "subtitle_orphans",
+   "args": {
+    "cues": {
+     "kind": "explicit",
+     "cues": [
+      [
+       0.0,
+       20.0
+      ]
+     ]
+    },
+    "narration_end_s": 10.0,
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "FAIL",
+    "coverage_fail": true,
+    "orphan_fail": false
+   }
+  },
+  {
+   "id": "M3-PI5-NO-CUES",
+   "kind": "metric",
+   "metric": "subtitle_orphans",
+   "args": {
+    "cues": [],
+    "narration_end_s": 10.0,
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M3-PI5-NARRATION-END-UNKNOWN",
+   "kind": "metric",
+   "metric": "subtitle_orphans",
+   "args": {
+    "cues": {
+     "kind": "explicit",
+     "cues": [
+      [
+       0.0,
+       4.0
+      ]
+     ]
+    },
+    "narration_end_s": null,
+    "timeline_duration_s": 10.0
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M3-PI5-ORPHAN-GATE",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "clean",
+     "duration_s": 20.0,
+     "speech_s": 20.0
+    },
+    "timeline_s": 20.0,
+    "narration_end_s": 11.0,
+    "narration_expected": true,
+    "cues": {
+     "kind": "explicit",
+     "cues": [
+      [
+       0.0,
+       1.0
+      ],
+      [
+       1.0,
+       2.0
+      ],
+      [
+       2.0,
+       3.0
+      ],
+      [
+       3.0,
+       4.0
+      ],
+      [
+       4.0,
+       5.0
+      ],
+      [
+       5.0,
+       6.0
+      ],
+      [
+       6.0,
+       7.0
+      ],
+      [
+       12.0,
+       13.0
+      ],
+      [
+       13.0,
+       14.0
+      ],
+      [
+       14.0,
+       15.0
+      ]
+     ]
+    }
+   },
+   "expect": {
+    "states": {
+     "PI-5": "FAIL"
+    },
+    "blocked": true,
+    "orphan_cues": 3,
+    "note": "显示比 10/11 = 0.909 在区间内 ⇒ 本例只由 orphan 触发（判据隔离）"
+   }
+  },
+  {
+   "id": "M3-PI5-NO-CUE-WITH-NARRATION-EXPECTED",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "clean",
+     "duration_s": 20.0,
+     "speech_s": 20.0
+    },
+    "timeline_s": 20.0,
+    "narration_end_s": 20.0,
+    "narration_expected": true,
+    "cues": {
+     "kind": "explicit",
+     "cues": []
+    }
+   },
+   "expect": {
+    "states": {
+     "PI-5": "NOT_ASSESSABLE"
+    },
+    "blocked": true
+   }
+  },
+  {
+   "id": "M3-PI5-PLAN-ONLY-RECORDED-ONLY",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "clean",
+     "duration_s": 20.0,
+     "speech_s": 20.0
+    },
+    "timeline_s": 20.0,
+    "narration_end_s": null,
+    "narration_expected": false,
+    "cues": {
+     "kind": "explicit",
+     "cues": [
+      [
+       0.0,
+       4.0
+      ],
+      [
+       30.0,
+       31.0
+      ]
+     ]
+    }
+   },
+   "expect": {
+    "states": {
+     "PI-5": "NOT_ASSESSABLE"
+    },
+    "blocked": false,
+    "note": "无旁白计划且旁白结束未知 ⇒ 仅记录（不谎报 PASS，也不误伤计划模式）"
+   }
+  },
+  {
+   "id": "M3-PI6-B1-DRIFT-EXACT-5.0",
+   "kind": "metric",
+   "metric": "segment_boundary_drift",
+   "args": {
+    "script_segments": [
+     {
+      "duration_s": 10.0
+     },
+     {
+      "duration_s": 10.0
+     },
+     {
+      "duration_s": 10.0
+     }
+    ],
+    "voice_durations": [
+     5.0,
+     10.0,
+     10.0
+    ]
+   },
+   "expect": {
+    "state": "PASS",
+    "max_abs_drift_s": 5.0,
+    "final_drift_s": -5.0,
+    "note": "漂移是**段边界累计**：voice[0]=5.0 ⇒ 边界 1/2 均漂移 −5.0，恰好等于阈值 ⇒ PASS"
+   }
+  },
+  {
+   "id": "M3-PI6-B2-DRIFT-5.1",
+   "kind": "metric",
+   "metric": "segment_boundary_drift",
+   "args": {
+    "script_segments": [
+     {
+      "duration_s": 10.0
+     },
+     {
+      "duration_s": 10.0
+     },
+     {
+      "duration_s": 10.0
+     }
+    ],
+    "voice_durations": [
+     4.9,
+     10.0,
+     10.0
+    ]
+   },
+   "expect": {
+    "state": "FAIL",
+    "max_abs_drift_s": 5.1
+   }
+  },
+  {
+   "id": "M3-PI6-UNKNOWN-NO-SEGMENT-DETAILS",
+   "kind": "metric",
+   "metric": "segment_boundary_drift",
+   "args": {
+    "script_segments": [
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     }
+    ],
+    "voice_durations": []
+   },
+   "expect": {
+    "state": "UNKNOWN"
+   }
+  },
+  {
+   "id": "M3-PI6-UNKNOWN-COUNT-MISMATCH",
+   "kind": "metric",
+   "metric": "segment_boundary_drift",
+   "args": {
+    "script_segments": [
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     }
+    ],
+    "voice_durations": [
+     3.0,
+     3.0
+    ]
+   },
+   "expect": {
+    "state": "UNKNOWN"
+   }
+  },
+  {
+   "id": "M3-PI6-NOT-ASSESSABLE-NO-SCRIPT",
+   "kind": "metric",
+   "metric": "segment_boundary_drift",
+   "args": {
+    "script_segments": [],
+    "voice_durations": [
+     3.0
+    ]
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M3-G-PRE-OK-COMPLETE",
+   "kind": "pre_gate",
+   "spec": {
+    "script_segments": [
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     }
+    ],
+    "voice_segment_durations": [
+     3.667,
+     3.667,
+     3.666
+    ],
+    "timeline_s": 11.0,
+    "narration_s": 11.0
+   },
+   "expect": {
+    "states": {
+     "PI-1": "PASS",
+     "PI-2": "PASS",
+     "PI-6": "PASS"
+    },
+    "blocked": false
+   }
+  },
+  {
+   "id": "M3-G-PRE-SHORT-NARRATION",
+   "kind": "pre_gate",
+   "spec": {
+    "script_segments": [
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     }
+    ],
+    "voice_segment_durations": [
+     3.0,
+     3.0,
+     3.0
+    ],
+    "timeline_s": 11.0,
+    "narration_s": 9.0
+   },
+   "expect": {
+    "states": {
+     "PI-1": "FAIL",
+     "PI-2": "FAIL",
+     "PI-6": "PASS"
+    },
+    "blocked": true,
+    "reasons_contain": [
+     "PI-1"
+    ]
+   }
+  },
+  {
+   "id": "M3-G-PRE-SEGMENT-DRIFT-ONLY",
+   "kind": "pre_gate",
+   "spec": {
+    "script_segments": [
+     {
+      "duration_s": 10.0
+     },
+     {
+      "duration_s": 10.0
+     }
+    ],
+    "voice_segment_durations": [
+     4.9,
+     15.1
+    ],
+    "timeline_s": 20.0,
+    "narration_s": 20.0
+   },
+   "expect": {
+    "states": {
+     "PI-1": "PASS",
+     "PI-2": "PASS",
+     "PI-6": "FAIL"
+    },
+    "blocked": true,
+    "reasons_contain": [
+     "PI-6"
+    ],
+    "note": "旁白总时长与时间轴相等（PI-1/PI-2 PASS），仅**段边界漂移** 5.1 s 越界 ⇒ 证明 PI-6 具备独立阻断力"
+   }
+  },
+  {
+   "id": "M3-G-PRE-PI6-UNKNOWN-RECORDED-ONLY",
+   "kind": "pre_gate",
+   "spec": {
+    "script_segments": [
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     }
+    ],
+    "voice_segment_durations": [],
+    "timeline_s": 8.0,
+    "narration_s": 8.0
+   },
+   "expect": {
+    "states": {
+     "PI-1": "PASS",
+     "PI-2": "PASS",
+     "PI-6": "UNKNOWN"
+    },
+    "blocked": false,
+    "reasons_contain": [
+     "仅记录"
+    ]
+   }
+  },
+  {
+   "id": "M3-G-PRE-PI6-UNKNOWN-STRICT-OVERRIDE",
+   "kind": "pre_gate",
+   "spec": {
+    "script_segments": [
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     }
+    ],
+    "voice_segment_durations": [],
+    "timeline_s": 8.0,
+    "narration_s": 8.0
+   },
+   "policy_override": {
+    "block_on_unknown_pi6": true
+   },
+   "expect": {
+    "states": {
+     "PI-6": "UNKNOWN"
+    },
+    "blocked": true,
+    "note": "显式收紧后不可评估即阻断（默认不阻断，但可审计地选择更严）"
+   }
+  },
+  {
+   "id": "M3-G-PRE-MISSING-NARRATION-FAILCLOSED",
+   "kind": "pre_gate",
+   "spec": {
+    "script_segments": [
+     {
+      "duration_s": 3.0
+     }
+    ],
+    "voice_segment_durations": [],
+    "timeline_s": 5.0,
+    "narration_s": null
+   },
+   "expect": {
+    "states": {
+     "PI-1": "NOT_ASSESSABLE",
+     "PI-2": "NOT_ASSESSABLE"
+    },
+    "blocked": true
+   }
+  },
+  {
+   "id": "M3-G-PRE-DISABLED-AUDIT",
+   "kind": "pre_gate",
+   "spec": {
+    "script_segments": [
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     },
+     {
+      "duration_s": 3.0
+     }
+    ],
+    "voice_segment_durations": [
+     3.0,
+     3.0,
+     3.0
+    ],
+    "timeline_s": 11.0,
+    "narration_s": 9.0
+   },
+   "policy_override": {
+    "gate_enabled": false
+   },
+   "expect": {
+    "blocked": false,
+    "disabled": true,
+    "reasons_contain": [
+     "gate disabled by policy"
+    ],
+    "states": {},
+    "note": "显式关闭 ⇒ 不阻断，但报告必须留痕 disabled=true（旁路可审计）"
+   }
+  },
+  {
+   "id": "M3-G-POST-DISABLED-AUDIT",
+   "kind": "post_gate",
+   "spec": {
+    "film": {
+     "kind": "tail",
+     "duration_s": 20.0,
+     "speech_s": 12.0
+    },
+    "timeline_s": 20.0,
+    "narration_end_s": 12.0,
+    "narration_expected": true,
+    "cues": {
+     "kind": "even",
+     "count": 3,
+     "dur": 4.0,
+     "step": 4.0
+    }
+   },
+   "policy_override": {
+    "post_render_enabled": false
+   },
+   "expect": {
+    "blocked": false,
+    "disabled": true,
+    "reasons_contain": [
+     "post-render gate disabled by policy"
+    ],
+    "states": {},
+    "note": "尾部静音在默认路径会阻断；显式关闭后不阻断但留痕（用于审计旁路）"
+   }
+  },
+  {
+   "id": "M3-S-UNKNOWN-NOT-PASS",
+   "kind": "summarize",
+   "args": {
+    "PI-1": "PASS",
+    "PI-3": "UNKNOWN",
+    "PI-5": "NOT_ASSESSABLE"
+   },
+   "expect": {
+    "overall": "UNKNOWN",
+    "unknown_is_not_pass": true
+   }
+  },
+  {
+   "id": "M3-S-MIXED-PASS-NOT-ASSESSABLE",
+   "kind": "summarize",
+   "args": {
+    "PI-1": "PASS",
+    "PI-5": "NOT_ASSESSABLE"
+   },
+   "expect": {
+    "overall": "NOT_ASSESSABLE"
+   },
+   "note": "6-A/M3 收紧项：混有无法评估项时整体**不得**给 PASS（此前会折算成 PASS）"
+  },
+  {
+   "id": "M3-S-ALL-NOT-ASSESSABLE",
+   "kind": "summarize",
+   "args": {
+    "PI-1": "NOT_ASSESSABLE",
+    "PI-3": "NOT_ASSESSABLE"
+   },
+   "expect": {
+    "overall": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M3-S-FAIL-DOMINATES",
+   "kind": "summarize",
+   "args": {
+    "PI-1": "PASS",
+    "PI-3": "FAIL",
+    "PI-5": "UNKNOWN"
+   },
+   "expect": {
+    "overall": "FAIL",
+    "failed_metrics": [
+     "PI-3"
+    ]
+   }
+  },
+  {
+   "id": "M3-S-ALL-PASS",
+   "kind": "summarize",
+   "args": {
+    "PI-1": "PASS",
+    "PI-3": "PASS"
+   },
+   "expect": {
+    "overall": "PASS"
+   }
+  },
+  {
+   "id": "M3-S-SINGLE-UNKNOWN",
+   "kind": "summarize",
+   "args": {
+    "PI-4": "UNKNOWN"
+   },
+   "expect": {
+    "overall": "UNKNOWN"
+   }
+  },
+  {
+   "id": "M3-E2E-NORMAL-COMPLETE",
+   "kind": "e2e",
+   "spec": {
+    "mode": "normal"
+   },
+   "expect": {
+    "task_status": "SUCCEEDED",
+    "has_render_output": true,
+    "effective_flags": {
+     "gate_enabled": true,
+     "post_render_enabled": true,
+     "block_on_unknown": true,
+     "block_on_unknown_pi6": false
+    },
+    "pre_render_blocked": false,
+    "post_render_blocked": false
+   }
+  },
+  {
+   "id": "M3-E2E-SHORT-NARRATION-PRE-BLOCK",
+   "kind": "e2e",
+   "spec": {
+    "mode": "short_narration"
+   },
+   "expect": {
+    "task_status": "BLOCKED",
+    "error_code": "[NARRATION_INCOMPLETE]",
+    "stage": "pre_render",
+    "reason_contains": "PI-1",
+    "artifact_count": 0,
+    "new_mp4": false
+   }
+  },
+  {
+   "id": "M3-E2E-MID-SILENCE-POST-BLOCK",
+   "kind": "e2e",
+   "spec": {
+    "mode": "mid_silence"
+   },
+   "expect": {
+    "task_status": "BLOCKED",
+    "error_code": "[PRODUCTION_INTEGRITY_FAILED]",
+    "stage": "post_render",
+    "forbidden_artifacts": [
+     "render_output",
+     "attribution"
+    ]
+   }
+  },
+  {
+   "id": "M3-E2E-PI6-DRIFT-PRE-BLOCK",
+   "kind": "e2e",
+   "spec": {
+    "mode": "pi6_drift"
+   },
+   "expect": {
+    "task_status": "BLOCKED",
+    "error_code": "[NARRATION_INCOMPLETE]",
+    "stage": "pre_render",
+    "reason_contains": "PI-6",
+    "note": "旁白时长/覆盖率全达标，仅段边界漂移 5.5 s ⇒ 默认路径阻断"
+   }
+  },
+  {
+   "id": "M3-E2E-PRE-DISABLED-STILL-BLOCKED",
+   "kind": "e2e",
+   "spec": {
+    "mode": "short_narration"
+   },
+   "policy_override": {
+    "gate_enabled": false
+   },
+   "expect": {
+    "task_status": "BLOCKED",
+    "error_code": "[PRODUCTION_INTEGRITY_FAILED]",
+    "stage": "post_render",
+    "note": "纵深防线：关掉渲染前硬门后，短旁白成片的 >10% 尾静音仍被渲染后 PI-3 拦下"
+   }
+  },
+  {
+   "id": "M3-E2E-GATE-DISABLED-AUDITED",
+   "kind": "e2e",
+   "spec": {
+    "mode": "pi6_drift"
+   },
+   "policy_override": {
+    "gate_enabled": false
+   },
+   "expect": {
+    "task_status": "SUCCEEDED",
+    "has_render_output": true,
+    "effective_flags.gate_enabled": false,
+    "pre_render_disabled": true,
+    "note": "显式旁路必须：① 真的放行；② 在产物里留下 disabled/effective_flags 证据"
+   }
+  },
+  {
+   "id": "M3-E2E-POST-GATE-DISABLED-AUDITED",
+   "kind": "e2e",
+   "spec": {
+    "mode": "mid_silence"
+   },
+   "policy_override": {
+    "post_render_enabled": false
+   },
+   "expect": {
+    "task_status": "SUCCEEDED",
+    "has_render_output": true,
+    "effective_flags.post_render_enabled": false,
+    "post_render_disabled": true,
+    "note": "PI-3 违约在默认路径阻断；显式关闭后放行但留痕"
+   }
+  },
+  {
+   "id": "M3-REAL-V9-FIXED-FAIL-COUNTEREXAMPLE",
+   "kind": "real_v9",
+   "expect": {
+    "pre_render_blocked": true,
+    "post_render_blocked": true,
+    "pre_states": {
+     "PI-1": "FAIL",
+     "PI-2": "FAIL",
+     "PI-6": "FAIL"
+    },
+    "post_states": {
+     "PI-3": "FAIL",
+     "PI-4": "PASS",
+     "PI-5": "FAIL"
+    },
+    "coverage_ratio": 0.6277,
+    "shortfall_s": 570.344,
+    "tail_silence_s": 570.869,
+    "orphan_cues": 73,
+    "film_sha256": "22705c7d7ea20b40d91120146066b89ab2b5fa5c1a1cab18f5346d4c66497651",
+    "film_bytes": 46761341,
+    "film_unchanged": true,
+    "note": "真实 v9 固定 FAIL 反例：只读判定，绝不重渲染、绝不修改 v9 产物"
+   }
+  },
+  {
+   "id": "M3-LEGACY-PI6-ALWAYS-UNKNOWN",
+   "kind": "legacy_pi6",
+   "expect": {
+    "min_sample": 100,
+    "all_state": "UNKNOWN",
+    "forbidden_states": [
+     "PASS",
+     "FAIL"
+    ],
+    "gate_blocked": false,
+    "gate_case_ref": "M3-G-PRE-PI6-UNKNOWN-RECORDED-ONLY",
+    "note": "全库真实 voice_output 中大量历史产物缺 segment_details ⇒ PI-6 对其输入必须始终 UNKNOWN（绝不 PASS/FAIL）；按默认策略不据此阻断（由 M3-G-PRE-PI6-UNKNOWN-RECORDED-ONLY 行为验证）"
+   }
+  }
+ ],
+ "coverage_matrix_expected": {
+  "PI-1": {
+   "PASS": [
+    "M3-PI1-B1-COVERAGE-EXACT-0.90",
+    "M3-G-PRE-OK-COMPLETE"
+   ],
+   "FAIL": [
+    "M3-PI1-B2-COVERAGE-0.8999",
+    "M3-G-PRE-SHORT-NARRATION"
+   ],
+   "UNKNOWN": [],
+   "NOT_ASSESSABLE": [
+    "M3-PI1-MISSING-NARRATION",
+    "M3-G-PRE-MISSING-NARRATION-FAILCLOSED"
+   ]
+  },
+  "PI-2": {
+   "PASS": [
+    "M3-PI2-B1-SHORTFALL-EXACT-30s",
+    "M3-G-PRE-OK-COMPLETE"
+   ],
+   "FAIL": [
+    "M3-PI2-B2-SHORTFALL-31s",
+    "M3-PI2-B3-SHORTFALL-RATIO-25pct"
+   ],
+   "UNKNOWN": [],
+   "NOT_ASSESSABLE": [
+    "M3-PI2-MISSING",
+    "M3-G-PRE-MISSING-NARRATION-FAILCLOSED"
+   ]
+  },
+  "PI-3": {
+   "PASS": [
+    "M3-PI3-B1-NO-SILENCE",
+    "M3-PI3-B2-SHORT-GAP-PASS"
+   ],
+   "FAIL": [
+    "M3-PI3-B3-TAIL-SILENCE-FAIL",
+    "M3-PI3-B4-MID-SILENCE-FAIL"
+   ],
+   "UNKNOWN": [
+    "M3-PI3-UNKNOWN-NO-FFMPEG"
+   ],
+   "NOT_ASSESSABLE": [
+    "M3-PI3-MISSING-FILM"
+   ]
+  },
+  "PI-4": {
+   "PASS": [
+    "M3-PI4-B1-TRACK-DELTA-EXACT-1.0",
+    "M3-PI4-FRAME-COUNT-REPORT-ONLY"
+   ],
+   "FAIL": [
+    "M3-PI4-B2-TRACK-DELTA-1.05",
+    "M3-PI4-MISSING-AUDIO-STREAM",
+    "M3-PI4-AV-MISMATCH-GATE"
+   ],
+   "UNKNOWN": [
+    "M3-PI4-UNKNOWN-DURATION-UNREADABLE"
+   ],
+   "NOT_ASSESSABLE": [
+    "M3-PI4-NOT-ASSESSABLE"
+   ]
+  },
+  "PI-5": {
+   "PASS": [
+    "M3-PI5-B1-ORPHAN-SHARE-EXACT-0.02",
+    "M3-PI5-B3-CUE-AT-EXACT-NARRATION-END"
+   ],
+   "FAIL": [
+    "M3-PI5-B2-ORPHAN-SHARE-0.03",
+    "M3-PI5-B4-COVERAGE-ONLY-NOT-BLOCKING",
+    "M3-PI5-B5-DISPLAY-RATIO-HIGH",
+    "M3-PI5-ORPHAN-GATE"
+   ],
+   "UNKNOWN": [],
+   "NOT_ASSESSABLE": [
+    "M3-PI5-NO-CUES",
+    "M3-PI5-NARRATION-END-UNKNOWN",
+    "M3-PI5-NO-CUE-WITH-NARRATION-EXPECTED",
+    "M3-PI5-PLAN-ONLY-RECORDED-ONLY"
+   ]
+  },
+  "PI-6": {
+   "PASS": [
+    "M3-PI6-B1-DRIFT-EXACT-5.0"
+   ],
+   "FAIL": [
+    "M3-PI6-B2-DRIFT-5.1",
+    "M3-G-PRE-SEGMENT-DRIFT-ONLY"
+   ],
+   "UNKNOWN": [
+    "M3-PI6-UNKNOWN-NO-SEGMENT-DETAILS",
+    "M3-PI6-UNKNOWN-COUNT-MISMATCH",
+    "M3-LEGACY-PI6-ALWAYS-UNKNOWN"
+   ],
+   "NOT_ASSESSABLE": [
+    "M3-PI6-NOT-ASSESSABLE-NO-SCRIPT"
+   ]
+  }
+ },
+ "unknown_never_pass_invariants": {
+  "note": "M3 对 UNKNOWN ≠ PASS 做**行为断言**（不是只比字符串）：① summarize 处；② 每个 PI 的不可证处置处。",
+  "summarize_cases": [
+   "M3-S-UNKNOWN-NOT-PASS",
+   "M3-S-SINGLE-UNKNOWN",
+   "M3-S-ALL-NOT-ASSESSABLE",
+   "M3-S-MIXED-PASS-NOT-ASSESSABLE"
+  ],
+  "per_pi_unprovable": {
+   "PI-1": {
+    "case": "M3-G-PRE-MISSING-NARRATION-FAILCLOSED",
+    "state": "NOT_ASSESSABLE",
+    "gate_blocks": true
+   },
+   "PI-2": {
+    "case": "M3-G-PRE-MISSING-NARRATION-FAILCLOSED",
+    "state": "NOT_ASSESSABLE",
+    "gate_blocks": true
+   },
+   "PI-3": {
+    "case": "M3-PI3-UNKNOWN-NO-FFMPEG|gate",
+    "state": "UNKNOWN",
+    "gate_blocks": true
+   },
+   "PI-4": {
+    "case": "M3-PI4-UNKNOWN-DURATION-UNREADABLE|gate",
+    "state": "UNKNOWN",
+    "gate_blocks": true
+   },
+   "PI-5": {
+    "case": "M3-PI5-NO-CUE-WITH-NARRATION-EXPECTED",
+    "state": "NOT_ASSESSABLE",
+    "gate_blocks": true
+   },
+   "PI-6": {
+    "case": "M3-G-PRE-PI6-UNKNOWN-RECORDED-ONLY",
+    "state": "UNKNOWN",
+    "gate_blocks": false
+   }
+  }
+ },
+ "boundary_notes": {
+  "PI-3-exact-equality": "PI-3 的阈值等式（最长静音恰好 8.000 s / 占比恰好 0.100 / 尾部恰好 5.000 s）**无法在媒体层确定性分离**：ffmpeg silencedetect 的边界是采样级，实测值有 ±0.02 s 抖动。故 PI-3 边界由两侧有余量的媒体用例（2 s PASS / 12 s FAIL）＋冻结阈值断言覆盖，M3 不伪造『恰好等于』的媒体期望。",
+  "PI-1-PI-2-PI-5-no-UNKNOWN-path": "PI-1/PI-2/PI-5 在实现里没有 UNKNOWN 返回路径（缺数据一律 NOT_ASSESSABLE），覆盖矩阵中这三格为空是设计事实，不是遗漏。",
+  "PI-6-drift-is-boundary-based": "PI-6 的漂移按**段边界累计**计算：某段的时长本身不影响其自身边界漂移，只影响其后所有边界。故边界用例通过调整首段时长构造（5.0 ⇒ 恰好 PASS、4.9 ⇒ 5.1 s FAIL）。",
+  "gate_switch": "gate_enabled / post_render_enabled 是**显式**旁路开关（默认 true）；M3 不移除、不默认关闭，且要求任何关闭都在产物证据里留痕（effective_flags + disabled），并验证『关掉渲染前硬门也拦不住短旁白成片』的纵深防线。"
+ },
+ "frozen_sha256": "2fa4a1a2229c70b469699f976f0c0839eaaa2ce1e2df017b671e99870ec2bf7e"
+}

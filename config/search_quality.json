@@ -1,0 +1,27 @@
+{
+  "_说明": "搜索证据质量层规则（配置化，规则变更不碰代码）。support_level 只描述证据与 Claim 的支持关系，不等同事实真假。",
+  "domain_blacklist": [
+    "barcode-maker.com", "genbarcodes.com", "barcodesinc.com",
+    "humanbenchmark.com", "humanbenchmark.me", "humanbenchmark.online",
+    "ecjson.com", "66law.cn", "iciba.com", "poki.com", "mindplus.cc", "xmind.cn",
+    "xiaohongshu.com", "douyin.com", "minecraft.net", "apps.microsoft.com"
+  ],
+  "domain_blacklist_patterns": ["barcode", "benchmark", "downloadpage", "proxy", "vpn", "seo"],
+  "source_priority": ["official", "academic", "regulatory", "database", "media", "encyclopedia", "forum", "unknown"],
+  "claim_type_source_prefs": {
+    "paper": ["academic", "official"],
+    "product": ["official", "media"],
+    "history": ["official", "academic", "encyclopedia"],
+    "law": ["regulatory", "official"],
+    "medical": ["academic", "regulatory", "official"]
+  },
+  "reliability_from_grade": { "trusted": "high", "usable": "medium", "suspect": "low" },
+  "negation_words": ["否认", "辟谣", "纠正", "并非", "不是", "不存在", "未完成", "没有完成", "假的", "不实", "谣言", "disprove", "denied", "false claim", "debunked"],
+  "relevance": {
+    "min_body_len": 40,
+    "prefilter_min_keywords": 1,
+    "context_only_keywords": 1,
+    "direct_keywords": 2,
+    "direct_keywords_no_digit": 3
+  }
+}

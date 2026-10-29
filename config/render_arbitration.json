@@ -1,0 +1,6 @@
+{
+  "enabled": true,
+  "prompt_version": "vlm-presence-verify-v1",
+  "model": "qwen3-vl-plus",
+  "note": "Phase 19 P19-1：渲染后逐景核验的 VLM 存在性**仲裁层**开关（授权允许的外部渲染开关文件；config.json 零改动）。enabled=true 时：corr<0.30 的场景 → VLM 存在性核验 → present ⇒ PASS_VLM_PRESENT（放行，附证据）；absent/uncertain/调用失败 ⇒ 维持阻断（fail-closed）。关闭方法：删除本文件或置 enabled=false（关闭时核验行为与现状逐字节一致）。"
+}

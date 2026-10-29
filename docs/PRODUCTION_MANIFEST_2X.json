@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "name": "AI Video Agent 2.x Production Manifest",
+    "status": "PRODUCTION READY",
+    "production_version": "2.0.0",
+    "chain_version": "2x-final-8q",
+    "generated_by": "Stage 8R Final Execution + Productionization",
+    "python": "3.13.2",
+    "dependencies": ["requests（仅检索模块引用；生产链本身无网络/无密钥依赖）"],
+    "freeze_note": "以下 SHA256 为 2.x 冻结产物；任何修改即视为破坏冻结。"
+  },
+  "core_files_sha256": {
+    "src/video_studio/production2x/__init__.py": "ED8B10ED041F379A0027F73E3AAB1D6E928E1E992674A46C0FA92DCA0B4181C2",
+    "src/video_studio/tools/claim_structuring.py": "A19B3CAB5D04E0CB8E825E6980BBF759F3D94ACFADF83FDEAE5A4A40FF7C85CE",
+    "src/video_studio/tools/content_planning.py": "2660E273431677F42DDE0ECE33C25DD6DD1D0DCE5F288F07E3110B144735B592",
+    "src/video_studio/tools/script_planning.py": "C46307A49292CC0B8A8A3B3AA25FDE47B978F1C78CB7521114292962125EE804",
+    "src/video_studio/tools/narrative_generation.py": "854F7BBFE0F0ED46105EB03BDB14FDFF6770819F0F5D718B6A31312AD29C2DE0",
+    "src/video_studio/tools/creator_style.py": "0B61830C79128909996BC549640CAC81DD0133AEF862AC7DF1F73BB269F2E6E8",
+    "src/video_studio/tools/visual_planning.py": "DDBD364CC1A820AACE83399B3EE60A6AEB889E296A5ADFB90A03EEAA13BA2D54",
+    "src/video_studio/tools/production_constraints.py": "F81235E617E433E414296756EAE2E71CC528E41B209C9E272DD003502A7DD702",
+    "src/video_studio/tools/evidence_readiness.py": "CFF927FDA18BEC0BEE548DBBA903C1ED4411DDA04CA5D92BF510495F725DDBB6",
+    "src/video_studio/tools/evidence_retrieval.py": "12BCBED6AB5A5C59D641937166FD56E7A9F6D69C73085173BB0795101AA00B88",
+    "src/video_studio/tools/evidence_text_quality.py": "8847C4E77251212520FC7F9DFA0A16D2D407DF1657907BBA009C8F84F3820051",
+    "src/video_studio/tools/evidence_pool.py": "021C68A7994D8CC3ACB3B69720EA75C2515CB03817FDD6BF31A269854DB94233",
+    "src/video_studio/tools/evidence_signal.py": "7895C1C3334554251F17FF61F6AC73FE8AD8A5D177DF97350EFBDB8A6269FC20",
+    "src/video_studio/tools/claim_aggregation.py": "523F4BFF1464609A6FA8AF184F6B6F2DE5B730FED819C4E6949169C2236B8A61",
+    "src/video_studio/tools/semantic_judge.py": "75DA8D20F8A9C8827C912C1D1850180E1503B20B833E77C0AFB52077A4FD0331",
+    "src/video_studio/tools/sufficiency_judge.py": "4AC3DE1AB81839DFFA268E916DEC9FB6442EC5C4165D037D2B002A916259F8E8",
+    "src/video_studio/tools/search_provider.py": "7D4980168FFDE4FDF02AE756813466B14376FBE6C9C3D8CE4C080B346C2FF009",
+    "src/video_studio/tools/llm_semantic_judge.py": "C9C22163FBA1B724165F2229866B34BDAD52DC5E158DF8738B9D95CD97041751",
+    "src/video_studio/llm/router.py": "64B14BC347131DA50CFF1BACDAA5599B1A4997C13DF11C06258E3B3616168F72"
+  },
+  "frozen_tests": {
+    "suites": 15,
+    "expected_failures": 0,
+    "last_run": "0/15 失败（Stage 8R Final Execution）",
+    "claim_structuring_gold": "20/20"
+  },
+  "production_config": {
+    "style_default": "casual",
+    "platforms": ["bilibili", "youtube", "shipinhao", "gongzhonghao"],
+    "reference_platform_for_target": "bilibili",
+    "lifecycle_overhead": {"个人创作者": 1.05, "小团队": 0.26, "专业媒体": 0.0},
+    "density_bands_by_number_count": {"0": [0.5, 4.0], "1-3": [1.0, 5.0], "4+": [2.0, 8.0]},
+    "material_budget": {"困难_hard": 0.15, "中困难_soft": 0.45},
+    "max_visual_run": 3,
+    "max_scenes_per_block": 8
+  },
+  "final_regression": {
+    "result": "ALL PASS（4 场景 × 4 平台 × 10 项检查）",
+    "scenarios": {
+      "S1-普通科普": "PASS（4 场景，bilibili 84.0s）",
+      "S2-高事实密度": "PASS（9 场景，bilibili 162.0s）",
+      "S3-多人物多时间线": "PASS（18 场景，bilibili 318.0s；WARN: 中+困难 50% 超软预算，登记不阻断）",
+      "S4-长视频10分钟": "PASS（34 场景，bilibili 599.4s ∈ [540,660]）"
+    },
+    "checks": ["Truth不漂移", "证据引用不漂移", "claim覆盖", "脚本→场景映射",
+               "证据→视觉保持", "时长预算", "视觉多样性", "可执行", "成本校准", "素材难度"],
+    "report": "output/final_regression/regression_report.json"
+  },
+  "boundaries": {
+    "production_entry": "src/video_studio/production2x/ + bin/produce_2x.py",
+    "experiment_isolated": "scripts/** 与 projects/_drafts/**（生产入口永不读取）",
+    "not_supported_2x": ["视频生成", "TTS", "剪辑", "发布", "素材库", "专业媒体效率建模"],
+    "three_x_registry": [
+      "专业媒体效率因子 + 资产/并行工作流建模",
+      "密度细粒度加权 + 跨 scene 重复去重",
+      "素材库/许可素材接入",
+      "平台级细粒度节奏/密度适配",
+      "昂贵变体（概念动画）成本优化",
+      "多 Agent 并行制作",
+      "极端内容（多时间线超密）专项适配"
+    ]
+  }
+}

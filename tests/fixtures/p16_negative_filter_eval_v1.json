@@ -1,0 +1,1652 @@
+{
+ "counts": {
+  "negatives_constructed": 7,
+  "negatives_human": 3,
+  "negatives_known_trap": 10,
+  "negatives_total": 20,
+  "positives_total": 24
+ },
+ "filter_rule": {
+  "deny_label": "IRRELEVANT",
+  "note": "过滤器只信『拒签』：机器 IRRELEVANT ⇒ DENY（出局+理由）；其余一律进人工短名单（不因机器 RELEVANT 放行任何绑定）",
+  "pass_labels": [
+   "RELEVANT",
+   "PARTIAL",
+   "NOT_ASSESSABLE"
+  ],
+  "prompt_version": "vlm-relevance-judge-v2 (main)"
+ },
+ "gate_frozen_before_run": {
+  "max_false_kill_count": 1,
+  "max_false_kill_rate": 0.05,
+  "min_negative_capture_rate": 0.6,
+  "note": "P16-1 达标线**运行前写死**（授权书 §2）；运行后不得调整"
+ },
+ "meets_min_negatives": true,
+ "negatives": [
+  {
+   "asset_key12": "0c365d5195d5",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/external/432cd85be6f112e5bef0c05bfc1ac7eee1db689738e979e3d011d5c61976a76d.jpg",
+   "kind": "HUMAN",
+   "known_label": "IRRELEVANT",
+   "neg_id": "H-A-S05-0c365d5195d5",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R1_HUMAN_NEGATIVE",
+    "evidence_kind": "human_negative",
+    "locator": "scene_results[scene_id=S05].candidate_results[asset_id=ast-0c365d5195d50bba]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2024",
+     "IMO",
+     "Lean",
+     "mathlib",
+     "Tymoczko"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "还有一个容易被忽略的细节：Tymoczko 那篇文章里的具体表述，我这里只能用转述，不能用引号当直接引语——因为我还没有逐字核对原文。这一期里凡是引语，我都会标明这一点。顺着他的问题往下走，会出现一个很自然的反驳：凭什么认为证明必须被人类逐步检视？如果一份数学结果可以被独立复现、可以被不同方法交叉印证，那它的可靠性到底建立在什么上面？第二年，有人正面回答了这个问题，而且不是在博客上，是在学术刊物上。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S05",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "四行关键词出现：四色定理 / 开普勒猜想 / Lean、mathlib / IMO 2024"
+   },
+   "scene_id": "S05",
+   "why": "人工明确否决（原真值集负例）"
+  },
+  {
+   "asset_key12": "6c3fc5af91ed",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Four color theorem map of Germany 3.png",
+   "kind": "HUMAN",
+   "known_label": "IRRELEVANT",
+   "neg_id": "H-A-S05-6c3fc5af91ed",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R1_HUMAN_NEGATIVE",
+    "evidence_kind": "human_negative",
+    "locator": "scene_results[scene_id=S05].candidate_results[asset_id=ast-6c3fc5af91ed650d]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2024",
+     "IMO",
+     "Lean",
+     "mathlib",
+     "Tymoczko"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "还有一个容易被忽略的细节：Tymoczko 那篇文章里的具体表述，我这里只能用转述，不能用引号当直接引语——因为我还没有逐字核对原文。这一期里凡是引语，我都会标明这一点。顺着他的问题往下走，会出现一个很自然的反驳：凭什么认为证明必须被人类逐步检视？如果一份数学结果可以被独立复现、可以被不同方法交叉印证，那它的可靠性到底建立在什么上面？第二年，有人正面回答了这个问题，而且不是在博客上，是在学术刊物上。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S05",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "四行关键词出现：四色定理 / 开普勒猜想 / Lean、mathlib / IMO 2024"
+   },
+   "scene_id": "S05",
+   "why": "人工明确否决（原真值集负例）"
+  },
+  {
+   "asset_key12": "0c365d5195d5",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/external/432cd85be6f112e5bef0c05bfc1ac7eee1db689738e979e3d011d5c61976a76d.jpg",
+   "kind": "HUMAN",
+   "known_label": "IRRELEVANT",
+   "neg_id": "H-A-S11-0c365d5195d5",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R1_HUMAN_NEGATIVE",
+    "evidence_kind": "human_negative",
+    "locator": "scene_results[scene_id=S11].candidate_results[asset_id=ast-0c365d5195d50bba]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1977",
+     "Appel",
+     "Haken",
+     "Lean",
+     "mathlib"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "要让机器完整检视，需要一种特殊的写法：把定义、定理和证明写成计算机能逐步验证的形式。Lean 是目前最受关注的系统之一，配套的 mathlib 是一个不断生长的数学库，里面已经积累了数量可观的、经过机器检查的定义和定理。它的规模一直在变，所以任何具体数字都必须注明抓取日期，否则半年后就变成错的了。但趋势是清楚的：形式化数学正在从个人兴趣，变成一项有基础设施、有协作流程的工程。这件事的意义可能比它听起来更大。一旦证明用机器可读的语言写出来，检查证明就不再是稀缺的人类注意力问题，而是算力问题。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S11",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "Appel & Haken 1977 论文示意封面，无真实文字"
+   },
+   "scene_id": "S11",
+   "why": "人工明确否决（原真值集负例）"
+  },
+  {
+   "asset_key12": "65377b888b77",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S05/Russell_PM_1+1=2.png",
+   "kind": "CONSTRUCTED_CROSSSCENE",
+   "known_label": "IRRELEVANT",
+   "neg_id": "C-S06-65377b888b77-from-S05",
+   "provenance": {
+    "asset_positive_origin": "人工验收接受该素材用于本镜（H5 human_decision: D0 / S05 PD-US（人工已接受地域））",
+    "constructor_note": "**构造标签**（非人工判定）；人工负例与构造负例分开统计",
+    "rule": "取人工为 S05 景选定/接受的素材，配给 S06 景的需求；限定跨话题族以避免假负例",
+    "source": "P16-1 构造规则：跨景配对（cross-scene pairing）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1980",
+     "Detlefsen",
+     "Luker"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "1980 年，Detlefsen 和 Luker 给出了直接回应。他们的立场大体相反：数学证明的可靠性，不一定建立在『每个中间步骤都能被人逐一检视』这个条件上。这个观点值得认真对待，因为它对应着科学里很常见的一种情况——我们接受某个结论，通常不是因为我们亲手验算过每一步，而是因为它可以被反复复现，可以被不同的方法交叉印证，也没有人找到反例。把这些条件放到机器证明上，会发现它们不一定失效。程序可以重跑，代码可以公开审查，结果可以被另一套系统独立验证。Detlefsen 和 Luker 因此主张：可检视性只是历史上达成可靠性的一种手段，而不是证明的本质要求。手段可以被替换，可靠性不必跟着消失。当然，这个立场也要付出代价：它把『证明』和『被理解』之间的关系松开了。而很多人直觉上不接受这一点。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S06",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "定义卡：太长、太依赖计算、机器可检查形式 → 无人能逐步核对"
+   },
+   "scene_id": "S06",
+   "why": "Russell 排版页原为 S05（可检视性之争）选定；S06 讲 1980 年哲学回应"
+  },
+  {
+   "asset_key12": "1e9d2ab4e64e",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S11/research/S11-D0_LIPIcs-ITP-2023-24_p08_tactic-state-rw.png",
+   "kind": "CONSTRUCTED_CROSSSCENE",
+   "known_label": "IRRELEVANT",
+   "neg_id": "C-S07-1e9d2ab4e64e-from-S11",
+   "provenance": {
+    "asset_positive_origin": "人工验收接受该素材用于本镜（H5 human_decision: D0 / S05 PD-US（人工已接受地域））",
+    "constructor_note": "**构造标签**（非人工判定）；人工负例与构造负例分开统计",
+    "rule": "取人工为 S11 景选定/接受的素材，配给 S07 景的需求；限定跨话题族以避免假负例",
+    "source": "P16-1 构造规则：跨景配对（cross-scene pairing）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": [
+     "”"
+    ],
+    "concept": null,
+    "concepts_neg": [
+     "”"
+    ],
+    "concepts_pos": [
+     "abc",
+     "AlphaGeometry",
+     "Lean"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "所以这里有两种立场，两种都有人认真主张，而且都不是外行话。一种认为，证明的本质就是人类可以检视它，去掉这一点，我们得到的是可计算的确定性，不是数学知识。另一种认为，可检视性只是达成可靠性的历史手段之一，机器可以接手其中一部分，而可靠性并不会因此打折。这场争论到今天没有定论，因为它根本不是数学问题，而是关于『数学是什么』的问题。我再说明一下这里的处理方式：这两篇文章的具体措辞我都没有逐字核对，所以你在这一期里不会听到把它们放进引号的直接引用，这是转述。为什么这件事重要？因为我们后面要讲的每一个案例——开普勒猜想、Lean、AlphaGeometry——都会被这两套立场反复拉扯。你以为在讨论技术，其实是在讨论一个更古老的问题：我们凭什么相信一个数学结论。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S07",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "被划掉的卡片：望月新一与 abc 猜想，标注“出处不完整，本期不使用”"
+   },
+   "scene_id": "S07",
+   "why": "Lean 界面原为 S11 选定；S07 讲两种立场对照的四色定理案例"
+  },
+  {
+   "asset_key12": "6c3fc5af91ed",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Four color theorem map of Germany 3.png",
+   "kind": "CONSTRUCTED_CROSSSCENE",
+   "known_label": "IRRELEVANT",
+   "neg_id": "C-S09-6c3fc5af91ed-from-S02",
+   "provenance": {
+    "asset_positive_origin": "旁白预告四色定理/开普勒/Lean/IMO 线索，四色定理着色图为首要视觉锚点",
+    "constructor_note": "**构造标签**（非人工判定）；人工负例与构造负例分开统计",
+    "rule": "取人工为 S02 景选定/接受的素材，配给 S09 景的需求；限定跨话题族以避免假负例",
+    "source": "P16-1 构造规则：跨景配对（cross-scene pairing）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "99%",
+     "Hales"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "据 Hales 事后在公开文章里的说法，审稿人花了很长时间，最后表示他们没法百分之百确认这份证明是对的。Hales 本人用过一个流传很广的表述：大约『99% 确定』。这个数字后来被到处引用。但这里必须打一个记号——我查到的这个说法，来自 Hales 事后的公开叙述，而不是审稿报告原文。也就是说，它很可能是 Hales 对审稿意见的转述。它有传播力，但在回查原文之前，不适合当作精确引语使用。你可以先把『99%』理解成一个态度：数学界承认这份证明是对的，但这种承认带着一个注脚。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S09",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "手绘地图四色上色动画，相邻区域不同色"
+   },
+   "scene_id": "S09",
+   "why": "四色着色图原为 S02/S03 选定；S09 讲 Hales 审稿与 99% 确定（球堆）"
+  },
+  {
+   "asset_key12": "af59386ae68c",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Postal Meter Strip Honoring the Solution of the Four Color Problem.jpg",
+   "kind": "CONSTRUCTED_CROSSSCENE",
+   "known_label": "IRRELEVANT",
+   "neg_id": "C-S10-af59386ae68c-from-S04",
+   "provenance": {
+    "asset_positive_origin": "Tymoczko 1979 认识论争论：四色问题解决纪念邮资戳对应「证明的发表与承认」",
+    "constructor_note": "**构造标签**（非人工判定）；人工负例与构造负例分开统计",
+    "rule": "取人工为 S04 景选定/接受的素材，配给 S10 景的需求；限定跨话题族以避免假负例",
+    "source": "P16-1 构造规则：跨景配对（cross-scene pairing）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "Hales"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "故事没有停在那里。Hales 后来带了一个项目，目标是把这份证明完整地写成机器可以检查的形式——不再争论人类能不能读完，而是让机器把它读完。项目的具体完成时间点要以官方记录为准，我这一期不给年份。但方向很清楚：面对『没有人能完整检视』的困境，数学界给出的一个答案是，造一台能完整检视的机器。这听起来像是把问题推给了机器，其实它换掉的是问题的形式：从『谁来读』变成『谁来写、写什么、以什么形式写』。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S10",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "时间线：问题提出后悬置一百多年"
+   },
+   "scene_id": "S10",
+   "why": "四色纪念邮资戳原为 S04 选定；S10 讲形式化验证导语"
+  },
+  {
+   "asset_key12": "0c365d5195d5",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/external/432cd85be6f112e5bef0c05bfc1ac7eee1db689738e979e3d011d5c61976a76d.jpg",
+   "kind": "CONSTRUCTED_CROSSSCENE",
+   "known_label": "IRRELEVANT",
+   "neg_id": "C-S12-0c365d5195d5-from-S01",
+   "provenance": {
+    "asset_positive_origin": "开场人像钩子：真实 IMO 数学国家队合影，契合「数学与人类」主题",
+    "constructor_note": "**构造标签**（非人工判定）；人工负例与构造负例分开统计",
+    "rule": "取人工为 S01 景选定/接受的素材，配给 S12 景的需求；限定跨话题族以避免假负例",
+    "source": "P16-1 构造规则：跨景配对（cross-scene pairing）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2020",
+     "2022",
+     "AI",
+     "Experiment",
+     "Lean",
+     "Liquid",
+     "Tensor"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "2020 年发生了一件挺有意思的事。一位已经很顶尖的数学家公开提出一个挑战：他手上有一个相当新的数学结果，他希望有人把它用 Lean 形式化验证一遍。这就是 Liquid Tensor Experiment，项目从 2020 年持续到 2022 年，由 Lean 社区协作推进。它的具体完成边界要以官方时间戳为准，但方向非常明确——而且这个方向很有意思。不是 AI 要求人类接受它的证明，而是人类数学家主动请机器来检查自己的证明。提出挑战的数学家是谁，以及这个结果本身的难度，我建议在发布前再核一遍，这里先不写死。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S12",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "无限多种地图归约为有限多种构型示意图"
+   },
+   "scene_id": "S12",
+   "why": "IMO 队照原为 S01/S13–S16 选定；S12 讲 Liquid Tensor 形式化工程"
+  },
+  {
+   "asset_key12": "65377b888b77",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S05/Russell_PM_1+1=2.png",
+   "kind": "CONSTRUCTED_CROSSSCENE",
+   "known_label": "IRRELEVANT",
+   "neg_id": "C-S14-65377b888b77-from-S05",
+   "provenance": {
+    "asset_positive_origin": "人工验收接受该素材用于本镜（H5 human_decision: D0 / S05 PD-US（人工已接受地域））",
+    "constructor_note": "**构造标签**（非人工判定）；人工负例与构造负例分开统计",
+    "rule": "取人工为 S05 景选定/接受的素材，配给 S14 景的需求；限定跨话题族以避免假负例",
+    "source": "P16-1 构造规则：跨景配对（cross-scene pairing）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2024",
+     "AlphaGeometry",
+     "DeepMind",
+     "Nature"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "接下来这一步，性质变了。2024 年，DeepMind 的 AlphaGeometry 发表在《Nature》上，做的是奥林匹克级别的平面几何题。这件事的重点不是它做对了几道题，而是它用的方法：它不是靠学习大量人类写好的示范解答来提升的，而是把符号推理和一个语言模型结合起来。换句话说，它开始自己产出数学论证，而不只是检查别人写好的论证。论文摘要里的具体数字，比如解出了多少道题、对照基准是多少，我这一期不引用，因为需要回到原文逐项核对。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S14",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "数字位置打标签“公开版本不一致，待回查”，不写死数字"
+   },
+   "scene_id": "S14",
+   "why": "Russell 排版页原为 S05 选定；S14 讲 AlphaGeometry/Nature 奥赛级几何"
+  },
+  {
+   "asset_key12": "96a8c4dc359f",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S11/research/S11-D0_LIPIcs-ITP-2023-24_p08_tactic-state-rw.png",
+   "kind": "CONSTRUCTED_CROSSSCENE",
+   "known_label": "IRRELEVANT",
+   "neg_id": "C-S17-96a8c4dc359f-from-S11",
+   "provenance": {
+    "asset_positive_origin": "D0 / S05 PD-US（人工已接受地域）",
+    "constructor_note": "**构造标签**（非人工判定）；人工负例与构造负例分开统计",
+    "rule": "取人工为 S11 景选定/接受的素材，配给 S17 景的需求；限定跨话题族以避免假负例",
+    "source": "P16-1 构造规则：跨景配对（cross-scene pairing）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "AI",
+     "vs"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "现在可以回到最开始那个问题了。不过在回答之前，先排除两个便宜的答案。第一个是『AI 根本不懂数学，所以人类没事』。这个答案的问题在于，我们根本不知道『理解』是不是证明的必要条件——四色定理那场争论吵的就是这件事。第二个是『机器能检查证明，所以数学家要失业了』。这个答案跳得太快，因为机器检查的前提，是有人决定检查什么、用什么语言写、写完之后算不算数。这两个答案都能让人舒服，但都不能让人更接近真相。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S17",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "双栏对照：人类逐步检视 vs 机器执行检查"
+   },
+   "scene_id": "S17",
+   "why": "Lean tactic 截图原为 S11 选定；S17 讲回到核心问题的过渡"
+  },
+  {
+   "asset_key12": "be956d321050",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Close-packed spheres.jpg",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S01-be956d321050",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "4",
+     "AI"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "假设有一天，一个 AI 交出一份三千页的证明。它通过了所有机器检查，能人工核对的部分也都没问题。但没有人真的读完了它——不是不愿意，是把它读完需要的时间超过了一个人的一生。这时候该怎么描述这件事？我们证明了它，还是我们相信它被证明了？如果数学的成果人类已经无法完整地参与理解，那数学家还有意义吗？",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S01",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "暗背景，长串无法辨识的证明步骤缓慢滚动，无人能读完"
+   },
+   "scene_id": "S01",
+   "why": "陷阱：开场要『证明不被读懂』的抽象/人物钩子，配『球体密堆积』几何图"
+  },
+  {
+   "asset_key12": "1e9d2ab4e64e",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S11/research/S11-D0_LIPIcs-ITP-2023-24_p08_tactic-state-rw.png",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S02-1e9d2ab4e64e",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2024",
+     "abc",
+     "AI",
+     "Lean",
+     "mathlib"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "先把这句话里的『无法理解』定义清楚。它指的不是 AI 写出了超越人类理性的神秘数学，而是更朴素的情况：证明太长、太依赖计算，或者以机器可检查的形式写成，以至于没有哪个数学家、也没有哪个数学家共同体，能从头到尾逐步核对。接下来的线索是四色定理、开普勒猜想、Lean 和 mathlib，还有 2024 年的国际数学奥林匹克。另外先说明一件事：网上常被拿来讨论的望月新一与 abc 猜想，我查到的材料出处不完整，这一期不讲它。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S02",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "极厚打印证明堆叠，页面密布符号，数字“三千页”淡入"
+   },
+   "scene_id": "S02",
+   "why": "陷阱：预告要打印证明堆叠/四色锚点，配 Lean 代码编辑界面"
+  },
+  {
+   "asset_key12": "65377b888b77",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S05/Russell_PM_1+1=2.png",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S03-65377b888b77",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1977",
+     "Appel",
+     "Haken"
+    ],
+    "environment": null,
+    "evidence_type": "stock_photo",
+    "expected_kind": "image",
+    "narration": "故事的起点是四色定理。它的内容很朴素：给一张平面地图上色，相邻的区域颜色不同，四种颜色够不够。这个问题被提出之后，悬了一百多年。二十世纪七十年代，Appel 和 Haken 给出了一个证明，论文在 1977 年发表。但他们的做法和以前不一样——没办法用手算完成。他们把无限多种可能的地图归约成有限多种构型，然后把剩下的检查工作交给计算机，让程序逐一跑过去。这里要停一下，因为具体数字我没法负责任地给。这场证明到底跑了多少机时、检查了多少种构型，我查到的公开版本彼此不一致，所以这一期一个数字都不说。可以确定的是方法：这一步把『验证』从人的眼睛，部分转移到了机器的执行上。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S03",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "空椅子与屏幕光，暗示数学家不在场"
+   },
+   "scene_id": "S03",
+   "why": "陷阱：讲 1977 机器证明与『空椅子』，配 1912 年逻辑学排版页"
+  },
+  {
+   "asset_key12": "96a8c4dc359f",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S11/research/S11-D0_LIPIcs-ITP-2023-24_p08_tactic-state-rw.png",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S06-96a8c4dc359f",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1980",
+     "Detlefsen",
+     "Luker"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "1980 年，Detlefsen 和 Luker 给出了直接回应。他们的立场大体相反：数学证明的可靠性，不一定建立在『每个中间步骤都能被人逐一检视』这个条件上。这个观点值得认真对待，因为它对应着科学里很常见的一种情况——我们接受某个结论，通常不是因为我们亲手验算过每一步，而是因为它可以被反复复现，可以被不同的方法交叉印证，也没有人找到反例。把这些条件放到机器证明上，会发现它们不一定失效。程序可以重跑，代码可以公开审查，结果可以被另一套系统独立验证。Detlefsen 和 Luker 因此主张：可检视性只是历史上达成可靠性的一种手段，而不是证明的本质要求。手段可以被替换，可靠性不必跟着消失。当然，这个立场也要付出代价：它把『证明』和『被理解』之间的关系松开了。而很多人直觉上不接受这一点。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S06",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "定义卡：太长、太依赖计算、机器可检查形式 → 无人能逐步核对"
+   },
+   "scene_id": "S06",
+   "why": "陷阱：讲 1980 年哲学家回应与确认机制，配 Lean tactic 状态截图"
+  },
+  {
+   "asset_key12": "0c365d5195d5",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/external/432cd85be6f112e5bef0c05bfc1ac7eee1db689738e979e3d011d5c61976a76d.jpg",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S08-0c365d5195d5",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "Hales"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "如果四色定理还只是『机器帮了点忙』，那开普勒猜想把问题推到了另一个量级。它讨论的是：怎样堆放同样大小的球，才能占用最小的空间。直觉上你会觉得这该很简单，但它的证明规模是另一种生物。Hales 给出了这个证明，论文最终发表在被认为最严格的数学期刊之一上——具体的发表年份和刊物版本我在发布前会逐项核实，这一期不写死。值得注意的不是它发表了，而是它发表之前发生了什么。审稿过程拖了很久，最后的结论也不是我们习惯听到的那句『没有问题』。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S08",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "时间线起点：从四色定理开始"
+   },
+   "scene_id": "S08",
+   "why": "陷阱：开普勒球堆问题，配数学竞赛团队合影"
+  },
+  {
+   "asset_key12": "af59386ae68c",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Postal Meter Strip Honoring the Solution of the Four Color Problem.jpg",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S11-af59386ae68c",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1977",
+     "Appel",
+     "Haken",
+     "Lean",
+     "mathlib"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "要让机器完整检视，需要一种特殊的写法：把定义、定理和证明写成计算机能逐步验证的形式。Lean 是目前最受关注的系统之一，配套的 mathlib 是一个不断生长的数学库，里面已经积累了数量可观的、经过机器检查的定义和定理。它的规模一直在变，所以任何具体数字都必须注明抓取日期，否则半年后就变成错的了。但趋势是清楚的：形式化数学正在从个人兴趣，变成一项有基础设施、有协作流程的工程。这件事的意义可能比它听起来更大。一旦证明用机器可读的语言写出来，检查证明就不再是稀缺的人类注意力问题，而是算力问题。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S11",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "Appel & Haken 1977 论文示意封面，无真实文字"
+   },
+   "scene_id": "S11",
+   "why": "陷阱：Lean/mathlib 形式化，配四色定理纪念邮资戳"
+  },
+  {
+   "asset_key12": "92ca33138ffe",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S05/Russell_PM_1+1=2.png",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S13-92ca33138ffe",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "AI"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "这件事说明的问题，比『AI 会不会取代数学家』要具体得多。当一个数学家的结果复杂到自己都希望有人帮着核对的时候，形式化验证就不再只是审查工具，它变成了数学研究流程的一部分。信任的来源在增加：过去是同行读过并且认可，现在还可以是机器检查通过。但还有一个关键点，别忽略——在这条线上，决定验证什么的一直是人。是人提出了挑战，是人定义了目标，是人判断这个结果值不值得花两年时间去做形式化。机器在这个阶段承担的，是执行和检查。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S13",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "计算机程序逐一跑构型检查，老式终端与打孔卡意象"
+   },
+   "scene_id": "S13",
+   "why": "陷阱：AI 成为数学参与者，配 1912 年 Principia 排版页"
+  },
+  {
+   "asset_key12": "be956d321050",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Close-packed spheres.jpg",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S16-be956d321050",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1979",
+     "2024",
+     "AI",
+     "IMO"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "还有一个细节。新闻标题常说『AI 拿到了 IMO 银牌』。严格说，这是按照官方评分标准，把系统的得分换算成对应的奖牌档次，而不是它作为选手实际参赛拿到的成绩。评价的方式和真实赛场也不完全对等。这些区别不影响结果的分量——能解出那种难度的题，本身就说明了很多问题——但它影响我们该怎么描述这件事。把换算说成获奖，是把一个技术结果讲成了体育新闻。具体到 2024 年那次，哪些题解出来了、分数怎么换算，需要和 IMO 官方成绩表交叉核对之后再写。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S16",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "1979 年哲学文章引发震动，哲学界而非数学界"
+   },
+   "scene_id": "S16",
+   "why": "陷阱：『IMO 银牌』表述辨析，配球体密堆积几何图"
+  },
+  {
+   "asset_key12": "1e9d2ab4e64e",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S11/research/S11-D0_LIPIcs-ITP-2023-24_p08_tactic-state-rw.png",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S19-1e9d2ab4e64e",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "AI",
+     "Tymoczko"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "还有一部分工作很难被替代，因为它压根不是计算。比如发明一个概念，让原本杂乱的对象变得可以比较、可以操作——数学史上，这类工作往往比某一条定理的证明更重要。再比如解释：一个机器验证过的结论，对人类意味着什么，它和别的数学有什么关系，为什么它值得被关心。这些问题的答案不在证明里，也没法从证明里推出来。但要说清楚：这不构成『人类永远不可替代』的证明。AI 完全有可能在这些方向上缩小差距，我们看到的只是很前面的一小段。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S19",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "Tymoczko 文字以转述呈现，角标“转述，待回检原文”"
+   },
+   "scene_id": "S19",
+   "why": "陷阱：Tymoczko 之问（证明的承认与理解），配 Lean 代码界面"
+  },
+  {
+   "asset_key12": "96a8c4dc359f",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S11/research/S11-D0_LIPIcs-ITP-2023-24_p08_tactic-state-rw.png",
+   "kind": "KNOWN_TRAP",
+   "known_label": "IRRELEVANT",
+   "neg_id": "T-S21-96a8c4dc359f",
+   "provenance": {
+    "note": "**构造标签**，非人工判定",
+    "rule": "把该素材配给话题族不同的镜头需求；素材本身真实存在",
+    "source": "P16-1 构造规则（已知陷阱：跨话题族配对）"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1979",
+     "99%",
+     "AlphaGeometry",
+     "Hales",
+     "IMO",
+     "Lean",
+     "mathlib"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "另外，这一期里有一堆我刻意没有写死的地方。四色定理证明的机器耗时和构型数量，公开版本互相不一致；Hales 那个『99% 确定』，我查到的是事后转述，不是审稿报告原文；Lean 和 mathlib 的规模一直在变；AlphaGeometry 的论文数字需要回到原文核对；『IMO 银牌』是分数换算，不是实际参赛成绩。这些都是边界。把边界讲清楚，比给出一个漂亮的结论更重要。至于最终的答案——数学家大概不会因为证明变得没人读得完而失去意义，但他们做的事情，很可能会和今天不太一样。具体怎么不一样，现在没有人能给出可靠预测。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S21",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "时间线从 1979 悬置至今"
+   },
+   "scene_id": "S21",
+   "why": "陷阱：结语回查清单，配 Lean tactic 状态截图"
+  }
+ ],
+ "positives": [
+  {
+   "asset_key12": "0c365d5195d5",
+   "human_reason": "开场人像钩子：真实 IMO 数学国家队合影，契合「数学与人类」主题",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/external/432cd85be6f112e5bef0c05bfc1ac7eee1db689738e979e3d011d5c61976a76d.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S01-0c365d5195d5",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S01].candidate_results[asset_id=ast-0c365d5195d50bba]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "4",
+     "AI"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "假设有一天，一个 AI 交出一份三千页的证明。它通过了所有机器检查，能人工核对的部分也都没问题。但没有人真的读完了它——不是不愿意，是把它读完需要的时间超过了一个人的一生。这时候该怎么描述这件事？我们证明了它，还是我们相信它被证明了？如果数学的成果人类已经无法完整地参与理解，那数学家还有意义吗？",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S01",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "暗背景，长串无法辨识的证明步骤缓慢滚动，无人能读完"
+   },
+   "scene_id": "S01"
+  },
+  {
+   "asset_key12": "6c3fc5af91ed",
+   "human_reason": "旁白预告四色定理/开普勒/Lean/IMO 线索，四色定理着色图为首要视觉锚点",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Four color theorem map of Germany 3.png",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S02-6c3fc5af91ed",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S02].candidate_results[asset_id=ast-6c3fc5af91ed650d]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2024",
+     "abc",
+     "AI",
+     "Lean",
+     "mathlib"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "先把这句话里的『无法理解』定义清楚。它指的不是 AI 写出了超越人类理性的神秘数学，而是更朴素的情况：证明太长、太依赖计算，或者以机器可检查的形式写成，以至于没有哪个数学家、也没有哪个数学家共同体，能从头到尾逐步核对。接下来的线索是四色定理、开普勒猜想、Lean 和 mathlib，还有 2024 年的国际数学奥林匹克。另外先说明一件事：网上常被拿来讨论的望月新一与 abc 猜想，我查到的材料出处不完整，这一期不讲它。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S02",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "极厚打印证明堆叠，页面密布符号，数字“三千页”淡入"
+   },
+   "scene_id": "S02"
+  },
+  {
+   "asset_key12": "6c3fc5af91ed",
+   "human_reason": "Appel-Haken 四色定理机器证明章节，平面图四着色图直接对应",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Four color theorem map of Germany 3.png",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S03-6c3fc5af91ed",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S03].candidate_results[asset_id=ast-6c3fc5af91ed650d]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1977",
+     "Appel",
+     "Haken"
+    ],
+    "environment": null,
+    "evidence_type": "stock_photo",
+    "expected_kind": "image",
+    "narration": "故事的起点是四色定理。它的内容很朴素：给一张平面地图上色，相邻的区域颜色不同，四种颜色够不够。这个问题被提出之后，悬了一百多年。二十世纪七十年代，Appel 和 Haken 给出了一个证明，论文在 1977 年发表。但他们的做法和以前不一样——没办法用手算完成。他们把无限多种可能的地图归约成有限多种构型，然后把剩下的检查工作交给计算机，让程序逐一跑过去。这里要停一下，因为具体数字我没法负责任地给。这场证明到底跑了多少机时、检查了多少种构型，我查到的公开版本彼此不一致，所以这一期一个数字都不说。可以确定的是方法：这一步把『验证』从人的眼睛，部分转移到了机器的执行上。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S03",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "空椅子与屏幕光，暗示数学家不在场"
+   },
+   "scene_id": "S03"
+  },
+  {
+   "asset_key12": "af59386ae68c",
+   "human_reason": "Tymoczko 1979 认识论争论：四色问题解决纪念邮资戳对应「证明的发表与承认」",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Postal Meter Strip Honoring the Solution of the Four Color Problem.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S04-af59386ae68c",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S04].candidate_results[asset_id=ast-af59386ae68c0572]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1979",
+     "Thomas",
+     "Tymoczko"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "真正的震动不是来自数学界，而是来自哲学界。1979 年，哲学家 Thomas Tymoczko 写了一篇文章，把这件事上升为一个认识论问题。他担心的地方大致是这样：数学证明之所以算证明，是因为它能够被人类共同体逐步检视；如果一份证明的关键步骤只有机器走过，那么它带给我们的东西，和传统意义上的数学知识，性质可能不一样。需要强调，这不是在质疑四色定理的数学正确性，也不是说定理被推翻了。被质疑的是『证明』这个概念本身。一份没有人完整读过的证明，还能不能算作人类的数学知识？这个问题从 1979 年一直悬到现在。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S04",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "文字卡：我们证明了它，还是我们相信它被证明了？"
+   },
+   "scene_id": "S04"
+  },
+  {
+   "asset_key12": "65377b888b77",
+   "human_reason": "人工验收接受该素材用于本镜（H5 human_decision: D0 / S05 PD-US（人工已接受地域））",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S05/Russell_PM_1+1=2.png",
+   "known_label": "RELEVANT",
+   "pos_id": "F-S05-65377b888b77",
+   "provenance": {
+    "human_decision": "D0 / S05 PD-US（人工已接受地域）",
+    "license": "PD-US",
+    "locator": "asset_records[S05] + binding + asset_replacement_evidence.per_scene",
+    "on_screen": true,
+    "source": "logs/phase6g_exec_h5.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2024",
+     "IMO",
+     "Lean",
+     "mathlib",
+     "Tymoczko"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "还有一个容易被忽略的细节：Tymoczko 那篇文章里的具体表述，我这里只能用转述，不能用引号当直接引语——因为我还没有逐字核对原文。这一期里凡是引语，我都会标明这一点。顺着他的问题往下走，会出现一个很自然的反驳：凭什么认为证明必须被人类逐步检视？如果一份数学结果可以被独立复现、可以被不同方法交叉印证，那它的可靠性到底建立在什么上面？第二年，有人正面回答了这个问题，而且不是在博客上，是在学术刊物上。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S05",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "四行关键词出现：四色定理 / 开普勒猜想 / Lean、mathlib / IMO 2024"
+   },
+   "scene_id": "S05"
+  },
+  {
+   "asset_key12": "92ca33138ffe",
+   "human_reason": "D0 / S05 PD-US（人工已接受地域）",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S05/Russell_PM_1+1=2.png",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S05-92ca33138ffe",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S05].candidate_results[asset_id=ast-92ca33138ffe64f4]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2024",
+     "IMO",
+     "Lean",
+     "mathlib",
+     "Tymoczko"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "还有一个容易被忽略的细节：Tymoczko 那篇文章里的具体表述，我这里只能用转述，不能用引号当直接引语——因为我还没有逐字核对原文。这一期里凡是引语，我都会标明这一点。顺着他的问题往下走，会出现一个很自然的反驳：凭什么认为证明必须被人类逐步检视？如果一份数学结果可以被独立复现、可以被不同方法交叉印证，那它的可靠性到底建立在什么上面？第二年，有人正面回答了这个问题，而且不是在博客上，是在学术刊物上。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S05",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "四行关键词出现：四色定理 / 开普勒猜想 / Lean、mathlib / IMO 2024"
+   },
+   "scene_id": "S05"
+  },
+  {
+   "asset_key12": "af59386ae68c",
+   "human_reason": "Detlefsen & Luker 1980 回应：证明的承认机制，纪念邮戳对应",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Postal Meter Strip Honoring the Solution of the Four Color Problem.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S06-af59386ae68c",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S06].candidate_results[asset_id=ast-af59386ae68c0572]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1980",
+     "Detlefsen",
+     "Luker"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "1980 年，Detlefsen 和 Luker 给出了直接回应。他们的立场大体相反：数学证明的可靠性，不一定建立在『每个中间步骤都能被人逐一检视』这个条件上。这个观点值得认真对待，因为它对应着科学里很常见的一种情况——我们接受某个结论，通常不是因为我们亲手验算过每一步，而是因为它可以被反复复现，可以被不同的方法交叉印证，也没有人找到反例。把这些条件放到机器证明上，会发现它们不一定失效。程序可以重跑，代码可以公开审查，结果可以被另一套系统独立验证。Detlefsen 和 Luker 因此主张：可检视性只是历史上达成可靠性的一种手段，而不是证明的本质要求。手段可以被替换，可靠性不必跟着消失。当然，这个立场也要付出代价：它把『证明』和『被理解』之间的关系松开了。而很多人直觉上不接受这一点。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S06",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "定义卡：太长、太依赖计算、机器可检查形式 → 无人能逐步核对"
+   },
+   "scene_id": "S06"
+  },
+  {
+   "asset_key12": "6c3fc5af91ed",
+   "human_reason": "两种立场对照仍以四色定理案例展开",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Four color theorem map of Germany 3.png",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S07-6c3fc5af91ed",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S07].candidate_results[asset_id=ast-6c3fc5af91ed650d]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": [
+     "”"
+    ],
+    "concept": null,
+    "concepts_neg": [
+     "”"
+    ],
+    "concepts_pos": [
+     "abc",
+     "AlphaGeometry",
+     "Lean"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "所以这里有两种立场，两种都有人认真主张，而且都不是外行话。一种认为，证明的本质就是人类可以检视它，去掉这一点，我们得到的是可计算的确定性，不是数学知识。另一种认为，可检视性只是达成可靠性的历史手段之一，机器可以接手其中一部分，而可靠性并不会因此打折。这场争论到今天没有定论，因为它根本不是数学问题，而是关于『数学是什么』的问题。我再说明一下这里的处理方式：这两篇文章的具体措辞我都没有逐字核对，所以你在这一期里不会听到把它们放进引号的直接引用，这是转述。为什么这件事重要？因为我们后面要讲的每一个案例——开普勒猜想、Lean、AlphaGeometry——都会被这两套立场反复拉扯。你以为在讨论技术，其实是在讨论一个更古老的问题：我们凭什么相信一个数学结论。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S07",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "被划掉的卡片：望月新一与 abc 猜想，标注“出处不完整，本期不使用”"
+   },
+   "scene_id": "S07"
+  },
+  {
+   "asset_key12": "be956d321050",
+   "human_reason": "开普勒猜想：等大球密堆积，直接对应「怎样堆球占用空间最小」",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Close-packed spheres.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S08-be956d321050",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S08].candidate_results[asset_id=ast-be956d3210501352]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "Hales"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "如果四色定理还只是『机器帮了点忙』，那开普勒猜想把问题推到了另一个量级。它讨论的是：怎样堆放同样大小的球，才能占用最小的空间。直觉上你会觉得这该很简单，但它的证明规模是另一种生物。Hales 给出了这个证明，论文最终发表在被认为最严格的数学期刊之一上——具体的发表年份和刊物版本我在发布前会逐项核实，这一期不写死。值得注意的不是它发表了，而是它发表之前发生了什么。审稿过程拖了很久，最后的结论也不是我们习惯听到的那句『没有问题』。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S08",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "时间线起点：从四色定理开始"
+   },
+   "scene_id": "S08"
+  },
+  {
+   "asset_key12": "be956d321050",
+   "human_reason": "Hales 审稿与 99% 确定表述，同一球堆案例延续",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Close-packed spheres.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S09-be956d321050",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S09].candidate_results[asset_id=ast-be956d3210501352]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "99%",
+     "Hales"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "据 Hales 事后在公开文章里的说法，审稿人花了很长时间，最后表示他们没法百分之百确认这份证明是对的。Hales 本人用过一个流传很广的表述：大约『99% 确定』。这个数字后来被到处引用。但这里必须打一个记号——我查到的这个说法，来自 Hales 事后的公开叙述，而不是审稿报告原文。也就是说，它很可能是 Hales 对审稿意见的转述。它有传播力，但在回查原文之前，不适合当作精确引语使用。你可以先把『99%』理解成一个态度：数学界承认这份证明是对的，但这种承认带着一个注脚。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S09",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "手绘地图四色上色动画，相邻区域不同色"
+   },
+   "scene_id": "S09"
+  },
+  {
+   "asset_key12": "be956d321050",
+   "human_reason": "形式化验证导语：球堆的机器可检验结构感",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Close-packed spheres.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S10-be956d321050",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S10].candidate_results[asset_id=ast-be956d3210501352]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "Hales"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "故事没有停在那里。Hales 后来带了一个项目，目标是把这份证明完整地写成机器可以检查的形式——不再争论人类能不能读完，而是让机器把它读完。项目的具体完成时间点要以官方记录为准，我这一期不给年份。但方向很清楚：面对『没有人能完整检视』的困境，数学界给出的一个答案是，造一台能完整检视的机器。这听起来像是把问题推给了机器，其实它换掉的是问题的形式：从『谁来读』变成『谁来写、写什么、以什么形式写』。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S10",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "时间线：问题提出后悬置一百多年"
+   },
+   "scene_id": "S10"
+  },
+  {
+   "asset_key12": "1e9d2ab4e64e",
+   "human_reason": "人工验收接受该素材用于本镜（H5 human_decision: D0 / S05 PD-US（人工已接受地域））",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S11/research/S11-D0_LIPIcs-ITP-2023-24_p08_tactic-state-rw.png",
+   "known_label": "RELEVANT",
+   "pos_id": "F-S11-1e9d2ab4e64e",
+   "provenance": {
+    "human_decision": "D0 / S05 PD-US（人工已接受地域）",
+    "license": "CC BY 4.0",
+    "locator": "asset_records[S11] + binding + asset_replacement_evidence.per_scene",
+    "on_screen": true,
+    "source": "logs/phase6g_exec_h5.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1977",
+     "Appel",
+     "Haken",
+     "Lean",
+     "mathlib"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "要让机器完整检视，需要一种特殊的写法：把定义、定理和证明写成计算机能逐步验证的形式。Lean 是目前最受关注的系统之一，配套的 mathlib 是一个不断生长的数学库，里面已经积累了数量可观的、经过机器检查的定义和定理。它的规模一直在变，所以任何具体数字都必须注明抓取日期，否则半年后就变成错的了。但趋势是清楚的：形式化数学正在从个人兴趣，变成一项有基础设施、有协作流程的工程。这件事的意义可能比它听起来更大。一旦证明用机器可读的语言写出来，检查证明就不再是稀缺的人类注意力问题，而是算力问题。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S11",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "Appel & Haken 1977 论文示意封面，无真实文字"
+   },
+   "scene_id": "S11"
+  },
+  {
+   "asset_key12": "96a8c4dc359f",
+   "human_reason": "D0 / S05 PD-US（人工已接受地域）",
+   "image_path": "C:/mp4agent/h5_asset_candidates/S11/research/S11-D0_LIPIcs-ITP-2023-24_p08_tactic-state-rw.png",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S11-96a8c4dc359f",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S11].candidate_results[asset_id=ast-96a8c4dc359f55ea]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1977",
+     "Appel",
+     "Haken",
+     "Lean",
+     "mathlib"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "要让机器完整检视，需要一种特殊的写法：把定义、定理和证明写成计算机能逐步验证的形式。Lean 是目前最受关注的系统之一，配套的 mathlib 是一个不断生长的数学库，里面已经积累了数量可观的、经过机器检查的定义和定理。它的规模一直在变，所以任何具体数字都必须注明抓取日期，否则半年后就变成错的了。但趋势是清楚的：形式化数学正在从个人兴趣，变成一项有基础设施、有协作流程的工程。这件事的意义可能比它听起来更大。一旦证明用机器可读的语言写出来，检查证明就不再是稀缺的人类注意力问题，而是算力问题。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S11",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "Appel & Haken 1977 论文示意封面，无真实文字"
+   },
+   "scene_id": "S11"
+  },
+  {
+   "asset_key12": "be956d321050",
+   "human_reason": "Lean/mathlib 章节：池内无 Lean 界面素材（诚实缺口），取最抽象的数学结构图并披露",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Close-packed spheres.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S11-be956d321050",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S11].candidate_results[asset_id=ast-be956d3210501352]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1977",
+     "Appel",
+     "Haken",
+     "Lean",
+     "mathlib"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "要让机器完整检视，需要一种特殊的写法：把定义、定理和证明写成计算机能逐步验证的形式。Lean 是目前最受关注的系统之一，配套的 mathlib 是一个不断生长的数学库，里面已经积累了数量可观的、经过机器检查的定义和定理。它的规模一直在变，所以任何具体数字都必须注明抓取日期，否则半年后就变成错的了。但趋势是清楚的：形式化数学正在从个人兴趣，变成一项有基础设施、有协作流程的工程。这件事的意义可能比它听起来更大。一旦证明用机器可读的语言写出来，检查证明就不再是稀缺的人类注意力问题，而是算力问题。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S11",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "Appel & Haken 1977 论文示意封面，无真实文字"
+   },
+   "scene_id": "S11"
+  },
+  {
+   "asset_key12": "be956d321050",
+   "human_reason": "Liquid Tensor Experiment：形式化验证工程，沿用抽象结构图并披露",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Close-packed spheres.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S12-be956d321050",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S12].candidate_results[asset_id=ast-be956d3210501352]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2020",
+     "2022",
+     "AI",
+     "Experiment",
+     "Lean",
+     "Liquid",
+     "Tensor"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "2020 年发生了一件挺有意思的事。一位已经很顶尖的数学家公开提出一个挑战：他手上有一个相当新的数学结果，他希望有人把它用 Lean 形式化验证一遍。这就是 Liquid Tensor Experiment，项目从 2020 年持续到 2022 年，由 Lean 社区协作推进。它的具体完成边界要以官方时间戳为准，但方向非常明确——而且这个方向很有意思。不是 AI 要求人类接受它的证明，而是人类数学家主动请机器来检查自己的证明。提出挑战的数学家是谁，以及这个结果本身的难度，我建议在发布前再核一遍，这里先不写死。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S12",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "无限多种地图归约为有限多种构型示意图"
+   },
+   "scene_id": "S12"
+  },
+  {
+   "asset_key12": "0c365d5195d5",
+   "human_reason": "AI 成为数学参与者导语：奥赛选手合影呼应「竞赛级数学」语境",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/external/432cd85be6f112e5bef0c05bfc1ac7eee1db689738e979e3d011d5c61976a76d.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S13-0c365d5195d5",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S13].candidate_results[asset_id=ast-0c365d5195d50bba]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "AI"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "这件事说明的问题，比『AI 会不会取代数学家』要具体得多。当一个数学家的结果复杂到自己都希望有人帮着核对的时候，形式化验证就不再只是审查工具，它变成了数学研究流程的一部分。信任的来源在增加：过去是同行读过并且认可，现在还可以是机器检查通过。但还有一个关键点，别忽略——在这条线上，决定验证什么的一直是人。是人提出了挑战，是人定义了目标，是人判断这个结果值不值得花两年时间去做形式化。机器在这个阶段承担的，是执行和检查。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S13",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "计算机程序逐一跑构型检查，老式终端与打孔卡意象"
+   },
+   "scene_id": "S13"
+  },
+  {
+   "asset_key12": "0c365d5195d5",
+   "human_reason": "AlphaGeometry/Nature：奥赛级几何题语境，IMO 队照贴合竞赛叙事",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/external/432cd85be6f112e5bef0c05bfc1ac7eee1db689738e979e3d011d5c61976a76d.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S14-0c365d5195d5",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S14].candidate_results[asset_id=ast-0c365d5195d50bba]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2024",
+     "AlphaGeometry",
+     "DeepMind",
+     "Nature"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "接下来这一步，性质变了。2024 年，DeepMind 的 AlphaGeometry 发表在《Nature》上，做的是奥林匹克级别的平面几何题。这件事的重点不是它做对了几道题，而是它用的方法：它不是靠学习大量人类写好的示范解答来提升的，而是把符号推理和一个语言模型结合起来。换句话说，它开始自己产出数学论证，而不只是检查别人写好的论证。论文摘要里的具体数字，比如解出了多少道题、对照基准是多少，我这一期不引用，因为需要回到原文逐项核对。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S14",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "数字位置打标签“公开版本不一致，待回查”，不写死数字"
+   },
+   "scene_id": "S14"
+  },
+  {
+   "asset_key12": "0c365d5195d5",
+   "human_reason": "AlphaProof IMO 2024 银牌换算：IMO 国家队合影直接对应",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/external/432cd85be6f112e5bef0c05bfc1ac7eee1db689738e979e3d011d5c61976a76d.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S15-0c365d5195d5",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S15].candidate_results[asset_id=ast-0c365d5195d50bba]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "2",
+     "2024",
+     "AI",
+     "AlphaGeometry",
+     "AlphaProof",
+     "DeepMind",
+     "IMO",
+     "Nature"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "同年，DeepMind 又公布了一个结果：他们的系统参加了 2024 年国际数学奥林匹克的题目。这里有一个非常容易被写错的地方。那一次参与的是一套新系统，叫 AlphaProof，加上一个升级版的 AlphaGeometry 2；而《Nature》上那篇 AlphaGeometry 是另一次实验。测试的对象不一样，系统也不一样。这两件事在中文报道里经常被合成一个，说成『AI 在《Nature》上发了 IMO 题』之类，那是不准确的。把它们分开看，你才会注意到真正的变化发生在哪一步：AlphaGeometry 解决的是特定类型的几何题，而 IMO 那次是更一般的推理能力测试。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S15",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "总结：验证从人的眼睛部分转移到机器的执行"
+   },
+   "scene_id": "S15"
+  },
+  {
+   "asset_key12": "0c365d5195d5",
+   "human_reason": "「IMO 银牌」表述辨析：同一 IMO 队照维持语境",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/external/432cd85be6f112e5bef0c05bfc1ac7eee1db689738e979e3d011d5c61976a76d.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S16-0c365d5195d5",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S16].candidate_results[asset_id=ast-0c365d5195d50bba]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1979",
+     "2024",
+     "AI",
+     "IMO"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "还有一个细节。新闻标题常说『AI 拿到了 IMO 银牌』。严格说，这是按照官方评分标准，把系统的得分换算成对应的奖牌档次，而不是它作为选手实际参赛拿到的成绩。评价的方式和真实赛场也不完全对等。这些区别不影响结果的分量——能解出那种难度的题，本身就说明了很多问题——但它影响我们该怎么描述这件事。把换算说成获奖，是把一个技术结果讲成了体育新闻。具体到 2024 年那次，哪些题解出来了、分数怎么换算，需要和 IMO 官方成绩表交叉核对之后再写。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S16",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "1979 年哲学文章引发震动，哲学界而非数学界"
+   },
+   "scene_id": "S16"
+  },
+  {
+   "asset_key12": "be956d321050",
+   "human_reason": "回到核心问题的过渡：抽象结构图作中性视觉",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Close-packed spheres.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S17-be956d321050",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S17].candidate_results[asset_id=ast-be956d3210501352]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "AI",
+     "vs"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "现在可以回到最开始那个问题了。不过在回答之前，先排除两个便宜的答案。第一个是『AI 根本不懂数学，所以人类没事』。这个答案的问题在于，我们根本不知道『理解』是不是证明的必要条件——四色定理那场争论吵的就是这件事。第二个是『机器能检查证明，所以数学家要失业了』。这个答案跳得太快，因为机器检查的前提，是有人决定检查什么、用什么语言写、写完之后算不算数。这两个答案都能让人舒服，但都不能让人更接近真相。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S17",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "双栏对照：人类逐步检视 vs 机器执行检查"
+   },
+   "scene_id": "S17"
+  },
+  {
+   "asset_key12": "6c3fc5af91ed",
+   "human_reason": "角色移动讨论复述四色/开普勒案例：四着色图对应",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Four color theorem map of Germany 3.png",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S18-6c3fc5af91ed",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S18].candidate_results[asset_id=ast-6c3fc5af91ed650d]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "AI",
+     "Experiment",
+     "Liquid",
+     "Tensor"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "从前面的案例里能看出来的，是角色的移动，而不是消失。四色定理的争论里，人类吵的是『证明』的定义；开普勒猜想的形式化里，人类决定的是值得验证什么；Liquid Tensor Experiment 里，是人类数学家主动请机器来检查自己。还有一个更基本的观察：四色问题被提出来之后，隔了一百多年才有了证明，而这一百多年并不是花在写证明上，而是花在找对方向上。数学里最难的部分，一直不是把证明写完，是知道该问什么问题。这件事上，AI 目前在做什么、能做什么，我们其实还没有足够多的例子可以判断。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S18",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "质疑的是“证明”概念本身，不是四色定理正确性"
+   },
+   "scene_id": "S18"
+  },
+  {
+   "asset_key12": "af59386ae68c",
+   "human_reason": "Tymoczko 之问重提：证明的承认与理解，纪念邮戳对应",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Postal Meter Strip Honoring the Solution of the Four Color Problem.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S19-af59386ae68c",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S19].candidate_results[asset_id=ast-af59386ae68c0572]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "AI",
+     "Tymoczko"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "还有一部分工作很难被替代，因为它压根不是计算。比如发明一个概念，让原本杂乱的对象变得可以比较、可以操作——数学史上，这类工作往往比某一条定理的证明更重要。再比如解释：一个机器验证过的结论，对人类意味着什么，它和别的数学有什么关系，为什么它值得被关心。这些问题的答案不在证明里，也没法从证明里推出来。但要说清楚：这不构成『人类永远不可替代』的证明。AI 完全有可能在这些方向上缩小差距，我们看到的只是很前面的一小段。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S19",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "Tymoczko 文字以转述呈现，角标“转述，待回检原文”"
+   },
+   "scene_id": "S19"
+  },
+  {
+   "asset_key12": "be956d321050",
+   "human_reason": "意义来源讨论：抽象数学结构中性视觉",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Close-packed spheres.jpg",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S20-be956d321050",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S20].candidate_results[asset_id=ast-be956d3210501352]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "AI"
+    ],
+    "environment": null,
+    "evidence_type": "ai_generated",
+    "expected_kind": "image",
+    "narration": "所以，『人类数学家还有意义吗』这个问法，可能一开始就设错了。它默认意义只有一种来源：能读完并且检查证明。但数学从来不只是这件事。前面几站的共同点，不是 AI 越来越强，而是数学知识的信任生产方式在变化：从『某个权威读过并认可』，到『可以机械复现和检查』，再到『由机器参与生产、人类决定验证什么』。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S20",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "问句：没有人完整读过的证明，还能算人类数学知识吗？"
+   },
+   "scene_id": "S20"
+  },
+  {
+   "asset_key12": "6c3fc5af91ed",
+   "human_reason": "结语与回查清单：以四色定理案例收束全片叙事闭环",
+   "image_path": "C:/mp4agent/video-studio/projects/p_96efdc03e1aa/media/Four color theorem map of Germany 3.png",
+   "known_label": "RELEVANT",
+   "pos_id": "A-S21-6c3fc5af91ed",
+   "provenance": {
+    "confidence": "HUMAN_RECORDED",
+    "decision_rule": "R2_HUMAN_POSITIVE",
+    "evidence_kind": "human_positive",
+    "locator": "scene_results[scene_id=S21].candidate_results[asset_id=ast-6c3fc5af91ed650d]",
+    "source": "logs/visual_relevance.json"
+   },
+   "requirement_snapshot": {
+    "action": null,
+    "avoid_list": null,
+    "concept": null,
+    "concepts_neg": null,
+    "concepts_pos": [
+     "1979",
+     "99%",
+     "AlphaGeometry",
+     "Hales",
+     "IMO",
+     "Lean",
+     "mathlib"
+    ],
+    "environment": null,
+    "evidence_type": "data_visual",
+    "expected_kind": "image",
+    "narration": "另外，这一期里有一堆我刻意没有写死的地方。四色定理证明的机器耗时和构型数量，公开版本互相不一致；Hales 那个『99% 确定』，我查到的是事后转述，不是审稿报告原文；Lean 和 mathlib 的规模一直在变；AlphaGeometry 的论文数字需要回到原文核对；『IMO 银牌』是分数换算，不是实际参赛成绩。这些都是边界。把边界讲清楚，比给出一个漂亮的结论更重要。至于最终的答案——数学家大概不会因为证明变得没人读得完而失去意义，但他们做的事情，很可能会和今天不太一样。具体怎么不一样，现在没有人能给出可靠预测。",
+    "object": null,
+    "requirement_artifact_hash": "53e98933a58eb00f101986101bdfc521da6bf63612448dde04a9cff0ac35ef7e",
+    "scene_id": "S21",
+    "status": "DERIVABLE",
+    "subject": null,
+    "visual_goal": "时间线从 1979 悬置至今"
+   },
+   "scene_id": "S21"
+  }
+ ],
+ "purpose": "P16-1 负例过滤器验证（VLM 仅作负例过滤器；KNOWN_ISSUES #73）",
+ "reality_conflicts": [
+  "授权书举例『PICO/鲨鱼陷阱』来自另一项目谱系（VR/鲨鱼素材）；**本片素材池无该类素材**，故以等价的『跨话题族』陷阱替代，并在此如实登记（未伪造 PICO/鲨鱼对）。"
+ ],
+ "schema": "p16-negative-filter-eval-v1",
+ "truth_set_reference": {
+  "file": "tests/fixtures/vlm_relevance_truth_v1.json",
+  "sha256": null,
+  "usage": "**只读引用**（正例来自其 24 条 RELEVANT；人工负例来自其 3 条 IRRELEVANT）"
+ },
+ "version": 1
+}

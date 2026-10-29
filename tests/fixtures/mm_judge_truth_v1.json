@@ -1,0 +1,63 @@
+{
+ "schema": "mm-judge-truth-v1",
+ "name": "5-F 最终 Judge 真值覆盖层 v1（冻结）",
+ "frozen_at": "2026-09-17",
+ "frozen_note": "本文件是 5-F 的**Judge 真值覆盖层**：它**不修改** 5-E 的冻结真值集（`mm_truth_set_v1.json`，sha256 7eb952f2…），而是按**同一批 case id** 追加『最终 Judge 应当输出什么』的期望与理由。两文件联合构成多模态子系统的最终验收口径；本文件定稿后不可修改（指纹由 `core/mm_judge.py::JUDGE_TRUTH_PIN` 与证据双向钉定）。",
+ "truth_set_ref": {
+  "path": "tests/fixtures/mm_truth_set_v1.json",
+  "schema": "mm-truth-set-v1",
+  "sha256": "7eb952f2797e180cf85bd84236414caf878cb617c0bc885031ef423fef1dca9e"
+ },
+ "judge_layers": ["4b", "5a", "5d"],
+ "reason_codes": {
+  "JUDGE_MODEL_UNAVAILABLE": "多模态层因模型/解释器不可用而无法判定（J0）",
+  "JUDGE_NO_EVIDENCE": "没有任何可用层证据（J0）",
+  "JUDGE_STRUCTURAL_UNKNOWN": "5-D 报出结构性 UNKNOWN（镜头内视觉切换 / 帧数不足 / 一致性不足）（J1）",
+  "JUDGE_EVIDENCE_CONFLICT": "层间冲突：同时存在 MATCH 与 MISMATCH（J2）→ 不选边，交人工",
+  "JUDGE_MISMATCH_FLAGGED": "存在 MISMATCH 且无 MATCH → 最终 MISMATCH（J3）",
+  "JUDGE_UNANIMOUS_MATCH": "全部可用层一致 MATCH → 最终 MATCH（J4）",
+  "JUDGE_INSUFFICIENT_LAYERS": "仅单层可用且其判 MATCH → 不足以宣称 MATCH（J5）",
+  "JUDGE_PARTIAL_UNKNOWN": "有层判 MATCH、有层 UNKNOWN，且无 MISMATCH → 最终 UNKNOWN（保守共识）（J6）",
+  "JUDGE_ALL_UNKNOWN": "全部可用层均 UNKNOWN → 最终 UNKNOWN（J6）",
+  "JUDGE_UNKNOWN_DOMAIN": "期望语义域推不出（词表未命中）→ 最终 UNKNOWN（J6 特例）"
+ },
+ "cases": [
+  {"case_id": "T01_S04_truth_artifact_mismatch", "judge_expect": {"require": ["MISMATCH"], "require_reason_any": ["JUDGE_MISMATCH_FLAGGED"]},
+   "rationale": "三层一致 MISMATCH（鲨鱼照 vs XR 设备旁白）→ 最终 MISMATCH；这是必须被拦住的内容错配。"},
+  {"case_id": "T02_S06_truth_artifact_mismatch", "judge_expect": {"require": ["MISMATCH"], "require_reason_any": ["JUDGE_MISMATCH_FLAGGED"]},
+   "rationale": "同 T01（4-B 真值钉定的第二个 MISMATCH 镜头）。"},
+  {"case_id": "T03_S01_v6_clear_match", "judge_expect": {"require": ["MATCH"], "require_reason_any": ["JUDGE_UNANIMOUS_MATCH"]},
+   "rationale": "三层一致 MATCH（边界 +0.040）→ 最终 MATCH。"},
+  {"case_id": "T04_S02_v6_clear_match", "judge_expect": {"require": ["MATCH"], "require_reason_any": ["JUDGE_UNANIMOUS_MATCH"]},
+   "rationale": "三层一致 MATCH（边界 +0.070，最清晰）→ 最终 MATCH。"},
+  {"case_id": "T05_S04_v6_human_fixed_match_boundary", "judge_expect": {"require": ["MATCH"], "require_reason_any": ["JUDGE_UNANIMOUS_MATCH"]},
+   "rationale": "4-C 人工替换后三层一致 MATCH（边界 +0.008 贴边但仍一致）→ 最终 MATCH。"},
+  {"case_id": "T06_S05_v6_boundary_unknown", "judge_expect": {"require": ["UNKNOWN"], "must_not": ["MATCH", "MISMATCH"], "require_reason_any": ["JUDGE_PARTIAL_UNKNOWN"]},
+   "rationale": "4-B 文本 MATCH，但两个像素层都 UNKNOWN（边际 0.0171 < 0.02）→ **部分证据不足以宣称 MATCH**，最终 UNKNOWN（保守共识）。"},
+  {"case_id": "T07_S06_front_v5_match", "judge_expect": {"require": ["MATCH"], "require_reason_any": ["JUDGE_UNANIMOUS_MATCH"]},
+   "rationale": "front 视角三层一致 MATCH（边界 +0.055）→ 最终 MATCH。"},
+  {"case_id": "T08_S06_side_v6_unknown", "judge_expect": {"require": ["UNKNOWN"], "must_not": ["MISMATCH"], "require_reason_any": ["JUDGE_PARTIAL_UNKNOWN"]},
+   "rationale": "side 视角两层 UNKNOWN（边际 0.0061）→ 最终 UNKNOWN；**该 UNKNOWN 是最终合法结果，不得靠调阈值消除**。"},
+  {"case_id": "T09_viewpoint_pair_front_vs_side", "judge_expect": {"require_pair_checks": ["5d_margin_front_gt_side", "both_vote_unanimous_if_available"], "verdict": null},
+   "rationale": "视角成对用例：Judge 只记录『同一内容标签、证据强度下降』的成对结论，不产生单镜头三态。"},
+  {"case_id": "T10_temporal_split_fixture", "judge_expect": {"require": ["UNKNOWN"], "must_not": ["MATCH"], "require_reason_any": ["JUDGE_STRUCTURAL_UNKNOWN"]},
+   "rationale": "镜头内切图 → 结构性 UNKNOWN 优先于任何语义判定（画面在时间轴上不是一个稳定状态）。"},
+  {"case_id": "T11_static_control_fixture", "judge_expect": {"allow": ["MISMATCH", "UNKNOWN"], "must_not": ["MATCH"]},
+   "rationale": "对照组内容标签 UNCERTAIN、仅单层像素证据 → 只要**不宣称 MATCH** 即可（MISMATCH 或 UNKNOWN 都合规）。"},
+  {"case_id": "T12_unknown_domain_probe", "judge_expect": {"require": ["UNKNOWN"], "must_not": ["MATCH", "MISMATCH"], "require_reason_any": ["JUDGE_UNKNOWN_DOMAIN", "JUDGE_ALL_UNKNOWN"]},
+   "rationale": "旁白推不出期望域 → 最终 UNKNOWN（期望域缺失），不得猜测。"},
+  {"case_id": "T13_model_unavailable_probe", "judge_expect": {"require": ["UNKNOWN"], "must_not": ["MATCH", "MISMATCH"], "require_reason_any": ["JUDGE_MODEL_UNAVAILABLE", "JUDGE_ALL_UNKNOWN"]},
+   "rationale": "模型不可用 → 最终 UNKNOWN（环境故障），不得伪造三态。"},
+  {"case_id": "T14_insufficient_frames_probe", "judge_expect": {"require": ["UNKNOWN"], "must_not": ["MATCH", "MISMATCH"], "require_reason_any": ["JUDGE_STRUCTURAL_UNKNOWN", "JUDGE_ALL_UNKNOWN"]},
+   "rationale": "帧数低于下限 → 样本不足，结构性 UNKNOWN。"}
+ ],
+ "unknown_policy": {
+  "legitimate_final_outcome": true,
+  "min_unknown_cases": 5,
+  "note": "UNKNOWN 是**合法最终结果**：本覆盖层要求至少 5 例最终 UNKNOWN（T06/T08/T10/T12/T13/T14 共 6 例），且**禁止**通过调阈值减少 UNKNOWN；若实现后 UNKNOWN 少于该下限，视为**口径被执行错**（fail）。"
+ },
+ "final_duties": {
+  "note": "4-B 文本语义 / 5-A 单帧多模态 / 5-D 多帧时序 三者**职责边界**见 docs/regression_2x/PHASE5F_MULTIMODAL_DOD.md",
+  "no_auto_action": "Judge 只输出判定与理由：不换材、不选材、不 redo、不改时间轴、不写库"
+ }
+}

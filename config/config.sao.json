@@ -1,0 +1,299 @@
+{
+  "workspace": { "root": "projects" },
+  "llm": {
+    "provider": "deepseek",
+    "deepseek": {
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "base_url": "https://api.deepseek.com",
+      "timeout_s": 120
+    },
+    "tiers": {
+      "R": { "model": "deepseek-reasoner", "max_tokens": 8192, "budget_usd": 0.50 },
+      "M": { "model": "deepseek-chat", "max_tokens": 8192, "budget_usd": 0.20 },
+      "F": { "model": "deepseek-chat", "max_tokens": 2048, "budget_usd": 0.05 }
+    },
+    "mock": {
+      "responses": {
+        "挑战报告": {
+          "verdict": "PASS",
+          "issues": [
+            {
+              "severity": "major",
+              "category": "source",
+              "claim": "时间线预测引用了企业负责人表态（Gabe Newell）作为依据",
+              "challenge": "企业表态属于愿景而非同行评议的技术判断，预测部分是否在文案中与事实明确区分？",
+              "required_action": "evidence"
+            },
+            {
+              "severity": "major",
+              "category": "copyright",
+              "claim": "选题直接使用《刀剑神域》名称与角色设定",
+              "challenge": "成片是否使用了动画画面/音乐素材？若仅文字叙述与原创画面则风险可控，需 Compliance 复核",
+              "required_action": "consult_human"
+            },
+            {
+              "severity": "minor",
+              "category": "bias",
+              "claim": "文案对脑机接口进展偏乐观",
+              "challenge": "是否补充了安全与伦理反对意见（如侵入式手术风险、隐私问题）以保持平衡？",
+              "required_action": "rewrite"
+            }
+          ],
+          "meta_note": "预测部分已用'粗略预测/无公认时间表'措辞兜底，事实与观点边界清晰；minor 项建议下版补伦理反方观点",
+          "summary": "挑战通过：预测措辞已兜底，版权依赖文字叙述方案，minor 项留档",
+          "confidence": 0.75,
+          "note": "Critic 首轮挑战"
+        },
+        "项目经理": {
+          "milestones": [
+            { "name": "策划", "gate": true, "tasks": ["topic", "research", "structure"] },
+            { "name": "脚本", "gate": true, "tasks": ["script"] },
+            { "name": "生产", "gate": true, "tasks": ["visual", "voice", "render"] },
+            { "name": "发布", "gate": true, "tasks": ["publish"] }
+          ],
+          "risks": ["脑机接口领域进展快，脚本事实需标注时效（截至2026年）", "SAO 版权边界：只用文字叙述"],
+          "priority_hints": { "fact_check": "high", "compliance": "high" },
+          "summary": "生产计划：策划→脚本→生产→发布，4 个审批闸门",
+          "confidence": 0.8,
+          "note": ""
+        },
+        "资料研究员": {
+          "source_cards": [
+            {
+              "title": "《刀剑神域》动画设定（艾恩葛朗特篇）",
+              "summary": "2012年7月首播；NerveGear 为虚构的完全潜行设备，直接向大脑发送信号、截断身体信号实现'意识进入游戏'",
+              "origin": "动画官方设定（2012）",
+              "retrieval_path": "search: 刀剑神域 NerveGear 设定",
+              "quote": "NerveGear：将使用者意识完全潜入虚拟世界的头戴设备（虚构）",
+              "doubts": []
+            },
+            {
+              "title": "消费级 VR/XR 现状",
+              "summary": "Meta Quest 3 于2023年10月发售；Apple Vision Pro 于2024年2月在美发售——视觉与空间沉浸已商品化，但仍属'外部设备'，不涉及神经信号",
+              "origin": "Meta / Apple 官方发布信息（2023-2024）",
+              "retrieval_path": "search: Quest 3 Vision Pro 发售时间",
+              "quote": "Vision Pro：空间计算设备，2024年2月2日美国发售",
+              "doubts": []
+            },
+            {
+              "title": "脑机接口人体试验进展",
+              "summary": "Neuralink 于2024年1月完成首例人体植入（受试者 Noland Arbaugh，产品名 Telepathy）；Synchron 的血管内支架式 BCI 同期推进临床试验——'用意念控制光标'已进入人体验证阶段",
+              "origin": "Neuralink 官方发布 / 医学媒体报道（2024）",
+              "retrieval_path": "search: Neuralink 首例人体植入 2024",
+              "quote": "2024年1月：Neuralink 宣布完成首例人体植入",
+              "doubts": ["植入对象为运动功能辅助，与'游戏交互'差距大"]
+            },
+            {
+              "title": "游戏行业对脑机接口的公开表态",
+              "summary": "Valve 创始人 Gabe Newell 在2021年 IGN 采访中表示 Valve 正在研究脑机接口，称'直接读写大脑'是游戏的未来方向之一（企业愿景，非技术路线图）",
+              "origin": "IGN 采访（2021）",
+              "retrieval_path": "search: Gabe Newell BCI IGN 2021",
+              "quote": "Newell: BCI 是游戏的长期方向（企业愿景）",
+              "doubts": ["属企业表态，需标注为愿景"]
+            },
+            {
+              "title": "完全潜行的技术障碍",
+              "summary": "学界与产业共识：完全潜行除脑机接口外还需解决运动病、触觉/力反馈、低延迟双向神经读写、安全与伦理（侵入式手术风险、隐私、成瘾）等难题；目前无公认时间表",
+              "origin": "多源综述（2021-2025）",
+              "retrieval_path": "search: full dive VR feasibility review",
+              "quote": "完全潜行无公认时间表",
+              "doubts": []
+            }
+          ],
+          "doubt_list": ["Neuralink 数据仅限运动辅助场景", "预测部分必须以'预测'标注"],
+          "summary": "资料搜集完成：5 张资料卡，事实与预测分离",
+          "confidence": 0.82,
+          "note": ""
+        },
+        "来源核查员": {
+          "credibility": [
+            { "source": "动画官方设定（2012）", "grade": "trusted", "reason": "一手设定，用于描述虚构概念" },
+            { "source": "Meta / Apple 官方发布信息（2023-2024）", "grade": "trusted", "reason": "厂商一手发布" },
+            { "source": "Neuralink 官方发布 / 医学媒体报道（2024）", "grade": "usable", "reason": "官方发布+媒体交叉印证；医学界长期数据仍有限" },
+            { "source": "IGN 采访（2021）", "grade": "usable", "reason": "一手采访，但属企业愿景需标注" },
+            { "source": "多源综述（2021-2025）", "grade": "usable", "reason": "综述性判断，用于'无时间表'结论" }
+          ],
+          "conflicts": [],
+          "unusable": [],
+          "summary": "来源核查完成：无不可用来源；企业愿景类来源已标注降级使用",
+          "confidence": 0.85,
+          "note": ""
+        },
+        "内容结构师": {
+          "chapters": [
+            { "title": "开场钩子：桐人的世界", "goal": "用动画设定抓住兴趣", "duration_s": 10, "info_points": ["NerveGear 设定"], "transition": "提问切入" },
+            { "title": "现实第一台阶：VR/XR", "goal": "视觉沉浸已商品化", "duration_s": 12, "info_points": ["Quest 3", "Vision Pro"], "transition": "递进" },
+            { "title": "现实第二台阶：脑机接口", "goal": "神经交互进入人体试验", "duration_s": 12, "info_points": ["Neuralink 2024", "Synchron", "Valve 表态"], "transition": "递进" },
+            { "title": "差距：完全潜行的墙", "goal": "技术+安全+伦理难题", "duration_s": 12, "info_points": ["运动病", "触觉", "伦理"], "transition": "转折" },
+            { "title": "结论：现实时间线", "goal": "审慎预测收尾", "duration_s": 10, "info_points": ["三阶段预测"], "transition": "收束" }
+          ],
+          "summary": "结构完成：5 章递进式，预测与事实分层",
+          "confidence": 0.8,
+          "note": ""
+        },
+        "文案写手": {
+          "segments": [
+            {
+              "chapter": "开场钩子",
+              "narration": "2022年，桐人戴上NerveGear，意识沉入艾恩葛朗特。刀剑神域里的完全潜行，现实何时才能实现？",
+              "tone": "悬念",
+              "duration_s": 10,
+              "visual_hint": "深色背景+标题字"
+            },
+            {
+              "chapter": "现实第一台阶",
+              "narration": "第一步已经迈出：2023年的Quest 3、2024年的Vision Pro，视觉沉浸已经商品化。但这只是戴在头上的屏幕，离意识进入游戏还差两道深沟。",
+              "tone": "陈述",
+              "duration_s": 12,
+              "visual_hint": "VR 设备图示意"
+            },
+            {
+              "chapter": "现实第二台阶",
+              "narration": "第二步是脑机接口。2024年1月，Neuralink完成首例人体植入，受试者用意念移动光标；Valve的Gabe Newell也在公开谈论直接读写大脑。注意：这是医疗级运动辅助，不是游戏手柄。",
+              "tone": "陈述",
+              "duration_s": 12,
+              "visual_hint": "BCI 数据图示意"
+            },
+            {
+              "chapter": "差距",
+              "narration": "而完全潜行要翻越的墙更高：运动病、触觉反馈、双向神经读写，还有侵入式手术的风险与伦理。动画把风险简化成了浪漫设定，现实里每一项都是十年量级。",
+              "tone": "转折",
+              "duration_s": 12,
+              "visual_hint": "对比列表"
+            },
+            {
+              "chapter": "结论",
+              "narration": "粗略预测：视觉沉浸，已经实现；脑机接口，2030年代医疗优先；完全潜行，没有公认时间表。现实版艾恩葛朗特，可能需要一代人的耐心。",
+              "tone": "收束",
+              "duration_s": 10,
+              "visual_hint": "时间线图"
+            }
+          ],
+          "summary": "脚本完成：5 段旁白共 56 秒，事实标注时效、预测明确兜底",
+          "confidence": 0.85,
+          "note": ""
+        },
+        "事实核查员": {
+          "checks": [
+            { "assertion": "SAO 动画 2012 年首播", "verdict": "pass", "basis": "动画官方资料", "correction": "" },
+            { "assertion": "Quest 3 于 2023 年发售", "verdict": "pass", "basis": "Meta 官方发布", "correction": "" },
+            { "assertion": "Vision Pro 于 2024 年发售", "verdict": "pass", "basis": "Apple 官方发布", "correction": "" },
+            { "assertion": "Neuralink 2024年1月完成首例人体植入", "verdict": "pass", "basis": "Neuralink 官方发布", "correction": "" },
+            { "assertion": "Gabe Newell 公开谈论 BCI", "verdict": "pass", "basis": "IGN 2021 采访", "correction": "文案已标注为企业愿景" },
+            { "assertion": "完全潜行时间线预测", "verdict": "pass", "basis": "预测已用'粗略预测/无公认时间表'措辞", "correction": "" }
+          ],
+          "summary": "事实核查通过：全部断言 pass，预测与事实边界清晰",
+          "confidence": 0.9,
+          "note": ""
+        },
+        "视觉规划师": {
+          "shots": [
+            { "index": 1, "description": "深蓝背景+《刀剑神域》文字标题", "shot_size": "medium", "duration_s": 10, "source": "screen_capture", "gen_prompt": "深蓝科技感背景，居中白色标题文字", "style_constraint": "深色系" },
+            { "index": 2, "description": "VR 设备轮廓+年份标注", "shot_size": "medium", "duration_s": 12, "source": "ai_generate", "gen_prompt": "极简线条风格 VR 头显图标，深蓝背景", "style_constraint": "扁平图标" },
+            { "index": 3, "description": "脑机接口示意：电极+信号波纹", "shot_size": "medium", "duration_s": 12, "source": "ai_generate", "gen_prompt": "极简线条风格脑电极与信号波纹，深蓝背景", "style_constraint": "扁平图标" },
+            { "index": 4, "description": "技术差距清单（运动病/触觉/伦理）", "shot_size": "medium", "duration_s": 12, "source": "chart", "gen_prompt": "", "style_constraint": "列表排版" },
+            { "index": 5, "description": "三阶段时间线图", "shot_size": "medium", "duration_s": 10, "source": "chart", "gen_prompt": "", "style_constraint": "横向时间线" }
+          ],
+          "summary": "镜头清单完成：5 镜与脚本逐段对齐",
+          "confidence": 0.8,
+          "note": ""
+        },
+        "剪辑规划师": {
+          "timeline": [
+            { "track": "v1", "start_s": 0, "duration_s": 10, "source": "shot1_title", "transition": "fade_in", "note": "" },
+            { "track": "v1", "start_s": 10, "duration_s": 12, "source": "shot2_vr", "transition": "cut", "note": "" },
+            { "track": "v1", "start_s": 22, "duration_s": 12, "source": "shot3_bci", "transition": "cut", "note": "" },
+            { "track": "v1", "start_s": 34, "duration_s": 12, "source": "shot4_gaps", "transition": "cut", "note": "" },
+            { "track": "v1", "start_s": 46, "duration_s": 10, "source": "shot5_timeline", "transition": "fade_out", "note": "" },
+            { "track": "a1", "start_s": 0, "duration_s": 56, "source": "narration_tts", "transition": "none", "note": "旁白" },
+            { "track": "a2", "start_s": 0, "duration_s": 56, "source": "bgm_pad", "transition": "none", "note": "BGM -18dB 闪避" }
+          ],
+          "render_params": { "resolution": "1280x720", "fps": 30, "codec": "libx264", "format": "mp4" },
+          "summary": "剪辑方案完成：5 镜 v1 轨 + 旁白/BGM 双音轨",
+          "confidence": 0.8,
+          "note": ""
+        },
+        "封面设计师": {
+          "concepts": [
+            { "title": "封面A：疑问式", "composition": "深蓝底+中央大字", "text_overlay": "完全潜行 还要多久？", "gen_prompt": "深蓝科技背景，巨大白色问号与 VR 头显剪影" },
+            { "title": "封面B：对比式", "composition": "左右分屏 动画vs现实", "text_overlay": "SAO vs 2026", "gen_prompt": "左侧像素风头盔，右侧现代 VR 设备，中间 VS" }
+          ],
+          "summary": "封面方案完成：2 个候选供人工选择",
+          "confidence": 0.75,
+          "note": ""
+        },
+        "平台适配师": {
+          "versions": [
+            { "platform": "bilibili", "resolution": "1920x1080", "aspect": "16:9", "duration_s": 58, "notes": "横屏主版本" },
+            { "platform": "douyin", "resolution": "1080x1920", "aspect": "9:16", "duration_s": 58, "notes": "竖屏版：居中安全区+上下留白重排版" },
+            { "platform": "youtube", "resolution": "1920x1080", "aspect": "16:9", "duration_s": 58, "notes": "章节标记" }
+          ],
+          "summary": "平台方案完成：3 个版本规格",
+          "confidence": 0.8,
+          "note": ""
+        },
+        "元数据与 SEO": {
+          "platforms": [
+            { "platform": "bilibili", "title": "《刀剑神域》的完全潜行，现实还要多久？", "description": "从NerveGear到Neuralink：VR、脑机接口的现状与完全潜行的真实距离。", "tags": ["刀剑神域", "脑机接口", "VR", "Neuralink", "科普"], "chapters": ["开场", "VR现状", "脑机接口", "差距", "时间线预测"] },
+            { "platform": "youtube", "title": "When Will Sword Art Online's Full Dive Become Real?", "description": "VR, BCI and the honest timeline to full dive.", "tags": ["SAO", "BCI", "VR", "Neuralink"], "chapters": [] }
+          ],
+          "summary": "元数据完成：2 平台标题/标签/章节",
+          "confidence": 0.8,
+          "note": ""
+        },
+        "合规审查员": {
+          "verdict": "pass",
+          "risks": [
+            { "level": "major", "category": "商标与版权", "item": "标题使用《刀剑神域》名称", "action": "仅文字提及+评论性使用；不使用任何动画画面/音乐素材" },
+            { "level": "minor", "category": "医学表述", "item": "脑机接口表述", "action": "保持'运动辅助、人体试验'表述，不宣称医疗效果" },
+            { "level": "minor", "category": "字体", "item": "字幕字体", "action": "使用系统字体（微软雅黑），确认商用许可后再用于商用分发" }
+          ],
+          "summary": "合规通过：版权风险以'纯文字叙述+原创画面'方案规避，留档",
+          "confidence": 0.85,
+          "note": ""
+        },
+        "数据分析师": {
+          "metrics": { "views": 0, "demo": true },
+          "findings": ["首期演示运行"],
+          "lessons": [
+            { "tag": "topic_tech_anime", "lesson": "动画设定+现实科技对照的选题结构可行，事实与预测分层获得 Critic 认可", "applies_to": ["topic", "structure"] },
+            { "tag": "render_narration", "lesson": "旁白字幕烧录渲染路径验证通过，后续可替换为真实素材轨道", "applies_to": ["editing"] }
+          ],
+          "summary": "复盘完成：2 条经验入库",
+          "confidence": 0.7,
+          "note": ""
+        },
+        "选题": {
+          "proposals": [
+            {
+              "title": "《刀剑神域》动画中的游戏，现实何时能够实现？",
+              "angle": "从动画设定出发，对照现实 VR/XR、脑机接口、完全潜行的技术现状，给出审慎的时间线预测",
+              "audience": "动画爱好者+科技爱好者",
+              "value_proposition": "经典作品设定与 2026 年科技进展的真实对照，稀缺的'诚实科普'角度",
+              "feasibility": "high",
+              "risks": ["脑机接口领域进展快，需标注信息时效", "版权：不使用动画画面，仅文字叙述"],
+              "research_needs": ["NerveGear 设定", "消费级 VR/XR 现状", "BCI 人体试验进展", "完全潜行技术障碍综述"]
+            }
+          ],
+          "summary": "选题提案：SAO 完全潜行 vs 现实科技（人类方向已指定，此为提案确认）",
+          "confidence": 0.85,
+          "note": ""
+        }
+      },
+      "default": { "summary": "mock 默认输出", "confidence": 0.5, "note": "" }
+    }
+  },
+  "tools": {
+    "ffmpeg": { "path": "C:/mp4agent/video-studio/bin/ffmpeg.exe", "ffprobe": "C:/mp4agent/video-studio/bin/ffprobe.exe" },
+    "tts": { "provider": "edge-tts" },
+    "asr": { "provider": "faster-whisper" },
+    "search": { "provider": "none", "api_key_env": "SEARCH_API_KEY" },
+    "image": { "provider": "none", "api_key_env": "IMAGE_API_KEY" },
+    "video": { "provider": "none", "api_key_env": "VIDEO_API_KEY" }
+  },
+  "hitl": {
+    "gates": ["topic", "structure", "script", "materials", "final_cut", "publish"],
+    "auto_approve": false
+  },
+  "retry": { "default_max_retries": 2, "backoff_base_s": 5 }
+}

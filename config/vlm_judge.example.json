@@ -1,0 +1,6 @@
+{
+  "enabled": false,
+  "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "model": "qwen3-vl-plus",
+  "api_key_env": "VLM_API_KEY"
+}

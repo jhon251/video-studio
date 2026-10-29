@@ -1,0 +1,96 @@
+{
+  "workspace": {
+    "root": "projects"
+  },
+  "llm": {
+    "provider": "deepseek",
+    "deepseek": {
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "base_url": "https://api.deepseek.com",
+      "timeout_s": 120,
+      "max_retries": 2,
+      "backoff_base_s": 5
+    },
+    "tiers": {
+      "R": {
+        "model": "deepseek-v4-pro",
+        "max_tokens": 8192
+      },
+      "M": {
+        "model": "deepseek-flash",
+        "max_tokens": 16384
+      },
+      "F": {
+        "model": "deepseek-flash",
+        "max_tokens": 2048
+      }
+    },
+    "pricing": {
+      "deepseek-flash": {
+        "peak": {
+          "cache_hit": 0.006,
+          "cache_miss": 0.3,
+          "output": 1.2
+        },
+        "off_peak": {
+          "cache_hit": 0.003,
+          "cache_miss": 0.15,
+          "output": 0.6
+        }
+      },
+      "deepseek-v4-pro": {
+        "peak": {
+          "cache_hit": 0.044,
+          "cache_miss": 1.32,
+          "output": 3.96
+        },
+        "off_peak": {
+          "cache_hit": 0.022,
+          "cache_miss": 0.66,
+          "output": 1.98
+        }
+      }
+    },
+    "max_total_usd": 0.6
+  },
+  "tools": {
+    "ffmpeg": {
+      "path": "C:/mp4agent/video-studio/bin/ffmpeg.exe",
+      "ffprobe": "C:/mp4agent/video-studio/bin/ffprobe.exe"
+    },
+    "tts": {
+      "provider": "edge-tts",
+      "voice_type": "zh-CN-XiaoxiaoNeural"
+    },
+    "asr": {
+      "provider": "faster-whisper"
+    },
+    "search": {
+      "provider": "none",
+      "api_key_env": "SEARCH_API_KEY"
+    },
+    "image": {
+      "provider": "none",
+      "api_key_env": "IMAGE_API_KEY"
+    },
+    "video": {
+      "provider": "none",
+      "api_key_env": "VIDEO_API_KEY"
+    }
+  },
+  "hitl": {
+    "gates": [
+      "topic",
+      "structure",
+      "script",
+      "materials",
+      "final_cut",
+      "publish"
+    ],
+    "auto_approve": false
+  },
+  "retry": {
+    "default_max_retries": 2,
+    "backoff_base_s": 5
+  }
+}

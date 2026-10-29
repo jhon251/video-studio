@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "name": "source_tier_gold",
+    "note": "Stage 8A.1 source-tier 分类 gold set（数据无关：仅用通用域名/内容模式，无样本特例）。覆盖 10 类与 unknown，用于衡量分类准确率与错误分类案例。"
+  },
+  "entries": [
+    {"url": "https://www.gov.cn/zhengce/content/2024/content_1.htm", "title": "国务院关于某工作的通知", "expected": "official"},
+    {"url": "http://gjj.beijing.gov.cn/web/zwfw5/index.html", "title": "住房公积金缴存人账户转移操作详解", "expected": "official"},
+    {"url": "http://www.chinapeace.gov.cn/chinapeace/c100047/content.html", "title": "首例涉虚拟数字人侵权案判决", "expected": "official"},
+    {"url": "https://www.nature.com/articles/s41586-024-00001-z", "title": "Whole-brain annotation", "expected": "paper_publisher"},
+    {"url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9568407", "title": "中国脑科学计划进展", "expected": "paper_publisher"},
+    {"url": "https://www.tsinghua.edu.cn/info/1182/111441.htm", "title": "要论能效，还看大脑", "expected": "academic"},
+    {"url": "https://cebsit.cas.cn/xwen/kyjz/200607/t20060709_5315516.html", "title": "胶质细胞突触具有可塑性", "expected": "academic"},
+    {"url": "http://www.news.cn/world/20250410/content.html", "title": "最大最详细哺乳动物大脑连接图谱绘成", "expected": "mainstream_media"},
+    {"url": "http://paper.people.com.cn/rmrbhwb/html/2013-06/20/content.html", "title": "求永生之路", "expected": "mainstream_media"},
+    {"url": "https://www.tmtpost.com/7934099.html", "title": "电费只占5%，谁在真正吃掉算力成本", "expected": "professional_media"},
+    {"url": "https://news.sciencenet.cn/htmlnews/2025/2/538887.shtm", "title": "神经元数量估算", "expected": "professional_media"},
+    {"url": "https://zh.wikipedia.org/wiki/%E7%A5%9E%E7%B6%93%E5%85%83", "title": "神经元", "expected": "encyclopedia"},
+    {"url": "https://baike.baidu.com/item/%E6%B3%95%E5%BE%8B%E7%A9%BA%E7%99%BD/22471076", "title": "法律空白", "expected": "encyclopedia"},
+    {"url": "https://www.alibabacloud.com/zh/pricing", "title": "阿里云产品定价", "expected": "commercial"},
+    {"url": "https://sell.amazon.com/zh/blog/sell-my-stuff-online", "title": "如何在网上出售你的东西", "expected": "commercial"},
+    {"url": "https://forum.gamer.com.tw/C.php?bsn=17608&snA=29191", "title": "排副本要那麼久？", "expected": "forum_social"},
+    {"url": "https://www.threads.com/@meta.ai/post/DY9MN_7COJH", "title": "完全潛行NerveGear", "expected": "forum_social"},
+    {"url": "https://m.163.com/dy/article/XXXX.html", "title": "原标题：某报道", "text": "免责声明：图文来源于网络", "expected": "aggregator"},
+    {"url": "https://zhuanlan.zhihu.com/p/274580219", "title": "意念控制术", "expected": "aggregator"},
+    {"url": "https://www.sohu.com/a/1052964186_122745283", "title": "数字永生不是科幻", "text": "来源：某媒体", "expected": "aggregator"},
+    {"url": "https://blog.leowang.net/mt0uj89j-qy", "title": "你的记忆是假的？", "expected": "unknown"},
+    {"url": "https://www.litianyi.me/2022/05/28/consciousness-external-memories", "title": "意识连续性与外部记忆", "expected": "unknown"},
+    {"url": "https://www.kedo.net.cn/c/918/918584.shtml", "title": "蝌蚪五线谱", "expected": "unknown"},
+    {"url": "https://micro-point.tw/2025/06/27/drosophila-connectome", "title": "果蠅連接體", "expected": "unknown"},
+    {"url": "https://www.chinalawtranslate.com/digital-humans-draft", "title": "数字虚拟人信息服务管理办法（征求意见稿）", "expected": "unknown"}
+  ]
+}

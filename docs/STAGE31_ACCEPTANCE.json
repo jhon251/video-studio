@@ -1,0 +1,1294 @@
+{
+  "gates": {
+    "G14_有测试": true,
+    "G15_版权安全测试": true,
+    "G12_2x回归": true,
+    "G11_冻结SHA256不变": true,
+    "G13_未实现3.2": true,
+    "G1_读取2x包": true,
+    "G2_全量镜头需求": true,
+    "G3_自动检索": [
+      {
+        "shot_id": "S01",
+        "outcomes": [
+          {
+            "query": "futuristic technology interface",
+            "source": "wikimedia_commons",
+            "status": "EMPTY",
+            "candidates": 0,
+            "note": "无结果（换 filetype 或关键词）"
+          },
+          {
+            "query": "futuristic technology interface",
+            "source": "wikimedia_commons",
+            "status": "EMPTY",
+            "candidates": 0,
+            "note": "无结果（换 filetype 或关键词）"
+          },
+          {
+            "query": "smart home automation",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "smart home automation",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 1,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S02",
+        "outcomes": [
+          {
+            "query": "futuristic technology interface",
+            "source": "wikimedia_commons",
+            "status": "EMPTY",
+            "candidates": 0,
+            "note": "无结果（换 filetype 或关键词）"
+          },
+          {
+            "query": "futuristic technology interface",
+            "source": "wikimedia_commons",
+            "status": "EMPTY",
+            "candidates": 0,
+            "note": "无结果（换 filetype 或关键词）"
+          },
+          {
+            "query": "smart home automation",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "smart home automation",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 1,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S04",
+        "outcomes": [
+          {
+            "query": "futuristic technology interface",
+            "source": "wikimedia_commons",
+            "status": "EMPTY",
+            "candidates": 0,
+            "note": "无结果（换 filetype 或关键词）"
+          },
+          {
+            "query": "futuristic technology interface",
+            "source": "wikimedia_commons",
+            "status": "EMPTY",
+            "candidates": 0,
+            "note": "无结果（换 filetype 或关键词）"
+          },
+          {
+            "query": "smart home automation",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "smart home automation",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 1,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S05",
+        "outcomes": [
+          {
+            "query": "chatbot interface",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "chatbot interface",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "typing on phone",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "typing on phone",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S06",
+        "outcomes": [
+          {
+            "query": "chatbot interface",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "chatbot interface",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "typing on phone",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=typing+on+phone+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "typing on phone",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=typing+on+phone+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S07",
+        "outcomes": [
+          {
+            "query": "chatbot interface",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=chatbot+interface+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "chatbot interface",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=chatbot+interface+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "typing on phone",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=typing+on+phone+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "typing on phone",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=typing+on+phone+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S08",
+        "outcomes": [
+          {
+            "query": "chatbot interface",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=chatbot+interface+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "chatbot interface",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "typing on phone",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "typing on phone",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S09",
+        "outcomes": [
+          {
+            "query": "data center server room",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "data center server room",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "archive documents",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "archive documents",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S10",
+        "outcomes": [
+          {
+            "query": "data center server room",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "data center server room",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "archive documents",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "archive documents",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=archive+documents+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S11",
+        "outcomes": [
+          {
+            "query": "data center server room",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=data+center+server+room+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "data center server room",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=data+center+server+room+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "archive documents",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=archive+documents+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "archive documents",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=archive+documents+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S13",
+        "outcomes": [
+          {
+            "query": "data center server room",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=data+center+server+room+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "data center server room",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=data+center+server+room+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "archive documents",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=archive+documents+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "archive documents",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S14",
+        "outcomes": [
+          {
+            "query": "audio waveform",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "audio waveform",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "microphone studio",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "microphone studio",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S15",
+        "outcomes": [
+          {
+            "query": "audio waveform",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "audio waveform",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "microphone studio",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "microphone studio",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S16",
+        "outcomes": [
+          {
+            "query": "audio waveform",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "audio waveform",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=audio+waveform+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "microphone studio",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=microphone+studio+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "microphone studio",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=microphone+studio+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S17",
+        "outcomes": [
+          {
+            "query": "audio waveform",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=audio+waveform+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "audio waveform",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=audio+waveform+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "microphone studio",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=microphone+studio+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "microphone studio",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=microphone+studio+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S18",
+        "outcomes": [
+          {
+            "query": "object detection",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "object detection",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "camera lens macro",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "camera lens macro",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S19",
+        "outcomes": [
+          {
+            "query": "object detection",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "object detection",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "camera lens macro",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "camera lens macro",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S21",
+        "outcomes": [
+          {
+            "query": "object detection",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "object detection",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "camera lens macro",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=camera+lens+macro+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "camera lens macro",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=camera+lens+macro+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S22",
+        "outcomes": [
+          {
+            "query": "automation workflow",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=automation+workflow+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "automation workflow",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=automation+workflow+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "robot arm assembly",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=robot+arm+assembly+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "robot arm assembly",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=robot+arm+assembly+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S23",
+        "outcomes": [
+          {
+            "query": "automation workflow",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "automation workflow",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "robot arm assembly",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "robot arm assembly",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S24",
+        "outcomes": [
+          {
+            "query": "automation workflow",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "automation workflow",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "robot arm assembly",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "robot arm assembly",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S25",
+        "outcomes": [
+          {
+            "query": "automation workflow",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "automation workflow",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "robot arm assembly",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=robot+arm+assembly+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "robot arm assembly",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=robot+arm+assembly+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S26",
+        "outcomes": [
+          {
+            "query": "smartphone in hand",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=smartphone+in+hand+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "smartphone in hand",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=smartphone+in+hand+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "computer screen closeup",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=computer+screen+closeup+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "computer screen closeup",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=computer+screen+closeup+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S27",
+        "outcomes": [
+          {
+            "query": "smartphone in hand",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=smartphone+in+hand+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "smartphone in hand",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "computer screen closeup",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 3,
+            "note": ""
+          },
+          {
+            "query": "computer screen closeup",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 1,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S29",
+        "outcomes": [
+          {
+            "query": "smartphone in hand",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "smartphone in hand",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "computer screen closeup",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 3,
+            "note": ""
+          },
+          {
+            "query": "computer screen closeup",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 1,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S30",
+        "outcomes": [
+          {
+            "query": "smart home devices",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "smart home devices",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "home interior lights",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "home interior lights",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=home+interior+lights+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S31",
+        "outcomes": [
+          {
+            "query": "smart home devices",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=smart+home+devices+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "smart home devices",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=smart+home+devices+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "home interior lights",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=home+interior+lights+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "home interior lights",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=home+interior+lights+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S33",
+        "outcomes": [
+          {
+            "query": "smart home devices",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=smart+home+devices+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "smart home devices",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=smart+home+devices+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "home interior lights",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=home+interior+lights+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "home interior lights",
+            "source": "wikimedia_commons",
+            "status": "EMPTY",
+            "candidates": 0,
+            "note": "无结果（换 filetype 或关键词）"
+          }
+        ]
+      },
+      {
+        "shot_id": "S34",
+        "outcomes": [
+          {
+            "query": "humanoid robot",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "humanoid robot",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "robotic arm grasping",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "robotic arm grasping",
+            "source": "wikimedia_commons",
+            "status": "EMPTY",
+            "candidates": 0,
+            "note": "无结果（换 filetype 或关键词）"
+          }
+        ]
+      },
+      {
+        "shot_id": "S35",
+        "outcomes": [
+          {
+            "query": "humanoid robot",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "humanoid robot",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "robotic arm grasping",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "robotic arm grasping",
+            "source": "wikimedia_commons",
+            "status": "EMPTY",
+            "candidates": 0,
+            "note": "无结果（换 filetype 或关键词）"
+          }
+        ]
+      },
+      {
+        "shot_id": "S36",
+        "outcomes": [
+          {
+            "query": "humanoid robot",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "humanoid robot",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=humanoid+robot+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "robotic arm grasping",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=robotic+arm+grasping+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "robotic arm grasping",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=robotic+arm+grasping+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S37",
+        "outcomes": [
+          {
+            "query": "humanoid robot",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=humanoid+robot+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "humanoid robot",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=humanoid+robot+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "robotic arm grasping",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=robotic+arm+grasping+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "robotic arm grasping",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=robotic+arm+grasping+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S38",
+        "outcomes": [
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=control+room+screens+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 2,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S39",
+        "outcomes": [
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 2,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S40",
+        "outcomes": [
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=city+skyline+night+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=city+skyline+night+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S42",
+        "outcomes": [
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=control+room+screens+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=control+room+screens+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=city+skyline+night+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=city+skyline+night+filetype%3Avideo&gsrnamespace=6&gsrlimit=4&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          }
+        ]
+      },
+      {
+        "shot_id": "S44",
+        "outcomes": [
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "ERROR",
+            "candidates": 0,
+            "note": "HTTPError: 429 Client Error: Too Many Requests for url: https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=control+room+screens+filetype%3Abitmap&gsrnamespace=6&gsrlimit=8&prop=imageinfo%7Cvideoinfo&iiprop=url%7Csize%7Cmime%7Cextmetadata%7Cmediatype&iiurlwidth=1280&viv=derivatives&maxlag=5"
+          },
+          {
+            "query": "control room screens",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 4,
+            "note": ""
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 8,
+            "note": ""
+          },
+          {
+            "query": "city skyline night",
+            "source": "wikimedia_commons",
+            "status": "OK",
+            "candidates": 2,
+            "note": ""
+          }
+        ]
+      },
+      {
+        "shot_id": "S03",
+        "outcomes": []
+      },
+      {
+        "shot_id": "S12",
+        "outcomes": []
+      },
+      {
+        "shot_id": "S20",
+        "outcomes": []
+      },
+      {
+        "shot_id": "S28",
+        "outcomes": []
+      },
+      {
+        "shot_id": "S32",
+        "outcomes": []
+      },
+      {
+        "shot_id": "S41",
+        "outcomes": []
+      },
+      {
+        "shot_id": "S43",
+        "outcomes": []
+      }
+    ],
+    "G4_四类关系": true,
+    "G5_原始来源追溯": true,
+    "G6_许可证记录": true,
+    "G7_UNSAFE不进池": true,
+    "G8_NO_SAFE_MATCH": true,
+    "G9_Shot映射": true,
+    "G10_包可执行": true
+  },
+  "details": {
+    "stage31_tests": {
+      "stage31_rights_test.py": "PASS",
+      "stage31_intent_test.py": "PASS",
+      "stage31_package_test.py": "PASS"
+    },
+    "frozen_tests_failed": [],
+    "changed_frozen_files": [],
+    "style_v2_baseline_note": "4 个文件为 Creator Style v2 升级版（2026-08-19 人工裁决冻结），与 8R manifest 的差异早于 3.1；3.1 本轮对这些文件零改动。",
+    "forbidden_hits_in_stage31": [],
+    "package_stats": {
+      "materials_total": 449,
+      "pool": 430,
+      "no_safe_match_shots": 9,
+      "match_types": {
+        "CONCEPTUAL": 4,
+        "DIRECT": 3,
+        "EMOTIONAL": 11,
+        "EVIDENCE": 5,
+        "RHYTHM": 19,
+        "SELF_MADE": 2
+      }
+    }
+  },
+  "fails": 0
+}

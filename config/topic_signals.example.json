@@ -1,0 +1,8 @@
+{
+  "topic_signals": {
+    "provider": "none",
+    "manual_path": null,
+    "snapshot_dir": "signals",
+    "note": "选题信号（P10-2）可选配置示例。复制为 config/topic_signals.json 后生效；provider=none（默认）⇒ topic agent 走纯头脑风暴路径。provider=bilibili_popular 时，请先人工执行 `python run.py fetch-signals --provider bilibili_popular` 生成 signals/ 快照，agent 运行期只读快照、不联网。本文件为**示例**，不参与运行时读取，也不改变任何默认行为。"
+  }
+}

@@ -1,0 +1,1121 @@
+{
+ "schema": "directorial-quality-truth-v1",
+ "stage": "6-B/M1",
+ "purpose": "Directorial Quality（DQ-1…DQ-8，DQ-7 为总评）**冻结真值集**：覆盖授权点名的 7 个覆盖项（Hook／素材重复／静态镜头／场景变化密度／视觉语义支撑／视觉高潮／Outro），逐项固化 PASS/FAIL/UNKNOWN/NOT_ASSESSABLE、阈值边界、**机械可测 vs 需要语义/人审**的分类，以及每个 FAIL 必须具备可回溯证据锚点的契约。",
+ "frozen_policy": {
+  "max_asset_share": 0.35,
+  "min_unique_assets": 6,
+  "max_hold_s": 25.0,
+  "max_over_hold_share": 0.2,
+  "min_scene_changes_per_min": 2.0,
+  "min_distinct_assets_in_core": 6,
+  "max_hold_in_core_s": 25.0,
+  "max_tail_silence_s": 5.0,
+  "min_semantic_match_share": 0.5,
+  "outro_keywords": [
+   "感谢观看",
+   "感谢收看",
+   "订阅",
+   "下期",
+   "再见",
+   "我们下期",
+   "收束",
+   "结语"
+  ],
+  "outro_last_scenes": 2,
+  "core_keywords": [
+   "AlphaGeometry",
+   "Lean",
+   "mathlib",
+   "四色定理",
+   "开普勒",
+   "计算机",
+   "机器",
+   "形式化",
+   "证明",
+   "检查",
+   "验证"
+  ]
+ },
+ "coverage_map": {
+  "note": "授权书第 2 条的 7 个覆盖项 → DQ 指标的映射（DQ-1…DQ-7 沿用 6-A/M1 定义；DQ-8 为 6-B/M1 新增以闭合『视觉语义支撑』覆盖项）。",
+  "Hook": "DQ-1",
+  "素材重复/密度": "DQ-2（重复） + DQ-4（密度）",
+  "静态镜头": "DQ-3",
+  "场景变化": "DQ-4",
+  "视觉语义支撑": "DQ-8（逐镜，复用既有只读证据）",
+  "视觉高潮": "DQ-5（结构项=代理指标；语义项单列）",
+  "Outro": "DQ-6（结构项 + 语义项单列）",
+  "总评": "DQ-7"
+ },
+ "mechanical_vs_semantic": {
+  "mechanical": [
+   "DQ-2",
+   "DQ-3",
+   "DQ-4"
+  ],
+  "semantic": [
+   "DQ-1",
+   "DQ-8",
+   "DQ-5.semantic_state",
+   "DQ-6.semantic_state"
+  ],
+  "note": "机械项可直接由时间轴/素材/成片测量复算；语义项**只复用既有只读证据**（4-B/5-A/5-D/Judge），无证据 → NOT_ASSESSABLE，证据不足 → UNKNOWN，**UNKNOWN 绝不并入 PASS**；『是否有视觉高潮/画面是否真的支撑旁白』的最终人文判断不在 DQ 能力内，DQ 只做可度量代理 + 逐镜证据定位。"
+ },
+ "fail_evidence_contract": {
+  "note": "6-B/M1 契约：**任何 FAIL 的返回必须带非空 `findings`**，且每个 finding 至少含 ①scene_id / asset_id / [start_s,end_s] 时间区间 / 证据层名 之一，使人工可直接定位复核。",
+  "required_anchor_keys_any_of": [
+   "scene_id",
+   "asset_id",
+   "window",
+   "scene_windows",
+   "asset_ids",
+   "scenes",
+   "scene_ids",
+   "core_scene_ids",
+   "distinct_asset_ids",
+   "tail_scenes",
+   "layers",
+   "freeze_profile",
+   "last_scene"
+  ],
+  "cases_tagged": "凡 expect.state == FAIL 的用例，测试都会断言该契约"
+ },
+ "cases": [
+  {
+   "id": "M1-DQ1-PASS-MATCH",
+   "fn": "hook_relevance",
+   "args": {
+    "evidence": {
+     "S01": {
+      "4b": "MATCH",
+      "judge": "MATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "PASS"
+   }
+  },
+  {
+   "id": "M1-DQ1-FAIL-MISMATCH",
+   "fn": "hook_relevance",
+   "args": {
+    "evidence": {
+     "S01": {
+      "5a": "MISMATCH",
+      "judge": "MISMATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "FAIL"
+   }
+  },
+  {
+   "id": "M1-DQ1-UNKNOWN-ALL-UNKNOWN",
+   "fn": "hook_relevance",
+   "args": {
+    "evidence": {
+     "S01": {
+      "4b": "UNKNOWN",
+      "5a": "UNKNOWN",
+      "5d": "UNKNOWN",
+      "judge": "UNKNOWN"
+     }
+    }
+   },
+   "expect": {
+    "state": "UNKNOWN"
+   }
+  },
+  {
+   "id": "M1-DQ1-NA-NO-EVIDENCE",
+   "fn": "hook_relevance",
+   "args": {
+    "evidence": null
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M1-DQ1-NA-NO-HOOK-LAYERS",
+   "fn": "hook_relevance",
+   "args": {
+    "evidence": {
+     "S02": {
+      "judge": "MATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M1-DQ2-PASS-6-ASSETS",
+   "fn": "asset_reuse",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 10.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5",
+      "a6"
+     ]
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "unique_assets": 6,
+    "max_asset_share": 0.1667
+   }
+  },
+  {
+   "id": "M1-DQ2-BOUNDARY-SHARE-0.35",
+   "fn": "asset_reuse",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 10.0,
+     "assets": [
+      "a1",
+      "a1",
+      "a1",
+      "a1",
+      "a1",
+      "a1",
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5",
+      "a6",
+      "a7",
+      "a2",
+      "a3",
+      "a4",
+      "a5",
+      "a6",
+      "a7",
+      "a8"
+     ]
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "unique_assets": 8,
+    "max_asset_share": 0.35
+   }
+  },
+  {
+   "id": "M1-DQ2-FAIL-SHARE-AND-UNIQ",
+   "fn": "asset_reuse",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 10.0,
+     "assets": [
+      "a1",
+      "a1",
+      "a2"
+     ]
+    }
+   },
+   "expect": {
+    "state": "FAIL",
+    "unique_assets": 2,
+    "max_asset_share": 0.6667
+   }
+  },
+  {
+   "id": "M1-DQ2-FAIL-UNIQ-ONLY",
+   "fn": "asset_reuse",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 10.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5"
+     ]
+    }
+   },
+   "expect": {
+    "state": "FAIL",
+    "unique_assets": 5
+   }
+  },
+  {
+   "id": "M1-DQ2-NA-EMPTY",
+   "fn": "asset_reuse",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 10.0,
+     "assets": []
+    }
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M1-DQ3-PASS-HOLD-20",
+   "fn": "static_hold",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5"
+     ]
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "holds_over_threshold": 0
+   }
+  },
+  {
+   "id": "M1-DQ3-BOUNDARY-HOLD-EXACT-25",
+   "fn": "static_hold",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 25.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5"
+     ]
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "holds_over_threshold": 0
+   }
+  },
+  {
+   "id": "M1-DQ3-BOUNDARY-SHARE-EXACT-0.2",
+   "fn": "static_hold",
+   "args": {
+    "timeline_spec": {
+     "holds": [
+      30.0,
+      30.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0
+     ],
+     "assets": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5",
+      "a6",
+      "a7",
+      "a8",
+      "a9",
+      "a10"
+     ]
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "holds_over_threshold": 2,
+    "share_over_threshold": 0.2
+   }
+  },
+  {
+   "id": "M1-DQ3-FAIL-ALL-OVER",
+   "fn": "static_hold",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 30.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5"
+     ]
+    }
+   },
+   "expect": {
+    "state": "FAIL",
+    "holds_over_threshold": 5,
+    "share_over_threshold": 1.0
+   }
+  },
+  {
+   "id": "M1-DQ3-NA-EMPTY",
+   "fn": "static_hold",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 10.0,
+     "assets": []
+    }
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M1-DQ4-PASS-DENSE",
+   "fn": "visual_density",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 6.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5",
+      "a6",
+      "a7",
+      "a8",
+      "a9",
+      "a10"
+     ]
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "scene_changes_per_min": 10.0
+   }
+  },
+  {
+   "id": "M1-DQ4-FAIL-SLOW",
+   "fn": "visual_density",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 60.0,
+     "assets": [
+      "a1",
+      "a2"
+     ]
+    }
+   },
+   "expect": {
+    "state": "FAIL",
+    "scene_changes_per_min": 1.0
+   }
+  },
+  {
+   "id": "M1-DQ4-UNKNOWN-ZERO-LENGTH",
+   "fn": "visual_density",
+   "args": {
+    "timeline_spec": {
+     "holds": [
+      0.0,
+      0.0
+     ],
+     "assets": [
+      "a1",
+      "a2"
+     ]
+    }
+   },
+   "expect": {
+    "state": "UNKNOWN"
+   }
+  },
+  {
+   "id": "M1-DQ4-NA-EMPTY",
+   "fn": "visual_density",
+   "args": {
+    "timeline_spec": {
+     "hold_s": 10.0,
+     "assets": []
+    }
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M1-DQ5-PASS-VARIED-CORE",
+   "fn": "climax_coverage",
+   "args": {
+    "script": [
+     {
+      "narration": "证明 检查"
+     },
+     {
+      "narration": "形式化"
+     },
+     {
+      "narration": "验证"
+     },
+     {
+      "narration": "机器"
+     },
+     {
+      "narration": "计算机"
+     },
+     {
+      "narration": "开普勒"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5",
+      "a6"
+     ]
+    },
+    "evidence": {
+     "S01": {
+      "judge": "MATCH"
+     },
+     "S02": {
+      "judge": "MATCH"
+     },
+     "S03": {
+      "judge": "MATCH"
+     },
+     "S04": {
+      "judge": "MATCH"
+     },
+     "S05": {
+      "judge": "MATCH"
+     },
+     "S06": {
+      "judge": "MATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "core_scenes": 6,
+    "distinct_assets_in_core": 6,
+    "semantic_state": "PASS"
+   }
+  },
+  {
+   "id": "M1-DQ5-FAIL-FEW-CORE-ASSETS",
+   "fn": "climax_coverage",
+   "args": {
+    "script": [
+     {
+      "narration": "证明"
+     },
+     {
+      "narration": "检查"
+     },
+     {
+      "narration": "验证"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a1",
+      "a2"
+     ]
+    },
+    "evidence": null
+   },
+   "expect": {
+    "state": "FAIL",
+    "core_scenes": 3,
+    "distinct_assets_in_core": 2,
+    "semantic_state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M1-DQ5-SEMANTIC-MISMATCH",
+   "fn": "climax_coverage",
+   "args": {
+    "script": [
+     {
+      "narration": "证明"
+     },
+     {
+      "narration": "检查"
+     },
+     {
+      "narration": "验证"
+     },
+     {
+      "narration": "机器"
+     },
+     {
+      "narration": "计算机"
+     },
+     {
+      "narration": "开普勒"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5",
+      "a6"
+     ]
+    },
+    "evidence": {
+     "S01": {
+      "judge": "MISMATCH"
+     },
+     "S02": {
+      "judge": "MATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "semantic_state": "FAIL"
+   }
+  },
+  {
+   "id": "M1-DQ5-NA-NO-CORE-KEYWORDS",
+   "fn": "climax_coverage",
+   "args": {
+    "script": [
+     {
+      "narration": "开场寒暄"
+     },
+     {
+      "narration": "结束语"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2"
+     ]
+    },
+    "evidence": null
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M1-DQ6-PASS-OUTRO",
+   "fn": "ending_completeness",
+   "args": {
+    "script": [
+     {
+      "narration": "开场"
+     },
+     {
+      "narration": "主体"
+     },
+     {
+      "narration": "感谢观看，我们下期再见"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3"
+     ]
+    },
+    "tail_silence_s": 1.0,
+    "evidence": {
+     "S03": {
+      "judge": "MATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "semantic_state": "PASS"
+   }
+  },
+  {
+   "id": "M1-DQ6-FAIL-NO-OUTRO",
+   "fn": "ending_completeness",
+   "args": {
+    "script": [
+     {
+      "narration": "开场"
+     },
+     {
+      "narration": "主体"
+     },
+     {
+      "narration": "这一期里有一堆我刻意没有写死的地方"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3"
+     ]
+    },
+    "tail_silence_s": 1.0,
+    "evidence": {
+     "S03": {
+      "judge": "UNKNOWN"
+     }
+    }
+   },
+   "expect": {
+    "state": "FAIL",
+    "semantic_state": "UNKNOWN"
+   }
+  },
+  {
+   "id": "M1-DQ6-FAIL-TAIL-SILENCE",
+   "fn": "ending_completeness",
+   "args": {
+    "script": [
+     {
+      "narration": "开场"
+     },
+     {
+      "narration": "主体"
+     },
+     {
+      "narration": "感谢观看"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2",
+      "a3"
+     ]
+    },
+    "tail_silence_s": 30.0,
+    "evidence": null
+   },
+   "expect": {
+    "state": "FAIL",
+    "tail_silence_s": 30.0
+   }
+  },
+  {
+   "id": "M1-DQ6-NA-MISSING",
+   "fn": "ending_completeness",
+   "args": {
+    "script": [],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1"
+     ]
+    },
+    "tail_silence_s": 1.0
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M1-DQ8-PASS-ALL-MATCH",
+   "fn": "narration_visual_support",
+   "args": {
+    "script": [
+     {
+      "narration": "一"
+     },
+     {
+      "narration": "二"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2"
+     ]
+    },
+    "evidence": {
+     "S01": {
+      "judge": "MATCH"
+     },
+     "S02": {
+      "judge": "MATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "match_share": 1.0,
+    "mismatch_scene_count": 0
+   }
+  },
+  {
+   "id": "M1-DQ8-BOUNDARY-MATCH-0.5",
+   "fn": "narration_visual_support",
+   "args": {
+    "script": [
+     {
+      "narration": "一"
+     },
+     {
+      "narration": "二"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2"
+     ]
+    },
+    "evidence": {
+     "S01": {
+      "judge": "MATCH"
+     },
+     "S02": {
+      "judge": "UNKNOWN",
+      "5a": "UNKNOWN",
+      "4b": "MATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "PASS",
+    "match_share": 0.5
+   }
+  },
+  {
+   "id": "M1-DQ8-FAIL-MISMATCH",
+   "fn": "narration_visual_support",
+   "args": {
+    "script": [
+     {
+      "narration": "一"
+     },
+     {
+      "narration": "二"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2"
+     ]
+    },
+    "evidence": {
+     "S01": {
+      "judge": "MISMATCH"
+     },
+     "S02": {
+      "judge": "MATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "FAIL",
+    "mismatch_scene_count": 1
+   }
+  },
+  {
+   "id": "M1-DQ8-UNKNOWN-INSUFFICIENT",
+   "fn": "narration_visual_support",
+   "args": {
+    "script": [
+     {
+      "narration": "一"
+     },
+     {
+      "narration": "二"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1",
+      "a2"
+     ]
+    },
+    "evidence": {
+     "S01": {
+      "judge": "MATCH"
+     },
+     "S02": {
+      "judge": "UNKNOWN",
+      "5a": "UNKNOWN",
+      "4b": "UNKNOWN"
+     }
+    }
+   },
+   "expect": {
+    "state": "UNKNOWN",
+    "mismatch_scene_count": 0
+   }
+  },
+  {
+   "id": "M1-DQ8-NA-NO-EVIDENCE",
+   "fn": "narration_visual_support",
+   "args": {
+    "script": [
+     {
+      "narration": "一"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": [
+      "a1"
+     ]
+    },
+    "evidence": null
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  },
+  {
+   "id": "M1-DQ8-NA-NO-TIMELINE",
+   "fn": "narration_visual_support",
+   "args": {
+    "script": [
+     {
+      "narration": "一"
+     }
+    ],
+    "timeline_spec": {
+     "hold_s": 20.0,
+     "assets": []
+    },
+    "evidence": {
+     "S01": {
+      "judge": "MATCH"
+     }
+    }
+   },
+   "expect": {
+    "state": "NOT_ASSESSABLE"
+   }
+  }
+ ],
+ "summarize_cases": [
+  {
+   "id": "M1-DQ7-FAIL-DOMINATES",
+   "args": {
+    "DQ-2": "FAIL",
+    "DQ-4": "PASS",
+    "DQ-8": "UNKNOWN"
+   },
+   "expect": {
+    "overall": "FAIL",
+    "failed_metrics": [
+     "DQ-2"
+    ]
+   }
+  },
+  {
+   "id": "M1-DQ7-UNKNOWN-NOT-PASS",
+   "args": {
+    "DQ-1": "UNKNOWN",
+    "DQ-2": "PASS"
+   },
+   "expect": {
+    "overall": "UNKNOWN"
+   }
+  },
+  {
+   "id": "M1-DQ7-MIXED-PASS-NA",
+   "args": {
+    "DQ-2": "PASS",
+    "DQ-8": "NOT_ASSESSABLE"
+   },
+   "expect": {
+    "overall": "NOT_ASSESSABLE",
+    "note": "6-B/M1 收紧：混有无法评估项时不得给 PASS（与 PI 侧 M3 同口径）"
+   }
+  },
+  {
+   "id": "M1-DQ7-ALL-PASS",
+   "args": {
+    "DQ-2": "PASS",
+    "DQ-3": "PASS"
+   },
+   "expect": {
+    "overall": "PASS"
+   }
+  },
+  {
+   "id": "M1-DQ7-ALL-NA",
+   "args": {
+    "DQ-1": "NOT_ASSESSABLE",
+    "DQ-8": "NOT_ASSESSABLE"
+   },
+   "expect": {
+    "overall": "NOT_ASSESSABLE"
+   }
+  }
+ ],
+ "invariants": {
+  "unknown_never_pass": "含 UNKNOWN 或 NOT_ASSESSABLE 的任意状态组合，DQ-7 overall 绝不为 PASS（穷举断言）",
+  "semantic_never_folded": "语义项（DQ-1/DQ-5.semantic_state/DQ-6.semantic_state/DQ-8）在 summary 中单列，且其 UNKNOWN 状态原样保留",
+  "advisory_only": "DQ 模块：无 DB 写入、无产物写入、无 TASK_BLOCKED、无 render_output 变更；不被 agents/ 引用（AST 静态证明 + 运行期 DB/目录零改动）",
+  "threshold_freeze": "frozen_policy == core.direction.DEFAULT_POLICY；**不得为了让 v9 结果变好而调阈值**",
+  "traceability": "所有 FAIL 的 findings 非空且含可定位锚点"
+ },
+ "v9_real_case": {
+  "project_id": "p_96efdc03e1aa",
+  "film_task": "t_d0a54bdf1810",
+  "evidence": "docs/regression_2x/logs/audit_p96efdc_mm.json",
+  "expect_states": {
+   "DQ-1": "UNKNOWN",
+   "DQ-2": "FAIL",
+   "DQ-3": "FAIL",
+   "DQ-4": "FAIL",
+   "DQ-5": "FAIL",
+   "DQ-6": "FAIL",
+   "DQ-8": "FAIL"
+  },
+  "expect_summary": {
+   "overall": "FAIL",
+   "counts": {
+    "PASS": 0,
+    "FAIL": 6,
+    "UNKNOWN": 1,
+    "NOT_ASSESSABLE": 0
+   }
+  },
+  "expect_measurements": {
+   "DQ-2": {
+    "unique_assets": 4,
+    "max_asset_share": 0.3329
+   },
+   "DQ-3": {
+    "mean_hold_s": 72.952,
+    "max_hold_s": 95.0,
+    "holds_over_threshold": 21,
+    "freeze_blocks": 389,
+    "freeze_longest_s": 10.8
+   },
+   "DQ-4": {
+    "scene_changes_per_min": 0.822,
+    "unique_assets_per_min": 0.157
+   },
+   "DQ-5": {
+    "core_scenes": 20,
+    "distinct_assets_in_core": 4,
+    "semantic_state": "FAIL",
+    "semantic_counts": {
+     "MATCH": 5,
+     "UNKNOWN": 68,
+     "MISMATCH": 7
+    }
+   },
+   "DQ-6": {
+    "tail_silence_s": 570.869,
+    "outro_keyword_hits": 0,
+    "semantic_state": "UNKNOWN"
+   },
+   "DQ-8": {
+    "layer_counts": {
+     "MATCH": 5,
+     "UNKNOWN": 72,
+     "MISMATCH": 7
+    },
+    "match_share": 0.0595,
+    "mismatch_scene_count": 3,
+    "unknown_scene_count": 16,
+    "mismatch_scenes": [
+     "S05",
+     "S11",
+     "S18"
+    ]
+   }
+  },
+  "human_findings_rediscovery": [
+   {
+    "id": "H1-hook-misalignment",
+    "metric": "DQ-1",
+    "expect": "UNKNOWN",
+    "re_discovery": "PARTIAL",
+    "why": "只读证据层对 S01 全部 UNKNOWN ⇒ DQ-1 只能 UNKNOWN（人工语义判定不伪造）；机械侧再发现『无任何层给 MATCH』"
+   },
+   {
+    "id": "H2-visual-repetition",
+    "metric": "DQ-2",
+    "expect": "FAIL",
+    "re_discovery": "FULL"
+   },
+   {
+    "id": "H3-static-hold",
+    "metric": "DQ-3",
+    "expect": "FAIL",
+    "re_discovery": "FULL"
+   },
+   {
+    "id": "H4-visual-density",
+    "metric": "DQ-4",
+    "expect": "FAIL",
+    "re_discovery": "FULL"
+   },
+   {
+    "id": "H5-semantic-support",
+    "metric": "DQ-8",
+    "expect": "FAIL",
+    "re_discovery": "FULL"
+   },
+   {
+    "id": "H6-no-visual-climax",
+    "metric": "DQ-5",
+    "expect": "FAIL",
+    "re_discovery": "FULL",
+    "why": "结构项为代理指标；『无视觉升级』的可视化形态判断仍属人工语义"
+   },
+   {
+    "id": "H7-ending-missing",
+    "metric": "DQ-6",
+    "expect": "FAIL",
+    "re_discovery": "FULL"
+   }
+  ]
+ },
+ "documentation_discrepancy": {
+  "note": "**发现并如实记录**：6-A 审计报告正文的『每素材上屏秒数』表写作 485.0/435.0/350.0/205.0 s；而实测证据 `logs/phase6a_audit.json.visual.per_asset` 与 DQ-2 复算结果一致，为 **510/432/355/235 s**（占比 0.333/0.282/0.153/0.232）。差异在报告正文，不在证据；DQ 侧以证据为准，且**结论方向不变**（唯一素材 4 个、最大占比 ≈1/3、远低于下限 6）。",
+  "audit_evidence_per_asset_seconds": {
+   "asset_3f0b94a3f2ac": 510.0,
+   "asset_30dd89a16713": 432.0,
+   "asset_432cd85be6f1": 355.0,
+   "asset_23e71bc8a864": 235.0
+  },
+  "audit_prose_per_asset_seconds": {
+   "asset_3f0b94a3f2ac": 485.0,
+   "asset_30dd89a16713": 435.0,
+   "asset_432cd85be6f1": 350.0,
+   "asset_23e71bc8a864": 205.0
+  }
+ },
+ "boundary_notes": {
+  "hold_threshold_60s": "6-A 报告正文用 60 s 口径描述（17/21 镜 > 60 s），DQ-3 的冻结阈值是 25 s（21/21 镜超阈、share=1.0）；两者不冲突：同一缺陷在两个阈值下都被判 FAIL，M1 阈值未因 v9 而调整。",
+  "freeze_semantics": "DQ-3 的 `freeze_profile` 是成片级 freezedetect（只读解码）结果，**不参与状态判定**（状态只看逐镜保持时长占比），仅作证据。",
+  "semantic_boundary": "DQ 不做人文判断：『画面是否真的支撑旁白/是否构成视觉高潮』无法由现有只读证据可靠判定时保留 UNKNOWN，并在 `findings` 里给出 UNKNOWN 的逐镜锚点。"
+ },
+ "frozen_sha256": "022a091895752c3cdd97b17074c8dbffab89c52a9df7a6fc0ead7b67acc0b437"
+}

@@ -1,0 +1,8 @@
+{
+  "render_motion": {
+    "enabled": true,
+    "duration_scaled": true,
+    "min_scene_s": 1.5,
+    "note": "**P0（2026-10-20）：运动层重新启用，但幅度改为按镜长限幅（duration_scaled=true）。** 复核 P34-2 的停用裁定：当时判「慢推在成片观感上表现为蠕动」——**根因是镜长（17–21s/景）而不是运动本身**：zoom 1.00→1.25 摊到 600 帧 ≈ 0.02px/帧，必然像爬。P0 同时把 scene 细分成 ≤4s 的 shot（`config.tools.render_shots`），此时 `zoom_for_duration()` 给 2–4s 镜 1.12、6–10s 镜 1.06、>10s 镜 1.03，「推进速率」近似恒定，蠕动消失。若要回到旧行为：`enabled=false`；若要旧幅度（1.25 全镜）：`duration_scaled=false`。"
+  }
+}

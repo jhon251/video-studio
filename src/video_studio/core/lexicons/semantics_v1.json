@@ -1,0 +1,108 @@
+{
+  "version": "semantics-v1",
+  "created": "2026-09-15",
+  "policy": "offline-deterministic-v1",
+  "provenance": "Phase 4-B 新增（4.x）。域关键词与同形词义表由人工编写，用于**离线、可复算、可解释**的镜头↔旁白语义核验；不调用网络、不调用 LLM、无随机性、无概率阈值。",
+  "notes": [
+    "判定是**类别式**的：规则只有'命中/不命中'与'域交集/不相交'，没有可调数值阈值（因此不存在'下调阈值凑通过'的空间）。",
+    "同形词（ambiguous）的**词本身不计入任何域**（加载时自动剔除），只能通过 sense markers 判定词义。",
+    "latin 关键词按**整词/整短语**匹配；zh 关键词按子串匹配。",
+    "本表是 v1 知识库，来源与动机在 docs/regression_2x/PHASE4A_4B_REPORT.md 中如实记录（含其局限）。"
+  ],
+  "domains": {
+    "xr_device": {
+      "zh": ["头显", "虚拟现实", "增强现实", "混合现实", "头戴", "佩戴", "面罩", "头带", "手柄", "镜片", "光学插片", "空间计算", "一体机", "主机vr", "眼镜配件"],
+      "latin": ["vr", "xr", "mr", "headset", "head-mounted", "hmd", "goggles", "oculus", "vive", "psvr", "psvr2", "steamvr", "meta quest", "quest 2", "quest 3", "quest pro", "valve index", "pico 4", "pico neo", "vision pro", "vr headset", "virtual reality", "mixed reality", "augmented reality"]
+    },
+    "computing_device": {
+      "zh": ["电脑", "笔记本", "键盘", "服务器", "芯片", "电路板", "处理器", "智能手机", "智能手表", "显示器", "机器人"],
+      "latin": ["laptop", "computer", "keyboard", "server", "circuit", "processor", "smartphone", "smartwatch", "monitor", "workstation", "raspberry", "arduino", "gpu", "cpu", "motherboard", "robot"]
+    },
+    "wildlife": {
+      "zh": ["鲨鱼", "鲸", "海豚", "动物", "鱼类", "昆虫", "蝴蝶", "猫", "狗", "马", "熊", "狐狸", "狼", "龟", "蛇", "鸟"],
+      "latin": ["shark", "tiburon", "tiburón", "prionace", "whale", "dolphin", "bird", "animal", "wildlife", "fish", "insect", "butterfly", "beetle", "eagle", "owl", "horse", "bear", "fox", "wolf", "turtle", "snake"]
+    },
+    "geography_nature": {
+      "zh": ["山", "峰", "海岛", "岛屿", "群岛", "湖泊", "河流", "森林", "沙漠", "冰川", "瀑布", "风景", "日落", "岩石", "海岸", "峡谷", "火山", "运河", "云海"],
+      "latin": ["island", "islands", "isla", "islas", "ilha", "azores", "madeira", "mountain", "peak", "montanha", "lake", "river", "forest", "desert", "glacier", "waterfall", "landscape", "sunset", "sunrise", "cliff", "valley", "coast", "coastline", "beach", "cave", "canyon", "volcano", "canal", "archipelago", "portugal", "spain", "panorama"]
+    },
+    "architecture": {
+      "zh": ["建筑", "教堂", "塔", "桥", "城堡", "宫殿", "博物馆", "体育场", "大楼", "天际线"],
+      "latin": ["building", "church", "cathedral", "tower", "bridge", "castle", "palace", "museum", "stadium", "arena", "mosque", "temple", "monument", "skyscraper", "skyline"]
+    },
+    "people": {
+      "zh": ["人物", "肖像", "合影", "人群", "观众", "游客", "工人", "学生", "儿童", "老人", "男子", "女子"],
+      "latin": ["portrait", "people", "crowd", "visitor", "worker", "student", "person", "man", "woman", "boy", "girl", "child", "family", "selfie", "face"]
+    },
+    "food_drink": {
+      "zh": ["食物", "美食", "水果", "蔬菜", "饮料", "咖啡", "面包", "蛋糕", "茶"],
+      "latin": ["food", "fruit", "vegetable", "coffee", "bread", "cake", "wine", "beer", "dish", "cuisine", "restaurant"]
+    },
+    "art_culture": {
+      "zh": ["雕塑", "绘画", "油画", "文物", "展览", "乐器", "壁画", "手稿"],
+      "latin": ["sculpture", "painting", "statue", "artwork", "exhibition", "mural", "manuscript", "engraving", "instrument"]
+    },
+    "sports": {
+      "zh": ["比赛", "运动员", "足球", "篮球", "跑步", "自行车", "游泳", "球场"],
+      "latin": ["athlete", "football", "soccer", "basketball", "cycling", "swimming", "tournament", "marathon"]
+    },
+    "vehicle": {
+      "zh": ["汽车", "火车", "飞机", "轮船", "摩托车", "卡车", "航天器"],
+      "latin": ["car", "train", "aircraft", "airplane", "ship", "boat", "bicycle", "motorcycle", "truck", "locomotive", "spacecraft"]
+    },
+    "space_astronomy": {
+      "zh": ["星系", "恒星", "行星", "月球", "火星", "宇宙", "望远镜", "黑洞", "星云"],
+      "latin": ["galaxy", "planet", "moon", "mars", "universe", "telescope", "nebula", "comet", "asteroid", "orbit"]
+    },
+    "document_text": {
+      "zh": ["文档", "页面", "截图", "图表", "地图", "标志", "封面", "字幕卡"],
+      "latin": ["document", "screenshot", "diagram", "chart", "map", "logo", "cover", "poster", "plaque", "scan"]
+    }
+  },
+  "ambiguous": {
+    "pico": {
+      "brand_xr": {"domain": "xr_device", "markers": ["pico 4", "pico neo", "pico ultra", "pico g3", "bytedance", "pico 官方", "pico vr"]},
+      "place_nature": {"domain": "geography_nature", "markers": ["pico island", "ilha do pico", "azores", "islas", "montanha", "peak", "mountain", "canal", "vista", "panorama"]}
+    },
+    "quest": {
+      "brand_xr": {"domain": "xr_device", "markers": ["meta quest", "quest 2", "quest 3", "quest pro", "oculus quest"]},
+      "journey": {"domain": "art_culture", "markers": ["quest for", "quest of", "in search of", "grail", "pilgrimage", "expedition"]}
+    },
+    "valve": {
+      "brand_xr": {"domain": "xr_device", "markers": ["valve index", "steam", "half-life", "valve corporation"]},
+      "mechanical": {"domain": "computing_device", "markers": ["gate valve", "pipeline", "pump", "plumbing", "engine valve", "valve stem"]}
+    },
+    "index": {
+      "brand_xr": {"domain": "xr_device", "markers": ["valve index"]},
+      "catalogue": {"domain": "document_text", "markers": ["index of", "index page", "card index", "index map"]}
+    },
+    "apple": {
+      "brand_tech": {"domain": "computing_device", "markers": ["apple inc", "apple store", "iphone", "ipad", "macbook", "vision pro"]},
+      "fruit": {"domain": "food_drink", "markers": ["malus", "apple tree", "orchard", "apple harvest"]}
+    },
+    "galaxy": {
+      "brand_tech": {"domain": "computing_device", "markers": ["samsung galaxy", "galaxy s", "galaxy note"]},
+      "astronomy": {"domain": "space_astronomy", "markers": ["andromeda", "milky way", "spiral galaxy", "ngc"]}
+    },
+    "surface": {
+      "brand_tech": {"domain": "computing_device", "markers": ["microsoft surface", "surface pro"]},
+      "geology": {"domain": "geography_nature", "markers": ["surface of", "road surface", "earth surface", "surface water", "surface tension"]}
+    },
+    "pixel": {
+      "brand_tech": {"domain": "computing_device", "markers": ["google pixel", "pixel 6", "pixel 7", "pixel 8"]},
+      "image_unit": {"domain": "document_text", "markers": ["pixel art", "megapixel", "pixel grid", "pixels per"]}
+    },
+    "vision": {
+      "brand_tech": {"domain": "xr_device", "markers": ["apple vision", "vision pro"]},
+      "physiology": {"domain": "people", "markers": ["vision test", "eyesight", "visual acuity", "night vision", "field of vision"]}
+    },
+    "rift": {
+      "brand_xr": {"domain": "xr_device", "markers": ["oculus rift", "rift s"]},
+      "geology": {"domain": "geography_nature", "markers": ["rift valley", "east african rift", "geological rift"]}
+    },
+    "cardboard": {
+      "brand_xr": {"domain": "xr_device", "markers": ["google cardboard", "cardboard viewer", "vr cardboard"]},
+      "material": {"domain": "art_culture", "markers": ["cardboard box", "corrugated", "paperboard", "cardboard packaging", "cardboard tube"]}
+    }
+  }
+}

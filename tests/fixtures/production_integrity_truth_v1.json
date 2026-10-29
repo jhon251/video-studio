@@ -1,0 +1,189 @@
+{
+ "schema": "production-integrity-truth-v1",
+ "stage": "6-A / M1（只读度量层真值集）",
+ "note": "真值来源三类：① 真实失败样本 p_96efdc03e1aa v9（实测记录）；② 合成故障夹具（离线 ffmpeg 生成，确定性）；③ 语义三态规则（UNKNOWN ≠ PASS）。本文件为**期望判定**的真值，可复算。",
+ "policy": {
+  "min_narration_coverage": 0.9,
+  "max_shortfall_s": 30.0,
+  "max_shortfall_ratio": 0.1,
+  "max_silence_block_s": 8.0,
+  "max_silence_ratio": 0.1,
+  "max_tail_silence_s": 5.0,
+  "silence_noise_db": -45,
+  "silence_min_dur_s": 2.0,
+  "max_av_track_delta_s": 0.5,
+  "max_video_timeline_delta_s": 0.5,
+  "max_start_delta_s": 0.5,
+  "max_frame_count_delta": 1,
+  "max_orphan_share": 0.02,
+  "min_cue_over_narration": 0.6,
+  "max_cue_over_narration": 1.1,
+  "max_segment_drift_s": 5.0,
+  "max_asset_share": 0.35,
+  "min_unique_assets": 6,
+  "max_hold_s": 25.0,
+  "max_over_hold_share": 0.2,
+  "min_scene_changes_per_min": 2.0,
+  "min_distinct_assets_in_core": 6,
+  "max_hold_in_core_s": 25.0,
+  "max_tail_silence_s_dq": 5.0
+ },
+ "cases": [
+  {
+   "id": "V9-REAL",
+   "kind": "real_sample",
+   "project_id": "p_96efdc03e1aa",
+   "film_task": "t_d0a54bdf1810",
+   "measured": {
+    "narration_duration_s": 961.656,
+    "timeline_duration_s": 1532.0,
+    "silence": {"blocks": 1, "start_s": 961.144, "end_s": 1532.013, "dur_s": 570.869},
+    "subtitle": {"cues": 216, "orphan_cues": 73, "orphan_first_s": 967.4},
+    "tracks": {"video_s": 1531.96, "audio_s": 1532.0, "frames": 38300},
+    "visual": {"scenes": 21, "unique_assets": 4,
+               "per_asset_scenes": {"asset_3f0b94a3f2ac": 7, "asset_30dd89a16713": 6,
+                                    "asset_432cd85be6f1": 5, "asset_23e71bc8a864": 3}},
+    "freeze": {"blocks": 389, "longest_s": 10.8, "ratio": 0.9946},
+    "segment_drift": {"max_abs_drift_s": 552.16, "final_drift_s": -568.344},
+    "script_durs": [40.0, 50.0, 80.0, 75.0, 55.0, 85.0, 95.0, 70.0, 75.0, 65.0, 80.0, 80.0, 75.0, 75.0, 80.0, 85.0, 80.0, 85.0, 75.0, 60.0, 65.0],
+    "voice_durs": [30.1, 40.7, 57.7, 50.3, 39.3, 66.6, 65.7, 43.8, 46.4, 39.4, 51.0, 47.4, 43.9, 40.7, 47.6, 44.9, 39.2, 46.6, 42.0, 29.5, 48.8],
+    "timeline_holds": [40.0, 50.0, 80.0, 75.0, 55.0, 85.0, 95.0, 70.0, 75.0, 65.0, 80.0, 80.0, 75.0, 75.0, 80.0, 85.0, 80.0, 85.0, 75.0, 60.0, 67.0],
+    "scene_assets": ["asset_432cd85be6f1", "asset_30dd89a16713", "asset_30dd89a16713", "asset_23e71bc8a864", "asset_30dd89a16713", "asset_23e71bc8a864", "asset_30dd89a16713", "asset_3f0b94a3f2ac", "asset_3f0b94a3f2ac", "asset_3f0b94a3f2ac", "asset_3f0b94a3f2ac", "asset_3f0b94a3f2ac", "asset_432cd85be6f1", "asset_432cd85be6f1", "asset_432cd85be6f1", "asset_432cd85be6f1", "asset_3f0b94a3f2ac", "asset_30dd89a16713", "asset_23e71bc8a864", "asset_3f0b94a3f2ac", "asset_30dd89a16713"],
+    "per_asset_seconds": {"asset_3f0b94a3f2ac": 510.0, "asset_30dd89a16713": 432.0, "asset_432cd85be6f1": 355.0, "asset_23e71bc8a864": 235.0},
+    "non_core_scene": 16,
+    "changes_per_min": 0.822,
+    "hook_scene": "S01",
+    "hook_layers": {"4b": "UNKNOWN", "5a": "UNKNOWN", "5d": "UNKNOWN", "judge": "UNKNOWN"},
+    "core_scenes": 20,
+    "outro_keyword_hits": 0
+   },
+   "expected": {
+    "PI-1": "FAIL", "PI-2": "FAIL", "PI-3": "FAIL", "PI-4": "PASS", "PI-5": "FAIL", "PI-6": "FAIL",
+    "integrity_overall": "FAIL",
+    "DQ-1": "UNKNOWN", "DQ-2": "FAIL", "DQ-3": "FAIL", "DQ-4": "FAIL", "DQ-5": "FAIL",
+    "DQ-6": "FAIL", "direction_overall": "FAIL"
+   },
+   "why": "人工验片 FAIL 样本：覆盖 62.77%、尾部静音 570.87 s、字幕 orphan 73 条、素材 4 张、平均保持 73 s、无片尾、hook 无 MATCH"
+  },
+  {
+   "id": "T01-CLEAN",
+   "kind": "synthetic",
+   "description": "20 s 成片，旁白覆盖 100%，21 镜 21 素材、每镜 5 s，含片尾关键词",
+   "expected": {"PI-1": "PASS", "PI-2": "PASS", "PI-3": "PASS", "PI-4": "PASS", "PI-5": "PASS",
+                "PI-6": "PASS", "integrity_overall": "PASS",
+                "DQ-2": "PASS", "DQ-3": "PASS", "DQ-4": "PASS", "DQ-6": "PASS"}
+  },
+  {
+   "id": "T02-SHORT-AUDIO",
+   "kind": "synthetic",
+   "description": "20 s 时间轴但旁白仅 8 s（apad 补 12 s 静音）→ 覆盖率 40%",
+   "expected": {"PI-1": "FAIL", "PI-3": "FAIL",
+                "why": "PI-1 覆盖不足；PI-3 尾部静音 12 s > 5 s"}
+  },
+  {
+   "id": "T03-LONG-AUDIO",
+   "kind": "synthetic",
+   "description": "旁白 30 s > 时间轴 20 s（超容差）→ 既有 excess 规则应拦",
+   "expected": {"PI-2": "FAIL", "why": "excess 10 s 且超出 10% 容差"}
+  },
+  {
+   "id": "T04-SHORT-SILENCE",
+   "kind": "synthetic",
+   "description": "内部 3 s 静音 × 2 处、总占比 30%（> 10%）",
+   "expected": {"PI-3": "FAIL", "why": "静音占比超限（单块 3 s 未超 8 s）"}
+  },
+  {
+   "id": "T05-TAIL-SILENCE",
+   "kind": "synthetic",
+   "description": "尾部静音 12 s（旁白正常结束于 8 s，时间轴 20 s）",
+   "expected": {"PI-3": "FAIL", "why": "尾部静音 > 5 s"}
+  },
+  {
+   "id": "T06-SUBS-ALIGNED",
+   "kind": "synthetic",
+   "description": "字幕 cue 全部落在旁白区间内（0–20 s，20 条）",
+   "expected": {"PI-5": "PASS"}
+  },
+  {
+   "id": "T07-SUBS-ORPHAN",
+   "kind": "synthetic",
+   "description": "字幕 cue 30% 落在旁白结束（8 s）之后（复现 v9 形态）",
+   "expected": {"PI-5": "FAIL", "why": "orphan 占比 0.30 > 0.02"}
+  },
+  {
+   "id": "T08-TRACK-MISMATCH",
+   "kind": "synthetic",
+   "description": "视频轨 8 s / 音频轨 20 s（轨道错位 12 s）",
+   "expected": {"PI-4": "FAIL", "why": "轨道差 12 s > 0.5 s"}
+  },
+  {
+   "id": "T09-ASSET-REPEAT",
+   "kind": "synthetic",
+   "description": "21 镜只用 1 个素材、每镜 5 s（单素材占比 100%）",
+   "expected": {"DQ-2": "FAIL", "why": "唯一素材 1 < 6 且最大占比 1.0 > 0.35"}
+  },
+  {
+   "id": "T10-STATIC-HOLD",
+   "kind": "synthetic",
+   "description": "10 镜每镜 120 s（静态保持超限）",
+   "expected": {"DQ-3": "FAIL", "DQ-4": "FAIL", "why": "保持 120 s > 25 s；变化密度 0.5/min < 2.0"}
+  },
+  {
+   "id": "T11-DENSE",
+   "kind": "synthetic",
+   "description": "21 镜 21 素材、每镜 8 s、11.2 变化/分钟",
+   "expected": {"DQ-2": "PASS", "DQ-3": "PASS", "DQ-4": "PASS"}
+  },
+  {
+   "id": "T12-NO-OUTRO",
+   "kind": "synthetic",
+   "description": "最后 2 镜无片尾关键词 + 尾部静音 20 s（复现 v9 尾部形态）",
+   "expected": {"DQ-6": "FAIL", "why": "outro 关键词 0 且尾部静音 20 s > 5 s"}
+  },
+  {
+   "id": "T13-OUTRO-OK",
+   "kind": "synthetic",
+   "description": "末镜含「感谢观看」且无尾部静音",
+   "expected": {"DQ-6": "PASS"}
+  },
+  {
+   "id": "T14-CLIMAX-NO-VARIETY",
+   "kind": "synthetic",
+   "description": "核心论点镜头（含关键词）只用 2 个素材",
+   "expected": {"DQ-5": "FAIL", "why": "核心镜头素材多样性 2 < 6"}
+  },
+  {
+   "id": "T15-SEGMENT-DRIFT",
+   "kind": "synthetic",
+   "description": "脚本 10 段 × 10 s，真实 TTS 每段 3 s → 累计漂移最大 63 s",
+   "expected": {"PI-6": "FAIL", "why": "最大绝对漂移 63 s > 5 s"}
+  },
+  {
+   "id": "T16-MISSING-AUDIO",
+   "kind": "synthetic",
+   "description": "无音频轨 / 旁白不可探测 → fail-closed（NOT_ASSESSABLE/FAIL，不得 PASS）",
+   "expected": {"PI-1": "NOT_ASSESSABLE", "PI-3": "NOT_ASSESSABLE", "PI-4": "FAIL",
+                "why": "缺输入不得判 PASS"}
+  },
+  {
+   "id": "T17-SEMANTIC-UNKNOWN",
+   "kind": "synthetic",
+   "description": "语义证据存在但全为 UNKNOWN（hook 与核心镜头）",
+   "expected": {"DQ-1": "UNKNOWN", "DQ-5_SEMANTIC": "UNKNOWN",
+                "why": "UNKNOWN 不得视为 PASS"}
+  },
+  {
+   "id": "T18-SEMANTIC-MISMATCH",
+   "kind": "synthetic",
+   "description": "核心镜头存在 MISMATCH（必须暴露，不得被 MATCH 稀释）",
+   "expected": {"DQ-5_SEMANTIC": "FAIL"}
+  },
+  {
+   "id": "T19-NOT-ASSESSABLE",
+   "kind": "synthetic",
+   "description": "未提供任何语义证据 → 语义项 NOT_ASSESSABLE（不得 PASS）",
+   "expected": {"DQ-1": "NOT_ASSESSABLE", "DQ-5_SEMANTIC": "NOT_ASSESSABLE",
+                "DQ-6_SEMANTIC": "NOT_ASSESSABLE"}
+  }
+ ]
+}

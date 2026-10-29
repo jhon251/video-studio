@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "name": "claim_structuring_gold",
+    "note": "Stage 8G Claim Structuring 独立 gold set（label-first，数据无关；覆盖断言/定义/疑问/否定/数字/步骤枚举）。"
+  },
+  "entries": [
+    {"id": "CS-01", "text": "《黑镜》里有个地方叫圣朱尼佩罗，人死了，意识搬进服务器，永远活在1987年的海滩上", "claim_type": "ASSERTION", "qualifiers": ["永远"], "numbers_years": ["1987"], "sub_count": 1},
+    {"id": "CS-02", "text": "《刀剑神域》的Underworld，也是一个把人脑塞进机器的故事", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-03", "text": "第一步，扫描：把大脑的结构完整读出来", "claim_type": "DEFINITION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-04", "text": "2023年，科学家完成了成年果蝇的全脑连接组——十四万个神经元，每条连接都画了出来，发在《科学》上", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": ["2023", "十四万"], "sub_count": 1},
+    {"id": "CS-05", "text": "2025年，中国团队放出了毫米级的小鼠全脑图谱，这是目前最大的哺乳动物全脑连接组", "claim_type": "ASSERTION", "qualifiers": ["最大", "目前"], "numbers_years": ["2025"], "sub_count": 1},
+    {"id": "CS-06", "text": "人脑大约八百六十亿个神经元，突触按百万亿算", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": ["八百六十亿", "百万亿"], "sub_count": 1},
+    {"id": "CS-07", "text": "假设扫描精度够了，还有第二道坎：一张接线图，装不下一个'你'", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-08", "text": "副本算人吗", "claim_type": "QUESTION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-09", "text": "死后上传的法律地位是什么", "claim_type": "QUESTION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-10", "text": "谁有权删除一个'数字人'", "claim_type": "QUESTION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-11", "text": "AI芯片功耗突破1000瓦时若散热不佳，算力将无法释放", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": ["1000"], "sub_count": 1},
+    {"id": "CS-12", "text": "构建由人类细胞驱动的生物电脑包括三个步骤：皮肤细胞转化为干细胞、培养为神经元团块类器官、连接至电极", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": [], "sub_count": 3},
+    {"id": "CS-13", "text": "杭州互联网法院审理认为虚拟数字人不是自然人、不具有作者身份", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-14", "text": "1775年，苏格兰哲学家托马斯·里德提出了与传送机类似的思想实验问题", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": ["1775"], "sub_count": 1},
+    {"id": "CS-15", "text": "AI芯片的散热问题已经彻底解决", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-16", "text": "成年果蝇大脑连接组至今尚未完成绘制", "claim_type": "ASSERTION", "qualifiers": ["至今"], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-17", "text": "人类大脑的神经元数量不足一百亿", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": ["一百亿"], "sub_count": 1},
+    {"id": "CS-18", "text": "人脑与计算机在能效上可以直接比较", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-19", "text": "科学家已经开始绘制生物大脑的完整图谱", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": [], "sub_count": 1},
+    {"id": "CS-20", "text": "从未有团队把果蝇大脑复制到电脑中运行", "claim_type": "ASSERTION", "qualifiers": [], "numbers_years": [], "sub_count": 1}
+  ]
+}

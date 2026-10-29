@@ -1,0 +1,128 @@
+{
+  "workspace": {
+    "root": "projects"
+  },
+  "llm": {
+    "provider": "deepseek",
+    "deepseek": {
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "base_url": "https://api.deepseek.com",
+      "timeout_s": 120,
+      "max_retries": 2,
+      "backoff_base_s": 5
+    },
+    "tiers": {
+      "R": {
+        "model": "deepseek-v4-pro",
+        "max_tokens": 8192
+      },
+      "M": {
+        "model": "deepseek-flash",
+        "max_tokens": 16384
+      },
+      "F": {
+        "model": "deepseek-flash",
+        "max_tokens": 2048
+      }
+    },
+    "pricing": {
+      "deepseek-flash": {
+        "peak": {
+          "cache_hit": 0.006,
+          "cache_miss": 0.3,
+          "output": 1.2
+        },
+        "off_peak": {
+          "cache_hit": 0.003,
+          "cache_miss": 0.15,
+          "output": 0.6
+        }
+      },
+      "deepseek-v4-pro": {
+        "peak": {
+          "cache_hit": 0.044,
+          "cache_miss": 1.32,
+          "output": 3.96
+        },
+        "off_peak": {
+          "cache_hit": 0.022,
+          "cache_miss": 0.66,
+          "output": 1.98
+        }
+      }
+    },
+    "max_total_usd": 0.6
+  },
+  "tools": {
+    "ffmpeg": {
+      "path": "C:/mp4agent/video-studio/bin/ffmpeg.exe",
+      "ffprobe": "C:/mp4agent/video-studio/bin/ffprobe.exe"
+    },
+    "render_output": {
+      "_note": "P0（2026-10-20）：出口规格。审计实测成片未传 -crf（落 CRF23）、音频沿用 TTS 24kHz 单声道。crf=0 即回到旧行为。",
+      "crf": 18,
+      "preset": "slow",
+      "audio_sample_rate": 44100,
+      "audio_channels": 2,
+      "audio_bitrate": "192k"
+    },
+    "render_shots": {
+      "_note": "P0（2026-10-20）：镜头细分。scene（章节 ~20s）按字幕句界切成 ≤max_shot_s 的 shot，并用确定性 reframe 让同素材切镜可见。enabled=false 即回到「一景=一镜」。",
+      "enabled": true,
+      "max_shot_s": 4.0,
+      "min_shot_s": 1.2
+    },
+    "bgm": {
+      "_note": "P0（2026-10-20）：BGM 打开（原默认关闭 ⇒ 全片 TTS 干声）。source 须为绝对路径（相对路径按项目目录解析）。",
+      "enabled": true,
+      "source": "C:/mp4agent/video-studio/output/publish/bgm_work/p0_bed/gymnopedie_no1_bed_cc0.wav",
+      "provider": "local_bgm",
+      "source_id": "gymnopedie_no1_bed_cc0",
+      "license": "CC0-1.0",
+      "attribution": "Erik Satie — Gymnopédie No.1（CC0 1.0）",
+      "bed_db": -22.0,
+      "duck_db": -28.0,
+      "ramp_ms": 300,
+      "license_required": true
+    },
+    "tts": {
+      "provider": "edge-tts",
+      "voice_type": "zh-CN-XiaoxiaoNeural"
+    },
+    "asr": {
+      "provider": "faster-whisper"
+    },
+    "search": {
+      "provider": "none",
+      "api_key_env": "SEARCH_API_KEY"
+    },
+    "image": {
+      "provider": "none",
+      "api_key_env": "IMAGE_API_KEY"
+    },
+    "video": {
+      "provider": "none",
+      "api_key_env": "VIDEO_API_KEY"
+    }
+  },
+  "hitl": {
+    "gates": [
+      "topic",
+      "structure",
+      "script",
+      "materials",
+      "final_cut",
+      "publish"
+    ],
+    "auto_approve": false
+  },
+  "caption_gate": {
+    "_note": "P0（2026-10-20）：显示级字幕预算。审计实测单条 cue 最长 14.9s/约 70 字。max_cue_chars/max_cue_s 置 0 即关闭切分。",
+    "max_cue_chars": 18,
+    "max_cue_s": 4.0
+  },
+  "retry": {
+    "default_max_retries": 2,
+    "backoff_base_s": 5
+  }
+}

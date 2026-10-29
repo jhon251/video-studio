@@ -1,0 +1,8 @@
+{
+  "frame_match": {
+    "bank_derived": "v2",
+    "_note_p27": "P27-1：派生段核验口径（子窗口 bank 最大 corr）。默认应为 false；本阶段按授权开启。",
+    "_note_p32": "P32-2：`bank_derived` 自 config.json 迁移至本外部文件（同 render_motion.json 模式）。`config.json` 为基线 manifest 钉定文件（sha 7b03424846f1…），**不得**再承载运行期开关。取值：false/缺失=关闭；\"v1\"=冻结口径(48,5×5)；\"v2\"=P32-2 修复口径(192,步进≤170px)。**默认关闭**。",
+    "version": "bank-derived-v2"
+  }
+}

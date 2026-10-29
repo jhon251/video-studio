@@ -1,0 +1,279 @@
+{
+ "schema": "human-review-truth-v1",
+ "stage": "6-B/M2",
+ "purpose": "Human Review Bridge 冻结真值集：固化 DQ finding → 人工决策（ACCEPT/REJECT/DEFER）的**闭环契约** —— 字段完备性、1:1 可追溯、UNKNOWN 保守路由、append-only 台账、零执行（REJECT 仅建议）与真实 v9 闭环期望。",
+ "decision_vocabulary": [
+  "ACCEPT",
+  "REJECT",
+  "DEFER"
+ ],
+ "decision_semantics": {
+  "ACCEPT": "人工确认该 finding 不成立或可接受（不修改任何东西）",
+  "REJECT": "人工确认该 finding 成立且**建议需要修改**（本阶段不执行修改）",
+  "DEFER": "暂缓 / 需人工复核 / 待补证据（UNKNOWN、NOT_ASSESSABLE 一律走此路径）"
+ },
+ "required_decision_fields": [
+  "finding_id",
+  "decision",
+  "reason",
+  "decided_by",
+  "provenance"
+ ],
+ "unknown_policy": {
+  "unprovable_states": [
+   "UNKNOWN",
+   "NOT_ASSESSABLE"
+  ],
+  "default_routing": "DEFER",
+  "default_routing_policy": "policy:unknown_requires_human",
+  "accept_forbidden": true,
+  "no_auto_pass": true
+ },
+ "non_execution_contract": {
+  "executed_actions_must_be_empty": true,
+  "executes_changes": false,
+  "reject_means_recommendation_only": true,
+  "forbidden_static_patterns": [
+   "write_artifact",
+   "set_task_status",
+   "TASK_BLOCKED",
+   "INSERT ",
+   "UPDATE ",
+   "DELETE ",
+   "unlink(",
+   "rmtree(",
+   "write_bytes"
+  ],
+  "note": "本阶段禁止任何自动执行：决策只写 append-only 台账（人类审片证据），绝不触碰 timeline / 素材 / 字幕 / 旁白 / 成片，也不写 DB。"
+ },
+ "cases": [
+  {
+   "id": "HR-C1-ACCEPT-ON-MECHANICAL-FAIL",
+   "item": {
+    "metric": "DQ-4",
+    "kind": "scene_changes_below_min",
+    "severity": "FAIL",
+    "scene_id": "S07",
+    "window": [
+     385.0,
+     480.0
+    ],
+    "unprovable": false
+   },
+   "decision": "ACCEPT",
+   "expect": {
+    "ok": true
+   }
+  },
+  {
+   "id": "HR-C2-REJECT-ON-FAIL",
+   "item": {
+    "metric": "DQ-2",
+    "kind": "unique_assets_below_min",
+    "severity": "FAIL",
+    "asset_id": "asset_3f0b94a3f2ac",
+    "unprovable": false
+   },
+   "decision": "REJECT",
+   "expect": {
+    "ok": true
+   }
+  },
+  {
+   "id": "HR-C3-DEFER-ON-UNKNOWN",
+   "item": {
+    "metric": "DQ-1",
+    "kind": "metric_state_unprovable",
+    "severity": "UNKNOWN",
+    "scene_id": "S01",
+    "unprovable": true
+   },
+   "decision": "DEFER",
+   "expect": {
+    "ok": true
+   }
+  },
+  {
+   "id": "HR-C4-ACCEPT-ON-UNKNOWN-FORBIDDEN",
+   "item": {
+    "metric": "DQ-1",
+    "kind": "metric_state_unprovable",
+    "severity": "UNKNOWN",
+    "scene_id": "S01",
+    "unprovable": true
+   },
+   "decision": "ACCEPT",
+   "expect": {
+    "ok": false,
+    "error_contains": "UNKNOWN_CANNOT_BE_ACCEPTED"
+   }
+  },
+  {
+   "id": "HR-C5-INVALID-DECISION-WORD",
+   "item": {
+    "metric": "DQ-4",
+    "kind": "x",
+    "severity": "FAIL",
+    "unprovable": false
+   },
+   "decision": "APPROVE",
+   "expect": {
+    "ok": false,
+    "error_contains": "非法 decision"
+   }
+  },
+  {
+   "id": "HR-C6-MISSING-REASON",
+   "item": {
+    "metric": "DQ-4",
+    "kind": "x",
+    "severity": "FAIL",
+    "unprovable": false
+   },
+   "decision": "REJECT",
+   "reason": "",
+   "expect": {
+    "ok": false,
+    "error_contains": "缺少必需字段"
+   }
+  },
+  {
+   "id": "HR-C7-MISSING-PROVENANCE",
+   "item": {
+    "metric": "DQ-4",
+    "kind": "x",
+    "severity": "FAIL",
+    "unprovable": false
+   },
+   "decision": "REJECT",
+   "provenance": "",
+   "expect": {
+    "ok": false,
+    "error_contains": "缺少必需字段"
+   }
+  }
+ ],
+ "ledger_cases": {
+  "chain_must_verify": true,
+  "tamper_detection": [
+   "modify_entry",
+   "delete_middle_entry",
+   "reorder_entries"
+  ],
+  "append_only": "重复追加只增长历史（seq 连续、prev_sha256 链式），绝不改写既有条目"
+ },
+ "summarize_cases": [
+  {
+   "id": "HR-S1-UNKNOWN-ROUTED",
+   "expect": {
+    "unknown_routed_to_defer": true,
+    "unknown_accepted": []
+   }
+  },
+  {
+   "id": "HR-S2-CLASS-COVERAGE",
+   "expect": {
+    "covered_by_class_decision_gt": 0,
+    "decisions_without_item": []
+   }
+  },
+  {
+   "id": "HR-S3-ORPHAN-DECISION",
+   "expect": {
+    "decisions_without_item_nonempty": true
+   }
+  }
+ ],
+ "v9_closure_expect": {
+  "project_id": "p_96efdc03e1aa",
+  "film_task": "t_d0a54bdf1810",
+  "ledger": "docs/regression_2x/logs/phase6b_m2_review_ledger_v9.jsonl",
+  "report": "docs/regression_2x/logs/phase6b_m2_review_v9.json",
+  "min_items": 40,
+  "min_decisions": 11,
+  "decision_counts_min": {
+   "REJECT": 7,
+   "DEFER": 4,
+   "ACCEPT": 0
+  },
+  "unresolved": 0,
+  "unknown_accepted": [],
+  "unknown_routed_to_defer": true,
+  "chain_ok": true,
+  "executed_actions": [],
+  "executes_changes": false,
+  "film_level_decision": "REJECT",
+  "film_level_provenance_contains": "KNOWN_ISSUES #67",
+  "m1_findings_must_be_covered": [
+   {
+    "id": "H1-hook",
+    "metric": "DQ-1",
+    "kinds": [
+     "hook_layer_verdict",
+     "metric_state_unprovable"
+    ],
+    "decision": "REJECT|DEFER"
+   },
+   {
+    "id": "H2-repetition",
+    "metric": "DQ-2",
+    "kinds": [
+     "unique_assets_below_min"
+    ],
+    "decision": "REJECT"
+   },
+   {
+    "id": "H3-static-hold",
+    "metric": "DQ-3",
+    "kinds": [
+     "over_hold_share_exceeds"
+    ],
+    "decision": "REJECT"
+   },
+   {
+    "id": "H4-density",
+    "metric": "DQ-4",
+    "kinds": [
+     "scene_changes_below_min"
+    ],
+    "decision": "REJECT"
+   },
+   {
+    "id": "H5-semantic-support",
+    "metric": "DQ-8",
+    "kinds": [
+     "semantic_mismatch_scenes"
+    ],
+    "decision": "REJECT"
+   },
+   {
+    "id": "H6-climax",
+    "metric": "DQ-5",
+    "kinds": [
+     "distinct_assets_in_core_below_min"
+    ],
+    "decision": "REJECT"
+   },
+   {
+    "id": "H7-ending",
+    "metric": "DQ-6",
+    "kinds": [
+     "no_outro_keyword_in_tail"
+    ],
+    "decision": "REJECT"
+   }
+  ],
+  "human_audit_items_expected": [
+   "human_subtitle_wrapping_residual",
+   "human_hitl_rationale_mismatch"
+  ],
+  "note": "v9 闭环中 **ACCEPT 计数为 0** 是如实结果（人审记录未支持任何一项被接受）；ACCEPT 能力由合成用例 HR-C1 验证。"
+ },
+ "boundary_notes": {
+  "unknown_never_pass": "UNKNOWN/NOT_ASSESSABLE 一律 DEFER；代码级禁止对不可证 finding 写 ACCEPT。",
+  "reject_is_recommendation": "REJECT 只写台账（人类审片证据），不产生任何执行动作：`executed_actions` 恒为空、`executes_changes=False`。",
+  "append_only": "台账为 JSONL + 哈希链（seq / prev_sha256 / entry_sha256），历史决策保留；重复拍板会追加新版本而非改写。",
+  "no_semantic_scope_expansion": "本阶段不扩大语义判定范围：仍需语义的项保持 UNKNOWN 并走 DEFER；DQ 阈值未改。"
+ },
+ "frozen_sha256": "d07d68d38bf0382404ae52bcdcce8360f3686e46fece5a6f2491fd92b7b8c500"
+}

@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "name": "text_quality_dev",
+    "note": "Stage 8D evidence_text_quality 独立 gold set（label-first，数据无关；覆盖 valid/js_shell/empty/encoding_error/low_content 五类）。"
+  },
+  "entries": [
+    {"id": "TQ-01", "text": "<html><body><p>2024年10月，科学家完成了成年果蝇大脑神经图谱的绘制，共识别约十四万个神经元与五千万个突触连接。</p></body></html>", "expected": "valid"},
+    {"id": "TQ-02", "text": "人类大脑包含约860亿个神经元和数万亿个突触连接，其整体功耗约25瓦，是已知最复杂的生物神经网络结构之一。", "expected": "valid"},
+    {"id": "TQ-03", "text": "果蝇大脑被完整上传并驱动虚拟身体，全脑仿真进入具身时代，最终完成了约139,255个神经元的完整映射。", "expected": "valid"},
+    {"id": "TQ-04", "text": "<div>数据中心运行成本的六成是电费，电费里的四成多来自冷却散热。</div><p>免责声明：本文图文来源于网络。</p>", "expected": "valid"},
+    {"id": "TQ-05", "text": "成人人大脑内大约有860億個神經元，神經元間有上百至上千個突觸連結（繁体正文）。", "expected": "valid"},
+    {"id": "TQ-06", "text": "Just a moment... Enable JavaScript and cookies to continue", "expected": "js_shell"},
+    {"id": "TQ-07", "text": "Vercel Security Checkpoint (function(e,a){const c=d;return e()})", "expected": "js_shell"},
+    {"id": "TQ-08", "text": "百度安全验证", "expected": "js_shell"},
+    {"id": "TQ-09", "text": "You need to enable JavaScript to run this app.", "expected": "js_shell"},
+    {"id": "TQ-10", "text": "window._cf_chl_opt = {cFPWv:'g', cH:'Q.dnEj'}; (function(){'use strict';...})", "expected": "js_shell"},
+    {"id": "TQ-11", "text": "", "expected": "empty"},
+    {"id": "TQ-12", "text": "   \n\t ", "expected": "empty"},
+    {"id": "TQ-13", "text": "404 Not Found", "expected": "low_content"},
+    {"id": "TQ-14", "text": "ä¸­å›½è„‘ç§‘å­¦è®¡åˆ’è¿›å±• - PMC Skip to main content An official website of the United States government", "expected": "encoding_error"},
+    {"id": "TQ-15", "text": "æˆ‘å›½ç ”ç©¶å›¢é˜Ÿç ”å‘å ¨è„‘ç»†èƒžè§£æžå¹³å ° é¦–ç»˜å° é¼ 20ç§ å ³é”®ç»†èƒžå ¨è„‘ä¸‰ç»´åˆ†å¸ƒå›¾", "expected": "encoding_error"},
+    {"id": "TQ-16", "text": "å…¨çƒæœ€å¿«å° é¼ å ¨èº«æˆåƒ æ¸ æ™°å ¯è§ å•æ ¹ç¥žç» çº¤ç»´", "expected": "encoding_error"},
+    {"id": "TQ-17", "text": "Âè¶£ç ”ç©¶å›¢é˜Ÿç ”å‘", "expected": "encoding_error"},
+    {"id": "TQ-18", "text": "正文开头。导航：首页 科技 财经 娱乐 体育 更多频道。正文主体内容在这里，人脑约有860亿个神经元。页脚：联系我们 版权声明。", "expected": "valid"},
+    {"id": "TQ-19", "text": "仅一句话。", "expected": "low_content"},
+    {"id": "TQ-20", "text": "Page not found.", "expected": "low_content"}
+  ]
+}

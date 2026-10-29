@@ -1,0 +1,785 @@
+{
+ "schema": "execution-reliability-truth-v1",
+ "stage": "6-B/M5",
+ "purpose": "关闭 6-B/M4 的两个 PENDING：①真实素材 add_asset/replace_asset 执行分支 E2E；②多 Proposal 重叠/冲突检测、一致性与 fail-closed。真值集只描述**期望**，证据由运行期脚本产生。",
+ "closes_pending": [
+  "M4-P1-real-asset-execution-branch",
+  "M4-P2-multi-proposal-overlap-conflict"
+ ],
+ "overlap_policy": {
+  "block_on_scene_overlap": true,
+  "block_on_window_overlap": true,
+  "block_on_shared_asset": true,
+  "block_on_same_target": true,
+  "touch_is_overlap": false,
+  "block_all_participants": true,
+  "requires_human_reapproval": true,
+  "auto_merge": false,
+  "auto_reorder": false,
+  "auto_scope_expansion": false,
+  "idempotent": true
+ },
+ "conflict_kinds": [
+  "scene",
+  "window",
+  "asset",
+  "target"
+ ],
+ "m5_states": [
+  "BLOCKED_CONFLICT",
+  "BLOCKED_ALREADY_EXECUTED"
+ ],
+ "conflict_cases": [
+  {
+   "id": "OV-1-same-scene-different-window",
+   "a": {
+    "scenes": [
+     "S20"
+    ],
+    "window": [
+     1405.0,
+     1465.0
+    ]
+   },
+   "b": {
+    "scenes": [
+     "S20"
+    ],
+    "window": [
+     1500.0,
+     1560.0
+    ]
+   },
+   "expect_kinds": [
+    "scene"
+   ],
+   "why": "同一镜不同窗口 ⇒ 仍算冲突（同一镜头被两个方案改动）"
+  },
+  {
+   "id": "OV-2-window-overlap-cross-scene",
+   "a": {
+    "scenes": [
+     "S20"
+    ],
+    "window": [
+     1400.0,
+     1470.0
+    ]
+   },
+   "b": {
+    "scenes": [
+     "S21"
+    ],
+    "window": [
+     1465.0,
+     1532.0
+    ]
+   },
+   "expect_kinds": [
+    "window"
+   ],
+   "why": "跨镜但窗口区间有正长度交集 ⇒ 冲突"
+  },
+  {
+   "id": "OV-3-adjacent-touch-not-overlap",
+   "a": {
+    "scenes": [
+     "S20"
+    ],
+    "window": [
+     1405.0,
+     1465.0
+    ]
+   },
+   "b": {
+    "scenes": [
+     "S21"
+    ],
+    "window": [
+     1465.0,
+     1532.0
+    ]
+   },
+   "expect_kinds": null,
+   "why": "端点相接（1465.0 == 1465.0）不算重叠 ⇒ 允许各自执行（避免假阻断）"
+  },
+  {
+   "id": "OV-4-disjoint",
+   "a": {
+    "scenes": [
+     "S05"
+    ],
+    "window": [
+     245.0,
+     300.0
+    ]
+   },
+   "b": {
+    "scenes": [
+     "S11"
+    ],
+    "window": [
+     690.0,
+     770.0
+    ]
+   },
+   "expect_kinds": null,
+   "why": "完全不相干 ⇒ 不冲突"
+  },
+  {
+   "id": "OV-5-shared-asset-disjoint-windows",
+   "a": {
+    "scenes": [
+     "S20"
+    ],
+    "window": [
+     1405.0,
+     1465.0
+    ],
+    "assets": [
+     "asset_x"
+    ]
+   },
+   "b": {
+    "scenes": [
+     "S08"
+    ],
+    "window": [
+     480.0,
+     550.0
+    ],
+    "assets": [
+     "asset_x"
+    ]
+   },
+   "expect_kinds": [
+    "asset"
+   ],
+   "why": "同一素材 id（即使窗口不相交）⇒ **保守**判冲突（宁可多阻断，不自动合并）"
+  },
+  {
+   "id": "OV-6-same-target-different-scope",
+   "a": {
+    "scenes": [
+     "S20"
+    ],
+    "window": [
+     1405.0,
+     1465.0
+    ],
+    "target": {
+     "scene_id": "S20",
+     "window": [
+      1405.0,
+      1465.0
+     ]
+    }
+   },
+   "b": {
+    "scenes": [
+     "S21"
+    ],
+    "window": [
+     1465.0,
+     1532.0
+    ],
+    "target": {
+     "scene_id": "S20",
+     "window": [
+      1405.0,
+      1465.0
+     ]
+    }
+   },
+   "expect_kinds": [
+    "target"
+   ],
+   "why": "写入同一目标槽（同 scene_id + 同 window）⇒ 冲突，即使方案声明的范围不同"
+  },
+  {
+   "id": "OV-7-scene-window-target",
+   "a": {
+    "scenes": [
+     "S20"
+    ],
+    "window": [
+     1405.0,
+     1465.0
+    ],
+    "target": {
+     "scene_id": "S20",
+     "window": [
+      1405.0,
+      1465.0
+     ]
+    }
+   },
+   "b": {
+    "scenes": [
+     "S20"
+    ],
+    "window": [
+     1440.0,
+     1500.0
+    ],
+    "target": {
+     "scene_id": "S20",
+     "window": [
+      1405.0,
+      1465.0
+     ]
+    }
+   },
+   "expect_kinds": [
+    "scene",
+    "window",
+    "target"
+   ],
+   "why": "三类重叠同时命中"
+  },
+  {
+   "id": "OV-8-scene-and-asset",
+   "a": {
+    "scenes": [
+     "S11"
+    ],
+    "window": [
+     690.0,
+     770.0
+    ],
+    "assets": [
+     "asset_y"
+    ]
+   },
+   "b": {
+    "scenes": [
+     "S11"
+    ],
+    "window": [
+     700.0,
+     780.0
+    ],
+    "assets": [
+     "asset_y"
+    ]
+   },
+   "expect_kinds": [
+    "scene",
+    "window",
+    "asset"
+   ],
+   "why": "同镜 + 窗口交叠 + 同素材"
+  },
+  {
+   "id": "OV-9-both-windowless-and-sceneless",
+   "a": {
+    "scenes": [],
+    "window": null
+   },
+   "b": {
+    "scenes": [],
+    "window": null
+   },
+   "expect_kinds": null,
+   "why": "两条方案都没有可定位痕迹 ⇒ 无法判定重叠 ⇒ 不产生冲突（由各自门禁决定是否可执行）"
+  },
+  {
+   "id": "OV-10-one-side-windowless",
+   "a": {
+    "scenes": [
+     "S05"
+    ],
+    "window": [
+     245.0,
+     300.0
+    ]
+   },
+   "b": {
+    "scenes": [],
+    "window": null
+   },
+   "expect_kinds": null,
+   "why": "单侧无痕迹 ⇒ 不冲突"
+  },
+  {
+   "id": "OV-11-touch-at-zero",
+   "a": {
+    "scenes": [
+     "S01"
+    ],
+    "window": [
+     0.0,
+     40.0
+    ]
+   },
+   "b": {
+    "scenes": [
+     "S02"
+    ],
+    "window": [
+     40.0,
+     90.0
+    ]
+   },
+   "expect_kinds": null,
+   "why": "窗口边界从 0 开始相接仍不算重叠"
+  },
+  {
+   "id": "OV-12-identical-footprint",
+   "a": {
+    "scenes": [
+     "S21"
+    ],
+    "window": [
+     1465.0,
+     1532.0
+    ],
+    "target": {
+     "scene_id": "S21",
+     "window": [
+      1465.0,
+      1532.0
+     ]
+    }
+   },
+   "b": {
+    "scenes": [
+     "S21"
+    ],
+    "window": [
+     1465.0,
+     1532.0
+    ],
+    "target": {
+     "scene_id": "S21",
+     "window": [
+      1465.0,
+      1532.0
+     ]
+    }
+   },
+   "expect_kinds": [
+    "scene",
+    "window",
+    "target"
+   ],
+   "why": "同批重复提交同一方案 ⇒ 判为冲突并全部阻断（保守：绝不重复执行）"
+  }
+ ],
+ "m3_register_matrix_expect": {
+  "proposal_count": 8,
+  "conflict_pair_count": 10,
+  "pairs": [
+   [
+    "H1-hook-replace",
+    "H6-visual-climax-aid",
+    [
+     "scene",
+     "window"
+    ]
+   ],
+   [
+    "H2-asset-pool-diversity",
+    "H3-batch1-split-longest",
+    [
+     "scene"
+    ]
+   ],
+   [
+    "H2-asset-pool-diversity",
+    "H4-density-increase",
+    [
+     "scene"
+    ]
+   ],
+   [
+    "H2-asset-pool-diversity",
+    "H5-semantic-mismatch-replace",
+    [
+     "scene"
+    ]
+   ],
+   [
+    "H3-batch1-split-longest",
+    "H4-density-increase",
+    [
+     "scene",
+     "target"
+    ]
+   ],
+   [
+    "H3-batch1-split-longest",
+    "H5-semantic-mismatch-replace",
+    [
+     "scene",
+     "target"
+    ]
+   ],
+   [
+    "H3-batch2-next-longest",
+    "H6-visual-climax-aid",
+    [
+     "scene",
+     "target"
+    ]
+   ],
+   [
+    "H3-batch2-next-longest",
+    "H5-semantic-mismatch-replace",
+    [
+     "scene",
+     "target"
+    ]
+   ],
+   [
+    "H4-density-increase",
+    "H5-semantic-mismatch-replace",
+    [
+     "scene",
+     "target"
+    ]
+   ],
+   [
+    "H6-visual-climax-aid",
+    "H5-semantic-mismatch-replace",
+    [
+     "scene",
+     "target"
+    ]
+   ]
+  ],
+  "note": "对 6-B/M3 登记的 8 条真实方案做全对冲突检测（只读，不执行）"
+ },
+ "asset_cases": [
+  {
+   "asset_id": "asset_23e71bc8a864",
+   "constructed": false,
+   "expect_status": "ok",
+   "expect_code": "ASSET_OK",
+   "why": "真实存在 + sha256 一致 + 可解码（local_ingest，许可门禁不适用）"
+  },
+  {
+   "asset_id": "asset_30dd89a16713",
+   "constructed": false,
+   "expect_status": "ok",
+   "expect_code": "ASSET_OK",
+   "why": "真实 1920×1080 素材（v9 在用）"
+  },
+  {
+   "asset_id": "asset_3f0b94a3f2ac",
+   "constructed": false,
+   "expect_status": "ok",
+   "expect_code": "ASSET_OK",
+   "why": "S20 当前素材（真实 1920×1080）"
+  },
+  {
+   "asset_id": "asset_432cd85be6f1",
+   "constructed": false,
+   "expect_status": "ok",
+   "expect_code": "ASSET_OK",
+   "why": "真实素材（PUBLIC_DOMAIN，cleared）"
+  },
+  {
+   "asset_id": "asset_cfae038f6106",
+   "constructed": false,
+   "expect_status": "ok",
+   "expect_code": "ASSET_OK",
+   "why": "外部 CC BY 4.0（cleared）⇒ 外部素材分支可用"
+  },
+  {
+   "asset_id": "asset_synthetic_sha_mismatch01",
+   "constructed": true,
+   "expect_status": "failed",
+   "expect_code": "ASSET_SHA_MISMATCH",
+   "why": "记录 sha 与文件实际 sha 不一致 ⇒ FAILED（不得执行）"
+  },
+  {
+   "asset_id": "asset_synthetic_missing01",
+   "constructed": true,
+   "expect_status": "pending",
+   "expect_code": "ASSET_MISSING",
+   "why": "索引有记录但文件不存在 ⇒ PENDING_HUMAN_ASSET"
+  },
+  {
+   "asset_id": "asset_synthetic_broken01",
+   "constructed": true,
+   "expect_status": "failed",
+   "expect_code": "ASSET_UNDECODABLE",
+   "why": "文件存在但不可解码 ⇒ FAILED"
+  },
+  {
+   "asset_id": "asset_synthetic_restricted01",
+   "constructed": true,
+   "expect_status": "failed",
+   "expect_code": "ASSET_LICENSE_RESTRICTED",
+   "why": "外部素材 + fair use（RESTRICTED）⇒ FAILED"
+  },
+  {
+   "asset_id": "asset_synthetic_unknown01",
+   "constructed": true,
+   "expect_status": "pending",
+   "expect_code": "ASSET_LICENSE_PENDING",
+   "why": "外部素材 + unknown ⇒ 需人工清许可 ⇒ PENDING"
+  }
+ ],
+ "asset_rules": {
+  "must_exist": true,
+  "must_sha256_match": true,
+  "must_decode": true,
+  "license_gate": "复用冻结 3-A 口径：门禁只适用于**外部**素材；RESTRICTED ⇒ failed；UNKNOWN ⇒ pending；本地 ingest 不适用",
+  "same_as_current": "ASSET_SAME_AS_CURRENT ⇒ FAILED（防止『原地替换成同一素材』式的假执行）",
+  "forbidden": [
+   "虚构 asset_id",
+   "占位替换",
+   "自动换用别的素材",
+   "自动下载/检索",
+   "自动降低校验标准"
+  ]
+ },
+ "batch_cases": [
+  {
+   "id": "BT-1-unapproved-does-not-block",
+   "approve": [
+    "P1"
+   ],
+   "proposals": [
+    "P1",
+    "P2"
+   ],
+   "expect": {
+    "P1": "APPROVED",
+    "P2": "BLOCKED_UNAPPROVED"
+   },
+   "why": "未批准方案不进入可执行集合 ⇒ 不构成冲突、不拖住已批准方案（无假阻断）"
+  },
+  {
+   "id": "BT-2-rejected-does-not-block",
+   "approve": [
+    "P1"
+   ],
+   "reject": [
+    "P2"
+   ],
+   "proposals": [
+    "P1",
+    "P2"
+   ],
+   "expect": {
+    "P1": "APPROVED",
+    "P2": "BLOCKED_REJECTED"
+   },
+   "why": "被人工 REJECT 的方案不进入可执行集合"
+  },
+  {
+   "id": "BT-3-conflict-blocks-all",
+   "approve": [
+    "P1",
+    "P2"
+   ],
+   "proposals": [
+    "P1",
+    "P2"
+   ],
+   "same_scene": true,
+   "expect": {
+    "P1": "BLOCKED_CONFLICT",
+    "P2": "BLOCKED_CONFLICT"
+   },
+   "why": "对称阻断：不由系统选择谁先谁后，需人工重新批准"
+  },
+  {
+   "id": "BT-4-idempotent-replay",
+   "approve": [
+    "P1"
+   ],
+   "proposals": [
+    "P1"
+   ],
+   "ledger_executed": [
+    "P1"
+   ],
+   "expect": {
+    "P1": "BLOCKED_ALREADY_EXECUTED"
+   },
+   "why": "同一 proposal_id + 同一 proposal_sha256 已成功执行 ⇒ 禁止重复执行"
+  },
+  {
+   "id": "BT-5-conflict-precedes-idempotency",
+   "approve": [
+    "P1",
+    "P2"
+   ],
+   "proposals": [
+    "P1",
+    "P2"
+   ],
+   "same_scene": true,
+   "ledger_executed": [
+    "P1"
+   ],
+   "expect": {
+    "P1": "BLOCKED_CONFLICT",
+    "P2": "BLOCKED_CONFLICT"
+   },
+   "why": "冲突判定优先于幂等：冲突存在时一律『需人工重新批准』"
+  },
+  {
+   "id": "BT-6-disjoint-both-allowed",
+   "approve": [
+    "P1",
+    "P2"
+   ],
+   "proposals": [
+    "P1",
+    "P2"
+   ],
+   "expect": {
+    "P1": "APPROVED",
+    "P2": "APPROVED"
+   },
+   "why": "互不重叠 ⇒ 各自按自己的审批独立执行（不合并、不排序）"
+  },
+  {
+   "id": "BT-7-tampered-proposal",
+   "approve": [
+    "P1"
+   ],
+   "proposals": [
+    "P1"
+   ],
+   "tamper": [
+    "P1"
+   ],
+   "expect": {
+    "P1": "BLOCKED_TAMPERED"
+   },
+   "why": "审批绑定 proposal_sha256：内容被改 ⇒ 阻断（M4 语义在批量路径下同样成立）"
+  },
+  {
+   "id": "BT-8-film-wide-still-blocked",
+   "approve": [
+    "P1"
+   ],
+   "proposals": [
+    "P1"
+   ],
+   "film_wide": [
+    "P1"
+   ],
+   "expect": {
+    "P1": "BLOCKED_NOT_LOCAL"
+   },
+   "why": "局部门禁在批量路径下同样生效"
+  }
+ ],
+ "v9_expect": {
+  "proposals": 9,
+  "approvals": 10,
+  "ledger_entries": 21,
+  "batch1": {
+   "M5-A1-replace-S20": "SUCCEEDED",
+   "M5-D1-replace-S21": "SUCCEEDED",
+   "M5-A2-sha-mismatch-S11": "FAILED",
+   "M5-A3-asset-missing-S05": "PENDING_HUMAN_ASSET",
+   "M5-A4-undecodable-S18": "FAILED",
+   "M5-A5-license-restricted-S12": "FAILED",
+   "M5-A6-license-unknown-S08": "PENDING_HUMAN_ASSET",
+   "H1-hook-replace": "BLOCKED_UNAPPROVED",
+   "H3-batch2-next-longest": "BLOCKED_REJECTED"
+  },
+  "batch1_blocked_conflict": [],
+  "batch1_retry": {
+   "M5-A1-replace-S20": "BLOCKED_ALREADY_EXECUTED",
+   "M5-D1-replace-S21": "BLOCKED_ALREADY_EXECUTED"
+  },
+  "batch2_overlap": {
+   "M5-A1-replace-S20": "BLOCKED_CONFLICT",
+   "M5-C1-replace-S20-conflict": "BLOCKED_CONFLICT",
+   "M5-C2-replace-S20-conflict": "BLOCKED_CONFLICT"
+  },
+  "asset_e2e": [
+   {
+    "proposal_label": "M5-A1-replace-S20",
+    "asset_id": "asset_30dd89a16713",
+    "prev_asset_id": "asset_3f0b94a3f2ac",
+    "min_corr_new": 0.9,
+    "max_corr_prev": 0.1,
+    "replaced": true,
+    "why": "1920×1080 真实素材：成片抽帧与素材相关度 ≈0.99，与原素材为负相关"
+   },
+   {
+    "proposal_label": "M5-D1-replace-S21",
+    "asset_id": "asset_cfae038f6106",
+    "prev_asset_id": "asset_30dd89a16713",
+    "min_corr_new": 0.6,
+    "max_corr_prev": 0.1,
+    "replaced": true,
+    "why": "外部 CC BY 4.0 素材（3:2 覆盖式缩放）：相关度 ≈0.76，与原素材为负相关"
+   }
+  ],
+  "executed_without_approval": [],
+  "succeeded_without_real_asset_evidence": [],
+  "promoted": [],
+  "auto_approved": false,
+  "projection": {
+   "M5-A1-replace-S20": {
+    "unique_assets": 4,
+    "note": "换用已在片中的素材 ⇒ 唯一素材数不变（DQ-2 仍 FAIL）"
+   },
+   "M5-D1-replace-S21": {
+    "unique_assets": 5,
+    "note": "换用未使用过的新素材 ⇒ 唯一素材数 4→5（DQ-2 因阈值 ≥6 仍 FAIL）"
+   }
+  },
+  "pi": {
+   "must_rerun": [
+    "PI-1",
+    "PI-2",
+    "PI-3",
+    "PI-4",
+    "PI-5",
+    "PI-6"
+   ],
+   "v9_pi_states": {
+    "PI-1": "FAIL",
+    "PI-2": "FAIL",
+    "PI-3": "FAIL",
+    "PI-4": "PASS",
+    "PI-5": "FAIL",
+    "PI-6": "FAIL"
+   },
+   "pi_gate_outcome": "BLOCKED",
+   "note": "素材替换是局部 DQ 域修改，**不**改善 v9 的 PI 域问题 ⇒ 执行后 PI 仍 BLOCKED（预期且诚实）"
+  }
+ },
+ "ledger_contract": {
+  "append_only": true,
+  "tamper_detection": [
+   "modify_entry",
+   "delete_middle_entry",
+   "reorder_entries"
+  ],
+  "separate_ledgers": [
+   "approvals",
+   "executions"
+  ],
+  "seq_contiguous": true
+ },
+ "concurrency_contract": {
+  "serialization": "execute_batch(lock=...) 把『幂等复查 + 执行 + 落账』放入临界区 ⇒ 并发批次不会交错写链",
+  "same_proposal_two_threads": "一条 SUCCEEDED、另一条 BLOCKED_ALREADY_EXECUTED（不重复执行）",
+  "disjoint_two_threads": "两条都 SUCCEEDED，台账 seq 连续唯一、链完整",
+  "boundary": "跨进程无锁时，幂等判定与落账之间存在竞态 ⇒ 见 boundary_notes"
+ },
+ "boundary_notes": {
+  "batch_is_the_concurrency_unit": "冲突判定以**提交批次**为单位（批次 = 同时提交执行的一组已批准方案）；跨批次的同一方案由幂等门禁兜底。",
+  "symmetric_blocking": "参与冲突的方案**全部**被阻断（不挑选先后、不自动合并）；需人工重新批准后方可再次提交。",
+  "conservative_asset_rule": "同一 asset_id（即使窗口不相交）也判冲突 ⇒ 宁可多阻断，绝不自动合并。",
+  "no_cross_process_lock": "本层的串行化只在**同进程**内由调用方传入的锁保证；跨进程/跨机器并发未做文件锁，属已知边界。",
+  "license_scope": "许可门禁沿用冻结 3-A 口径（只适用于外部素材）；本地 ingest 素材的许可声明不由本层判定。",
+  "dq_projection": "素材执行后用**内存推演**时间轴跑 DQ 只读复核（未写回项目/DB）；是否真的上屏由成片抽帧比对证据判定，两者都记录。",
+  "no_pi_change": "PI-1…PI-6 的定义与阈值未改动；素材替换不改变 PI 判定。",
+  "sandbox_only": "所有执行产物只落在 output/phase6b_m4_sandbox/<project>_m5/ 内（沿用 M4 沙箱根，标签区分批次）。"
+ },
+ "frozen_sha256": "78c40cfa247a849e4af898bcdb96a333398fd0cdac84c240e9393eeaf8336ca7"
+}

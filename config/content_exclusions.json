@@ -1,0 +1,143 @@
+{
+  "content_exclusions": {
+    "_note": "**片级内容排除**（Phase 42 P42-1）。走**既有 decisions 通道**的外部开关文件（与 render_motion.json / frame_match.json 同款模式）⇒ `config.json` **零改动**。语义：被列出的素材在本片**全部景的候选域中排除**，分配器不得选它。",
+    "enabled": true,
+    "excluded": [
+      {
+        "asset_id": "asset_2442c39e8002",
+        "sha256_prefix": "2442c39e8002",
+        "name": "Obelus discogranulatus 01.JPG",
+        "picture_family": "自然界螺壳照片（海螺 / Obelus discogranulatus 标本照）",
+        "reason": "全片为**数学认识论**主题，旁白**零自然/生物内容**；该素材为**纯装饰性误配**。实测其上屏位置为『有限单群分类』『证明翻译』『机器自己写证明』三段，**均无语义关联**。",
+        "observed_placements": [
+          "P04_3（有限单群段）",
+          "P06_3（Flyspeck 段）",
+          "P08_2（机器出题段）"
+        ],
+        "approved_by": "human:project-owner",
+        "approval_document": "Phase 42 授权书（监理代行内容裁定）",
+        "authorized_by": "supervisor",
+        "registered_format": "13-C 双字段转录",
+        "scope": "film_level",
+        "registered_at": "2026-10-02"
+      },
+      {
+        "asset_id": "asset_432cd85be6f1",
+        "sha256_prefix": "432cd85be6f1",
+        "name": "（人物举旗照片）",
+        "picture_family": "人物照片（家族 B）",
+        "reason": "**A 审人工点名『hook 画面与主题错位』**，人工目验在案；按 P42 螺壳先例做**片级内容排除**（出 candidates 域与上屏）。",
+        "observed_placements": [
+          "A 审指出的 hook 位置"
+        ],
+        "approved_by": "human:project-owner",
+        "approval_document": "Phase 43 授权书 §3（监理代行内容裁定）",
+        "authorized_by": "supervisor",
+        "registered_format": "13-C 双字段转录",
+        "scope": "film_level",
+        "registered_at": "2026-10-02"
+      }
+    ],
+    "assertion": "渲染后 material_timeline 中 2442c39e8002 与 432cd85be6f1 出现次数必须 = 0",
+    "scene_asset_policy": {
+      "_note": "**P44-1 语义锚定表**（监理 36/36 逐景裁决）。语义：`anchored` 里的素材**只允许**出现在其 `allowed_scenes`，其余景**禁入**（进场景候选过滤，被拒分配记 `anchor_rejected`）。`abstract_safe_set` 为**无实体锚景**的轮换池（仍受 cap=3 + 间距≥3 约束）。外部文件模式 ⇒ `config.json` 零改动。",
+      "enabled": true,
+      "calibrated_by": "human:project-owner",
+      "approval_document": "Phase 44 授权书 §1（监理 36/36 逐景裁决表）",
+      "anchored": {
+        "3f0b94a3f2ac": {
+          "name": "球堆",
+          "allowed_scenes": [
+            "P05_2",
+            "P05_3",
+            "P06_1",
+            "P06_2"
+          ]
+        },
+        "23e71bc8a864": {
+          "name": "四色邮戳",
+          "allowed_scenes": [
+            "P01_2",
+            "P01_3"
+          ]
+        },
+        "65377b888b77": {
+          "name": "Principia",
+          "allowed_scenes": [
+            "P04_4",
+            "P06_3",
+            "P07_4"
+          ]
+        },
+        "1e9d2ab4e64e": {
+          "name": "Lean 界面",
+          "allowed_scenes": [
+            "P06_3",
+            "P07_2",
+            "P09_1"
+          ]
+        },
+        "bd383463dbb9": {
+          "name": "棋类照片",
+          "allowed_scenes": [
+            "P09_3",
+            "P09_4"
+          ]
+        },
+        "cfae038f6106": {
+          "name": "棋类照片",
+          "allowed_scenes": [
+            "P09_3",
+            "P09_4"
+          ]
+        },
+        "33b360a5363c": {
+          "name": "开普勒凸函数图",
+          "allowed_scenes": [
+            "P05_4"
+          ]
+        }
+      },
+      "abstract_safe_set": [
+        "a3aff2f300eb",
+        "1d2fe4b325bd",
+        "f0cd2a28016d",
+        "301ff850be9c",
+        "a3f0e27204cd",
+        "30dd89a16713",
+        "5144139591a0",
+        "acaa16094c3b"
+      ],
+      "constraints_retained": {
+        "max_scenes_per_asset": 3,
+        "min_scene_gap": 3
+      },
+      "assertion": "被锚定素材只出现在其 allowed_scenes；越界分配计入 anchor_rejected"
+    },
+    "technical_exclusions": {
+      "_note": "**P46-2 技术性排除**（与内容排除**分开记账**，语义不同）：素材文件完好（293,234 B）且可在其它景正常渲染，但 frame_pearson_48x48 素材出现校验**恒判失败**（corr_best 恒为 0.063，与其落在何景无关）⇒ 无法通过渲染期核验，触发 ASSET_INSUFFICIENT 阻断。故从候选域剔除以解阻；**这不是内容裁定**，而是渲染链路缺陷的绕行，根因待修。",
+      "enabled": true,
+      "excluded": [
+        {
+          "asset_id": "asset_p33_f0cd2a28016d",
+          "sha256_prefix": "f0cd2a28016d",
+          "name": "A History Of Mathematical Notations Vol I - fig. 104",
+          "reason": "frame_pearson_48x48 素材出现校验恒失败（corr_best 0.063 ≪ corr_expected 0.199，跨景恒定）",
+          "evidence": "P02_2 / P05_4 / P08_3 三景均报同一 corr_best=0.063；文件存在、可解码",
+          "observed_placements": [
+            "P02_2",
+            "P05_4",
+            "P08_3"
+          ],
+          "approved_by": "human:project-owner",
+          "approval_document": "Phase 46 授权书 §1（根因修复；技术性剔除由监理代行）",
+          "authorized_by": "supervisor",
+          "scope": "film_level",
+          "kind": "technical",
+          "registered_at": "2026-10-02"
+        }
+      ],
+      "assertion": "渲染后该素材上屏次数 = 0；根因修复后应可解除此排除"
+    }
+  }
+}

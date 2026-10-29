@@ -1,0 +1,32 @@
+{
+  "gen_style": {
+    "_note": "**P55-3 黑板基底样片**（授权书 §3，并行授权 ≤¥2 / 3 张）：同一构图基底（黑板/机位/笔迹框架固定）× 3 种笔迹密度与明度变体。样片交项目所有者选定基底。",
+    "enabled": true,
+    "model": "wanx2.1-t2i-turbo",
+    "size": "1024*1024",
+    "negative_prompt": "text, letters, numbers, numerals, words, writing, handwriting, calligraphy, glyphs, captions, labels, watermark, signature, equation, formula, mathematical notation, chart axis labels, runes, gibberish characters, pseudo-text, photo, photorealistic, face, people, clutter",
+    "blackboard_base": {
+      "_frozen_note": "**固定基底**（三变体共用；选定后冻结 sha256）：同一块黑板、同一机位、同一笔迹框架。",
+      "base_suffix": "single dark charcoal blackboard filling the frame, flat even frontal camera angle, no perspective distortion, subtle chalk dust texture, thin consistent chalk line weight, sparse geometric marks only, generous negative space, no text no letters no numbers no writing",
+      "variants": {
+        "v1_稀疏高明度": {
+          "label": "v1 稀疏 · 高明度（留白最多、对比最强）",
+          "delta": "very sparse marks, only a few simple geometric outlines, bright high-contrast white chalk, maximum empty space"
+        },
+        "v2_中等密度": {
+          "label": "v2 中等密度 · 中明度（均衡）",
+          "delta": "moderate density of geometric outlines, medium-bright chalk, balanced empty space"
+        },
+        "v3_较密低明度": {
+          "label": "v3 较密 · 低明度（纹理感强）",
+          "delta": "denser geometric construction lines and light hatching, softer dimmer chalk, smaller negative space"
+        }
+      },
+      "sample_scene": "P06_4",
+      "sample_increment_hint": "把证明翻译成机器能逐句检查的形式（仅作**增量元素**参考）",
+      "budget_cny_cap": 2.0,
+      "approved_by": null,
+      "approval_document": "Phase 55 授权书 §3（样片交项目所有者选定基底）"
+    }
+  }
+}

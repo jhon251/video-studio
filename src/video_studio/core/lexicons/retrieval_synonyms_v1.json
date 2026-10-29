@@ -1,0 +1,49 @@
+{
+ "version": "retrieval-synonyms-v1",
+ "created": "2026-09-16",
+ "policy": "机械词形归一 + 中英（含少量西语）同义面映射。**不做翻译推理、不做语义判断、不做权重调参**；仅提供可审计的『概念 → 表面形式』表，供检索打分/查询扩展使用。",
+ "provenance": "概念与域标签与 4-B `semantics_v1.json` 的 12 个域对齐（xr_device/computing_device/wildlife/geography_nature/architecture/people/food_drink/art_culture/sports/vehicle/space_astronomy/document_text）；表面形式来自：① 本仓库真实下载过的 Wikimedia 素材文件名（p_f4b466a4a024 / p_3f8bd0b66b45 等，见 tests/retrieval_bench_v1.json 的 provenance 字段）；② 4-B 词表既有中英词；③ 通用同义词（人工填写，可逐条核对）。",
+ "notes": [
+  "本表**只**影响检索打分与查询扩展；素材是否可用仍由 verify_material + 许可门禁决定，语义是否正确仍由 4-B 验证器（categories 规则）判定。",
+  "含歧义形式（如 pico：品牌 / 亚速尔群岛地名）单独登记在 ambiguous_forms：命中歧义形式的候选在评测中记 **UNKNOWN**，不得直接算作 TP。",
+  "拉丁形式一律按**词边界**匹配（不允许子串桥接，例如 'es' 不得命中 'Azores'）——这是 4-B 已发现的碎片桥缺陷在检索层的对应防护。"
+ ],
+ "concepts": [
+  {"id": "xr_device", "domain": "xr_device", "zh": ["虚拟现实", "增强现实", "混合现实", "头显", "头戴", "头盔", "眼镜", "一体机", "手柄", "镜片", "立体", "沉浸"],
+   "latin": ["vr", "virtual reality", "xr", "ar", "augmented reality", "mr", "mixed reality", "headset", "head-mounted", "hmd", "goggles", "oculus", "quest", "quest 2", "quest 3", "meta quest", "pico 4", "vive", "psvr", "psvr2", "valve index", "steamvr", "vision pro", "virtuality", "stereoscopy", "per-eye"]},
+  {"id": "computing_device", "domain": "computing_device", "zh": ["计算机", "电脑", "芯片", "量子计算", "脑机接口", "脑电", "电极帽", "头环", "界面", "截图", "软件", "硬件", "设备", "处理器"],
+   "latin": ["computer", "quantum computer", "quantum", "chip", "processor", "bci", "brain-computer interface", "eeg", "headband", "interface", "screenshot", "ui", "software", "firmware", "flipper zero", "device", "pcb", "circuit"]},
+  {"id": "wildlife", "domain": "wildlife", "zh": ["鲨鱼", "蓝鲨", "鲸", "鲸鱼", "海豚", "鱼类", "海洋生物", "野生动物", "动物", "鸟类"],
+   "latin": ["shark", "blue shark", "prionace glauca", "tiburón azul", "tiburon azul", "whale", "dolphin", "fish", "marine", "wildlife", "animal", "bird", "reef"]},
+  {"id": "geography_nature", "domain": "geography_nature", "zh": ["山脉", "山", "风景", "自然", "海岛", "群岛", "海洋", "森林", "峡谷", "湖泊", "海滩"],
+   "latin": ["mountain", "landscape", "nature", "island", "azores", "fayal", "sea", "ocean", "forest", "valley", "lake", "beach", "canyon", "canal"]},
+  {"id": "architecture", "domain": "architecture", "zh": ["建筑", "长城", "教堂", "桥梁", "塔", "城市", "宫殿", "遗址"],
+   "latin": ["architecture", "building", "cathedral", "church", "bridge", "tower", "great wall", "city", "palace", "ruins", "facade"]},
+  {"id": "people", "domain": "people", "zh": ["人物", "游客", "佩戴者", "人像", "人群", "工人"],
+   "latin": ["person", "people", "visitor", "portrait", "man", "woman", "player", "worker", "crowd"]},
+  {"id": "food_drink", "domain": "food_drink", "zh": ["食物", "料理", "咖啡", "茶", "面包", "水果", "甜点"],
+   "latin": ["food", "dish", "cuisine", "coffee", "tea", "bread", "fruit", "dessert", "meal"]},
+  {"id": "art_culture", "domain": "art_culture", "zh": ["艺术", "绘画", "博物馆", "展览", "雕塑", "游戏皮肤", "角色", "动漫", "手办"],
+   "latin": ["art", "painting", "museum", "gallery", "sculpture", "game", "skin", "character", "exhibition", "cosplay", "anime", "manga"]},
+  {"id": "sports", "domain": "sports", "zh": ["运动", "足球", "篮球", "比赛", "运动员", "体育场"],
+   "latin": ["sport", "football", "soccer", "basketball", "match", "athlete", "stadium", "olympic"]},
+  {"id": "vehicle", "domain": "vehicle", "zh": ["汽车", "火车", "飞机", "自行车", "轮船", "车辆", "摩托车"],
+   "latin": ["car", "automobile", "train", "aircraft", "airplane", "bicycle", "ship", "boat", "vehicle", "motorcycle", "locomotive"]},
+  {"id": "space_astronomy", "domain": "space_astronomy", "zh": ["太空", "天文", "火箭", "卫星", "星系", "望远镜", "月球", "火星"],
+   "latin": ["space", "astronomy", "rocket", "satellite", "galaxy", "telescope", "nasa", "moon", "mars", "orbit", "nebula"]},
+  {"id": "document_text", "domain": "document_text", "zh": ["文档", "手稿", "文本", "说明书", "图表", "地图", "海报", "封面"],
+   "latin": ["document", "manuscript", "text", "diagram", "chart", "map", "poster", "cover", "scan", "pdf"]}
+ ],
+ "ambiguous_forms": {
+  "pico": ["xr_device", "geography_nature"],
+  "quest": ["xr_device", "art_culture"],
+  "valve": ["xr_device", "computing_device"],
+  "index": ["xr_device", "document_text"],
+  "apple": ["food_drink", "computing_device"],
+  "galaxy": ["space_astronomy", "computing_device"],
+  "skin": ["art_culture", "wildlife"],
+  "canal": ["geography_nature", "architecture"],
+  "match": ["sports", "document_text"],
+  "mars": ["space_astronomy", "food_drink"]
+ }
+}

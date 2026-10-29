@@ -1,0 +1,42 @@
+{
+  "workspace": { "root": "projects" },
+  "llm": {
+    "provider": "deepseek",
+    "deepseek": {
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "base_url": "https://api.deepseek.com",
+      "timeout_s": 120
+    },
+    "tiers": {
+      "R": { "model": "deepseek-reasoner", "max_tokens": 8192, "budget_usd": 0.50 },
+      "M": { "model": "deepseek-chat", "max_tokens": 8192, "budget_usd": 0.20 },
+      "F": { "model": "deepseek-chat", "max_tokens": 2048, "budget_usd": 0.05 }
+    },
+    "mock": {
+      "responses": {
+        "挑战报告": {
+          "verdict": "PASS",
+          "issues": [],
+          "meta_note": "",
+          "summary": "LLM 通道（mock）",
+          "confidence": 0.5,
+          "note": ""
+        }
+      },
+      "default": { "summary": "mock", "confidence": 0.5, "note": "" }
+    }
+  },
+  "tools": {
+    "ffmpeg": { "path": "C:/mp4agent/video-studio/bin/ffmpeg.exe", "ffprobe": "C:/mp4agent/video-studio/bin/ffprobe.exe" },
+    "tts": { "provider": "none" },
+    "asr": { "provider": "faster-whisper" },
+    "search": { "provider": "tavily", "api_key_env": null },
+    "image": { "provider": "none", "api_key_env": "IMAGE_API_KEY" },
+    "video": { "provider": "none", "api_key_env": "VIDEO_API_KEY" }
+  },
+  "hitl": {
+    "gates": ["topic", "structure", "script", "materials", "final_cut", "publish"],
+    "auto_approve": false
+  },
+  "retry": { "default_max_retries": 2, "backoff_base_s": 5 }
+}

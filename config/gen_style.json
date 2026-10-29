@@ -1,0 +1,47 @@
+{
+  "gen_style": {
+    "_note": "**P47-1 生成风格后缀**（外部文件模式 ⇒ config.json 零改动）。提示词 = 场景既有 visual_hint + 本文件选定的 frozen_style_suffix。三种候选风格先各出 1 张样片交项目所有者选定，选定后冻结 sha256。",
+    "enabled": true,
+    "model": "wanx2.1-t2i-turbo",
+    "size": "1024*1024",
+    "negative_prompt": "photo, photorealistic, text, watermark, signature, logo, face closeup, clutter, low contrast, jpeg artifacts",
+    "frozen_style_suffix": "minimalist white chalk line drawing on a dark charcoal blackboard, thin precise chalk strokes, sparse elegant mathematical symbols and geometric diagrams, lots of negative space, high contrast, clean composition, no text labels, flat even lighting",
+    "frozen_style_sha256": "c28eb75e06887a35233b3f29fd6a4ae821bfe86b2172e304a9619af71a5a8a2e",
+    "candidates": {
+      "a_黑板粉笔线稿": {
+        "label": "a) 黑板粉笔线稿（暗底白线极简）",
+        "suffix": "minimalist white chalk line drawing on a dark charcoal blackboard, thin precise chalk strokes, sparse elegant mathematical symbols and geometric diagrams, lots of negative space, high contrast, clean composition, no text labels, flat even lighting"
+      },
+      "b_米白铅笔手稿": {
+        "label": "b) 米白铅笔手稿（学术手稿风）",
+        "suffix": "delicate graphite pencil sketch on warm cream archival paper, scholarly manuscript aesthetic, fine hatching, faded hand-drawn mathematical diagrams and marginal notes as abstract marks, subtle paper texture, muted sepia palette, generous margins, no legible text"
+      },
+      "c_蓝图工程制图风": {
+        "label": "c) 蓝图工程制图风",
+        "suffix": "technical blueprint engineering drawing, cyanotype deep blue background with crisp white line work, precise geometric construction lines, dimension arrows and abstract schematic symbols, structured grid, high clarity, no legible text"
+      }
+    },
+    "sample_scene": "P06_4",
+    "sample_visual_hint": "把证明翻译成机器能检查的语言",
+    "budget_cny": {
+      "samples": 2.0,
+      "batch": 10.0
+    },
+    "provenance": "Generated (provider DashScope/wanx)，无第三方署名义务",
+    "approved_by": "human:project-owner",
+    "approval_document": "Phase 47 授权书 §1（样片交项目所有者选定）",
+    "frozen_style_id": "a_黑板粉笔线稿",
+    "frozen_at": "2026-10-02",
+    "frozen_style_variants": {
+      "no_text": {
+        "suffix": "pure geometric line drawing only, abstract circles arcs straight lines and lattice grids, absolutely no text no letters no numbers no numerals no words no writing no handwriting no calligraphy no symbols resembling glyphs, no charts with axis labels, empty clean negative space, minimalist white chalk strokes on dark charcoal blackboard, high contrast",
+        "sha256": "84fa45c758e60e802b765a59628410e161e5972809b5f9e3341216a0bebfe0bb",
+        "reason": "P50-1：监理帧检 P01_1（乱码文字墙）/P07_3（乱码标注）/P09_5（伪公式）含文字伪影 ⇒ 追加「纯几何线稿、无文字/字母/数字/书写痕迹」约束",
+        "approved_by": "human:project-owner",
+        "approval_document": "Phase 50 授权书 §1",
+        "frozen_at": "2026-10-03"
+      }
+    },
+    "negative_prompt_strong": "text, letters, numbers, numerals, words, writing, handwriting, calligraphy, glyphs, captions, labels, watermark, signature, equation, formula, mathematical notation, chart axis labels, runes, gibberish characters, pseudo-text, photo, photorealistic, face, clutter"
+  }
+}

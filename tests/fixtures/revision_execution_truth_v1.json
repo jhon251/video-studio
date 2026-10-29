@@ -1,0 +1,249 @@
+{
+ "schema": "revision-execution-truth-v1",
+ "stage": "6-B/M4",
+ "purpose": "Human-Approved Directorial Revision Execution 冻结真值集：固化『人工 APPROVE → hash 绑定 → 局部执行 → 强制 PI/DQ 复核 → 零自动提升』的受控执行契约，以及未批准/被拒/篡改/未实现/缺素材/执行异常六类 fail-closed 行为。",
+ "approval_required_fields": [
+  "approval_id",
+  "proposal_id",
+  "proposal_sha256",
+  "decision",
+  "approved_by",
+  "approved_at",
+  "reason",
+  "provenance"
+ ],
+ "approval_decisions": [
+  "APPROVE",
+  "REJECT"
+ ],
+ "execution_states": [
+  "SUCCEEDED",
+  "FAILED",
+  "BLOCKED_UNAPPROVED",
+  "BLOCKED_REJECTED",
+  "BLOCKED_TAMPERED",
+  "BLOCKED_NOT_LOCAL",
+  "PENDING_HUMAN_ASSET",
+  "UNSUPPORTED_ACTION"
+ ],
+ "frozen_policy": {
+  "max_scenes_per_proposal": 6,
+  "max_share_of_film_per_proposal": 0.3,
+  "forbid_film_wide_rewrite": true,
+  "require_approval": true,
+  "no_auto_approval": true,
+  "no_auto_scope_expansion": true,
+  "require_pi_recheck": true,
+  "require_dq_recheck": true
+ },
+ "gate_cases": [
+  {
+   "id": "EX-G1-NO-APPROVAL",
+   "approvals": "none",
+   "expect": {
+    "allowed": false,
+    "code": "BLOCKED_UNAPPROVED"
+   }
+  },
+  {
+   "id": "EX-G2-REJECTED",
+   "approvals": "reject",
+   "expect": {
+    "allowed": false,
+    "code": "BLOCKED_REJECTED"
+   }
+  },
+  {
+   "id": "EX-G3-TAMPERED-CHANGE",
+   "approvals": "approve_then_modify_proposal",
+   "expect": {
+    "allowed": false,
+    "code": "BLOCKED_TAMPERED"
+   }
+  },
+  {
+   "id": "EX-G4-TAMPERED-WRONG-ID",
+   "approvals": "approve_other_proposal",
+   "expect": {
+    "allowed": false,
+    "code": "BLOCKED_UNAPPROVED"
+   },
+   "note": "审批绑定的是**另一个** proposal ⇒ 本条视作未批准（同样 fail-closed）"
+  },
+  {
+   "id": "EX-G5-APPROVED-OK",
+   "approvals": "approve",
+   "expect": {
+    "allowed": true,
+    "code": "APPROVED"
+   }
+  },
+  {
+   "id": "EX-G6-FILM-WIDE",
+   "approvals": "approve",
+   "proposal_mutate": "film_wide",
+   "expect": {
+    "allowed": false,
+    "code": "BLOCKED_NOT_LOCAL"
+   }
+  },
+  {
+   "id": "EX-G7-TOO-MANY-SCENES",
+   "approvals": "approve",
+   "proposal_mutate": "seven_scenes",
+   "expect": {
+    "allowed": false,
+    "code": "BLOCKED_NOT_LOCAL"
+   }
+  },
+  {
+   "id": "EX-G8-SHARE-OVER-CAP",
+   "approvals": "approve",
+   "proposal_mutate": "share_0.5",
+   "expect": {
+    "allowed": false,
+    "code": "BLOCKED_NOT_LOCAL"
+   }
+  }
+ ],
+ "execution_cases": [
+  {
+   "id": "EX-E1-EXECUTOR-RAISES",
+   "action": "split_scene",
+   "executor": "raise",
+   "expect": {
+    "state": "FAILED",
+    "auto_retry": false,
+    "auto_scope_expansion": false
+   }
+  },
+  {
+   "id": "EX-E2-UNSUPPORTED-ACTION",
+   "action": "reorder_scenes",
+   "executor": "absent",
+   "expect": {
+    "state": "UNSUPPORTED_ACTION"
+   }
+  },
+  {
+   "id": "EX-E3-PENDING-ASSET",
+   "action": "replace_asset",
+   "executor": "pending_asset",
+   "expect": {
+    "state": "PENDING_HUMAN_ASSET"
+   }
+  },
+  {
+   "id": "EX-E4-SUCCESS-REQUIRES-RECHECK",
+   "action": "add_outro_card",
+   "executor": "ok_recheck",
+   "expect": {
+    "state": "SUCCEEDED",
+    "has_pi_recheck": true,
+    "has_dq_recheck": true,
+    "promoted": false
+   }
+  },
+  {
+   "id": "EX-E5-MISSING-RECHECK-FAILCLOSED",
+   "action": "add_outro_card",
+   "executor": "ok_no_recheck",
+   "expect": {
+    "state": "FAILED",
+    "why_contains": "缺少强制 PI 复核"
+   }
+  },
+  {
+   "id": "EX-E6-RECHECK-RAISES-FAILCLOSED",
+   "action": "add_outro_card",
+   "executor": "ok_recheck_raises",
+   "expect": {
+    "state": "FAILED",
+    "why_contains": "PI/DQ 复核失败"
+   }
+  }
+ ],
+ "ledger_contract": {
+  "append_only": true,
+  "tamper_detection": [
+   "modify_entry",
+   "delete_middle_entry",
+   "reorder_entries"
+  ],
+  "separate_ledgers": [
+   "approvals",
+   "executions"
+  ]
+ },
+ "asset_conservation": {
+  "rule": "只允许使用**真实存在且经过验证**的素材（调用方提供 asset_index）；候选不存在 ⇒ PENDING_HUMAN_ASSET",
+  "forbidden": [
+   "虚构 asset_id",
+   "占位替换",
+   "自动下载/自动检索"
+  ]
+ },
+ "pi_recheck_contract": {
+  "must_rerun": [
+   "PI-1",
+   "PI-2",
+   "PI-3",
+   "PI-4",
+   "PI-5",
+   "PI-6"
+  ],
+  "gate_semantics": "复用 6-A/M2 冻结门禁（pre/post）判定；任一 gate blocked ⇒ pi_gate_outcome=BLOCKED",
+  "no_bypass": "本层不提升、不放行：PI FAIL/UNKNOWN 一律按既有门禁处理",
+  "dq_after_pi": "随后运行 DQ-1…DQ-8 只读诊断（advisory，不阻断）"
+ },
+ "v9_execution_expect": {
+  "project_id": "p_96efdc03e1aa",
+  "film_task": "t_d0a54bdf1810",
+  "v9_master_sha256": "22705c7d7ea20b40d91120146066b89ab2b5fa5c1a1cab18f5346d4c66497651",
+  "report": "docs/regression_2x/logs/phase6b_m4_v9_execution.json",
+  "approvals_ledger": "docs/regression_2x/logs/phase6b_m4_approvals_v9.jsonl",
+  "execution_ledger": "docs/regression_2x/logs/phase6b_m4_execution_ledger_v9.jsonl",
+  "approvals": {
+   "H7-outro-card": "APPROVE",
+   "H2-asset-pool-diversity": "APPROVE",
+   "H3-batch1-split-longest": "REJECT"
+  },
+  "execution_states": {
+   "H7-outro-card": "SUCCEEDED",
+   "H2-asset-pool-diversity": "PENDING_HUMAN_ASSET",
+   "H3-batch1-split-longest": "BLOCKED_REJECTED",
+   "H1-hook-replace": "BLOCKED_UNAPPROVED",
+   "tampered-H7": "BLOCKED_TAMPERED"
+  },
+  "executed_succeeded": 1,
+  "executed_without_approval": [],
+  "auto_approved": false,
+  "promoted": [],
+  "pi_recheck_after_h7": {
+   "PI-1": "FAIL",
+   "PI-2": "FAIL",
+   "PI-3": "FAIL",
+   "PI-4": "PASS",
+   "PI-5": "FAIL",
+   "PI-6": "FAIL",
+   "pi_gate_outcome": "BLOCKED"
+  },
+  "dq_recheck_after_h7": {
+   "DQ-6": "PASS",
+   "note": "执行前 DQ-6 为 FAIL（无 outro 关键词）；执行后 PASS —— 真实可测改善；其余 DQ 项不变"
+  },
+  "v9_master_unchanged": true,
+  "v9_output_dir_unchanged": true,
+  "db_unchanged": true,
+  "sandbox_only": true,
+  "note": "v9 仅 H7 被人工 APPROVE 并执行（沙箱内）；执行后 PI 门禁仍 BLOCKED ⇒ 成片**未被提升**，符合『不绕过门禁』。"
+ },
+ "boundary_notes": {
+  "no_auto_approval": "审批只能由人工记录（auto_approved 恒 false）；本层不提供任何自动批准路径。",
+  "no_auto_execute_all": "只执行显式 APPROVE 且 hash 匹配的 proposal；其余保持未执行（v9 本轮 8 条方案仅 1 条执行）。",
+  "no_film_wide": "沿用 6-B/M3 局部化上限；film_wide / 超范围在执行门禁处再次阻断。",
+  "sandbox_only": "执行在 output/phase6b_m4_sandbox/ 内进行（输入=复制品）；源项目与 v9 母版零改动。",
+  "locality_vs_pi": "局部 DQ 修改**不会**改善 PI 域问题（v9 的覆盖/静音/orphan 仍在）⇒ 执行后 PI 仍 BLOCKED 是预期且诚实的结果。"
+ },
+ "frozen_sha256": "dcb6bac24a0b6746756a5ba250368c7756f874eaa9f3f7e248c4bf33bbc84eba"
+}

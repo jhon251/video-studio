@@ -1,0 +1,34 @@
+{
+  "workspace": {
+    "root": "projects"
+  },
+  "llm": {
+    "provider": "deepseek",
+    "deepseek": {
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "base_url": "https://api.deepseek.com",
+      "timeout_s": 120
+    },
+    "tiers": {
+      "R": { "model": "deepseek-reasoner", "max_tokens": 8192, "budget_usd": 0.50 },
+      "M": { "model": "deepseek-chat", "max_tokens": 8192, "budget_usd": 0.20 },
+      "F": { "model": "deepseek-chat", "max_tokens": 2048, "budget_usd": 0.05 }
+    }
+  },
+  "tools": {
+    "ffmpeg": { "path": "ffmpeg", "ffprobe": "ffprobe" },
+    "tts": { "provider": "edge-tts" },
+    "asr": { "provider": "faster-whisper" },
+    "search": { "provider": "none", "api_key_env": "SEARCH_API_KEY" },
+    "image": { "provider": "none", "api_key_env": "IMAGE_API_KEY" },
+    "video": { "provider": "none", "api_key_env": "VIDEO_API_KEY" }
+  },
+  "hitl": {
+    "gates": ["topic", "structure", "script", "materials", "final_cut", "publish"],
+    "auto_approve": false
+  },
+  "retry": {
+    "default_max_retries": 2,
+    "backoff_base_s": 5
+  }
+}

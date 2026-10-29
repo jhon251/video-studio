@@ -1,0 +1,656 @@
+{
+  "_meta": {
+    "name": "evidence_signal_dev",
+    "note": "Stage 7 信号级独立测试集：dev v2 全部 72 样本；truth 为信号级标注（先行落盘）。限定词/数字项的 truth 由规则侧原文存在性 oracle 提供（不入本文件）。与冻结 197 无重叠。"
+  },
+  "labels": {
+    "D001": {
+      "topic": true,
+      "prop": false,
+      "s": true,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D002": {
+      "topic": true,
+      "prop": false,
+      "s": true,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D003": {
+      "topic": true,
+      "prop": false,
+      "s": true,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D004": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D005": {
+      "topic": true,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D006": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D007": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D008": {
+      "topic": true,
+      "prop": false,
+      "s": true,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D009": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D010": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D011": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D012": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D013": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D014": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D015": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D016": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D017": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D018": {
+      "topic": true,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D019": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D020": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D021": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D022": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D023": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D024": {
+      "topic": true,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D025": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D026": {
+      "topic": true,
+      "prop": false,
+      "s": true,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D027": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D028": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D029": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D030": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D031": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D032": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D033": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D034": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D035": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D036": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D037": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D038": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D039": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D040": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D041": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D042": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D043": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": false,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D044": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D045": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D046": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D047": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D048": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D049": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D050": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D051": {
+      "topic": true,
+      "prop": false,
+      "s": true,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D052": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D053": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "D054": {
+      "topic": true,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D055": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "D056": {
+      "topic": false,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "DV-01": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "DV-02": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "DV-03": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "DV-04": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "DV-05": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "DV-06": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": false,
+      "scope": "context"
+    },
+    "DC-01": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": true,
+      "scope": "predicate"
+    },
+    "DC-02": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": true,
+      "scope": "predicate"
+    },
+    "DC-03": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": true,
+      "scope": "predicate"
+    },
+    "DC-04": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": true,
+      "scope": "object"
+    },
+    "DC-05": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": true,
+      "scope": "predicate"
+    },
+    "DC-06": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": true,
+      "scope": "predicate"
+    },
+    "DC-07": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": true,
+      "scope": "predicate"
+    },
+    "DC-08": {
+      "topic": true,
+      "prop": true,
+      "s": true,
+      "o": true,
+      "p": true,
+      "cand": true,
+      "scope": "number"
+    },
+    "DCX-01": {
+      "topic": true,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    },
+    "DCX-02": {
+      "topic": true,
+      "prop": false,
+      "s": false,
+      "o": false,
+      "p": false,
+      "cand": false,
+      "scope": "context"
+    }
+  }
+}

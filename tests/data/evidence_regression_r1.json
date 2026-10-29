@@ -1,0 +1,968 @@
+{
+  "_meta": {
+    "name": "evidence_semantic_regression_r1",
+    "source_round": "yongsheng-tavily-r1 (p_f2215875dd49)",
+    "note": "50 样本全部来自第一轮真实运行：45 条为已入库 Evidence 原文（page_excerpt_r1），5 条为第一轮同查询补采原文（page_text_refetch）；truth_label 为人工标注（V2.1 语义标准）。禁止编造或替换样本文本。",
+    "categories": {
+      "TRUE_DIRECT": 10,
+      "TRUE_PARTIAL": 10,
+      "TRUE_IRRELEVANT": 10,
+      "TRUE_CONTRADICT": 5,
+      "PSEUDO_CONTRADICT": 5,
+      "CONTEXT_ONLY": 5,
+      "KEYWORD_OVERLAP_IRRELEVANT": 5
+    }
+  },
+  "samples": [
+    {
+      "id": "RS-001",
+      "category": "TRUE_DIRECT",
+      "claim_id": "c_578",
+      "claim_text": "算力、能耗、散热，每一项都是钱",
+      "claim_source": "original",
+      "evidence": {
+        "source": "paper.ce.cn",
+        "url": "http://paper.ce.cn/pc/content/202404/29/content_293730.html",
+        "text": "2年的3.5倍和6倍以上。届时，AI用电量将达到2022年全社会用电量的20%和31%。 为何如此耗能 为什么人工智能大模型如此耗能？AI技术迅速发展，对芯片的需求急剧增加，进而带动电力需求激增。同时，对AI进行大量训练，也意味着需要更强的算力中心和与之匹配的散热能力。在AI快速迭代的道路上，电力和水资源的消耗也在快速增加。因为很多数据中心全年无休，发热量巨大，大规模电耗和水耗主要来自于冷却需求。 相关统计显示，数据中心运行成本的六成是电费，而电费里的四成多来自冷却散热，相应也会带来巨量冷却水的消耗。风冷数据中心六成多的耗电量都会用在风冷上，只有不到四成电力用在实际计算上。如今，全球数据中心市场耗电量是10年前的近10倍。 能耗问题会不会成为人工智能发展的“绊脚石”？英伟达首席执行官黄仁勋曾提到，AI和算力耗能巨大，但由于计算机性能飞速增长，计算会更加高效，相当于更节省能源。当前，我国实施严格的能耗双控政策，无论是AI大模型本身",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "经济日报：数据中心运行成本六成是电费、电费四成多来自冷却散热——直接支撑'算力、能耗、散热每一项都是钱'的主体与谓词"
+    },
+    {
+      "id": "RS-002",
+      "category": "TRUE_DIRECT",
+      "claim_id": "c_578",
+      "claim_text": "算力、能耗、散热，每一项都是钱",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.tmtpost.com",
+        "url": "https://www.tmtpost.com/7934099.html",
+        "text": "电费只占5%，谁在真正吃掉算力成本？-钛媒体官方网站 推荐 快报 广场 科股宝VIP 视频 直播 媒体 企服 创投 咨询 活动 钛空时间 集团时光 公众号 清朗网络行动 写稿 视频投稿 App下载 ENGLISH 钛媒体 链得得 钛空时间 消研所 钛媒体创投家 品牌服务 专家服务 政府服务 创业者服务 融资需求 申请报道 项目数据库 投资者服务 创投家CLUB投资机构库 机构数据库 行研报告 钛媒体 链得得 ITValue 钛空时间 消研所 钛极客 资讯 科股宝 PRO 视频 直播 FM 电费只占5%，谁在真正吃掉算力成本？ 半导体产业纵横 2026.03.30 11:30 · 来自北京 全文4812字 00:00 /",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "钛媒体：全文主题即算力成本构成（电费/散热），与命题同一主题同一判断"
+    },
+    {
+      "id": "RS-003",
+      "category": "TRUE_DIRECT",
+      "claim_id": "c_552",
+      "claim_text": "《刀剑神域》的Underworld，也是一个把人脑塞进机器的故事",
+      "claim_source": "original",
+      "evidence": {
+        "source": "u-acg.com",
+        "url": "https://u-acg.com/archives/19722",
+        "text": "Alicization 》搖光與靈魂： 論「自律學習型高適應性人工智慧」的理論可行性 UACG ed. 2019-01-25 &nbsp; 在《刀劍神域 Alicization 》的世界觀中，日本自衛隊將數位人類嬰兒的量子資訊置入虛擬世界「UnderWorld」中，並使其在虛擬世界中學習、生存。最終目的 發展出得以在戰爭中應用的「自律學習型高適應性人工智慧（Artificial Labile Intelligence Cyberneted Existence， A.L.I.C.E.）」 簡單說就是創造完全人工再製人類靈魂的高階 AI，使用這個系統大量生產 AI 人造人類士兵。這樣一個架構在（科幻）輕小說下的虛擬技術，是否有可能具備現實科學世界的理論基礎呢？ 根據《刀劍神域》作者川原礫在小說中提供的脈絡，我將以當代深度學習技術以及量子 物理學的角度，淺談這個「自律學習型高適應性人工智慧」的理論 論述基礎和可行性。 ■ 關於「自律學",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "U-ACG 文精确描述《刀剑神域》Underworld 设定（数位人类婴儿置入虚拟世界）——直接支撑该世界观命题"
+    },
+    {
+      "id": "RS-004",
+      "category": "TRUE_DIRECT",
+      "claim_id": null,
+      "claim_text": "2025年，中国团队联合构建了具有单细胞分辨率的小鼠大脑图谱，成果发表于《神经元》",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "www.bsbii.cn",
+        "url": "https://www.bsbii.cn/website/66/content/2025/1742975450075.html",
+        "text": "联合绘制小鼠全脑细胞空间分布图谱为揭示大脑奥秘提供新视角 当前位置： 首页 &gt; 其他相关 &gt; 综合新闻 联合绘制小鼠全脑细胞空间分布图谱为揭示大脑奥秘提供新视角 时间： 2025-03-26 15:46:00 来源： 中国科学院脑科学与智能技术卓越创新中心 2025年3月24日，中国科学院脑科学与智能技术卓越创新中心，联合杭州华大生命科学研究院、临港实验室、腾讯AI实验室、 上海脑科学与类脑研究中心 等国内多家科研单位，利用覆盖全基因组范围的单胞转录组和空间转录组技术，通过团队攻关，构建了具有单细胞分辨率的小鼠大脑图谱，相关成果在线发表在国际学术期刊《神经元》（Neuron），为大脑功能的理解提供了全新的空间视角。 哺乳动物大脑的复杂性体现在其多样的细胞类型、特定的空间分布以及复杂的神经连接上，这为解析行为背后的神经环路带来了巨大挑战。尽管科学家们已通过传统细",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "bsbii 转中科院稿：2025-03-26、中科院脑智卓越中心联合多家单位、单细胞分辨率小鼠大脑图谱、发表于《神经元》——主体/时间/机构/事件全部命中（派生 Claim 去掉原句未背书的'最大/连接组'限定）"
+    },
+    {
+      "id": "RS-005",
+      "category": "TRUE_DIRECT",
+      "claim_id": null,
+      "claim_text": "人脑包含约860亿个神经元",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "www.ion.ac.cn",
+        "url": "https://www.ion.ac.cn/xwen/mtsm/2019n/202603/t20260313_8158865.html",
+        "text": "动，从而形成从感知到行动的闭环——数字大脑就这样完成了自主决策。 复制人脑真的已经“指日可待”？ “赛博果蝇”的成功，是否意味着实现小鼠、猴子甚至人类大脑的“全脑仿真”，已是指日可待？ “单就神经元数量而言，就是一个巨大的鸿沟。”徐春坦言，从果蝇到小鼠、猴子，乃至人类，大脑的复杂程度呈指数级增长——果蝇大脑约有12.5万个神经元，小鼠大脑神经元数量是果蝇的560倍，达到约7000万个，而人脑则包含约860亿个神经元和数万亿个突触。 “此次果蝇研究采用了高精度电子显微镜重构的方式，耗时数年才完成。”据徐春估算，若要以同等精度重构小鼠乃至人脑，其工作量和资金投入将是天文数字，“至少在近十年内，还很难完成”。 “但这项研究让我们看到，尽管脑科学理论还不够完善，但还是可以通过将生物脑复制进计算机，对部分大脑功能进行模拟。”徐春说，长期以来，由于高投入和长周期，大脑连接图谱研究经常受到“是否值得”的质疑。实际上，脑图谱恰恰是很多开展功能实",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "中科院神经所稿：'人脑则包含约860亿个神经元和数万亿个突触'——数字与约数限定词完全一致"
+    },
+    {
+      "id": "RS-006",
+      "category": "TRUE_DIRECT",
+      "claim_id": null,
+      "claim_text": "虚拟数字人侵权已出现司法判例：杭州互联网法院2023年作出首例判决",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "www.chinapeace.gov.cn",
+        "url": "http://www.chinapeace.gov.cn/chinapeace/c100047/2023-05/04/content_12654644.shtml",
+        "text": "首例涉“虚拟数字人”侵权案，在杭州互联网法院判决！-中国长安网 移动客户端 | 官方微信 | 官方微博 | 首页 --> 首页 政法要闻 高层动态 热点新闻 枫桥经验 政法改革 平安建设 队伍建设 案例指导 智能政法 权威辟谣 人事任免 网络学院 --> 政法文化 以案释法 长安微视 致敬英雄 见义勇为 首页 &nbsp;&gt;&nbsp; 浙江 首例涉“虚拟数字人”侵权案，在杭州互联网法院判决！ 时间：2023-05-04 11:20 来源：杭州互联网法院 责任编辑：石伟华 2021年，虚拟数字技术被纳入“十四五”规划纲要。2022年1月，《“十四五”数字经济发展规划》再次提出深化人工智能、虚拟现实等",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "长安网标题即'首例涉虚拟数字人侵权案，在杭州互联网法院判决'——主体/事件/时间完整背书"
+    },
+    {
+      "id": "RS-007",
+      "category": "TRUE_DIRECT",
+      "claim_id": null,
+      "claim_text": "现阶段的虚拟数字果蝇模型还不具备思想和意识，距离'数字生命'还很远",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "www.stdaily.com",
+        "url": "https://www.stdaily.com/web/gdxw/2026-03/24/content_491923.html",
+        "text": "创建了详细的小鼠大脑细胞图谱。 电子果蝇的最新进展，将“数字生命”又一次带到公众视野中。不少网友提问：这是否意味着科幻小说中的“复制人脑”和“意识上传”已经离我们不远了？ 业内专家告诉记者，由于此次披露的技术细节不足，还很难判断其重要性。但从果蝇到人脑，难度呈指数级升级，从目前的技术水平来看，要实现人脑复刻还非常遥远。 “目前的进展都是在虚拟空间中，并非真实环境交互。”中国科学院脑科学与智能技术卓越创新中心研究员严军说，“严格来讲，只有当虚拟模型拥有思想和意识、能够执行高级功能时，它才真正被称为数字生命。现阶段的成果还远未达到这一水平。” 马雷表示，数字果蝇的进展让不少人兴奋，不只是因为“虚拟果蝇会思考”，而在于它展示了生命科学研究范式的重要转变：从单纯观测生命，走向构建可以运行和验证的“数字生命体”。 当前，AI主要依靠编写算法、投喂数据、训练模型来模拟智能，与人脑所表现出的智能相差甚远。“数字生命体”不需要喂养数据，也不需要",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "科技日报引中科院严军原话'现阶段的成果还远未达到这一水平'——直接支撑该否定性命题"
+    },
+    {
+      "id": "RS-008",
+      "category": "TRUE_DIRECT",
+      "claim_id": null,
+      "claim_text": "'意识上传'指将人的大脑活动全面扫描并数字化、在计算机中重建完整思维模型的概念",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "m.gmw.cn",
+        "url": "https://m.gmw.cn/toutiao/2025-06/13/content_1304058546.htm",
+        "text": "务器，在8分钟的时空碎片中不断循环，寻找真相；而在《超验骇客》里，科学家威尔&middot;卡斯特将濒死的意识上传至量子网络，最终演化成能操控物质与数据的数字神明……听起来像天马行空的科幻设定，但今天，随着脑机接口、数字分身等技术快速推进，这一设想正逐渐逼近现实边界。 那么，“意识上传”真的有实现的可能吗？我们能否抛弃肉身，进入一段数字化“永生”？ 电影《源代码》剧照（上） 《超验骇客》宣传照（下） 意识上传：大脑的复制与上传 这个既酷炫又略带惊悚的概念，被称为“意识上传”（Mind uploading，或称“心灵上传”）。所谓“意识上传”，指的是将人的大脑活动全面扫描并数字化，在计算机中重建出一个人的完整思维模型。你可以把它想象成——把大脑“拷贝”到电脑里运行。从纯粹机械论的角度来看，如果这能实现，这意味着记忆、思维乃至“我是谁”的感受，都可能脱离肉体而存在。这一过程将会实现数字化永生，让你保留完整的自我认知、记忆与人格，只是",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "光明网对该概念给出完全一致的定义性表述"
+    },
+    {
+      "id": "RS-009",
+      "category": "TRUE_DIRECT",
+      "claim_id": null,
+      "claim_text": "人类大脑在约25瓦的低能耗下运行",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "www.tsinghua.edu.cn",
+        "url": "https://www.tsinghua.edu.cn/info/1182/111441.htm",
+        "text": "们自己的大脑学习…… 要论能效，还看大脑 1946年，世界上第一台电脑诞生。1973年，世界上第一台手机接通。经过半个多世纪的发展，今天的电脑手机已经成为人们追求智能生活不可或缺的基础设施。只不过，若论能效——算力与所需能量消耗之比，它们与人脑相比还是略逊一筹。 不妨用数字说话。训练一款ChatGPT，需要烧掉多少算力？如Open AI所透露的，ChatGPT背后有一个庞大的计算网络——Azure AI超算平台。这个微软专门建设的高性能网络集群包含1万颗GPU，为ChatGPT付出的总算力消耗超过3640 PF-days（以每秒计算1000万亿次计，持续计算3640天）。 而人类大脑在25瓦的极低能耗下，就能实现复杂环境中的关联记忆、快速识别、自主学习。这是为什么呢？ 人类大脑活动是精密而连续的动力学过程，复杂程度远超当前算力资源模拟的上限。大脑约有1000亿个神经元，100万亿个突触，突触连接的平均长度约10-1000微米。以",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "清华稿：'人类大脑在25瓦的极低能耗下'——数字与约数一致"
+    },
+    {
+      "id": "RS-010",
+      "category": "TRUE_DIRECT",
+      "claim_id": null,
+      "claim_text": "大脑状态涉及突触连接、胶质细胞等多个层面，且随发育动态变化",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "www.cellsignal.cn",
+        "url": "https://www.cellsignal.cn/science-resources/fundamentals-of-neuroscience",
+        "text": "周和第 40 孕周之间，以及在神经发生高峰过了之后。小胶质细胞随着时间的推移不断产生和成熟，在第 9 孕周开始定殖，并继续扩增至第 22 孕周。在第 35 孕周时可观察到分化的小胶质细胞。 胚胎发育期间发生的另一个过程是在神经元之间形成突触连接。最早可在大约第 8 孕周（脊髓）和第 9-10 孕周（脑）中观察到突触。在脑中形成皮层板后，皮层突触发生逐渐增强，在第 28 孕周达到顶峰。死后神经解剖研究和磁共振成像 (MRI) 均表明，此时的神经元会连接成一个未发育的网络，这个网络会在妊娠结束时促进主要纤维通路的产生。因此，脑连接体的基本框架通常在妊娠期结束时就已形成。但在整个生命期间，突触连接会因经历和环境变化而显示出动态变化。 虽然新皮层扩张、髓鞘形成和突触形成在妊娠期间已完成，但脑生长在出生后仍然很强劲。事实上，到 6 岁时，脑最终才达到成人容量的 90%，在青少年时期增长了 4 倍。特殊皮层区域的生长会超过这个年龄，直到成年",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "DIRECT_SUPPORT",
+      "rationale": "CellSignal 神经科学基础：突触连接/小胶质细胞定殖/发育动态——支撑'不止连接关系'的多层面命题"
+    },
+    {
+      "id": "RS-011",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_568",
+      "claim_text": "人脑大约八百六十亿个神经元，突触按百万亿算",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.tsinghua.edu.cn",
+        "url": "https://www.tsinghua.edu.cn/info/1182/111441.htm",
+        "text": "们自己的大脑学习…… 要论能效，还看大脑 1946年，世界上第一台电脑诞生。1973年，世界上第一台手机接通。经过半个多世纪的发展，今天的电脑手机已经成为人们追求智能生活不可或缺的基础设施。只不过，若论能效——算力与所需能量消耗之比，它们与人脑相比还是略逊一筹。 不妨用数字说话。训练一款ChatGPT，需要烧掉多少算力？如Open AI所透露的，ChatGPT背后有一个庞大的计算网络——Azure AI超算平台。这个微软专门建设的高性能网络集群包含1万颗GPU，为ChatGPT付出的总算力消耗超过3640 PF-days（以每秒计算1000万亿次计，持续计算3640天）。 而人类大脑在25瓦的极低能耗下，就能实现复杂环境中的关联记忆、快速识别、自主学习。这是为什么呢？ 人类大脑活动是精密而连续的动力学过程，复杂程度远超当前算力资源模拟的上限。大脑约有1000亿个神经元，100万亿个突触，突触连接的平均长度约10-1000微米。以",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "清华稿写'约1000亿神经元、100万亿突触'——支持量级，但与 Claim 的'860亿/百万亿'数字不完全一致，仅部分背书"
+    },
+    {
+      "id": "RS-012",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_563",
+      "claim_text": "2025年，中国团队放出了毫米级的小鼠全脑图谱，这是目前最大的哺乳动物全脑连接组",
+      "claim_source": "original",
+      "evidence": {
+        "source": "pmc.ncbi.nlm.nih.gov",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9568407",
+        "text": "中国脑科学计划进展 - PMC Skip to main content An official website of the United States government Here's how you know Here's how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( Lock Locked padlock",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "PMC 中国脑科学计划进展——支持中国脑图谱进展背景，但未背书'目前最大哺乳动物全脑连接组'的'最大/连接组'限定"
+    },
+    {
+      "id": "RS-013",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_563",
+      "claim_text": "2025年，中国团队放出了毫米级的小鼠全脑图谱，这是目前最大的哺乳动物全脑连接组",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.bsbii.cn",
+        "url": "https://www.bsbii.cn/website/66/content/2025/1742975450075.html",
+        "text": "联合绘制小鼠全脑细胞空间分布图谱为揭示大脑奥秘提供新视角 当前位置： 首页 &gt; 其他相关 &gt; 综合新闻 联合绘制小鼠全脑细胞空间分布图谱为揭示大脑奥秘提供新视角 时间： 2025-03-26 15:46:00 来源： 中国科学院脑科学与智能技术卓越创新中心 2025年3月24日，中国科学院脑科学与智能技术卓越创新中心，联合杭州华大生命科学研究院、临港实验室、腾讯AI实验室、 上海脑科学与类脑研究中心 等国内多家科研单位，利用覆盖全基因组范围的单胞转录组和空间转录组技术，通过团队攻关，构建了具有单细胞分辨率的小鼠大脑图谱，相关成果在线发表在国际学术期刊《神经元》（Neuron），为大脑功能的理解提供了全新的空间视角。 哺乳动物大脑的复杂性体现在其多样的细胞类型、特定的空间分布以及复杂的神经连接上，这为解析行为背后的神经环路带来了巨大挑战。尽管科学家们已通过传统细",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "bsbii 是细胞/空间转录组图谱而非连接组，'目前最大'亦未出现——仅部分背书"
+    },
+    {
+      "id": "RS-014",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_573",
+      "claim_text": "神经科学现在的基本共识是，记忆不是存在脑子里的文件，而是每次回忆时重新组装出来的",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.sinh.cas.cn",
+        "url": "http://www.sinh.cas.cn/kxcb/kptw/201805/t20180503_5005709.html",
+        "text": ";&nbsp; 科学普及 &nbsp;&gt;&nbsp; 科普作品 揭秘记忆的征途 发布时间: 2015-06-01 【字体： 大 &nbsp;&nbsp;&nbsp; 中 &nbsp;&nbsp;&nbsp; 小 】 如果有人问我，现代神经科学最难解决的问题是什么，我想我会毫不犹豫地回答是记忆。记忆，它在生物界中是如此常见，无论是堪称智慧无双的人类，还是全身总共只有302个神经元的线虫，甚至是只有一个细胞的酵母菌，都存在记忆现象。正是从小到大林林总总的记忆，赋予了我们不同的性格，树立了我们不同的三观，让不同的人走向了不同的道路。可是，这个重要到无以复加的记忆，它的本质究竟是什么呢？他是以什么形式存在于我们大脑之中的呢？遗憾的是，时至今日，依然没有人能很好地回答这两个问题。 在古代，无论东方还是西方，人们普遍相信包括记忆在内的一切意识活动都源自一种叫做“灵魂”的东西，它是绝对形而上的，不可被研究的。可能正是因为这个原因，真正去",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "中科院神经所科普讨论记忆本质，但未背书'基本共识'这一学界共识强限定词"
+    },
+    {
+      "id": "RS-015",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_557",
+      "claim_text": "第二步，复制：在电脑里重建一个功能一样的脑",
+      "claim_source": "original",
+      "evidence": {
+        "source": "blog.leowang.net",
+        "url": "https://blog.leowang.net/4-hmyenphkq",
+        "text": "设计图，精确到每一根导线，造出了一模一样的副本。它能开机，能运行出厂预装的程序——但如果原机上有用户后来安装的软件、十年积累的数据、各种个性化设置，这些东西不在硬件图里，你的副本就没有。从这个角度看，连接组是必要条件，但可能不是充分条件。 第二层 ，即使把所有信息都复制了，意识会跟着来吗？假设未来技术真的能扫描一个人类大脑的完整状态——不只是接线图，还有每个突触的精确强度、每个离子通道的当前状态、每个神经调质的浓度分布——在计算机里完美模拟了这个大脑的所有动力学。那个在云端跑起来的 你 ， 是你吗 ？ 功能主义者 说：是的。如果所有的因果关系都被精确复制，意识就是功能，不是材质，载体是碳基还是硅基并不重要。另一些人则引用约翰·塞尔的 中文房间 论证——一个系统可以完美地模拟智能行为，但内部可能什么体验都没有。行为相似，不等于内在体验相同。 我认为意识不是 有或没有 的二元开关，而是一个 连续的光谱 。从最简单的单细胞生物对环境的",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "leowang 讨论连接组是否充分/功能主义，与'第二步复制'的定义句同主题讨论，但不构成事实背书"
+    },
+    {
+      "id": "RS-016",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_574",
+      "claim_text": "要复制的远不止连接关系：突触强度、神经递质、胶质细胞、甚至分子层面的状态——这张清单到底有多长，学界没有公认答案",
+      "claim_source": "original",
+      "evidence": {
+        "source": "swarma.org?p=",
+        "url": "https://swarma.org?p=",
+        "text": "and Development Policy》编辑部协办。中国科学学与科技政策研究会名誉理事长方新教授担任本次年会主席，中国科学学与科技政策研究会理事长穆荣平教授担任大会学术委员会主席。 ... 2025-09-29 7,700 AI模拟细胞：让活细胞在大数据中自发涌现！ 导语 “我们能在计算机里构建一个细胞吗？” 这一根本性问题，正随着人工智能和组学技术的进步而迎来突破性机遇。最近，权威期刊Cell发表了一篇重磅综述，深入探讨了 “人工智能虚拟细胞”（AI Virtual Cell, AIVC） 这一前沿概念。这篇文章汇集了AI与生命科学领域的顶尖智慧。作者团队阵容非常强大，横跨学术界（如斯坦福、哈佛 、科技巨头（如谷歌研究院、微软研究院）和生物技术行业（如基因泰克），并由陈-扎克伯格计划 (CZI)的研究者联合推动，共同为构建“AI虚拟细胞”绘制蓝图。本文是对该综述的翻译。 ... 2025-09-28 10,054 海洋",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "集智 AI 虚拟细胞属相邻领域（模拟细胞而非全脑状态清单），仅部分相关"
+    },
+    {
+      "id": "RS-017",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_589",
+      "claim_text": "日常里靠的是记忆和身体的连续",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.mountelizabeth.com.sg",
+        "url": "https://www.mountelizabeth.com.sg/zh/health-plus/article/10-things-that-can-help-or-hurt-your-memory",
+        "text": "，我们已经知道睡眠质量会对脑力产生负面影响。 18 - 64 岁的成年人每周至少应进行 150 分钟的适度体育锻炼或 75 分钟的剧烈体育锻炼。 压力和焦虑 压力激素皮质醇的释放被认为会减少大脑中的突触，从而导致短期记忆丧失。 这意味着，对日常通勤、工作中的重要演讲或银行账户的低水平压力可能会影响大脑回忆某些信息的能力。 要解决这个问题，可以考虑尝试冥想。如果压力过大或感到焦虑，请 咨询医生 。 超重 根据剑桥大学（University of Cambridge）的研究，身体质量指数（BMI）较高可能会损害您的记忆力。 在这项研究中，体重指数大于 25 的人在记忆回忆测试中的得分比体重指数小于 25 的人低 15%。 不知道您的体重指数是多少？您可以在这里计算。高体重指数的其他风险包括糖尿病、心脏病或高血压等疾病。 如果您担心自己的体重，请 咨询医生 。 抑郁 据报道，抑郁患者会出现记忆问题，如健忘或混乱。抑郁还与短期记忆丧失有",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "医院科普讨论记忆与健康影响因素，未直接论证'身份连续性依靠记忆与身体'"
+    },
+    {
+      "id": "RS-018",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_569",
+      "claim_text": "果蝇十四万，人比它多五个数量级，而且扫描精度要求每条连接都被记录",
+      "claim_source": "original",
+      "evidence": {
+        "source": "hs.china.com.cn",
+        "url": "http://hs.china.com.cn/2026-03/26/content_43382924.html",
+        "text": "﻿ AI果蝇诞生：人类大脑上传与数字永生的历史性突破_中国网海丝频道 习近平外交思想和新时代中国外交 国新网 中国发展门户网 中国乡村振兴在线 中国外文局 手机版 中国网手机版 扫码即可查看网页 客户端 中国网客户端 点击查看下载页面 立即查看 融媒矩阵 中国网 直播 中国网知乎 中国网微信 中国网快手 中国网头条 中国网抖音 中国网微博 中国网直播微信 中国网直播快手 中国网直播头条 中国网直播抖音 中国网直播微博 邮箱 要闻 原创 关注 专题 新经济 曝光台 中国访谈 视频 海丝文旅 海丝政策 海丝沿线 海丝商贸 大数据 党建 AI果蝇诞生：人类大脑上传与数字永生的历史性突破 分享到： 链接已复制",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "标题'AI果蝇诞生：人类大脑上传与数字永生'与主题相关，但窗口内未见果蝇/人脑数量对比数字"
+    },
+    {
+      "id": "RS-019",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_567",
+      "claim_text": "从果蝇到人，差多远",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.ion.ac.cn",
+        "url": "https://www.ion.ac.cn/xwen/mtsm/2019n/202603/t20260313_8158865.html",
+        "text": "动，从而形成从感知到行动的闭环——数字大脑就这样完成了自主决策。 复制人脑真的已经“指日可待”？ “赛博果蝇”的成功，是否意味着实现小鼠、猴子甚至人类大脑的“全脑仿真”，已是指日可待？ “单就神经元数量而言，就是一个巨大的鸿沟。”徐春坦言，从果蝇到小鼠、猴子，乃至人类，大脑的复杂程度呈指数级增长——果蝇大脑约有12.5万个神经元，小鼠大脑神经元数量是果蝇的560倍，达到约7000万个，而人脑则包含约860亿个神经元和数万亿个突触。 “此次果蝇研究采用了高精度电子显微镜重构的方式，耗时数年才完成。”据徐春估算，若要以同等精度重构小鼠乃至人脑，其工作量和资金投入将是天文数字，“至少在近十年内，还很难完成”。 “但这项研究让我们看到，尽管脑科学理论还不够完善，但还是可以通过将生物脑复制进计算机，对部分大脑功能进行模拟。”徐春说，长期以来，由于高投入和长周期，大脑连接图谱研究经常受到“是否值得”的质疑。实际上，脑图谱恰恰是很多开展功能实",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "中科院神经所给出果蝇12.5万/人脑860亿的背景数字——为'从果蝇到人差多远'提供背景支撑；问句不可判反驳"
+    },
+    {
+      "id": "RS-020",
+      "category": "TRUE_PARTIAL",
+      "claim_id": "c_583",
+      "claim_text": "上传大脑是同一个问题：扫描产生的那个副本，是'你'，还是一份关于你的高质量复制品",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.jiemian.com",
+        "url": "https://www.jiemian.com/article/10056111.html",
+        "text": "意识上传以永生，是人类的未来吗？|界面新闻 · JMedia 首页 科技 金融 证券 地产 汽车 健康 地方 硬科技 文旅 数据 ESG 双碳 电厂 商业 科技 地产 汽车 消费 工业 时尚 交通 医药 互联网 创投 能源 数码 教育 食品 新能源 家电 健康 酒业 物流 零售 美妆 体育 楼市 家居 餐饮 日用 企服 珠宝 腕表 智库 电厂 农业 出海 财经 金融 投资 证券 IPO 宏观 股市 财富 有连云 新闻 天下 中国 地方 评论 数据 职场 国是 文娱 影像 营销 大湾区 ESG 双碳 长三角 中西部 文化生活 文化 文旅 生活方式 美食美酒 艺术 游戏 正午 箭厂 VIP 投资早晚报",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "界面新闻讨论意识上传与'副本是否是你'哲学问题——与 Claim 同主题，属讨论性部分支撑"
+    },
+    {
+      "id": "RS-021",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_612",
+      "claim_text": "假如有一天副本上线，对你说'我就是你'——你会觉得，自己永生了吗",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.irs.gov",
+        "url": "https://www.irs.gov/zh-hans/individuals/get-transcript",
+        "text": "英文) 。 注意： 为了保护您的隐私，誊本会部分掩盖您的个人身份信息。所有财务数据会全部显示，以便进行纳税准备、税务代理或收入核实。有关详细信息，请参阅 关于税务誊本 (英文) 。如果您需要报税表的复印件，请提交 表格 4506，申请报税表副本 (英文) 。 警告： 国税局不会主动通过电子邮件、短信或社交媒体渠道联系纳税人，索取个人或财务信息。如果您不确定您收到的任何声称来自国税局的未经请求的信件（美国国内的邮件除外）的真实性，请访问 举报网络钓鱼 以获取说明。 &nbsp; 刊物 关于表格 4506-T (英文) – 提供通过邮寄递送的所有誊本类型。 关于表格 4506-T-EZ (英文) – 仅提供通过邮寄递送的报税表誊本。 Page Last Reviewed or Updated: 27-Jun-2026 Share Facebook Twitter Linkedin Print Footer Navigation 我们",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "PARTIAL_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "IRS 税务誊本页与'副本上线/永生'零主题关系"
+    },
+    {
+      "id": "RS-022",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_572",
+      "claim_text": "假设扫描精度够了，还有第二道坎：一张接线图，装不下一个'你'",
+      "claim_source": "original",
+      "evidence": {
+        "source": "theembeddedsystem.readthedocs.io",
+        "url": "https://theembeddedsystem.readthedocs.io/en/latest/c8_can/intro_can.html",
+        "text": "发器不驱动CAN_HI和CAN_LO两个信号，即两个信号处于浮空状态，此时两总线信号受120欧姆终端匹配的影响都保持2V左右。 图8.1 CAN2.0A数据帧(位流)和物理层CAN_HI和CAN_LO信号之间关系示意图[1] 在图8.1中，假设某个CAN总线节点发出一个数据帧，其中帧ID=0x014且仅1个字节的数据0x01，这个完整的CAN总线数据帧由55个二进制位组成， 并结构化为8个信息域，其中绿色、黄色和红色背景的三个信息域分别是仲裁域(即信息ID)、控制域(指定信息域长度)和数据域(帧数据)， 按照我们的假设，这三个信息域的二进制位是确定的。此外，CRC校验域的内容是根据该域之前的位流内容计算得到15位长度的CRC值(循环冗余校验码)。 帧起始域、帧确认域、帧结束域和帧间隔域等都是固定的信息，即所有CAN2.0A数据帧的这些域都是相同的，这些固定内容的信息域用于同步CAN数据帧。 上图能够清楚地看出，CAN总线发送‘0",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "PARTIAL_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "CAN 总线协议教程与'接线图装不下一个你'零主题关系（'接线'词面误匹配）"
+    },
+    {
+      "id": "RS-023",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_561",
+      "claim_text": "先说扫描，这一步真有人在干",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.news.cn",
+        "url": "https://www.news.cn/comments/zt/xhwsp/index.html",
+        "text": "，几分钟内，一篇几千字的“调研报告”就生成了。应当警惕，滥用AI或可能滋生新的形式主义。再华丽的AI写作，也代替不了“沾泥土、带露珠、冒热气”的一手调研。 新华网视评｜别给骗子进入家长群大开方便之门 北京市反诈中心近期通报一起案件。骗子通过扫描入学手册上的二维码，混入高中新生群，冒用“群主老师”头像，以缴纳“资料费、复印费”为由，推送收款二维码，40分钟时间，就从9位家长手上骗走4千余元。家长群本来为了方便沟通，却被骗子轻易钻了空子。要杜绝此类诈骗事件，学校必须强化群管理，家长与学生要加强防范意识。 新华网视评｜任性冒险浪费公共资源，该罚！ 每人罚5000元！深圳开出全国首例自然灾害综合法规罚单。近期深圳台风预警，但两名游客仍擅自闯入自然灾害危险区，最终被困报警。经过12小时风雨救援，两人安全脱险，但事后也依规受到处罚。公共救援资源本应用于真正的突发灾难，而非为个别任性行为“买单”。深圳的这张罚单，是一记警钟！任性冒险，必须付出",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "新华网家长群诈骗评论（含'扫描二维码'）与'大脑扫描有人在干'零主题关系"
+    },
+    {
+      "id": "RS-024",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_595",
+      "claim_text": "定价一两万美元，一次付清",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.alibabacloud.com",
+        "url": "https://www.alibabacloud.com/zh/pricing?_p_lc=1",
+        "text": "阿里云产品定价 | 灵活多样，经济实惠 大模型 概述 产品 解决方案 定价 资源 合作伙伴 支持 查看 \"\" 全部搜索结果 AI 助理 ZH 联系我们 文档 控制台 定价 灵活的购买选项，阿里云为企业带来最大价值 请求报价 免费试用 计费选项 支付选项 计费方案 相关白皮书 价格计算器 计费选项 支付选项 计费方案 相关白皮书 价格计算器 灵活的计费选项，满足各种需求 按量付费 可以按需开通和释放资源，随用随付。无需提前购买大量资源。 通过预付款最大程度节省您的支出 预留的时间越长，需要支付的金额越少。 资源包 多种资源包，提供更加多样的选择，更加经济实惠。购买资源套餐，以后结账时可享受优惠。 ECS",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "阿里云产品定价页与'Nectome 定价一两万美元'零主题关系（'定价'词面误匹配）"
+    },
+    {
+      "id": "RS-025",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_579",
+      "claim_text": "更麻烦的是，我们不知道模拟到什么颗粒度，'意识'才会出现——突触级别",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.easeai.com.tw",
+        "url": "https://www.easeai.com.tw/zh-TW/articles/emotional-granularity",
+        "text": "把你困住 當你只能說「我很煩」，你的大腦其實拿不到任何可以著力的資訊。 想像你去看醫生，只說「我哪裡都不舒服」。醫生無從下手，因為這句話沒有指向任何具體的地方。 「我很煩」對你的大腦來說，就是這種無從下手的訊號：很強烈，但完全沒有方向 。 更麻煩的是，模糊的標籤會自我放大。一個沒有被拆開的「煩」，會把當下所有不順都吸進去，越滾越大，最後你覺得「一切都很糟」。這正是情緒卡住的典型路徑，關於那個越想越牢的迴圈，可以延伸讀 為什麼你的情緒總是卡住 。 精準則相反。當你能說出「我感覺到的其實是『被誤解的委屈』，加上『怕讓人失望的焦慮』」，這團東西立刻縮小成兩個具體的點。 你不再對抗一片濃霧，而是面對兩個可以分別處理的問題 。 粒度高的人，調節得更好也更健康 這不只是直覺。心理學家 Todd Kashdan 與同事整理過大量研究指出，情緒粒度較高的人，在面對壓力時往往有更好的調節能力，也較少訴諸酗酒、攻擊或自傷等失控的應對方式。 道理其實",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "情绪粒度心理学文章与'模拟颗粒度/意识'零主题关系（'粒度'词面误匹配）"
+    },
+    {
+      "id": "RS-026",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_579",
+      "claim_text": "更麻烦的是，我们不知道模拟到什么颗粒度，'意识'才会出现——突触级别",
+      "claim_source": "original",
+      "evidence": {
+        "source": "m.guokr.com",
+        "url": "https://m.guokr.com/article/468598",
+        "text": "业黑话最厉害的地方就在这里，它不靠内容取胜，它靠气势、节奏和场面感让人先点头，再放弃追问。 图源 | 瑰花@小红书 下次再听到“我们将在新的赛道上打通任督二脉”时，不妨停下来问自己一句：他到底要干什么，这件事说得通吗？ 答案可能让你省去很多麻烦。 参考文献 [1] Phelan, M. (2026, March 12). Your corporate jargon–loving coworker might actually be as stupid as you think, study shows. Gizmodo.https://gizmodo.com/your-corporate-jargon-loving-coworker-might-actually-be-as-stupid-as-you-think-study-shows-2000732901 [2] Blackwood, K. (2026, March 2).",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "果壳职场黑话文章与'模拟颗粒度/意识'零主题关系"
+    },
+    {
+      "id": "RS-027",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_584",
+      "claim_text": "哲学家分两派，一派说信息一致，那就是你",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.dswxyjy.org.cn",
+        "url": "https://www.dswxyjy.org.cn/n/2013/0111/c244520-20169552.html",
+        "text": "不是这场大革命，刘、林他们怎么能发现？怎么能打倒？因此，在着手解决“文化大革命”造成的许多混乱现象的同时，毛泽东仍然希望“文化大革命”能以令人满意的方式圆满结束。 在深入揭批林彪反革命集团的过程中，毛泽东对我国春秋时期的思想家、教育家孔子和哲学史研究中涉及的儒法之争发表看法，提出了批孔的问题，以此论证林彪集团的实质是极右。1973年7月4日，毛泽东约张春桥、王洪文谈话时，讲到不赞成否定秦始皇，理由是林彪和国民党一样，都是“尊孔反法”的。7月17日，毛泽东会见美籍华裔科学家杨振宁时再次谈到儒法斗争的问题。他说：“我们郭老（指郭沫若――引者注），在历史分期这个问题上，我是赞成他的。但是他在《十批判书》里边，立场观点是尊儒反法的。”“法家的道理就是厚今薄古、主张社会要向前发展、反对倒退的路线，要前进。”8月5日，毛泽东向江青讲述中国历史上儒法斗争的情况，说：历代有作为、有成就的政治家都是法家，他们都主张法治，厚今薄古；而儒家则满口仁义",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "党史网儒法斗争文章与'意识上传两派哲学争论'零主题关系（'哲学'词面误匹配）"
+    },
+    {
+      "id": "RS-028",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_580",
+      "claim_text": "这个问题的答案，直接决定这个项目是贵，还是贵到永远做不起",
+      "claim_source": "original",
+      "evidence": {
+        "source": "job.nwsuaf.edu.cn",
+        "url": "https://job.nwsuaf.edu.cn/jyzdC/qzglC/6f4811b13c854467b022ad54c7cf592f.htm",
+        "text": "发布日期：2022-10-09 浏览次数： 面试是我们整个求职过程中最重要的阶段。 成败均决定于你面试时的短短一瞬间的表现。 今天给大家整理了一些面试经典问题及回答思路，一起来看看吧！ 面试开始提问 1、请你做一下自我介绍 提示：一般人回答这个问题过于平常：只说姓名、年龄、爱好、工作经验，这些在简历上都有。 其实，企业最希望知道的是求职者能否胜任工作，包括：最强的技能、最深入研究的知识领域、个性中最积极的部分、做过的最成功的事，主要成就等， 这些都可以和学习无关，也可以和学习有关，但要突出积极的个性和做事的能力，说得合情合理企业才会相信。 另外，企业很重视一个人的礼貌，求职者要尊重考官，在回答每个问题之后都说一句“谢谢”，——企业喜欢有礼貌的求职者。 举例： 我叫×××，今年36岁，1997年大学毕业，至今有14年的中高层管理工作经验。 文笔扎实，擅长公文写作与文案策划，修订完善企业规章制度并有效地贯彻执行。 胆大心细有魄力，策",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "西北农林面试技巧页与'项目贵到做不起'零主题关系（'项目'词面误匹配）"
+    },
+    {
+      "id": "RS-029",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_584",
+      "claim_text": "哲学家分两派，一派说信息一致，那就是你",
+      "claim_source": "original",
+      "evidence": {
+        "source": "sociologyol.ruc.edu.cn",
+        "url": "http://sociologyol.ruc.edu.cn/shxyj/shxs/108c6714f5594bc5bfc95a86840f2857.htm",
+        "text": "社会学评议 佳作评介 社会热点议题 社会学资源 电子课堂 数据资源 学者文集 社会学杂志 社会学评论 社会建设 要刊概览 社会学论坛 联系我们 社会学研究 当前位置： 首页 >> 社会学研究 >> 社会学史 >> 社会学史 吴飞 等 古希腊哲学与中国古希腊哲学研究的讨论 2010-02-05 作者： 吴飞 等 古希腊哲学与中国古希腊哲学研究的讨论 吴飞 &nbsp; 等 社会学视野网编者按：本文稿根据 2009 年 6 月 20 日在北京大学外哲所举行的“国内古希腊哲学研究现状和发展”研讨会的录音整理而成的，录音文稿由世界哲学论坛整理，标题为本网自拟。本次研讨会系中国人民大学哲学系聂敏里副教授、北京大学哲学系吴飞副教授等学者发起倡议，由中国社会科学院哲学所《世界哲学》编辑部主办。本网曾零星发布了几个学者在这次会议上的演讲。这次发布的是该研讨会所有学术演讲的完整版，以飨读者。 吴飞：请大家安静一下，我们现在开始了！因为两个邀请函大",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "人大古希腊哲学研讨会纪要与本命题（上传/副本同一性）零主题关系"
+    },
+    {
+      "id": "RS-030",
+      "category": "TRUE_IRRELEVANT",
+      "claim_id": "c_593",
+      "claim_text": "这条线上已经有人在卖东西了",
+      "claim_source": "original",
+      "evidence": {
+        "source": "guides.lib.berkeley.edu",
+        "url": "https://guides.lib.berkeley.edu/az/databases?q=Velotas+AI+B1+Reviews",
+        "text": " A-Z Databases var title_base = \"A-Z Databases\"; var search_data = {\"terms\":\"Velotas AI B1 Reviews\"}; springSpace.azPublicObj = new springSpace.azPublic.AZPublic({ languages: { view_more: \"View More\", view_less: \"View Less\", search: \"Search\", edit_filters : \"Edit Filters\", } }); jQuery(document).ready(function () { if (window.history && history.pushState) { jQuery(window).bind(\"popstate\", function (e) { // Don\\'t reload list if this is the result of a skip link hash update. if (location.hash !== \"#s-lib-public-main\" && springSpace.azList.historyEdited) { // location.search will return URL encoded values",
+        "text_source": "page_text_refetch",
+        "system_label_r1": "rejected(未入库, 同查询补采)",
+        "provenance": "refetch_same_query",
+        "title": "https://guides.lib.berkeley.edu/az/databases?q=Vel...",
+        "snippet": "by the Miro Quesada family, the paper has survived significant turmoil, including a four-year closure during the Chilean occupation in the War of the Pacific and state expropriation under military rul"
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "伯克利数据库导航页与'这条线上已经有人在卖东西了'零词元重叠、零主题关系（第一轮被 NO_KEYWORD 预筛拒绝的同类样本）"
+    },
+    {
+      "id": "RS-031",
+      "category": "TRUE_CONTRADICT",
+      "claim_id": null,
+      "claim_text": "现阶段的虚拟数字果蝇已经拥有思想和意识",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "www.stdaily.com",
+        "url": "https://www.stdaily.com/web/gdxw/2026-03/24/content_491923.html",
+        "text": "创建了详细的小鼠大脑细胞图谱。 电子果蝇的最新进展，将“数字生命”又一次带到公众视野中。不少网友提问：这是否意味着科幻小说中的“复制人脑”和“意识上传”已经离我们不远了？ 业内专家告诉记者，由于此次披露的技术细节不足，还很难判断其重要性。但从果蝇到人脑，难度呈指数级升级，从目前的技术水平来看，要实现人脑复刻还非常遥远。 “目前的进展都是在虚拟空间中，并非真实环境交互。”中国科学院脑科学与智能技术卓越创新中心研究员严军说，“严格来讲，只有当虚拟模型拥有思想和意识、能够执行高级功能时，它才真正被称为数字生命。现阶段的成果还远未达到这一水平。” 马雷表示，数字果蝇的进展让不少人兴奋，不只是因为“虚拟果蝇会思考”，而在于它展示了生命科学研究范式的重要转变：从单纯观测生命，走向构建可以运行和验证的“数字生命体”。 当前，AI主要依靠编写算法、投喂数据、训练模型来模拟智能，与人脑所表现出的智能相差甚远。“数字生命体”不需要喂养数据，也不需要",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTRADICTS",
+      "rationale": "严军原话'只有当虚拟模型拥有思想和意识…现阶段的成果还远未达到这一水平'——对命题主体+谓词的真实否定"
+    },
+    {
+      "id": "RS-032",
+      "category": "TRUE_CONTRADICT",
+      "claim_id": null,
+      "claim_text": "2045意识上传计划得到了研究界的普遍看好",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "paper.people.com.cn",
+        "url": "http://paper.people.com.cn/rmrbhwb/html/2013-06/20/content_1256970.htm",
+        "text": "求“永生”之路。然而这不是封建迷信，而是科技对人类未来的一次疯狂的挑战。 据美联社报道，俄罗斯32岁的富翁德米特里·伊茨科夫和一个俄罗斯顶尖科学家团队计划在2045年让人类得以“永生”。该计划通过创造人类的替身和人工大脑来“代替”人类生活。这一计划也被形象地称为“阿凡达”计划。 这并非真正意义上生命的“永生”，只是将意识转移到另一个“容器”里，以实现意识的“永恒”。伊茨科夫称，他的团队将创造一种功能完善的、全息影像的人类替身，支配这一替身的是人工大脑。这个人工大脑里面有上传者自己的记忆、情感和全部的意识，甚至潜意识。 此项计划一经面世便引来众多关注。数据显示，在社交网站脸谱上已有2万多人表示对此项计划很感兴趣。然而质疑的声音也不绝于耳。 大部分研究者并不看好将人类的大脑“上传”给电子人，并且对这一项目持怀疑的态度。根据美联社的报道，在纽约召开的一次由神经学专家参与的会议上，伊茨科夫设计的时间表被大部分与会专家指出“太过野心勃勃以",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTRADICTS",
+      "rationale": "人民日报：'大部分研究者并不看好…持怀疑态度…太过野心勃勃'——对命题的真实否定"
+    },
+    {
+      "id": "RS-033",
+      "category": "TRUE_CONTRADICT",
+      "claim_id": null,
+      "claim_text": "以同等精度重构人脑在近年内即可完成",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "www.ion.ac.cn",
+        "url": "https://www.ion.ac.cn/xwen/mtsm/2019n/202603/t20260313_8158865.html",
+        "text": "动，从而形成从感知到行动的闭环——数字大脑就这样完成了自主决策。 复制人脑真的已经“指日可待”？ “赛博果蝇”的成功，是否意味着实现小鼠、猴子甚至人类大脑的“全脑仿真”，已是指日可待？ “单就神经元数量而言，就是一个巨大的鸿沟。”徐春坦言，从果蝇到小鼠、猴子，乃至人类，大脑的复杂程度呈指数级增长——果蝇大脑约有12.5万个神经元，小鼠大脑神经元数量是果蝇的560倍，达到约7000万个，而人脑则包含约860亿个神经元和数万亿个突触。 “此次果蝇研究采用了高精度电子显微镜重构的方式，耗时数年才完成。”据徐春估算，若要以同等精度重构小鼠乃至人脑，其工作量和资金投入将是天文数字，“至少在近十年内，还很难完成”。 “但这项研究让我们看到，尽管脑科学理论还不够完善，但还是可以通过将生物脑复制进计算机，对部分大脑功能进行模拟。”徐春说，长期以来，由于高投入和长周期，大脑连接图谱研究经常受到“是否值得”的质疑。实际上，脑图谱恰恰是很多开展功能实",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTRADICTS",
+      "rationale": "徐春：'至少在近十年内，还很难完成'——时间限定词上的真实否定"
+    },
+    {
+      "id": "RS-034",
+      "category": "TRUE_CONTRADICT",
+      "claim_id": null,
+      "claim_text": "完美模拟智能行为就等于拥有意识",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "blog.leowang.net",
+        "url": "https://blog.leowang.net/4-hmyenphkq",
+        "text": "设计图，精确到每一根导线，造出了一模一样的副本。它能开机，能运行出厂预装的程序——但如果原机上有用户后来安装的软件、十年积累的数据、各种个性化设置，这些东西不在硬件图里，你的副本就没有。从这个角度看，连接组是必要条件，但可能不是充分条件。 第二层 ，即使把所有信息都复制了，意识会跟着来吗？假设未来技术真的能扫描一个人类大脑的完整状态——不只是接线图，还有每个突触的精确强度、每个离子通道的当前状态、每个神经调质的浓度分布——在计算机里完美模拟了这个大脑的所有动力学。那个在云端跑起来的 你 ， 是你吗 ？ 功能主义者 说：是的。如果所有的因果关系都被精确复制，意识就是功能，不是材质，载体是碳基还是硅基并不重要。另一些人则引用约翰·塞尔的 中文房间 论证——一个系统可以完美地模拟智能行为，但内部可能什么体验都没有。行为相似，不等于内在体验相同。 我认为意识不是 有或没有 的二元开关，而是一个 连续的光谱 。从最简单的单细胞生物对环境的",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTRADICTS",
+      "rationale": "leowang 引中文房间论证：'行为相似，不等于内在体验相同'——对命题的真实否定"
+    },
+    {
+      "id": "RS-035",
+      "category": "TRUE_CONTRADICT",
+      "claim_id": null,
+      "claim_text": "虚拟数字人侵权在法律上尚无任何判例",
+      "claim_source": "derived",
+      "evidence": {
+        "source": "www.chinapeace.gov.cn",
+        "url": "http://www.chinapeace.gov.cn/chinapeace/c100047/2023-05/04/content_12654644.shtml",
+        "text": "首例涉“虚拟数字人”侵权案，在杭州互联网法院判决！-中国长安网 移动客户端 | 官方微信 | 官方微博 | 首页 --> 首页 政法要闻 高层动态 热点新闻 枫桥经验 政法改革 平安建设 队伍建设 案例指导 智能政法 权威辟谣 人事任免 网络学院 --> 政法文化 以案释法 长安微视 致敬英雄 见义勇为 首页 &nbsp;&gt;&nbsp; 浙江 首例涉“虚拟数字人”侵权案，在杭州互联网法院判决！ 时间：2023-05-04 11:20 来源：杭州互联网法院 责任编辑：石伟华 2021年，虚拟数字技术被纳入“十四五”规划纲要。2022年1月，《“十四五”数字经济发展规划》再次提出深化人工智能、虚拟现实等",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTRADICTS",
+      "rationale": "长安网：'首例涉虚拟数字人侵权案…判决'——'无任何判例'被真实否定"
+    },
+    {
+      "id": "RS-036",
+      "category": "PSEUDO_CONTRADICT",
+      "claim_id": "c_567",
+      "claim_text": "从果蝇到人，差多远",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.stdaily.com",
+        "url": "https://www.stdaily.com/web/gdxw/2026-03/24/content_491923.html",
+        "text": "创建了详细的小鼠大脑细胞图谱。 电子果蝇的最新进展，将“数字生命”又一次带到公众视野中。不少网友提问：这是否意味着科幻小说中的“复制人脑”和“意识上传”已经离我们不远了？ 业内专家告诉记者，由于此次披露的技术细节不足，还很难判断其重要性。但从果蝇到人脑，难度呈指数级升级，从目前的技术水平来看，要实现人脑复刻还非常遥远。 “目前的进展都是在虚拟空间中，并非真实环境交互。”中国科学院脑科学与智能技术卓越创新中心研究员严军说，“严格来讲，只有当虚拟模型拥有思想和意识、能够执行高级功能时，它才真正被称为数字生命。现阶段的成果还远未达到这一水平。” 马雷表示，数字果蝇的进展让不少人兴奋，不只是因为“虚拟果蝇会思考”，而在于它展示了生命科学研究范式的重要转变：从单纯观测生命，走向构建可以运行和验证的“数字生命体”。 当前，AI主要依靠编写算法、投喂数据、训练模型来模拟智能，与人脑所表现出的智能相差甚远。“数字生命体”不需要喂养数据，也不需要",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "系统判 CONTRADICTS：Claim 是反问句（'从果蝇到人，差多远'）不可被反驳；证据实为背景支持（'并非真实环境交互'触发否定词误判）"
+    },
+    {
+      "id": "RS-037",
+      "category": "PSEUDO_CONTRADICT",
+      "claim_id": "c_557",
+      "claim_text": "第二步，复制：在电脑里重建一个功能一样的脑",
+      "claim_source": "original",
+      "evidence": {
+        "source": "blog.leowang.net",
+        "url": "https://blog.leowang.net/4-hmyenphkq",
+        "text": "设计图，精确到每一根导线，造出了一模一样的副本。它能开机，能运行出厂预装的程序——但如果原机上有用户后来安装的软件、十年积累的数据、各种个性化设置，这些东西不在硬件图里，你的副本就没有。从这个角度看，连接组是必要条件，但可能不是充分条件。 第二层 ，即使把所有信息都复制了，意识会跟着来吗？假设未来技术真的能扫描一个人类大脑的完整状态——不只是接线图，还有每个突触的精确强度、每个离子通道的当前状态、每个神经调质的浓度分布——在计算机里完美模拟了这个大脑的所有动力学。那个在云端跑起来的 你 ， 是你吗 ？ 功能主义者 说：是的。如果所有的因果关系都被精确复制，意识就是功能，不是材质，载体是碳基还是硅基并不重要。另一些人则引用约翰·塞尔的 中文房间 论证——一个系统可以完美地模拟智能行为，但内部可能什么体验都没有。行为相似，不等于内在体验相同。 我认为意识不是 有或没有 的二元开关，而是一个 连续的光谱 。从最简单的单细胞生物对环境的",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "PARTIAL_SUPPORT",
+      "rationale": "系统判 CONTRADICTS：Claim 是定义句（第二步=复制），普通讨论页不构成反驳"
+    },
+    {
+      "id": "RS-038",
+      "category": "PSEUDO_CONTRADICT",
+      "claim_id": "c_553",
+      "claim_text": "影视作品里，这一步经常一笔带过：扫描，上传，永生",
+      "claim_source": "original",
+      "evidence": {
+        "source": "paper.people.com.cn",
+        "url": "http://paper.people.com.cn/rmrbhwb/html/2013-06/20/content_1256970.htm",
+        "text": "求“永生”之路。然而这不是封建迷信，而是科技对人类未来的一次疯狂的挑战。 据美联社报道，俄罗斯32岁的富翁德米特里·伊茨科夫和一个俄罗斯顶尖科学家团队计划在2045年让人类得以“永生”。该计划通过创造人类的替身和人工大脑来“代替”人类生活。这一计划也被形象地称为“阿凡达”计划。 这并非真正意义上生命的“永生”，只是将意识转移到另一个“容器”里，以实现意识的“永恒”。伊茨科夫称，他的团队将创造一种功能完善的、全息影像的人类替身，支配这一替身的是人工大脑。这个人工大脑里面有上传者自己的记忆、情感和全部的意识，甚至潜意识。 此项计划一经面世便引来众多关注。数据显示，在社交网站脸谱上已有2万多人表示对此项计划很感兴趣。然而质疑的声音也不绝于耳。 大部分研究者并不看好将人类的大脑“上传”给电子人，并且对这一项目持怀疑的态度。根据美联社的报道，在纽约召开的一次由神经学专家参与的会议上，伊茨科夫设计的时间表被大部分与会专家指出“太过野心勃勃以",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTEXT_ONLY",
+      "rationale": "系统判 CONTRADICTS：Claim 讲影视叙事习惯，证据是现实项目报道——语境不同（'并非真正意义上生命的永生'触发否定词误判）"
+    },
+    {
+      "id": "RS-039",
+      "category": "PSEUDO_CONTRADICT",
+      "claim_id": "c_559",
+      "claim_text": "注意，这三步的难度不在一个量级，而'永生'这个词，把三步打包卖成了一个产品",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.woshipm.com",
+        "url": "https://www.woshipm.com/pmd/6190033.html",
+        "text": "“养护生命”的技艺。不懂这一点，就如同园丁不了解植物的生长规律，再怎么努力也难以让产品绽放光彩。 随着企业服务领域的竞争进入深水区， 从500万到50亿营收的跨越背后，比拼的不仅仅是功能的堆砌，更是对产品生命周期深刻的理解与掌控 。我曾目睹一个企业服务产品因为在PMF阶段过于追求功能完整性，错失了6个月的关键市场窗口期，最终被竞争对手以更轻量级的解决方案超越。高阶产品的核心在于能够在正确的时间做出不可逆的重要决策。这不仅是对企业战略眼光的考验，也是对产品经理能力的最大挑战。 01 企服产品生命周期：从种子到森林的进化 1. MVP阶段：用手术刀切开需求幻象 MVP不是“功能阉割版”，而是“最小完整价值闭环”。某工业软件团队曾犯过典型错误——给工厂开发管理系统时，堆砌了20项“用户说需要”的功能。三个月后，工人们仍在用Excel。后来他们蹲点车间才发现：油污手套根本点不准触摸屏，真正的刚需是防误触算法+语音指令。 破局心法： 嵌入",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "系统判 CONTRADICTS：woshipm 企服产品文与 Claim 零主题关系，否定词在无关文本中误触发"
+    },
+    {
+      "id": "RS-040",
+      "category": "PSEUDO_CONTRADICT",
+      "claim_id": "c_565",
+      "claim_text": "它画的是一张接线图，不是意识",
+      "claim_source": "original",
+      "evidence": {
+        "source": "news.cctv.com",
+        "url": "https://news.cctv.com/2023/01/09/ARTITTgautYfTPuFE8SyZI0X230109.shtml",
+        "text": "AI绘画的“小秘密”都在这一篇文章里_新闻频道_央视网(cctv.com) --> 新闻 新闻频道 > 科技新闻 AI绘画的“小秘密”都在这一篇文章里 来源： 科技日报 | 2023年01月09日 06:11:39 科技日报 | 2023年01月09日 06:11:39 原标题：AI绘画的“小秘密”都在这一篇文章里 正在加载 视觉中国供图 ◎本报记者 金 凤 有了AI，人人都可以是艺术家。AI绘画的出现，恰如瑞士艺术家保罗&middot;克利所言：&ldquo;艺术不是再现可见，而是使不可见成为可见。&rdquo;经过20年左右的发展，目前基于不同类型或者模态元素的AI绘画发展情况不尽相同，发展最久",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "系统判 CONTRADICTS：央视 AI 绘画文与'接线图不是意识'零主题关系；Claim 自带'不是'叠加页面否定词双重误触发"
+    },
+    {
+      "id": "RS-041",
+      "category": "CONTEXT_ONLY",
+      "claim_id": "c_571",
+      "claim_text": "三百个神经元尚且如此",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.cirm.ca.gov",
+        "url": "https://www.cirm.ca.gov/zh-CN/about-cirm/publications/smoking-relevant-nicotine-concentration-attenuates-unfolded-protein-response-dopaminergic-neurons",
+        "text": "吸烟相关的尼古丁浓度会减弱多巴胺能神经元中未折叠的蛋白质反应。 – CIRM 跳到内容 赠款管理系统 CIRM 中心门户 联系我们 搜索 &quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;layout&quot;:&quot;horizontal&quot;,&quot;toggle&quot;:&quot;burger&quot;}\" data-widget_type=\"nav-menu.default\"> 关于我们 我们的使命 我们的影响 我们的理事会 战略目标 我们的团队 年度报告 对于研究人员 呼吸研究基金会 申请人须知 研究人员资源 我们的审核流程 我们的课",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "PARTIAL_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTEXT_ONLY",
+      "rationale": "CIRM 尼古丁/多巴胺论文与'三百个神经元尚且如此'仅共享'神经元'词面，无 302 线虫主题讨论（系统误标 DIRECT）"
+    },
+    {
+      "id": "RS-042",
+      "category": "CONTEXT_ONLY",
+      "claim_id": "c_571",
+      "claim_text": "三百个神经元尚且如此",
+      "claim_source": "original",
+      "evidence": {
+        "source": "news.sciencenet.cn",
+        "url": "https://news.sciencenet.cn/htmlnews/2025/2/538887.shtm",
+        "text": "通过对脑组织进行切片和染色，科学家可以观察到神经元的形态和分布，并可计算单位体积内的神经元数量，继而实现对大脑神经元的数量进行总体估算。然而，受限于不同脑区神经元分布和密度的差异，导致估算的数值与神经元的实际数量存在一定偏差。 其次，基于每个神经细胞仅含有一个细胞核的假设，研究人员将脑组织制备成细胞悬液，并计算出细胞悬液中的细胞总数。同时，结合免疫化学检测方法检测抗原NeuN（在大多数神经元细胞核中表达），通过计算比例来估算大脑中神经细胞的数量。 此外，随着遗传手段的发展和进步，目前实现了对于神经元的荧光标记，科研人员联合三维重构技术，使得神经元的数量统计越来越精确。 综合以上方法，科学家在研究早期就估算出人类的神经元总数大约有850亿个。随着科学研究方法的进步，研究人员发现仅人类的小脑内的神经元总数就有约1050亿个。这些数据为我们深入理解大脑的结构和功能提供了重要基础。总的来说，人脑神经元的数量是通过多种科学方法和技术的综合",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTEXT_ONLY",
+      "rationale": "科学网人脑神经元计数方法论与 302 线虫命题仅共享'神经元'词面（系统误标 DIRECT）"
+    },
+    {
+      "id": "RS-043",
+      "category": "CONTEXT_ONLY",
+      "claim_id": "c_556",
+      "claim_text": "第一步，扫描：把大脑的结构完整读出来",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.cas.cn",
+        "url": "https://www.cas.cn/kj/202603/t20260327_5105291.shtml",
+        "text": "和践行正确政绩观学习教育第五期读书班 烟台海岸带所召开党委理论学习中心组学习会 电工所召开2026年第7次党委理论学习中心组会议 反腐倡廉 /&nbsp;更多 新疆分院召开2026年度党建和党风廉政建设工作会 新疆分院纪检组召开2026年度第一次纪监审工作会议 沈阳分院纪检组召开2026年度第一次扩大会议 西安分院纪检组召开2026年第一季度工作会议 违纪违法举报 文明天地 /&nbsp;更多 动物所举办“书香润科研 青春启新程”读书分享会 计算机网络信息中心举办“传承·致敬·奋进”主题教育活动 中国科学院合唱团举办“2026新年音乐会” 中国科学院合唱团参加“首都留学人员2026新年音乐会” 主动公开工作信息 相关规定 信息公开指南 其他规定 组织机构 工作机构 监督机构 中国科学院学部 基本信息 学部概况 院士大会 院士信息 规章制度 院士章程 增选工作有关规定 其他工作规则与管理办法 工作进展 院士增选 决策咨询 学术引领",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTEXT_ONLY",
+      "rationale": "中科院门户首页与'第一步扫描大脑结构'仅个别词面重合，无任何命题讨论（系统误标 DIRECT）"
+    },
+    {
+      "id": "RS-044",
+      "category": "CONTEXT_ONLY",
+      "claim_id": "c_609",
+      "claim_text": "结构上，科学家刚开始画图",
+      "claim_source": "original",
+      "evidence": {
+        "source": "azure.microsoft.com",
+        "url": "https://azure.microsoft.com/zh-cn/resources/cloud-computing-dictionary/what-is-data-science",
+        "text": "业的云解决方案 云迁移和现代化中心 AI 数据分析 Azure 数据库 AI 应用和智能体 Microsoft 市场 Microsoft Sovereign Cloud AI AI AI 应用和智能体 Azure 的负责任 AI AI 基础结构 AI 数据分析 机器学习运营 (MLOps) 应用程序开发 应用程序开发 Azure 上的低代码应用程序开发 集成服务 无服务器计算 DevOps 云迁移和现代化 云迁移和现代化 迁移和现代化中心 .NET 应用迁移 Azure 上的数据库 Linux on Azure Azure 上的 Oracle Microsoft 云上的 SAP 混合云和基础结构 混合云和基础结构 自适应云 高性能计算 (HPC) 基础结构即服务 (IaaS) 复原能力 资源 资源 Azure Essentials 适用于 Azure 的 Frontier Accelerate Azure 上的 FinOps M",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTEXT_ONLY",
+      "rationale": "Azure 数据科学词典页与'结构上科学家刚开始画图'仅弱词面重合（系统误标 DIRECT）"
+    },
+    {
+      "id": "RS-045",
+      "category": "CONTEXT_ONLY",
+      "claim_id": "c_609",
+      "claim_text": "结构上，科学家刚开始画图",
+      "claim_source": "original",
+      "evidence": {
+        "source": "sinoustimes.com",
+        "url": "https://sinoustimes.com/contents/53/33677.html",
+        "text": "中美科学家绘制迄今最精确的银河系结构图_美中时报 美中经贸的桥梁 精英人士的智库 goTopEx(); 首页 | --> 首页 &ensp;|&ensp; 新闻 &ensp;|&ensp; 美国公司 &ensp;|&ensp; 中国公司 &ensp;|&ensp; 企业家 &ensp;|&ensp; 贸易摩擦 &ensp;|&ensp; 科技前沿 &ensp;|&ensp; 文娱广场 &ensp;|&ensp; 美中论坛 &ensp;|&ensp; 数字报纸 每日新闻 今日关注 图片新闻 环球公司 宏观政策 黑色档案 &nbsp; --> 美中新闻 美国新闻 中国新闻 国际新闻 经贸纵横 领军人物 全球华商 华人华侨 合作共",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "CONTEXT_ONLY",
+      "rationale": "银河系结构图新闻与大脑命题仅共享'结构/科学家'弱词面，主题为天文学（系统误标 DIRECT）"
+    },
+    {
+      "id": "RS-046",
+      "category": "KEYWORD_OVERLAP_IRRELEVANT",
+      "claim_id": "c_558",
+      "claim_text": "第三步，转移：让'你'本人住进去",
+      "claim_source": "original",
+      "evidence": {
+        "source": "gjj.beijing.gov.cn",
+        "url": "https://gjj.beijing.gov.cn/web/zwfw5/386727/386730/386735/11098845/index.html",
+        "text": "金 公共服务 ”小程序，进入小程序后，点击菜单栏【我的】，点击【 请登录 】，进行登录。（未注册用户需先进行注册） 第二步，申请转移 在底部菜单栏【服务】中选择“转移接续”业务，根据页面提示录入相关信息后，点击“提交申请”，业务提交成功。 第三步，查询办理进度 办理转入业务11个工作日后，申请人可登录住房公积金个人网上业务平台，点击左侧【我要转移】，点击【已申请 转入 情况查询】查看转移进度。 途径二：住房公积金网上业务系统办理 第一步，登录系统 登录北京住房公积金网（gjj.beijing.gov.cn），点击首页右侧【个人网上业务平台】，选择【个人网上业务平台（北京中心）】，认真阅读登录提示后，点击【北京市统一身份认证平台登录】。您可选择 “扫码登录”或 “账号登录”登录北京住房公积金 个人 网上业务 平台 。 提示：如果未在北京市统一身份认证平台注册的用户，请您先完成注册后再登录。 第二步，网上申请 点击左侧的【我要转移】",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "北京公积金转移指南与'第三步，转移：让本人住进去'高重叠（第一步/第二步/第三步/转移）——同形异义，主题为零"
+    },
+    {
+      "id": "RS-047",
+      "category": "KEYWORD_OVERLAP_IRRELEVANT",
+      "claim_id": "c_560",
+      "claim_text": "后面就按这三步走",
+      "claim_source": "original",
+      "evidence": {
+        "source": "keywords.china.org.cn",
+        "url": "http://keywords.china.org.cn/2022-07/11/content_78317156.html",
+        "text": "“三步走”发展战略 中文 | English | Français | Русский язык | 日本語 | Español | عربي | Deutsch | 한국어 | Português | Türkçe | Bahasa Indonesia | Қазақ тілі | Tiếng Việt | lingua italiana 首页 项目介绍 专题分类 业界资讯 发言集萃 中国外文局 当代中国与世界研究院 中国翻译研究院 首页 &gt; 中国共产党成立100周年特辑 “三步走”发展战略 发布时间：2022-07-11 | 来源：当代中国与世界研究院 “三步走”发展战略 改革开放之后",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "PARTIAL_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "'三步走'发展战略（改革开放语境）与'后面就按这三步走'高重叠——同形异义"
+    },
+    {
+      "id": "RS-048",
+      "category": "KEYWORD_OVERLAP_IRRELEVANT",
+      "claim_id": "c_607",
+      "claim_text": "真正确定的东西反而很朴素：趁身体还在这边，多留点真实的人生",
+      "claim_source": "original",
+      "evidence": {
+        "source": "hongtaoh.com",
+        "url": "https://hongtaoh.com/cn/2025/01/24/life-algorithms",
+        "text": "容。或许生命中并非处处完美，但我要建立起稳健的体系，让失败只在极少数地方发生。) 这其实就是一种概率思维和遍历时间。他要的不是某一生依靠运气暴富，而是多重宇宙中的那 1000 个他，基本上过得都不错。这其实也解释了为什么偶然的一次好运并不会真正彻底改变人的一生。平常学习一般，高考突然超常发挥，或者突然赢得几个亿的彩票，放到一百万个多重宇宙，就是毛毛雨，根本没办法从根本上改变一个人的命运。 要改变只能是纳瓦尔提到的「系统」。你建立一个系统，依照这个系统行事，能确保一百万个多重宇宙中不同的你，平均而言，有最大的幸福基数。至于是否可以成为亿万富翁，登顶财富榜，那就看具体的运气，但这本质上不重要，因为不会改变平均值。 如果依靠赌博或者投机在这一生突然挣到很多钱，那平均来说，反而是不利的，因为你越来越依靠运气，而运气在多重宇宙中是最不吃香的。在多重宇宙中，所有人的平均运气都是一样的。 专注于所有未来的预期值，而不是当下这一个随机值。 长期",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "CONTRADICTS",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "hongtaoh'人生算法/多重宇宙'博文与'多留点真实的人生'高重叠（人生/命运）——主题为投资策略，非本命题"
+    },
+    {
+      "id": "RS-049",
+      "category": "KEYWORD_OVERLAP_IRRELEVANT",
+      "claim_id": "c_600",
+      "claim_text": "今天的法律对这些问题基本空白",
+      "claim_source": "original",
+      "evidence": {
+        "source": "www.lawbank.com.tw",
+        "url": "https://www.lawbank.com.tw/treatise/pl_article.aspx?AID=P000259826",
+        "text": "法源法律網-法學論著-法學期刊-月旦實務選評第 2 卷 第 9 期 (2022.09)-關於空白要素填補規範的錯誤－評最高法院 110 年度台上字第 2037 號刑事判決 ::: 回首頁 會員登入 加入會員 購買授權 功能介紹 預約服務 精選六法 法規查詢 司法判解 行政函釋 裁判書 起訴書 英譯法規 法學論著 法學題庫 會員專區 論著投稿 法學期刊 社群分享 FaceBook Line 分享網址 意見回饋 友善列印 論著名稱： 關於空白要素填補規範的錯誤－評最高法院 110 年度台上字第 2037 號刑事判決 文獻引用 編著譯者： 蔡聖偉 出版日期： 2022.09 刊登出處： 台灣／ 月旦實務",
+        "text_source": "page_excerpt_r1",
+        "system_label_r1": "DIRECT_SUPPORT",
+        "provenance": "stored_round1",
+        "title": "",
+        "snippet": ""
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "台湾法学'空白要素填补规范'与'法律对这些问题基本空白'高重叠（法律/空白）——同形异义，主题为刑法构成要件"
+    },
+    {
+      "id": "RS-050",
+      "category": "KEYWORD_OVERLAP_IRRELEVANT",
+      "claim_id": "c_593",
+      "claim_text": "这条线上已经有人在卖东西了",
+      "claim_source": "original",
+      "evidence": {
+        "source": "sell.amazon.com",
+        "url": "https://sell.amazon.com/zh/blog/sell-my-stuff-online",
+        "text": " window.ue_ihb = (window.ue_ihb || window.ueinit || 0) + 1; if (window.ue_ihb === 1) { var ue_csm = window, ue_hob = +new Date(); (function(d){var e=d.ue=d.ue||{},f=Date.now||function(){return+new Date};e.d=function(b){return f()-(b?0:d.ue_t0)};e.stub=function(b,a){if(!b[a]){var c=[];b[a]=function(){c.push([c.slice.call(arguments),e.d(),d.ue_id])};b[a].replay=function(b){for(var a;a=c.shift();)b(a[0],a[1],a[2])};b[a].isStub=1}};e.exec=function(b,a){return function(){try{return b.apply(this,arguments)}catch(c){ueLogError(c,{attribution:a||\"undefined\",logLevel:\"WARN\"})}}}})(ue_csm); var ue_err_chan = 'jserr'; (function(d,e){function h(f,b){if(!(a.ec>a.mxe)&&f){a.ter.push(f);b=b||{};var c=f.logLevel||b.logLevel;c&&c!==k&&c!==m&&c!==n&&c!==p||a.ec++;c&&c!=k||a.ecf++;b.pageURL=\"\"+(e.location?e.location.href:\"\");b.logLevel=c;b.attribution=f.attribution||b.attribution;a.erl.push({ex:f,info:b})}}function l(a,b,c,e,g){d.ueLogError({m:a,f:b,l:c,c:\"\"+e,err:g,fromOnError:1,args:arguments},g?{attribution:g.attribution,logLevel:g.logLevel}:void 0);return!1}var k=\"FATAL\",m=\"ERROR\",n=\"WARN\",p=\"DOWNGRADED\",a={ec:0,ecf:0, pec:0,ts:0,erl:[],ter:[],buffer:[],mxe:50,startTimer:function(){a.ts++;setInterval(function(){d.ue&&a.pec<a.ec&&d.uex(\"at\");a.pec=a.ec},1E4)}};l.skipTrace=1;h.skipTrace=1;h.isStub=1;d.ueLogError=h;d.ue_err=a;e.onerror=l})(ue_csm,window); var ue_id = '3X9A09SBE0124VSSS5SS', ue_url, ue_navtiming = 1, ue_mid = 'A191LFTEBYJTJ3', ue_sid = '132-9992389-1131039', ue_sn = 'sell.amazo",
+        "text_source": "page_text_refetch",
+        "system_label_r1": "rejected(未入库, 同查询补采)",
+        "provenance": "refetch_same_query",
+        "title": "如何在网上出售你的东西并赚取额外的现金",
+        "snippet": "Copy\n\n  Link copied\n Twitter\n Print)\n LinkedIn\n\n您是否想整理房屋并赚点额外的钱？ 学习如何在线销售已变得越来越流行，这是有充分理由的。 有许多渠道可供选择，数百万潜在买家只需点击一下即可，在线销售商品从未如此简单。 这份全面的指南将引导您了解成功开始销售所需了解的一切。\n\n立即开始销售\\\n\n## 为你的物品选择正确的渠道\n\n在开始在线销售商品之前，为"
+      },
+      "truth_label": "IRRELEVANT",
+      "rationale": "Amazon'如何在网上出售你的东西'与'这条线上已经有人在卖东西了'高重叠（线上/卖东西）——主题是电商卖货，非大脑保存服务"
+    }
+  ]
+}

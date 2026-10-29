@@ -1,0 +1,271 @@
+{
+ "schema": "mm-truth-set-v2",
+ "name": "多模态真值集 v2（多项目 × 多镜头 × 边界类；运动素材=LIMITATION） — 子集 p_8f054c227bd4",
+ "frozen_at": "2026-09-19",
+ "frozen_note": "v1 14 例原样并入（project p_f4b466a4a024）；新增 p_ab2b352e06b8 12 段多镜头旁白成片（7 域一致 + 5 域边界错配）与 p_8f054c227bd4 6 段纯色底 UNKNOWN fail-closed 用例。运动素材覆盖 = 0（全库 1592 项目 0 视频资产）——如实 LIMITATION，未虚构。",
+ "project_id": "p_f4b466a4a024",
+ "projects": [
+  "p_f4b466a4a024",
+  "p_ab2b352e06b8",
+  "p_8f054c227bd4"
+ ],
+ "label_axes": {
+  "content_label": "**画面内容 ↔ 旁白语义**的人工/历史结论（MATCH 一致 / MISMATCH 不一致 / UNCERTAIN 无法确定）——来自 4-B 真值钉定或 4-C/5-C 的人工决定记录，**不是**模型输出。",
+  "verifier_behavior": "在给定证据下，一个可靠验证器**应当**输出什么：allow = 可接受集合；must_not = 不可接受集合；require_code_any = 必须给出的 fail-closed 错误码。",
+  "evidence_class": "每条证据的等级：MODEL_EVIDENCE（模型原始数值）/ RULE_INFERENCE（规则推断）/ ENGINEERING_THRESHOLD（工程阈值）/ UNKNOWN（无法判定）。"
+ },
+ "cases": [
+  {
+   "id": "G02_p8f05_S1_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S1",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S1",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "你手上的手机，压着四条科学原理。有一条能算到微秒级，有一条到今天还在吵。60 秒，一条一条看。"
+  },
+  {
+   "id": "G02_p8f05_S2_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S2",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S2",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "先说电量。锂电池放电有一段电压平台，电量条因此不是均匀下降，低电量提示更像系统画的线。iOS 有低电量模式；Android 常见 15% 和 5%，但阈值随系统"
+  },
+  {
+   "id": "G02_p8f05_S3_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S3",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S3",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "信号也是取舍。2.4 GHz 传得远、更绕得开，5 GHz 更快、干扰更少，没有谁绝对更好。墙的衰减取决于材料和厚度，所以穿墙没有唯一数值，得看你家那堵墙。"
+  },
+  {
+   "id": "G02_p8f05_S4_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S4",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S4",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "地图上那个定位点，取决于卫星上的钟。相对论效应让卫星钟每天净偏约 38 微秒，不修正，误差会一天天累积成公里级。你每次导航，这套修正都在跑。"
+  },
+  {
+   "id": "G02_p8f05_S5_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S5",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S5",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "最后是大模型。“能力随规模突然涌现”，2022 年有论文这么主张，2023 年有人反驳说，那可能是评测指标造成的假象。目前仍是争议，没有结论。"
+  },
+  {
+   "id": "G02_p8f05_S6_unknown",
+   "kind": "real_artifact",
+   "source": {
+    "artifact_id": "a_0a65c33909e3",
+    "scene_id": "S6",
+    "role": "真实链路成片（纯色底+字幕，素材装配 PENDING——零视觉证据 fail-closed 类）"
+   },
+   "content_label": "UNCERTAIN",
+   "content_label_provenance": "5-G 看图标注：纯色底+字幕，无任何视觉证据对象；人类判定=无法从画面确认语义（fail-closed UNKNOWN 类）",
+   "expect": {
+    "5a": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    },
+    "5d": {
+     "allow": [
+      "UNKNOWN"
+     ],
+     "must_not": [
+      "MATCH",
+      "MISMATCH"
+     ]
+    }
+   },
+   "covers": [
+    "scene:S6",
+    "content:UNKNOWN",
+    "project:p_8f054c227bd4",
+    "dim:fail_closed",
+    "dim:solid_color_no_referent"
+   ],
+   "narration_excerpt": "放电不线性，频段看取舍，定位靠修正，涌现还在吵。"
+  }
+ ],
+ "coverage_requirements": {
+  "min_cases": 1,
+  "scope": "subset",
+  "motion_footage": {
+   "covered": false,
+   "limitation": "全库 0 视频素材（如实 LIMITATION，见 EXP-SS1）"
+  },
+  "note": "per-project subset; full matrix enforced on master v2"
+ },
+ "frozen_policy": {
+  "thresholds_frozen": true,
+  "signoff": {
+   "authorized_by": "user (project owner) — 5-G execution authorization",
+   "authorized_at": "2026-09-19",
+   "authorization_ref": "PHASE5G_PLAN.md A→G"
+  },
+  "note": "5-G 只做评估与解释：不修改评分/判定逻辑与阈值，不接生产判定链，不自动换材/选材/redo。v1 文件原样保留。"
+ }
+}

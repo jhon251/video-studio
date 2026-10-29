@@ -1,0 +1,248 @@
+{
+ "schema": "revision-proposal-truth-v1",
+ "stage": "6-B/M3",
+ "purpose": "Revision Proposal 冻结真值集：固化『人工 REJECT → 局部修改方案』的闭环契约 —— 方案字段完备性、必须绑定人工 REJECT（含台账 seq/sha）、局部化上限、反虚构 guard、DEFER/UNKNOWN 只出待补证据项、append-only 方案登记与**零执行**。",
+ "proposal_required_fields": [
+  "proposal_id",
+  "finding_id",
+  "decision_ref",
+  "affected_scope",
+  "proposed_change",
+  "expected_effect",
+  "constraints",
+  "risk",
+  "provenance"
+ ],
+ "change_actions": [
+  "replace_asset",
+  "add_asset",
+  "split_scene",
+  "adjust_hold",
+  "reorder_scenes",
+  "insert_scene",
+  "text_overlay",
+  "add_outro_card",
+  "add_visual_aid",
+  "no_change_evidence_gap"
+ ],
+ "frozen_policy": {
+  "max_scenes_per_proposal": 6,
+  "max_share_of_film_per_proposal": 0.3,
+  "forbid_film_wide_rewrite": true,
+  "require_human_approval": true,
+  "max_assets_per_proposal": 6
+ },
+ "must_rerun": [
+  "PI-1..PI-6 生产完整性门禁",
+  "DQ-1..DQ-8 导演质量只读诊断",
+  "素材抽帧核验（min_corr/argmax）",
+  "响度契约（−16 LUFS / TP）",
+  "时长契约（timeline 权威）",
+  "许可/署名台账"
+ ],
+ "accept_cases": [
+  {
+   "id": "RP-C1-REPLACE-ASSET",
+   "action": "replace_asset",
+   "expect": {
+    "ok": true
+   }
+  },
+  {
+   "id": "RP-C2-SPLIT-SCENE",
+   "action": "split_scene",
+   "expect": {
+    "ok": true
+   }
+  },
+  {
+   "id": "RP-C3-ADD-VISUAL-AID",
+   "action": "add_visual_aid",
+   "expect": {
+    "ok": true
+   }
+  },
+  {
+   "id": "RP-C4-ADD-OUTRO-CARD",
+   "action": "add_outro_card",
+   "expect": {
+    "ok": true
+   }
+  },
+  {
+   "id": "RP-C5-ADD-ASSET-WITH-NEW-ASSETS-NEEDED",
+   "action": "add_asset",
+   "new_assets_needed": {
+    "count": 2,
+    "semantic_spec": "与论点相关的示意图",
+    "sourcing": "人工检索"
+   },
+   "expect": {
+    "ok": true
+   }
+  }
+ ],
+ "refuse_cases": [
+  {
+   "id": "RP-R1-NO-FINDING",
+   "mutate": "drop_finding",
+   "expect_error": "PROPOSAL_REQUIRES_FINDING"
+  },
+  {
+   "id": "RP-R2-NO-REJECT-DECISION",
+   "mutate": "decision_defer",
+   "expect_error": "PROPOSAL_REQUIRES_HUMAN_REJECT"
+  },
+  {
+   "id": "RP-R3-UNPROVABLE-FINDING",
+   "mutate": "make_unprovable",
+   "expect_error": "DEFER_MUST_NOT_BECOME_CHANGE"
+  },
+  {
+   "id": "RP-R4-UNKNOWN-SCENES",
+   "mutate": "unknown_scene",
+   "expect_error": "SCOPE_UNKNOWN_SCENES"
+  },
+  {
+   "id": "RP-R5-UNKNOWN-ASSETS",
+   "mutate": "unknown_asset",
+   "expect_error": "SCOPE_UNKNOWN_ASSETS"
+  },
+  {
+   "id": "RP-R6-TOO-MANY-SCENES",
+   "mutate": "seven_scenes",
+   "expect_error": "SCOPE_NOT_LOCAL"
+  },
+  {
+   "id": "RP-R7-SHARE-OVER-CAP",
+   "mutate": "share_0.5",
+   "expect_error": "SCOPE_NOT_LOCAL"
+  },
+  {
+   "id": "RP-R8-FILM-WIDE",
+   "mutate": "film_wide",
+   "expect_error": "FILM_WIDE_REWRITE_FORBIDDEN"
+  },
+  {
+   "id": "RP-R9-NO-BASIS",
+   "mutate": "no_basis",
+   "expect_error": "EXPECTED_EFFECT_REQUIRES_BASIS"
+  },
+  {
+   "id": "RP-R10-NO-ASSUMPTION",
+   "mutate": "no_assumption",
+   "expect_error": "EXPECTED_EFFECT_REQUIRES_ASSUMPTION"
+  },
+  {
+   "id": "RP-R11-BAD-ACTION",
+   "mutate": "bad_action",
+   "expect_error": "非法 action"
+  },
+  {
+   "id": "RP-R12-NOT-LOCATABLE",
+   "mutate": "empty_scope",
+   "expect_error": "SCOPE_NOT_LOCATABLE"
+  }
+ ],
+ "evidence_gap_contract": {
+  "unprovable_only": true,
+  "no_proposed_change": true,
+  "note": "6-B/M3 授权第 7 条：DEFER / UNKNOWN finding **不得**生成确定性修改方案，只产出待补证据项（needed_evidence + why，且 no_proposed_change=true）。"
+ },
+ "register_contract": {
+  "append_only": true,
+  "tamper_detection": [
+   "modify_entry",
+   "delete_middle_entry",
+   "reorder_entries"
+  ],
+  "zero_execution": "登记表条目恒带 executed=false / executes_changes=false；本阶段不存在 apply/execute 代码路径"
+ },
+ "v9_closure_expect": {
+  "project_id": "p_96efdc03e1aa",
+  "film_task": "t_d0a54bdf1810",
+  "report": "docs/regression_2x/logs/phase6b_m3_proposals_v9.json",
+  "register": "docs/regression_2x/logs/phase6b_m3_proposal_register_v9.jsonl",
+  "rejects": 7,
+  "proposals": 8,
+  "rejects_uncovered": [],
+  "evidence_gaps": 2,
+  "locality_cap_violations": [],
+  "executed": [],
+  "executed_actions": [],
+  "register_entries": 8,
+  "register_chain_ok": true,
+  "h1_h7_traceability": [
+   {
+    "id": "H1-hook",
+    "label": "H1-hook-replace",
+    "metric": "DQ-1",
+    "kind": "hook_layer_verdict",
+    "action": "replace_asset"
+   },
+   {
+    "id": "H2-repetition",
+    "label": "H2-asset-pool-diversity",
+    "metric": "DQ-2",
+    "kind": "unique_assets_below_min",
+    "action": "add_asset"
+   },
+   {
+    "id": "H3a-static-hold",
+    "label": "H3-batch1-split-longest",
+    "metric": "DQ-3",
+    "kind": "over_hold_share_exceeds",
+    "action": "split_scene"
+   },
+   {
+    "id": "H3b-static-hold",
+    "label": "H3-batch2-next-longest",
+    "metric": "DQ-3",
+    "kind": "over_hold_share_exceeds",
+    "action": "split_scene"
+   },
+   {
+    "id": "H4-density",
+    "label": "H4-density-increase",
+    "metric": "DQ-4",
+    "kind": "scene_changes_below_min",
+    "action": "split_scene"
+   },
+   {
+    "id": "H5-semantic-support",
+    "label": "H5-semantic-mismatch-replace",
+    "metric": "DQ-8",
+    "kind": "semantic_mismatch_scenes",
+    "action": "replace_asset"
+   },
+   {
+    "id": "H6-climax",
+    "label": "H6-visual-climax-aid",
+    "metric": "DQ-5",
+    "kind": "distinct_assets_in_core_below_min",
+    "action": "add_visual_aid"
+   },
+   {
+    "id": "H7-ending",
+    "label": "H7-outro-card",
+    "metric": "DQ-6",
+    "kind": "no_outro_keyword_in_tail",
+    "action": "add_outro_card"
+   }
+  ],
+  "must_not_propose_for": [
+   "DQ-1:metric_state_unprovable",
+   "DQ-6:metric_state_unprovable",
+   "human_subtitle_wrapping_residual",
+   "human_hitl_rationale_mismatch"
+  ],
+  "note": "7 条人工 REJECT finding → 8 条方案（H3 拆 2 个批次：H3a/H3b），全部局部化；DEFER/UNKNOWN 只出现在 evidence_gaps。"
+ },
+ "boundary_notes": {
+  "locality": "单方案 ≤6 镜、时长占比 ≤0.30、禁止 film_wide；超限一律 SCOPE_NOT_LOCAL（要求拆批次）。v9 首版 H4 方案因覆盖 9 镜被 guard 拒绝 → 改为 4 镜局部批次（如实记录）。",
+  "no_fabrication": "affected_scope.scenes ⊆ 真实镜头集合、assets ⊆ 已知素材集合；需要新素材只能声明 new_assets_needed{count, semantic_spec, sourcing}，不得虚构 asset_id；expected_effect 必须带 basis（源 finding 实测值）与 assumption。",
+  "human_boundary": "方案 status=PROPOSED_AWAITING_HUMAN_APPROVAL、approved=false、executed=false；constraints 内含 must_rerun 与 requires_human_approval；执行权在人工。",
+  "not_touching": "每个方案都必须声明 not_touching（未被 REJECT 的内容：旁白文本/字幕/总时长/未列入范围的镜头），避免改变未被 REJECT 的内容。"
+ },
+ "frozen_sha256": "0d2066af7a3e412506118713ac6296caefbab29b50ffa6e1455f8ca0f4c2d3bc"
+}

@@ -1,0 +1,264 @@
+{
+ "schema": "directorial-round2-truth-v1",
+ "stage": "6-E",
+ "purpose": "依据本轮人工审片结论，对 6-C 候选暴露的问题生成第二轮局部 revision proposals：**只生成/登记，禁止执行**。",
+ "closes_required_items": [
+  "C1/C4 片尾卡豆腐块字体",
+  "aS05（245–300s）IMO 合影否决 → 可检视性争论差异化视觉",
+  "aS11（690–770s）IMO 合影否决 → Lean/mathlib/形式化证明视觉",
+  "480–690s 开普勒炮弹堆 210s 长镜头 → 真正增加信息量的局部方案",
+  "850–1000s IMO 合影 150s 长镜头 → 真正增加信息量的局部方案",
+  "aS18 成功替换保留（不重复生成方案）"
+ ],
+ "review_expect": [
+  {
+   "seq": 1,
+   "decision": "REJECT",
+   "kind": "outro_card_missing_cjk_glyphs",
+   "scene_id": "S21",
+   "window": [
+    1465.0,
+    1532.0
+   ]
+  },
+  {
+   "seq": 2,
+   "decision": "REJECT",
+   "kind": "asset_semantically_unrelated_imo_group_photo",
+   "scene_id": "S05",
+   "window": [
+    245.0,
+    300.0
+   ]
+  },
+  {
+   "seq": 3,
+   "decision": "REJECT",
+   "kind": "asset_semantically_unrelated_imo_group_photo",
+   "scene_id": "S11",
+   "window": [
+    690.0,
+    770.0
+   ]
+  },
+  {
+   "seq": 4,
+   "decision": "REJECT",
+   "kind": "long_hold_insufficient_information",
+   "scene_id": "S08",
+   "window": [
+    480.0,
+    690.0
+   ]
+  },
+  {
+   "seq": 5,
+   "decision": "REJECT",
+   "kind": "long_hold_insufficient_information",
+   "scene_id": "S13",
+   "window": [
+    850.0,
+    1000.0
+   ]
+  },
+  {
+   "seq": 6,
+   "decision": "ACCEPT",
+   "kind": "verified_positive_change_keep",
+   "scene_id": "S18",
+   "window": [
+    1245.0,
+    1330.0
+   ]
+  }
+ ],
+ "proposal_expect": [
+  {
+   "label_prefix": "E1",
+   "action": "add_outro_card",
+   "scenes": [
+    "S21"
+   ],
+   "window": [
+    1465.0,
+    1532.0
+   ],
+   "share_of_film": 0.0437,
+   "needs_new_material": false,
+   "needs_new_content_self_created": false,
+   "why": "用显式字体文件（msyh.ttc + fontsdir）重渲染片尾卡，消除 CJK 豆腐块"
+  },
+  {
+   "label_prefix": "E2",
+   "action": "replace_asset",
+   "scenes": [
+    "S05"
+   ],
+   "window": [
+    245.0,
+    300.0
+   ],
+   "share_of_film": 0.0359,
+   "needs_new_material": true,
+   "needs_new_content_self_created": false,
+   "why": "替换为 aS05 与『可检视性争论』直接相关的新素材（semantic_spec + sourcing，无 asset_id）"
+  },
+  {
+   "label_prefix": "E3",
+   "action": "replace_asset",
+   "scenes": [
+    "S11"
+   ],
+   "window": [
+    690.0,
+    770.0
+   ],
+   "share_of_film": 0.0522,
+   "needs_new_material": true,
+   "needs_new_content_self_created": false,
+   "why": "替换为与 Lean/mathlib/形式化证明直接相关的新素材（semantic_spec + sourcing，无 asset_id）"
+  },
+  {
+   "label_prefix": "E4",
+   "action": "add_visual_aid",
+   "scenes": [
+    "S08",
+    "S09",
+    "S10"
+   ],
+   "window": [
+    480.0,
+    690.0
+   ],
+   "share_of_film": 0.1371,
+   "needs_new_material": false,
+   "needs_new_content_self_created": true,
+   "why": "自制信息面板（≥4 个可核对信息槽），显式禁止仅做 punch-in"
+  },
+  {
+   "label_prefix": "E5",
+   "action": "add_visual_aid",
+   "scenes": [
+    "S13",
+    "S14"
+   ],
+   "window": [
+    850.0,
+    1000.0
+   ],
+   "share_of_film": 0.0979,
+   "needs_new_material": false,
+   "needs_new_content_self_created": true,
+   "why": "自制信息面板（≥4 个可核对信息槽），显式禁止仅做 punch-in"
+  }
+ ],
+ "forbidden_material": {
+  "asset_id": "asset_432cd85be6f1",
+  "name": "Matematička gimnazija - Mathematical Gymnasium Belgrade - MGB - IMO 2010 - pic3.jpg",
+  "rule": "aS05/aS11（E2/E3）**禁止**继续使用该 IMO 合影作为替代素材；必须在 semantic_spec 中显式声明禁止",
+  "enforced_fields": [
+   "material_requirement.forbidden_material",
+   "proposed_change.params.forbidden_material"
+  ]
+ },
+ "no_fabricated_asset_id": {
+  "rule": "新素材只声明 semantic_spec + sourcing；**不得**写 asset_id",
+  "enforced_fields": [
+   "material_requirement.asset_id == None",
+   "affected_scope.assets == []"
+  ]
+ },
+ "clip_sufficiency": {
+  "rule": "『提高 CLIP 相似度』不得单独作为 proposal 的充分依据",
+  "enforced": "每条 proposal 的 evidence_chain.clip_similarity_sufficient == false 且 why_not_clip 非空"
+ },
+ "information_gain_rules": {
+  "E1": "片尾文字必须可读（替代豆腐块）",
+  "E2": "视觉必须与『引文/表述可检视』直接对应（差异化，非人像合影）",
+  "E3": "视觉必须与 Lean/mathlib/形式化证明直接对应",
+  "E4": "≥4 个可核对信息槽；每个数字/断言须附来源；禁止 punch-in 替代",
+  "E5": "≥4 个可核对信息槽；每个数字/断言须附来源；禁止 punch-in 替代"
+ },
+ "conflict_expect": {
+  "internal_conflict_pairs": 0,
+  "note": "5 条新方案互相不重叠（scenes/window/target/asset 均不冲突）",
+  "cross_batch_overlaps": [
+   [
+    "E1",
+    "H7-outro-card",
+    [
+     "scene",
+     "target"
+    ]
+   ],
+   [
+    "E2",
+    "H5-semantic-mismatch-replace",
+    [
+     "scene",
+     "window",
+     "target"
+    ]
+   ],
+   [
+    "E3",
+    "H3-batch2-next-longest",
+    [
+     "scene"
+    ]
+   ],
+   [
+    "E3",
+    "H5-semantic-mismatch-replace",
+    [
+     "scene",
+     "target"
+    ]
+   ]
+  ],
+  "handling": "跨批次重叠属 M5 已声明边界（门禁按批次判定）⇒ 逐条显式声明，需人工批准时确认；本阶段不执行故无阻断"
+ },
+ "locality_expect": {
+  "max_scenes_per_proposal": 6,
+  "max_share_of_film_per_proposal": 0.3,
+  "all_within_limits": true
+ },
+ "retention_expect": {
+  "schema": "retention-record-v1",
+  "kind": "verified_positive_keep",
+  "scene_id": "S18",
+  "decision": "ACCEPT",
+  "no_proposal_generated": true,
+  "evidence": {
+   "corr_new_mean": 0.7642,
+   "corr_prev_mean": -0.0894
+  }
+ },
+ "no_execution_rules": {
+  "executed_anything": false,
+  "ffmpeg_invocations": 0,
+  "must_not_modify": [
+   "C1–C4 候选成片",
+   "v9 母版",
+   "DB",
+   "timeline",
+   "字幕",
+   "素材",
+   "PI-1…PI-6 定义与阈值"
+  ],
+  "static_check": "6-E 脚本不得包含 subprocess / ffmpeg / run.py 调用，不得写任何 .mp4"
+ },
+ "defer_guard": {
+  "rule": "DEFER/UNKNOWN 不得转成确定性修改",
+  "enforced": "驱动决策全部为**可证**（unprovable=False）的人工 REJECT；构造不可证项调用 make_proposal 必须抛 DEFER_MUST_NOT_BECOME_CHANGE"
+ },
+ "boundary_notes": {
+  "no_execution": "本阶段不执行、不渲染、不修改任何既有产物；仅登记方案与证据",
+  "cross_batch_boundary": "跨批次重叠仍由人工在批准时确认（M5 门禁按批次判定）",
+  "new_material_pending": "E2/E3 依赖人工检索与许可核验；未提供素材前保持未批准/不可执行",
+  "self_created_content": "E4/E5 为自制信息层，数字与断言必须逐项附公开来源（宁缺勿造）",
+  "clip_insufficient": "CLIP 相似度既不必要也不充分：本轮依据是人审结论 + 成片实证",
+  "no_promotion": "方案未批准、未执行；C1–C4 保持原样"
+ },
+ "frozen_sha256": "7cd59cd718ea034420c7ecb992115895e5279aaf621d9994b0fec628ab05d73d"
+}

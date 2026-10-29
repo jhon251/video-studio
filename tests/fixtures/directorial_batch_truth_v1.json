@@ -1,0 +1,215 @@
+{
+ "schema": "directorial-batch-truth-v1",
+ "stage": "6-C",
+ "purpose": "首次用 M3→M5 执行链对 v9 做一批人工批准、可回溯、可撤销的真实导演修订；每条修改只产生新的 revision candidate，v9 母版与基线零改动，不做 promotion。",
+ "batches_expect": {
+  "C1": {
+   "H7-outro-card": "SUCCEEDED"
+  },
+  "C2": {
+   "H2-asset-pool-diversity": "PENDING_HUMAN_ASSET"
+  },
+  "C3": {
+   "H3-batch1-split-longest": "SUCCEEDED",
+   "H3-batch2-next-longest": "SUCCEEDED"
+  },
+  "C4": {
+   "H5-semantic-mismatch-replace": "SUCCEEDED"
+  }
+ },
+ "candidate_count": 4,
+ "candidate_expect": [
+  {
+   "index": 1,
+   "proposal_label": "H7-outro-card",
+   "dq_transitions": {
+    "DQ-6": [
+     "FAIL",
+     "PASS"
+    ]
+   },
+   "pi_gate_outcome": "BLOCKED",
+   "max_duration_delta_s": 0.5,
+   "audio_identical": true,
+   "why": "末镜窗口内加入片尾卡（视频重编码）+ 母版音轨流复制 ⇒ DQ-6 关键词命中"
+  },
+  {
+   "index": 2,
+   "proposal_label": "H3-batch1-split-longest",
+   "dq_detail_expect": {
+    "DQ-3": {
+     "mean_hold_s": 46.424,
+     "max_hold_s": 80.0,
+     "scenes": 33
+    }
+   },
+   "pi_gate_outcome": "BLOCKED",
+   "audio_identical": true,
+   "why": "S07/S06/S16/S18 四镜切分为 ≤25s 子镜（构图切点）；均值 hold 72.952→46.424"
+  },
+  {
+   "index": 3,
+   "proposal_label": "H3-batch2-next-longest",
+   "dq_detail_expect": {
+    "DQ-3": {
+     "mean_hold_s": 31.917,
+     "max_hold_s": 75.0,
+     "scenes": 48
+    }
+   },
+   "pi_gate_outcome": "BLOCKED",
+   "audio_identical": true,
+   "why": "次长 5 镜同法切分；累计 48 个（投影）镜头"
+  },
+  {
+   "index": 4,
+   "proposal_label": "H5-semantic-mismatch-replace",
+   "dq_detail_expect": {},
+   "pi_gate_outcome": "BLOCKED",
+   "audio_identical": true,
+   "why": "S05/S11/S18 池内换用（人工选材绑定）；不影响结构类 DQ 指标"
+  }
+ ],
+ "v9_before_expect": {
+  "dq_metrics": {
+   "DQ-1": "UNKNOWN",
+   "DQ-2": "FAIL",
+   "DQ-3": "FAIL",
+   "DQ-4": "FAIL",
+   "DQ-5": "FAIL",
+   "DQ-6": "FAIL",
+   "DQ-8": "FAIL"
+  },
+  "dq_details": {
+   "DQ-2": {
+    "unique_assets": 4,
+    "max_asset_share": 0.3329,
+    "scenes": 21
+   },
+   "DQ-3": {
+    "mean_hold_s": 72.952,
+    "max_hold_s": 95.0,
+    "scenes": 21
+   },
+   "DQ-4": {
+    "scenes": 21
+   }
+  },
+  "pi_states": {
+   "PI-1": "FAIL",
+   "PI-2": "FAIL",
+   "PI-3": "FAIL",
+   "PI-4": "PASS",
+   "PI-5": "FAIL",
+   "PI-6": "FAIL"
+  },
+  "pi_gate_outcome": "BLOCKED",
+  "source": "logs/phase6b_m5_v9_execution.json → batches[0].records[0].recheck"
+ },
+ "monotonic_rules": {
+  "duration_delta_max_s": 0.5,
+  "audio_must_be_byte_identical": true,
+  "pi_states_must_not_degrade": true,
+  "no_metric_may_go_PASS_to_FAIL": true,
+  "no_whole_film_PASS_claim": "所有候选 pi_gate_outcome 必须为 BLOCKED（PI 域问题未被局部修订解决）",
+  "promoted_must_be_empty": true,
+  "auto_approved_must_be_false": true
+ },
+ "h5_expect": {
+  "proposal_label": "H5-semantic-mismatch-replace",
+  "binding_rule": "该镜候选表中 match_score 最高、且≠当前在用素材、文件真实存在且 sha256 一致、许可优先 PUBLIC_DOMAIN > FREE_ATTRIBUTION",
+  "bindings": {
+   "S05": "asset_432cd85be6f1",
+   "S11": "asset_432cd85be6f1",
+   "S18": "asset_cfae038f6106"
+  },
+  "license_classes": {
+   "asset_432cd85be6f1": "PUBLIC_DOMAIN",
+   "asset_cfae038f6106": "FREE_ATTRIBUTION"
+  },
+  "min_corr": 0.3,
+  "argmax_margin": 0.15,
+  "scenes": [
+   "S05",
+   "S11",
+   "S18"
+  ],
+  "per_scene_replaced": true,
+  "prev_asset_must_be_recorded": true
+ },
+ "h2_expect": {
+  "state": "PENDING_HUMAN_ASSET",
+  "registered_new_assets_needed": 2,
+  "registered_target_unique_assets": 6,
+  "distinct_assets_in_film": 4,
+  "pool_size": 5,
+  "unused_verified_assets_count": 1,
+  "rule": "没有合格素材 ⇒ 保持 PENDING（禁止虚构 asset_id / 占位替换）"
+ },
+ "h4_expect": {
+  "decision": "NOT_EXECUTED_REQUIRES_HUMAN_REAPPROVAL",
+  "dependency": [
+   "H3-batch1-split-longest"
+  ],
+  "dependency_satisfied": true,
+  "overlap_kinds_with_h3a": [
+   "scene",
+   "target"
+  ],
+  "cross_batch_overlap_declared": true,
+  "requires_human_reapproval": true,
+  "diagnostic_symmetric_block_expected": true,
+  "why": "注册意图为『与 H3-batch1 合并推进』⇒ 其 DQ-4 效果由 C3 候选实测；单独执行=二次切分同一批镜头（范围扩大，未登记）；跨批次重叠属 M5 已知边界，显式声明而不静默绕过"
+ },
+ "not_executed_expect": {
+  "H1-hook-replace": "未批准（不在本阶段优先级集合）",
+  "H6-visual-climax-aid": "未批准（不在本阶段优先级集合）",
+  "H4-density-increase": "依赖已满足但需人工重新批准（跨批次重叠，显式声明）"
+ },
+ "subtitle_continuity": {
+  "schema": "phase6c-subtitle-continuity-v1",
+  "window_count": 13,
+  "present": 13,
+  "metric": "outline_ink",
+  "min_outline_ink": 0.0005,
+  "min_gain_vs_gap": 1.5,
+  "per_candidate_windows": {
+   "1": 1,
+   "2": 4,
+   "3": 5,
+   "4": 3
+  },
+  "how": "在被修改窗口内取母版同一 cue 时刻抽帧 + 同窗口无字幕时刻对照；字幕 = 白字 + 黑描边 ⇒ 用『黑像素紧邻近白像素』的成对结构度量（对背景颜色不敏感）",
+  "disclosure": "首轮候选在被替换窗口**丢失了烧录字幕**（实测发现），已修复为『用与生产 pipeline 相同的 cue 表 + to_ass 样式重新烧录』并重新生成全部候选；本项为修复后的实测结果",
+  "frames_for_human": "logs/phase6c_frames/*.png"
+ },
+ "ledger_contract": {
+  "append_only": true,
+  "approvals_entries": 5,
+  "execution_entries": 5,
+  "seq_contiguous": true,
+  "tamper_detection": [
+   "modify_entry",
+   "delete_middle_entry",
+   "reorder_entries"
+  ]
+ },
+ "conservation_rules": {
+  "only_registered_proposals": "执行对象的 proposal_id + proposal_sha256 必须与 6-B/M3 登记表逐字一致",
+  "human_approval_required": "每条执行前必须有有效人工 APPROVE + hash 绑定",
+  "no_v9_overwrite": "v9 母版 sha256 必须等于 M1 记录值；候选成片一律落在 output/phase6b_m4_sandbox/ 下",
+  "no_baseline_change": "不修改 5.x Final / r1 / r2 / r3；不新建 baseline/tag",
+  "no_pi_change": "PI-1…PI-6 定义与阈值未改；DQ 仍 advisory",
+  "no_promotion": "本阶段不做 promotion，候选仅供人工观看",
+  "audio_integrity": "候选音轨 = 母版整条音轨**流复制** ⇒ 抽出的音轨 sha256 必须与母版一致",
+  "timeline_integrity": "总时长守恒（|Δ| ≤ 0.5s）；切分投影仅在内存中用于 DQ 度量，未写回项目"
+ },
+ "boundary_notes": {
+  "cross_process_lock": "跨进程无锁仍为已知边界（未在本阶段解决，也未静默绕过）",
+  "cross_batch_overlap": "M5 门禁按批次判定重叠 ⇒ 跨批次重叠由 H4 决策显式声明并要求人工重新批准",
+  "cumulative_duration_drift": "每次窗口拼接引入 ≤0.12s 漂移，四个候选累计 ≤0.2s（0.013%），如实记录",
+  "dq_partial_improvement": "切分仅改善 DQ-3/DQ-4 的数值，状态仍 FAIL（阈值 25s / 2.0 次/分钟）；不得据此宣称全片 PASS",
+  "h5_semantic_fit": "H5 的语义适配由**人工选材绑定**决定（依据该镜候选表 match_score/matched_tokens）；本阶段不声称语义层判定为 MATCH"
+ },
+ "frozen_sha256": "7b1cdfef98d873627ecbe8676d47cf84c90975330322d6336ecd187bd3df947d"
+}

@@ -1,0 +1,368 @@
+{
+ "workspace": {
+  "root": "projects"
+ },
+ "llm": {
+  "provider": "deepseek",
+  "deepseek": {
+   "api_key_env": "DEEPSEEK_API_KEY",
+   "base_url": "https://api.deepseek.com",
+   "timeout_s": 120,
+   "max_retries": 2,
+   "backoff_base_s": 5
+  },
+  "tiers": {
+   "R": {
+    "model": "deepseek-v4-pro",
+    "max_tokens": 8192
+   },
+   "M": {
+    "model": "deepseek-flash",
+    "max_tokens": 16384
+   },
+   "F": {
+    "model": "deepseek-flash",
+    "max_tokens": 2048
+   }
+  },
+  "pricing": {
+   "deepseek-flash": {
+    "peak": {
+     "cache_hit": 0.006,
+     "cache_miss": 0.3,
+     "output": 1.2
+    },
+    "off_peak": {
+     "cache_hit": 0.003,
+     "cache_miss": 0.15,
+     "output": 0.6
+    }
+   },
+   "deepseek-v4-pro": {
+    "peak": {
+     "cache_hit": 0.044,
+     "cache_miss": 1.32,
+     "output": 3.96
+    },
+    "off_peak": {
+     "cache_hit": 0.022,
+     "cache_miss": 0.66,
+     "output": 1.98
+    }
+   }
+  },
+  "max_total_usd": 0.6,
+  "mock": {
+   "responses": {
+    "挑战报告": {
+     "verdict": "PASS",
+     "issues": [],
+     "meta_note": "",
+     "summary": "mock 挑战放行",
+     "confidence": 0.7,
+     "note": ""
+    },
+    "项目经理": {
+     "milestones": [
+      {
+       "name": "策划",
+       "gate": true,
+       "tasks": [
+        "topic",
+        "research",
+        "structure"
+       ]
+      },
+      {
+       "name": "脚本",
+       "gate": true,
+       "tasks": [
+        "script"
+       ]
+      },
+      {
+       "name": "生产",
+       "gate": false,
+       "tasks": [
+        "visual",
+        "voice",
+        "render"
+       ]
+      },
+      {
+       "name": "发布",
+       "gate": true,
+       "tasks": [
+        "publish"
+       ]
+      }
+     ],
+     "risks": [
+      "mock"
+     ],
+     "priority_hints": {},
+     "summary": "mock 生产计划",
+     "confidence": 0.7,
+     "note": ""
+    },
+    "资料研究员": {
+     "source_cards": [
+      {
+       "title": "创作记录",
+       "summary": "作者公开的创作笔记",
+       "origin": "作者专栏",
+       "retrieval_path": "search",
+       "quote": "创作过程记录",
+       "doubts": []
+      }
+     ],
+     "doubt_list": [],
+     "summary": "资料搜集完成",
+     "confidence": 0.8,
+     "note": ""
+    },
+    "来源核查员": {
+     "credibility": [
+      {
+       "source": "作者专栏",
+       "grade": "usable",
+       "reason": "一手创作者自述"
+      }
+     ],
+     "conflicts": [],
+     "unusable": [],
+     "summary": "来源核查完成",
+     "confidence": 0.8,
+     "note": ""
+    },
+    "内容结构师": {
+     "chapters": [
+      {
+       "title": "开场",
+       "goal": "引入主题",
+       "duration_s": 15,
+       "info_points": [
+        "背景"
+       ],
+       "transition": "直切"
+      }
+     ],
+     "summary": "结构完成",
+     "confidence": 0.8,
+     "note": ""
+    },
+    "文案写手": {
+     "segments": [
+      {
+       "chapter": "开场",
+       "narration": "大家好，这期聊聊鲸鱼娘皮肤背后的故事。",
+       "tone": "轻松",
+       "duration_s": 15,
+       "visual_hint": "展示皮肤截图"
+      }
+     ],
+     "summary": "脚本完成",
+     "confidence": 0.8,
+     "note": ""
+    },
+    "事实核查员": {
+     "checks": [
+      {
+       "assertion": "皮肤发布于 DSH 社区",
+       "verdict": "pass",
+       "basis": "官方仓库",
+       "correction": ""
+      }
+     ],
+     "summary": "事实核查通过",
+     "confidence": 0.9,
+     "note": ""
+    },
+    "视觉规划师": {
+     "shots": [
+      {
+       "index": 1,
+       "description": "皮肤界面截图",
+       "shot_size": "medium",
+       "duration_s": 5,
+       "source": "screen_capture",
+       "gen_prompt": "",
+       "style_constraint": ""
+      }
+     ],
+     "summary": "镜头清单完成",
+     "confidence": 0.8,
+     "note": ""
+    },
+    "剪辑规划师": {
+     "timeline": [
+      {
+       "track": "v1",
+       "start_s": 0,
+       "duration_s": 5,
+       "source": "demo",
+       "transition": "cut",
+       "note": ""
+      }
+     ],
+     "render_params": {
+      "resolution": "1280x720",
+      "fps": 30,
+      "codec": "libx264",
+      "format": "mp4"
+     },
+     "summary": "剪辑方案完成",
+     "confidence": 0.8,
+     "note": ""
+    },
+    "封面设计师": {
+     "concepts": [
+      {
+       "title": "封面A",
+       "composition": "居中构图",
+       "text_overlay": "鲸鱼娘",
+       "gen_prompt": "demo"
+      }
+     ],
+     "summary": "封面方案完成",
+     "confidence": 0.7,
+     "note": ""
+    },
+    "平台适配师": {
+     "versions": [
+      {
+       "platform": "bilibili",
+       "resolution": "1920x1080",
+       "aspect": "16:9",
+       "duration_s": 60,
+       "notes": ""
+      }
+     ],
+     "summary": "平台方案完成",
+     "confidence": 0.8,
+     "note": ""
+    },
+    "元数据与 SEO": {
+     "platforms": [
+      {
+       "platform": "bilibili",
+       "title": "鲸鱼娘皮肤幕后",
+       "description": "demo",
+       "tags": [
+        "鲸鱼娘"
+       ],
+       "chapters": []
+      }
+     ],
+     "summary": "元数据完成",
+     "confidence": 0.8,
+     "note": ""
+    },
+    "合规审查员": {
+     "verdict": "pass",
+     "risks": [
+      {
+       "level": "minor",
+       "category": "素材授权",
+       "item": "皮肤素材 CC BY-NC-SA",
+       "action": "保留署名"
+      }
+     ],
+     "summary": "合规通过",
+     "confidence": 0.9,
+     "note": ""
+    },
+    "数据分析师": {
+     "metrics": {
+      "views": 1000
+     },
+     "findings": [
+      "mock 数据"
+     ],
+     "lessons": [
+      {
+       "tag": "mock_lesson",
+       "lesson": "演示经验",
+       "applies_to": [
+        "topic"
+       ]
+      }
+     ],
+     "summary": "复盘完成",
+     "confidence": 0.7,
+     "note": ""
+    },
+    "选题": {
+     "proposals": [
+      {
+       "title": "鲸鱼娘的一天：深海女仆工坊幕后",
+       "angle": "创作过程幕后",
+       "audience": "DSH 用户",
+       "value_proposition": "稀缺幕后内容",
+       "feasibility": "high",
+       "risks": [],
+       "research_needs": []
+      }
+     ],
+     "summary": "选题提案",
+     "confidence": 0.8,
+     "note": "mock"
+    }
+   },
+   "default": {
+    "summary": "mock 默认输出",
+    "confidence": 0.5,
+    "note": ""
+   }
+  }
+ },
+ "tools": {
+  "ffmpeg": {
+   "path": "C:/mp4agent/video-studio/bin/ffmpeg.exe",
+   "ffprobe": "C:/mp4agent/video-studio/bin/ffprobe.exe"
+  },
+  "tts": {
+   "provider": "edge-tts",
+   "voice_type": "zh-CN-XiaoxiaoNeural"
+  },
+  "asr": {
+   "provider": "faster-whisper"
+  },
+  "search": {
+   "provider": "none",
+   "api_key_env": "SEARCH_API_KEY"
+  },
+  "image": {
+   "provider": "none",
+   "api_key_env": "IMAGE_API_KEY"
+  },
+  "video": {
+   "provider": "none",
+   "api_key_env": "VIDEO_API_KEY"
+  }
+ },
+ "hitl": {
+  "gates": [
+   "topic",
+   "structure",
+   "script",
+   "materials",
+   "final_cut",
+   "publish"
+  ],
+  "auto_approve": false
+ },
+ "retry": {
+  "default_max_retries": 2,
+  "backoff_base_s": 5
+ },
+ "_offline": {
+  "purpose": "offline mock config for regression tests only; NOT the production default",
+  "production_default": "config/config.json",
+  "mock_source": "docs/regression_2x/baseline/5.x-final-baseline.zip:config/config.json#llm.mock",
+  "mock_source_zip_sha256": "be1717b9c7fe9ed9124be3876db64b5893915a4d0ffad56bd37eded5e6e2141e",
+  "mock_section_sha256": "a2ace2aac048928dbe37a729d05b6ae92b129c93acc3daf6a2244d670f34710b",
+  "generated_at": "2026-09-21 21:18:58",
+  "invariant": "除 llm.mock 与 _offline 外，其余键值与 config/config.json 完全一致（模型/价格/HITL/tools 语义不变）"
+ }
+}

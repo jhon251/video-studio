@@ -1,0 +1,84 @@
+﻿# -*- coding: utf-8 -*-
+"""6-A/M3：电池被中断后的「证据留档 + 冻结日志恢复」（幂等；与 M1 版逻辑一致，路径独立）。
+
+背景：本轮 M3 电池在执行前若干步时被**主动终止**（原因：发现 PI-6 设计需修正，
+不能让一个过期代码的电池结果当作 M2 证据）。电池自带的收尾（另存 + 回拷冻结日志）未执行，
+本脚本补做：
+
+ 1. diff 当前 `logs/` 相对冻结快照 `logs_6a_m3_frozen/`；
+ 2. 把**本轮**产物另存到 `logs/phase6a_m3_rerun/`；
+ 3. 把冻结快照里存在且已变的文件逐文件回拷（新增文件保留、不删除）；
+ 4. 复核 drift/missing，写入 `logs/phase6a_m3_logs_restore.json`（不覆盖 M1/M2 的 restore 证据）。
+
+用法: python docs/regression_2x/phase6a_m2_preserve_and_restore.py
+"""
+import hashlib
+import json
+import shutil
+import sys
+from pathlib import Path
+
+sys.stdout.reconfigure(encoding="utf-8")
+ROOT = Path(r"C:\mp4agent\video-studio")
+LOGS = ROOT / "docs" / "regression_2x" / "logs"
+BAK = ROOT / "docs" / "regression_2x" / "logs_6a_m3_frozen"
+KEEP = LOGS / "phase6a_m3_rerun"
+
+
+def sha(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as fh:
+        for c in iter(lambda: fh.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def live() -> dict:
+    return {p.relative_to(LOGS).as_posix(): sha(p) for p in sorted(LOGS.rglob("*")) if p.is_file()}
+
+
+_raw = json.loads((BAK / "MANIFEST.json").read_text(encoding="utf-8"))
+frozen = _raw["files"] if isinstance(_raw, dict) and "files" in _raw else _raw
+frozen = {k: v for k, v in frozen.items() if k != "MANIFEST.json"}
+pre = live()
+pre_drift = sorted(k for k, v in frozen.items() if pre.get(k) != v)
+pre_added = sorted(k for k in pre if k not in frozen)
+
+KEEP.mkdir(parents=True, exist_ok=True)
+kept = []
+for pat in ("phase3a_*.log", "phase3a_regression_batch.json", "suites_summary.json", "suite_*.log",
+            "phase6a_m2_*.json", "phase6a_m2_*.log", "phase6a_m2_*.txt"):
+    for p in sorted(LOGS.glob(pat)):
+        if p.is_file() and p.parent == LOGS:
+            shutil.copy2(p, KEEP / p.name)
+            kept.append(p.name)
+kept = sorted(set(kept))
+
+restored = []
+for rel, h in frozen.items():
+    lp = LOGS / rel
+    if not lp.is_file():
+        lp.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(BAK / rel, lp)
+        restored.append(rel)
+    elif sha(lp) != h:
+        shutil.copy2(BAK / rel, lp)
+        restored.append(rel)
+
+post = live()
+post_drift = [k for k, v in frozen.items() if post.get(k) != v]
+post_missing = [k for k in frozen if k not in post]
+out = {"frozen_count": len(frozen), "pre_drift_count": len(pre_drift),
+       "pre_drift_sample": pre_drift[:30], "pre_added_count": len(pre_added),
+       "kept_this_round": kept, "kept_dir": KEEP.relative_to(ROOT).as_posix(),
+       "restored_count": len(restored), "restored_sample": restored[:30],
+       "post_drift": post_drift, "post_missing": post_missing,
+       "verdict": "MATCH" if not post_drift and not post_missing else "DIFF",
+       "context": "6-A/M3 电池在 step2 期间被外部终止（会话中断，进程消失）；本脚本补做电池未执行的收尾"}
+(LOGS / "phase6a_m3_logs_restore.json").write_text(json.dumps(out, ensure_ascii=False, indent=1),
+                                                   encoding="utf-8")
+print("frozen:", len(frozen), "| pre-drift:", len(pre_drift), "| pre-added:", len(pre_added))
+print("kept this round:", len(kept), "->", KEEP.relative_to(ROOT))
+print("restored:", len(restored))
+print("post drift:", len(post_drift), "| missing:", len(post_missing), "|", out["verdict"])
+print("json ->", LOGS / "phase6a_m3_logs_restore.json")

@@ -1,0 +1,6 @@
+{
+  "render_motion": {
+    "enabled": false,
+    "note": "运动层开关示例（P13-2）。复制为 config/render_motion.json 后生效；默认 off ⇒ 渲染输出与现状逐字节一致。开启后按 core/motion.py 的确定性策略（时长≥10s、hook 优先、启用≤60%、zoom 1.00→≤1.08、平移 ≤画面 3%、整数帧）在 concat 之前注入 pan/zoom；任一滤镜构造失败 ⇒ 该场景回退静态并登记 MOTION_FALLBACK_STATIC。本文件为示例，不参与运行时读取。"
+  }
+}
