@@ -117,7 +117,7 @@ def intersect_len(a_list, b_list):
 
 
 def norm_cmp(s: str) -> str:
-    return re.sub(r"[\s。！？，、；：""''（）()《》〈〉…—\-·.,;:!?\"'\[\]{}]",
+    return re.sub(r'''[\s。！？，、；：""''（）()《》〈〉…—\-·.,;:!?\"'\[\]{}]''',
                   "", str(s or ""))
 
 

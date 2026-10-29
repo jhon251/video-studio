@@ -21,3 +21,4 @@ docs/regression_2x/logs/
 docs/regression_2x/snapshots/
 docs/regression_2x/baseline/
 *_frames/
+*.egg-info/
